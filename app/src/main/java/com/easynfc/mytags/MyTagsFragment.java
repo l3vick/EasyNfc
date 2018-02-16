@@ -15,10 +15,15 @@ import com.easynfc.R;
 public class MyTagsFragment extends Fragment {
 
 
+    public static final String TAG = "MyTagsFragment";
+
     public MyTagsFragment() {
         // Required empty public constructor
     }
 
+    public static MyTagsFragment newInstance() {
+        return new MyTagsFragment();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,5 +31,6 @@ public class MyTagsFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_tags, container, false);
     }
+
 
 }

@@ -5,4 +5,5 @@ package com.easynfc.data.source.local;
  */
 
 public class EasyNfcDatabase {
+
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easynfc.R;
+import com.easynfc.tagreader.TagReaderFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,8 +16,14 @@ import com.easynfc.R;
 public class TagWriterFragment extends Fragment {
 
 
+    public static final String TAG = "TagWriterFragment";
+
     public TagWriterFragment() {
         // Required empty public constructor
+    }
+
+    public static TagWriterFragment newInstance(){
+        return new TagWriterFragment();
     }
 
 

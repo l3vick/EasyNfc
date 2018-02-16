@@ -15,8 +15,14 @@ import com.easynfc.R;
 public class TagReaderFragment extends Fragment {
 
 
+    public static final String TAG = "TagReaderFragment";
+
     public TagReaderFragment() {
         // Required empty public constructor
+    }
+
+    public static TagReaderFragment newInstance(){
+        return new TagReaderFragment();
     }
 
 
