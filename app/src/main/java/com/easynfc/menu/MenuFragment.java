@@ -1,20 +1,24 @@
 package com.easynfc.menu;
 
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.easynfc.MainActivity;
 import com.easynfc.R;
+import com.easynfc.data.Menu;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,12 +26,10 @@ import butterknife.OnClick;
 public class MenuFragment extends Fragment {
 
 
-    @BindView(R.id.txtRead)
-    TextView writeTxt;
-    @BindView(R.id.txtWrite)
-    TextView tagsTxt;
-    @BindView(R.id.txtTags)
-    TextView readTxt;
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
+    private MenuAdapter adapter;
+    private GridLayoutManager mLayoutManager;
 
     private MainActivity main;
 
@@ -48,28 +50,23 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_menu, container, false);
         ButterKnife.bind(this,v);
-        main = ((MainActivity) getActivity());
-        Typeface soho = Typeface.createFromAsset(getActivity().getAssets(), getString(R.string.raleway));
-        writeTxt.setTypeface(soho);
-        readTxt.setTypeface(soho);
-        tagsTxt.setTypeface(soho);
+        adapter = new MenuAdapter(getActivity(), getMenuList());
+        mLayoutManager = new GridLayoutManager(getActivity(), 1);  //displays number of cards per row
+        recycler.setLayoutManager(mLayoutManager);
+        recycler.setItemAnimator(new DefaultItemAnimator());
+        recycler.setAdapter(adapter);
         return v;
     }
 
-    @OnClick(R.id.writeBtn)
-    void onWriteClick(View view){
-        main.navigateToTagWriter();
-    }
-
-    @OnClick(R.id.readBtn)
-    void onReadClick(View view){
-        main.navigateToTagReader();
-    }
-
-
-    @OnClick(R.id.btn_my_tags)
-    void onMyTagsClick(View view){
-        main.navigateToMyTags();
+    private List<Menu> getMenuList() {
+        List<Menu> lst_menu = new ArrayList<>();
+        Menu writeMenu = new Menu("Write/","write & save your favorites tags");
+        Menu readMenu = new Menu("Read/","read tag content");
+        Menu myTagsMenu = new Menu("My Tags/","write, emulate & update your tags");
+        lst_menu.add(writeMenu);
+        lst_menu.add(readMenu);
+        lst_menu.add(myTagsMenu);
+        return lst_menu;
     }
 
 

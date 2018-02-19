@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="tittle_35">35dp</dimen>
-    <dimen name="tittle">25dp</dimen>
-    <dimen name="tittle_50">50dp</dimen>
-    <dimen name="tittle_40">40dp</dimen>
+
+    <dimen name="menu_title">40dp</dimen>
+    <dimen name="menu_subtittle">20sp</dimen>
 
     <dimen name="padding_4">4dp</dimen>
 
@@ -31,5 +30,7 @@
     <dimen name="text_20">20sp</dimen>
     <dimen name="text_24">24sp</dimen>
     <dimen name="text_36">36sp</dimen>
+    <dimen name="app_padding">16dp</dimen>
+
 
 </resources>

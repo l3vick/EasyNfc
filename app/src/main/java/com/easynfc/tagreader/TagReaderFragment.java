@@ -4,15 +4,17 @@ package com.easynfc.tagreader;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.easynfc.BaseFragment;
 import com.easynfc.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TagReaderFragment extends Fragment {
+public class TagReaderFragment extends BaseFragment {
 
 
     public static final String TAG = "TagReaderFragment";
@@ -33,4 +35,14 @@ public class TagReaderFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_tag_reader, container, false);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                main.navigateToMenu();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

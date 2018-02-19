@@ -3,17 +3,21 @@ package com.easynfc.tagwriter;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.easynfc.BaseFragment;
+import com.easynfc.MainActivity;
 import com.easynfc.R;
 import com.easynfc.tagreader.TagReaderFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TagWriterFragment extends Fragment {
+public class TagWriterFragment extends BaseFragment {
 
 
     public static final String TAG = "TagWriterFragment";
@@ -22,7 +26,7 @@ public class TagWriterFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static TagWriterFragment newInstance(){
+    public static TagWriterFragment newInstance() {
         return new TagWriterFragment();
     }
 
@@ -34,4 +38,15 @@ public class TagWriterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_tag_writer, container, false);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                main.navigateToMenu();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

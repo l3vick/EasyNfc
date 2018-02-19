@@ -50,5 +50,7 @@
     <color name="poo">#E9D758</color>
     <color name="lightdanger">#FF8552</color>
     <color name="watersea">#78CAD2</color>
-    
+    <color name="easy_black">#323232</color>
+    <color name="easy_black_dark">#191919</color>
+
 </resources>
