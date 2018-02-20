@@ -76,8 +76,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
             v.setOnClickListener(this);
             Typeface raleway = Typeface.createFromAsset(context.getAssets(), context.getResources().getString(R.string.raleway));
 
-            txt_title.setTypeface(raleway);
-            txt_subtitle.setTypeface(raleway);
+            Typeface exo2 = Typeface.createFromAsset(context.getAssets(), "exo2.ttf");
+
+
+            txt_title.setTypeface(exo2);
+            txt_subtitle.setTypeface(exo2);
 
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) ll_menu_item.getLayoutParams();
             params.height = AppUtils.getDisplayMetrics(context).heightPixels/ 3;
