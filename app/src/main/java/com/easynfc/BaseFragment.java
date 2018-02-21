@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -30,5 +31,16 @@ public class BaseFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         main = (MainActivity)getActivity();
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                main.navigateToMenu(true);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

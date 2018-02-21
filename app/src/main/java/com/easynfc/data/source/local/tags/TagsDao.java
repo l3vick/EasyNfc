@@ -1,4 +1,4 @@
-package com.easynfc.data.source.local;
+package com.easynfc.data.source.local.tags;
 
 /**
  * Created by pablorojas on 4/2/18.

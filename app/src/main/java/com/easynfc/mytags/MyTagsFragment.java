@@ -34,14 +34,5 @@ public class MyTagsFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_my_tags, container, false);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                main.navigateToMenu();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+
 }

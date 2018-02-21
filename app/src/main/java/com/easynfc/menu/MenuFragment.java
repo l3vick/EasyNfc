@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.easynfc.MainActivity;
 import com.easynfc.R;
 import com.easynfc.data.Menu;
+import com.easynfc.data.source.local.EasyNfcDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +24,13 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment implements MenuContract.View {
 
 
     @BindView(R.id.recycler)
     RecyclerView recycler;
     private MenuAdapter adapter;
-    private GridLayoutManager mLayoutManager;
-
-    private MainActivity main;
-
+    private MenuContract.Presenter presenter;
 
     public static final String TAG = "MenuFragment";
 
@@ -50,24 +48,36 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_menu, container, false);
         ButterKnife.bind(this,v);
-        adapter = new MenuAdapter(getActivity(), getMenuList());
-        mLayoutManager = new GridLayoutManager(getActivity(), 1);  //displays number of cards per row
+        List<Menu> menus = new ArrayList<>();
+        adapter = new MenuAdapter(getActivity(),menus);
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);  //displays number of cards per row
         recycler.setLayoutManager(mLayoutManager);
         recycler.setItemAnimator(new DefaultItemAnimator());
         recycler.setAdapter(adapter);
         return v;
     }
 
-    private List<Menu> getMenuList() {
-        List<Menu> lst_menu = new ArrayList<>();
-        Menu writeMenu = new Menu("Write/","write & save your favorites tags");
-        Menu readMenu = new Menu("Read/","read tag content");
-        Menu myTagsMenu = new Menu("My Tags/","write, emulate & update your tags");
-        lst_menu.add(writeMenu);
-        lst_menu.add(readMenu);
-        lst_menu.add(myTagsMenu);
-        return lst_menu;
+    @Override
+    public void setMenu(List<Menu> menus) {
+       adapter.update(menus);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.start();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.stop();
+    }
+
+
+    @Override
+    public void setPresenter(MenuContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
 
 }

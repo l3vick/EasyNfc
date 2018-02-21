@@ -59,6 +59,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         return lst_menu.size();
     }
 
+    public void update(List<Menu> menus) {
+        this.lst_menu = menus;
+        notifyDataSetChanged();
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -90,7 +95,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         @Override
         public void onClick(View view) {
             if (getLayoutPosition() == WRITE){
-                main.navigateToTagWriter();
+                main.navigateToTagMenu();
             }else if (getLayoutPosition() == READ){
                 main.navigateToTagReader();
             }else if (getLayoutPosition() == MYTAGS){
