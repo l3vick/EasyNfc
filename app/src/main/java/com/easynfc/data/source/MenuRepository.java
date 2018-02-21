@@ -1,6 +1,7 @@
 package com.easynfc.data.source;
 
 import com.easynfc.data.Menu;
+import com.easynfc.data.TagMenu;
 
 import java.util.List;
 
@@ -40,6 +41,21 @@ public class MenuRepository implements MenuDataSource {
             @Override
             public void onMenusLoaded(List<Menu> menus) {
                 callback.onMenusLoaded(menus);
+            }
+
+            @Override
+            public void onDataNotAvailable() {
+                callback.onDataNotAvailable();
+            }
+        });
+    }
+
+    @Override
+    public void getTagMenu(final LoadTagsMenuCallback callback) {
+        remoteDataSource.getTagMenu(new LoadTagsMenuCallback() {
+            @Override
+            public void onTagsMenuLoaded(List<TagMenu> tagsMenu) {
+                callback.onTagsMenuLoaded(tagsMenu);
             }
 
             @Override

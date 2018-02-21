@@ -3,6 +3,8 @@
 
     <dimen name="menu_title">40dp</dimen>
     <dimen name="menu_subtittle">20sp</dimen>
+    <dimen name="tag_menu_type">20sp</dimen>
+
 
     <dimen name="padding_4">4dp</dimen>
 
@@ -31,6 +33,7 @@
     <dimen name="text_24">24sp</dimen>
     <dimen name="text_36">36sp</dimen>
     <dimen name="app_padding">16dp</dimen>
+    <dimen name="elevation">4dp</dimen>
 
 
 </resources>

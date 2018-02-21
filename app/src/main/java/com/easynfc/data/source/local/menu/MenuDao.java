@@ -6,6 +6,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
 import com.easynfc.data.Menu;
+import com.easynfc.data.TagMenu;
 import com.easynfc.data.source.MenuDataSource;
 
 import java.util.List;
@@ -17,14 +18,21 @@ import java.util.List;
 public interface MenuDao {
 
     @Query("SELECT * FROM Menu")
-    List<Menu> getAll();
+    List<Menu> getMainMenu();
+
+    @Query("SELECT * FROM TagMenu")
+    List<TagMenu> getTagsMenu();
+
+    @Insert
+    void insertMenus(Menu... menus);
+
+    @Insert
+    void insertTagsMenu(TagMenu... tagsMenu);
 
     @Query("SELECT COUNT(*) from Menu")
     int countMenus();
 
-    @Insert
-    void insertAll(Menu... menus);
-
     @Delete
     void delete(Menu menu);
+
 }

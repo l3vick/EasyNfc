@@ -11,6 +11,7 @@ import com.easynfc.menu.MenuPresenter;
 import com.easynfc.mytags.MyTagsFragment;
 import com.easynfc.reader.ReaderFragment;
 import com.easynfc.tagsmenu.TagsMenuFragment;
+import com.easynfc.tagsmenu.TagsMenuPresenter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         MenuPresenter presenter = new MenuPresenter(menuRepository, menuFragment);
     }
 
-    public void navigateToTagMenu() {
+    public void navigateToTagsMenu() {
         TagsMenuFragment tagsMenuFragment = (TagsMenuFragment) getSupportFragmentManager().findFragmentByTag(TagsMenuFragment.TAG);
         if (tagsMenuFragment == null) {
             tagsMenuFragment = TagsMenuFragment.newInstance();
@@ -55,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, tagsMenuFragment)
                     .commit();
         }
+
+        MenuLocalDataSource menuLocalDataSource = MenuLocalDataSource.getInstance(this);
+
+        MenuRepository menuRepository = MenuRepository.getInstance(menuLocalDataSource);
+
+        TagsMenuPresenter presenter = new TagsMenuPresenter(menuRepository, tagsMenuFragment);
     }
 
     public void navigateToTagReader() {
