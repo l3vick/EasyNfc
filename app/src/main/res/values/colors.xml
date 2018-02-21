@@ -4,53 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="black85">#D8000000</color>
-    <color name="white50">#AAFFFFFF</color>
-    <color name="black60">#99000000</color>
-    <color name="red60">#99FF0000</color>
-
-    <color name="aubergine85">#D83A3042</color>
-    <color name="aubergine60">#993A3042</color>
-    <color name="salmonorange85">#D8EE6C4D</color>
-    <color name="salmonorange60">#99EE6C4D</color>
-    <color name="palemustard85">#D8BFAE48</color>
-    <color name="palemustard60">#99BFAE48</color>
-    <color name="greyhuskey85">#D8AFBFC0</color>
-    <color name="greyhuskey60">#99AFBFC0</color>
-    <color name="greycarbon85">#D8272932</color>
-    <color name="mustard85">#D8f1c40f</color>
-    <color name="mustard60">#99f1c40f</color>
-    <color name="lightdanger85">#D8FF8552</color>
-    <color name="deepwater85">#D8415A77</color>
-    <color name="watersea85">#D878CAD2</color>
-    <color name="cemex85">#D8808080</color>
-    <color name="valley85">#D8297373</color>
-    <color name="poo85">#D8E9D758</color>
-    <color name="aubergine95">#F23A3042</color>
-
-    <color name="mustard">#f1c40f</color>
-    <color name="whitesnow">#F1F7ED</color>
-    <color name="aubergine">#3A3042</color>
-    <color name="palemustard">#BFAE48</color>
-    <color name="salmonorange">#EE6C4D</color>
-    <color name="bluecake">#6184D8</color>
-    <color name="yellowsick">#F0F465</color>
-    <color name="brownsugar">#84714F</color>
-    <color name="greyhuskey">#AFBFC0</color>
-    <color name="greycarbon">#272932</color>
-    <color name="valley">#297373</color>
-    <color name="deepwater">#415A77</color>
-    <color name="cemex">#808080</color>
-    <color name="caqui">#854D27</color>
-    <color name="pinkpanter">#F9B9F2</color>
-    <color name="blacky">#070707</color>
-    <color name="darkpinkpanter">#4F0147</color>
-    <color name="meat">#F1DEDE</color>
-    <color name="danger">#E03616</color>
-    <color name="poo">#E9D758</color>
-    <color name="lightdanger">#FF8552</color>
-    <color name="watersea">#78CAD2</color>
     <color name="easy_black">#323232</color>
     <color name="easy_black_dark">#191919</color>
+    <color name="easy_grey">#4c4c4c</color>
+    <color name="mustard">#f1c40f</color>
 
 </resources>

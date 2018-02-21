@@ -4,4 +4,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="raleway">raleway.ttf</string>
+    <string name="simple_text">Simple-Text</string>
+    <string name="enter_simple_text">Enter some text</string>
+    <string name="enter_single_text_hint">Enter some text...</string>
+
 </resources>

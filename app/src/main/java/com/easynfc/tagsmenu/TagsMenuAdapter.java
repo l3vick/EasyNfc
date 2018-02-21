@@ -93,25 +93,25 @@ public class TagsMenuAdapter extends RecyclerView.Adapter<TagsMenuAdapter.MyView
         @Override
         public void onClick(View view) {
             if (getLayoutPosition() == AppConstants.SIMPLE_TEXT_TAG){
-
+                main.navigateToWriter(AppConstants.SIMPLE_TEXT_TAG);
             }else if (getLayoutPosition() == AppConstants.URL_TAG){
-
+                main.navigateToWriter(AppConstants.URL_TAG);
             }else if (getLayoutPosition() == AppConstants.SMS_TAG){
-
+                main.navigateToWriter(AppConstants.SMS_TAG);
             }else if (getLayoutPosition() == AppConstants.PHONE_TAG){
-
+                main.navigateToWriter(AppConstants.PHONE_TAG);
             }else if (getLayoutPosition() == AppConstants.APP_LAUNCHER_TAG){
-
+                main.navigateToWriter(AppConstants.APP_LAUNCHER_TAG);
             }else if (getLayoutPosition() == AppConstants.LOCATION_TAG){
-
+                main.navigateToWriter(AppConstants.LOCATION_TAG);
             }else if (getLayoutPosition() == AppConstants.WIFI_TAG){
-
+                main.navigateToWriter(AppConstants.WIFI_TAG);
             }else if (getLayoutPosition() == AppConstants.EMAIL_TAG){
-
+                main.navigateToWriter(AppConstants.EMAIL_TAG);
             }else if (getLayoutPosition() == AppConstants.NDEF_FORMAT_TAG){
-
+                main.navigateToWriter(AppConstants.NDEF_FORMAT_TAG);
             }else if (getLayoutPosition() == AppConstants.LOCK_TAG){
-
+                main.navigateToWriter(AppConstants.LOCK_TAG);
             }
         }
 

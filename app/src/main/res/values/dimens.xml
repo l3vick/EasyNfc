@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="menu_title">40dp</dimen>
+    <dimen name="elevation">4dp</dimen>
+
+    <dimen name="menu_title">40sp</dimen>
     <dimen name="menu_subtittle">20sp</dimen>
     <dimen name="tag_menu_type">20sp</dimen>
+    <dimen name="margin_txt_type_tags_menu">4dp</dimen>
+    <dimen name="type_title">40sp</dimen>
 
 
     <dimen name="padding_4">4dp</dimen>
@@ -33,7 +37,8 @@
     <dimen name="text_24">24sp</dimen>
     <dimen name="text_36">36sp</dimen>
     <dimen name="app_padding">16dp</dimen>
-    <dimen name="elevation">4dp</dimen>
+    <dimen name="input_title">20sp</dimen>
+    <dimen name="edit_text_height">48dp</dimen>
 
 
 </resources>

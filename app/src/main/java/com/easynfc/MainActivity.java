@@ -12,6 +12,7 @@ import com.easynfc.mytags.MyTagsFragment;
 import com.easynfc.reader.ReaderFragment;
 import com.easynfc.tagsmenu.TagsMenuFragment;
 import com.easynfc.tagsmenu.TagsMenuPresenter;
+import com.easynfc.writer.WriterActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,5 +89,9 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, myTagsFragment)
                     .commit();
         }
+    }
+
+    public void navigateToWriter(int typeWriter) {
+        startActivity(WriterActivity.newIntent(this, typeWriter));
     }
 }
