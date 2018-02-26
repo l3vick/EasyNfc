@@ -8,5 +8,8 @@
     <color name="easy_black_dark">#191919</color>
     <color name="easy_grey">#4c4c4c</color>
     <color name="mustard">#f1c40f</color>
+    <color name="ghost_white">#dfdfe5</color>
+    <color name="ghost_white_dark">#adadb2</color>
+    <color name="easy_black_medium">#313133</color>
 
 </resources>

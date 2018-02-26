@@ -68,7 +68,7 @@ public class TagsMenuFragment extends BaseFragment implements TagsMenuContract.V
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.stop();
+        //presenter.stop();
     }
 
     @Override

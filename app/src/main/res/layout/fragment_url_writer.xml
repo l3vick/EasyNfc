@@ -5,7 +5,8 @@
     android:background="@color/easy_black"
     android:orientation="vertical"
     android:weightSum="7"
-    tools:context="com.easynfc.writer.SimpleText.SimpleTextWriterFragment">
+    tools:context="com.easynfc.writer.Url.UrlWriterFragment">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +19,7 @@
             android:id="@+id/txt_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/simple_text"
+            android:text="@string/url"
             android:textAllCaps="true"
             android:textColor="@color/mustard"
             android:textSize="@dimen/type_title" />
@@ -46,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/app_padding"
-            android:text="@string/enter_simple_text"
+            android:text="@string/enter_url"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="@dimen/input_title" />
@@ -59,7 +60,7 @@
             android:layout_marginRight="@dimen/app_padding"
             android:layout_marginTop="@dimen/app_padding"
             android:background="@drawable/edit_text_rounded_border"
-            android:hint="@string/enter_single_text_hint"
+            android:hint="@string/enter_url_hint"
             android:paddingLeft="@dimen/app_padding"
             android:textColor="@android:color/white"
             android:textColorHint="@color/easy_grey" />
@@ -88,17 +89,17 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="@dimen/app_padding"
             android:gravity="center_vertical"
+            android:paddingLeft="@dimen/app_padding"
             android:paddingRight="@dimen/app_padding">
 
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
+                android:background="@drawable/button_white_rounded_border"
                 android:text="@string/save"
                 android:textAllCaps="true"
-                android:background="@drawable/button_white_rounded_border"
                 android:textColor="@color/easy_black_dark"
                 android:textSize="@dimen/button_txt" />
 
@@ -119,9 +120,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
                 android:background="@drawable/button_black_rounded_border"
-                android:textColor="@color/ghost_white"
-                android:textAllCaps="true"
                 android:text="@string/record"
+                android:textAllCaps="true"
+                android:textColor="@color/ghost_white"
                 android:textSize="@dimen/button_txt" />
 
         </LinearLayout>

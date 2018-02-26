@@ -8,37 +8,11 @@
     <dimen name="tag_menu_type">20sp</dimen>
     <dimen name="margin_txt_type_tags_menu">4dp</dimen>
     <dimen name="type_title">40sp</dimen>
-
-
-    <dimen name="padding_4">4dp</dimen>
-
-    <dimen name="margin_top_16">16dp</dimen>
-    <dimen name="margin_right_16">16dp</dimen>
-    <dimen name="margin_left_16">16dp</dimen>
-    <dimen name="margin_left_32">32dp</dimen>
-    <dimen name="margin_right_32">32dp</dimen>
-    <dimen name="margin_bottom_16">16dp</dimen>
-    <dimen name="margin_bottom_8">8dp</dimen>
-    <dimen name="margin_right_48">48dp</dimen>
-    <dimen name="margin_left_48">48dp</dimen>
-    <dimen name="margin_top_8">8dp</dimen>
-
-    <dimen name="dimen_16">16dp</dimen>
-    <dimen name="dimen_32">32dp</dimen>
-    <dimen name="dimen_4">4dp</dimen>
-    <dimen name="dimen_8">8dp</dimen>
-    <dimen name="dimen_24">24dp</dimen>
-    <dimen name="dimen_18">18dp</dimen>
-
-    <dimen name="text_12">12sp</dimen>
-    <dimen name="text_15">15sp</dimen>
-    <dimen name="text_18">18sp</dimen>
-    <dimen name="text_20">20sp</dimen>
-    <dimen name="text_24">24sp</dimen>
-    <dimen name="text_36">36sp</dimen>
     <dimen name="app_padding">16dp</dimen>
     <dimen name="input_title">20sp</dimen>
     <dimen name="edit_text_height">48dp</dimen>
-
+    <dimen name="button_txt">16dp</dimen>
+    <dimen name="dialog_text_size">20sp</dimen>
+    <dimen name="dialog_margin">64dp</dimen>
 
 </resources>

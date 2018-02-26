@@ -7,5 +7,11 @@
     <string name="simple_text">Simple-Text</string>
     <string name="enter_simple_text">Enter some text</string>
     <string name="enter_single_text_hint">Enter some text...</string>
+    <string name="save">Save</string>
+    <string name="record">Record</string>
+    <string name="tap_to_record">Tap a tag \n to record</string>
+    <string name="url">URL</string>
+    <string name="enter_url">Enter a valid url</string>
+    <string name="enter_url_hint">Enter an url</string>
 
 </resources>
