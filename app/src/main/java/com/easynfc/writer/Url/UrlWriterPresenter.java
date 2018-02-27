@@ -1,15 +1,21 @@
 package com.easynfc.writer.Url;
 
 import android.content.Intent;
+import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.exceptions.InsufficientSizeException;
+import com.easynfc.data.exceptions.NdefFormatException;
+import com.easynfc.data.exceptions.ReadOnlyTagException;
 import com.easynfc.util.NfcUtils;
+
+import java.io.IOException;
 
 /**
  * Created by pablorojas on 26/2/18.
  */
 
-public class UrlWriterPresenter implements UrlWriterContract.Presenter{
+public class UrlWriterPresenter implements UrlWriterContract.Presenter {
 
     private static final String TAG = "UrlWriterPresenter";
     private UrlWriterContract.View view;
@@ -37,21 +43,43 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter{
 
     @Override
     public void stop() {
-
+        this.view = null;
     }
 
     @Override
     public void enableForegroundDispatch() {
-
+        nfcUtils.enableForegroundDispatch();
     }
 
     @Override
     public void writeTag(Intent intent, String text) {
+        try {
+            nfcUtils.writeUrlTag(intent, text, new NfcUtils.TagWrittenCallback() {
+                @Override
+                public void OnSuccess() {
+                    view.OnTagWritten();
+                }
 
+                @Override
+                public void OnError() {
+
+                }
+            });
+        } catch (ReadOnlyTagException e) {
+            e.printStackTrace();
+        } catch (NdefFormatException e) {
+            e.printStackTrace();
+        } catch (FormatException e) {
+            e.printStackTrace();
+        } catch (InsufficientSizeException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void disableForegroundDispatch() {
-
+        nfcUtils.disableForegroundDispatch();
     }
 }

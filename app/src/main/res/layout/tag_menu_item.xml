@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="1dp"
-    android:background="@color/easy_black_dark">
+    android:background="@color/easy_black_superlight">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,7 +28,5 @@
             android:textColor="@color/mustard"
             android:textSize="@dimen/tag_menu_type" />
     </RelativeLayout>
-
-
 
 </RelativeLayout>

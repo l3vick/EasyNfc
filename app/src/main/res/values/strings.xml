@@ -12,6 +12,7 @@
     <string name="tap_to_record">Tap a tag \n to record</string>
     <string name="url">URL</string>
     <string name="enter_url">Enter a valid url</string>
-    <string name="enter_url_hint">Enter an url</string>
+    <string name="enter_url_hint">Enter an url...</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

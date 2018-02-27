@@ -1,6 +1,8 @@
 package com.easynfc.writer.SimpleText;
 
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -11,10 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.easynfc.R;
 import com.easynfc.writer.BaseTypeFragment;
+import com.easynfc.writer.WriterActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +29,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SimpleTextWriterFragment extends Fragment implements SimpleTextWriterContract.View {
+public class SimpleTextWriterFragment extends BaseTypeFragment implements SimpleTextWriterContract.View {
 
     @BindView(R.id.txt_title)
     TextView txtTitle;
@@ -31,10 +37,9 @@ public class SimpleTextWriterFragment extends Fragment implements SimpleTextWrit
     TextView txtInputTitle;
     @BindView(R.id.et_simple_text)
     EditText etSimpleText;
+    @BindView(R.id.parentView)
+    FrameLayout parentView;
     private SimpleTextWriterContract.Presenter presenter;
-    private AlertDialog dialog;
-
-
 
     public static final String TAG = "SimpleTextWriterFragment";
 
@@ -61,8 +66,8 @@ public class SimpleTextWriterFragment extends Fragment implements SimpleTextWrit
 
     @OnClick(R.id.btn_record)
     void onRecordTagBtnPressed() {
-        showRecordDialog();
         presenter.enableForegroundDispatch();
+        showRecordDialog();
     }
 
     @OnClick(R.id.btn_save)
@@ -71,29 +76,18 @@ public class SimpleTextWriterFragment extends Fragment implements SimpleTextWrit
     }
 
     public void showRecordDialog() {
-        LayoutInflater inflater = getLayoutInflater();
-        View alertLayout = inflater.inflate(R.layout.custom_dialog, null);
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-        // this is set the view from XML inside AlertDialog
-        alert.setView(alertLayout);
-
-        Button onCancelDialog = alertLayout.findViewById(R.id.cancelDialogBtn);
-        dialog = alert.create();
-
-        onCancelDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
+        super.showDialog(parentView);
     }
 
     @Override
     public void setPresenter(SimpleTextWriterContract.Presenter presenter) {
         this.presenter = presenter;
+    }
+
+
+    @Override
+    public void OnTagWritten() {
+        super.hideDialog();
     }
 
 
@@ -104,12 +98,8 @@ public class SimpleTextWriterFragment extends Fragment implements SimpleTextWrit
     }
 
     @Override
-    public void OnTagWritten() {
-        dialog.hide();
-    }
-
-
     public void processNfc(Intent intent) {
+        super.processNfc(intent);
         presenter.writeTag(intent, etSimpleText.getText().toString());
     }
 }

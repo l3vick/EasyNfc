@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape>
-            <solid android:color="@color/ghost_white_dark" />
-            <stroke android:width="0.5dp" android:color="@color/easy_grey" />
-            <corners android:bottomLeftRadius="3dp" android:bottomRightRadius="3dp" android:topLeftRadius="3dp" android:topRightRadius="3dp" />
+            <solid android:color="@color/easy_black_light" />
+            <stroke android:width="0.5dp" android:color="@color/easy_black" />
+            <corners android:bottomLeftRadius="5dp" android:bottomRightRadius="5dp" android:topLeftRadius="5dp" android:topRightRadius="5dp" />
             <padding android:bottom="0dp" android:left="0dp" android:right="0dp" android:top="0dp" />
         </shape>
     </item>
     <item>
         <shape>
-            <solid android:color="@color/ghost_white"  />
-            <stroke android:width="0.5dp" android:color="@color/easy_grey" />
-            <corners android:bottomLeftRadius="3dp" android:bottomRightRadius="3dp" android:topLeftRadius="3dp" android:topRightRadius="3dp" />
+            <solid android:color="@color/easy_black_ghost" />
+            <stroke android:width="0.5dp" android:color="@color/easy_black" />
+            <corners android:bottomLeftRadius="5dp" android:bottomRightRadius="5dp" android:topLeftRadius="5dp" android:topRightRadius="5dp" />
             <padding android:bottom="0dp" android:left="0dp" android:right="0dp" android:top="0dp" />
         </shape>
     </item>

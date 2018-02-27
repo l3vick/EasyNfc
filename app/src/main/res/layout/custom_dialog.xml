@@ -1,67 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto"
-    android:background="@color/ghost_white"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/dialog_margin"
-    android:weightSum="4">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/titleDialogText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tap_to_record"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:lines="2"
-            android:textColor="@color/easy_black_dark"
-            android:textSize="@dimen/dialog_text_size" />
-    </LinearLayout>
+    android:background="@android:color/transparent">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:layout_weight="2"
-        >
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/custom_dialog_background"
+        android:gravity="bottom"
+        android:padding="@dimen/app_padding"
+        android:orientation="vertical">
 
-        <com.pnikosis.materialishprogress.ProgressWheel
-            android:id="@+id/progress_wheel"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            wheel:matProg_barColor="@color/easy_black_dark"
-            wheel:matProg_progressIndeterminate="true"
-            wheel:matProg_rimColor="@color/ghost_white" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/cancelDialogBtn"
+            android:id="@+id/btn_cancel_dialog"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/ghost_white"
-            android:text="Cancel"
-            android:textColor="@color/easy_black_dark"
+            android:layout_height="@dimen/edit_text_height"
+            android:background="@drawable/button_white_rounded_border"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/easy_black_superlight"
             android:textSize="@dimen/dialog_text_size" />
+
 
     </LinearLayout>
 
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/nfc_dialog_background" />
+
+
+    <ProgressBar
+        android:id="@+id/progress_wheel"
+        android:layout_width="60dp"
+        android:indeterminateTint="@color/mustard"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"/>
+
+
+</RelativeLayout>

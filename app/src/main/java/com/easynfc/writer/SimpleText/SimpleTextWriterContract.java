@@ -21,9 +21,9 @@ public interface SimpleTextWriterContract {
 
     interface Presenter extends BasePresenter {
 
-        void enableForegroundDispatch();
-
         void writeTag(Intent intent, String text);
+
+        void enableForegroundDispatch();
 
         void disableForegroundDispatch();
     }

@@ -62,6 +62,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/easy_black_dark" />
+        android:background="@color/easy_black_superlight" />
 
 </LinearLayout>

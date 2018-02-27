@@ -38,12 +38,16 @@ public class NfcUtils {
         if (INSTANCE == null) {
             INSTANCE = new NfcUtils(activity);
         }
+        INSTANCE.setActivity(activity);
         return INSTANCE;
     }
 
     public NfcUtils(Activity activity) {
-        this.activity = activity;
         nfcAdapter = NfcAdapter.getDefaultAdapter(activity);
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public boolean isNfcEnabledDevice() {
@@ -85,28 +89,10 @@ public class NfcUtils {
         writeNdefMessage(intent, ndefMessage, callback);
     }
 
-
-    public NdefRecord createTextRecord(String content) {
-        try {
-            byte[] language = Locale.getDefault().getLanguage().getBytes("UTF-8");
-
-            final byte[] text = content.getBytes("UTF-8");
-
-            final int languageSize = language.length;
-            final int textLength = text.length;
-
-            final ByteArrayOutputStream payload = new ByteArrayOutputStream(1 + languageSize + textLength);
-
-            payload.write((byte) (languageSize & 0x1F));
-            payload.write(language, 0, languageSize);
-            payload.write(text, 0, textLength);
-
-            return new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], payload.toByteArray());
-
-        } catch (UnsupportedEncodingException e) {
-            Log.e("createTextRecord", e.getMessage());
-        }
-        return null;
+    public void writeUrlTag(Intent intent, String text, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord uriRecord = createUriRecord(text);
+        NdefMessage ndefMessage = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMessage, callback);
     }
 
 
@@ -159,6 +145,54 @@ public class NfcUtils {
         ndefFormat.connect();
         ndefFormat.format(ndefMessage);
         ndefFormat.close();
+    }
+
+    public NdefRecord createTextRecord(String content) {
+        try {
+            byte[] language = Locale.getDefault().getLanguage().getBytes("UTF-8");
+
+            final byte[] text = content.getBytes("UTF-8");
+
+            final int languageSize = language.length;
+            final int textLength = text.length;
+
+            final ByteArrayOutputStream payload = new ByteArrayOutputStream(1 + languageSize + textLength);
+
+            payload.write((byte) (languageSize & 0x1F));
+            payload.write(language, 0, languageSize);
+            payload.write(text, 0, textLength);
+
+            return new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], payload.toByteArray());
+
+        } catch (UnsupportedEncodingException e) {
+            Log.e("createTextRecord", e.getMessage());
+        }
+        return null;
+    }
+
+
+    public NdefRecord createUriRecord(String uri) {
+
+        NdefRecord rtdUriRecord = null;
+
+        try {
+
+            byte[] uriField;
+
+            uriField = uri.getBytes("UTF-8");
+
+            byte[] payload = new byte[uriField.length + 1];
+            payload[0] = 0x00;
+
+            System.arraycopy(uriField, 0, payload, 1, uriField.length);
+
+            rtdUriRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_URI, new byte[0], payload);
+
+        } catch (UnsupportedEncodingException e) {
+            Log.e("createUriRecord", e.getMessage());
+        }
+
+        return rtdUriRecord;
     }
 
     public interface  TagWrittenCallback {

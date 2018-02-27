@@ -38,7 +38,10 @@ public class WriterActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if (fragment instanceof BaseTypeFragment){
+            ((BaseTypeFragment) fragment).processNfc(intent);
+        }
     }
 
     private void opentTypeFragment(int typeWriter) {
@@ -87,7 +90,7 @@ public class WriterActivity extends AppCompatActivity {
                     .commit();
         }
 
-        NfcUtils nfcUtils = NfcUtils.getInstance(this);
+       NfcUtils nfcUtils = NfcUtils.getInstance(this);
         SimpleTextWriterPresenter presenter = new SimpleTextWriterPresenter(simpleTextWriterFragment, nfcUtils);
     }
 

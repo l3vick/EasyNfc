@@ -47,16 +47,6 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
     }
 
     @Override
-    public void enableForegroundDispatch() {
-        nfcUtils.enableForegroundDispatch();
-    }
-
-    @Override
-    public void disableForegroundDispatch() {
-        nfcUtils.disableForegroundDispatch();
-    }
-
-    @Override
     public void writeTag(Intent intent, String text) {
         if (nfcUtils.isNfcIntent(intent)) {
             try {
@@ -83,6 +73,16 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void enableForegroundDispatch() {
+        nfcUtils.enableForegroundDispatch();
+    }
+
+    @Override
+    public void disableForegroundDispatch() {
+        nfcUtils.disableForegroundDispatch();
     }
 
 }
