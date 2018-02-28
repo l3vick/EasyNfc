@@ -10,10 +10,10 @@ import android.view.MenuItem;
 import com.easynfc.R;
 import com.easynfc.util.AppConstants;
 import com.easynfc.util.NfcUtils;
-import com.easynfc.writer.SimpleText.SimpleTextWriterFragment;
-import com.easynfc.writer.SimpleText.SimpleTextWriterPresenter;
-import com.easynfc.writer.Url.UrlWriterFragment;
-import com.easynfc.writer.Url.UrlWriterPresenter;
+import com.easynfc.writer.simple_text.SimpleTextWriterFragment;
+import com.easynfc.writer.simple_text.SimpleTextWriterPresenter;
+import com.easynfc.writer.url.UrlWriterFragment;
+import com.easynfc.writer.url.UrlWriterPresenter;
 
 public class WriterActivity extends AppCompatActivity {
 

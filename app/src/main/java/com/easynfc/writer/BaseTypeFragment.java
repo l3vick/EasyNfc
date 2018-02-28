@@ -15,6 +15,8 @@ import android.widget.RelativeLayout;
 
 import com.easynfc.R;
 
+import butterknife.ButterKnife;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -22,6 +24,7 @@ public class BaseTypeFragment extends Fragment {
 
     private LayoutInflater inflater;
     private RelativeLayout customDialogView;
+    private FrameLayout parentView;
 
     public BaseTypeFragment() {
         // Required empty public constructors
@@ -45,7 +48,12 @@ public class BaseTypeFragment extends Fragment {
 
     }
 
-    public void showDialog(FrameLayout parentView){
+
+    public void setParentView(View view){
+        parentView = view.findViewById(R.id.parentView);
+    }
+
+    public void showDialog(){
         parentView.addView(customDialogView);
     }
 

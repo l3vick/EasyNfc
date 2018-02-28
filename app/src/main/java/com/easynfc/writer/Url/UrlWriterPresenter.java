@@ -1,4 +1,4 @@
-package com.easynfc.writer.Url;
+package com.easynfc.writer.url;
 
 import android.content.Intent;
 import android.nfc.FormatException;

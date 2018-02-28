@@ -1,10 +1,9 @@
-package com.easynfc.writer.Url;
+package com.easynfc.writer.url;
 
 import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.writer.SimpleText.SimpleTextWriterContract;
 
 /**
  * Created by pablorojas on 26/2/18.

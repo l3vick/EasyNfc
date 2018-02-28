@@ -1,4 +1,4 @@
-package com.easynfc.writer.SimpleText;
+package com.easynfc.writer.simple_text;
 
 import android.content.Intent;
 import android.nfc.FormatException;
@@ -8,7 +8,6 @@ import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
 import com.easynfc.util.NfcUtils;
-import com.easynfc.writer.WriterActivity;
 
 import java.io.IOException;
 

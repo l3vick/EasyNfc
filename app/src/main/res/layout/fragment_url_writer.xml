@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/easy_black"
-    tools:context="com.easynfc.writer.SimpleText.SimpleTextWriterFragment">
+    tools:context="com.easynfc.writer.simple_text.SimpleTextWriterFragment">
 
 
     <LinearLayout
@@ -92,47 +92,8 @@
             android:padding="1dp"
             android:weightSum="2">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/app_padding"
-                android:paddingRight="@dimen/app_padding">
+            <include layout="@layout/writer_action_buttons" />
 
-                <Button
-                    android:id="@+id/btn_save"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/edit_text_height"
-                    android:background="@drawable/button_black_rounded_border"
-                    android:text="@string/save"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/button_txt" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:paddingLeft="@dimen/app_padding"
-                android:paddingRight="@dimen/app_padding">
-
-
-                <Button
-                    android:id="@+id/btn_record"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/edit_text_height"
-                    android:background="@drawable/button_black_rounded_border"
-                    android:text="@string/record"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/button_txt" />
-
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

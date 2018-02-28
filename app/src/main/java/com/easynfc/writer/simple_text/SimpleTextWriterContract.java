@@ -1,13 +1,9 @@
-package com.easynfc.writer.SimpleText;
+package com.easynfc.writer.simple_text;
 
 import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.data.TagMenu;
-import com.easynfc.tagsmenu.TagsMenuContract;
-
-import java.util.List;
 
 /**
  * Created by pablorojas on 26/2/18.
