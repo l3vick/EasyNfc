@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 
 import butterknife.BindView;
@@ -48,9 +49,8 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
         View v = inflater.inflate(R.layout.fragment_writer_url, container, false);
         setParentView(v);
         ButterKnife.bind(this, v);
-        Typeface exo2 = Typeface.createFromAsset(getContext().getAssets(), "exo2.ttf");
-        txtTitle.setTypeface(exo2);
-        txtInputTitle.setTypeface(exo2);
+        txtTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
+        txtInputTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
         return v;
     }
 

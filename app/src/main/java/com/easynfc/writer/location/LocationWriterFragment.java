@@ -8,13 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easynfc.R;
+import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.wi_fi.WiFiWriterContract;
 import com.easynfc.writer.wi_fi.WiFiWriterFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LocationWriterFragment extends Fragment  implements LocationWriterContract.View {
+public class LocationWriterFragment extends BaseTypeFragment implements LocationWriterContract.View {
 
 
     public static final String TAG = "LocationWriterFragment";

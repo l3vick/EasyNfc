@@ -8,13 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.easynfc.R;
+import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.sms.SmsWriterContract;
 import com.easynfc.writer.sms.SmsWriterFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class WiFiWriterFragment extends Fragment implements WiFiWriterContract.View {
+public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterContract.View {
 
 
     public static final String TAG = "WiFiWriterFragment";

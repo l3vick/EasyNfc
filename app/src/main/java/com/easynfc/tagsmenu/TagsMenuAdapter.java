@@ -81,9 +81,7 @@ public class TagsMenuAdapter extends RecyclerView.Adapter<TagsMenuAdapter.MyView
             super(v);
             ButterKnife.bind(this, v);
             v.setOnClickListener(this);
-            Typeface exo2 = Typeface.createFromAsset(context.getAssets(), "exo2.ttf");
-            txtType.setTypeface(exo2);
-
+            txtType.setTypeface(AppUtils.getAppTypeface(context));
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) rlTagMenuItem.getLayoutParams();
             params.width = AppUtils.getDisplayMetrics(context).widthPixels/ 2;
             params.height = params.width;

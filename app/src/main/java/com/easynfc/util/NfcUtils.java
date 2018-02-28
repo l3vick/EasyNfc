@@ -21,6 +21,7 @@ import com.easynfc.data.exceptions.ReadOnlyTagException;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Locale;
 
 
@@ -93,6 +94,13 @@ public class NfcUtils {
         NdefRecord uriRecord = createUriRecord(text);
         NdefMessage ndefMessage = new NdefMessage(new NdefRecord[]{uriRecord});
         writeNdefMessage(intent, ndefMessage, callback);
+    }
+
+    public void writeSmsTag(Intent intent, String number, String text, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        String smsUri = String.format("sms:%s?body=%s", number, URLEncoder.encode(text));
+        NdefRecord uriRecord = createUriRecord(smsUri);
+        NdefMessage ndefMsg =  new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
     }
 
 
@@ -195,8 +203,9 @@ public class NfcUtils {
         return rtdUriRecord;
     }
 
-    public interface  TagWrittenCallback {
+    public interface TagWrittenCallback {
         void OnSuccess();
+
         void OnError();
     }
 }

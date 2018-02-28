@@ -39,7 +39,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         this.main = (MainActivity) context;
     }
 
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -53,7 +52,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         holder.txt_subtitle.setText(lst_menu.get(position).getSubtitle());
     }
 
-
     @Override
     public int getItemCount() {
         return lst_menu.size();
@@ -64,7 +62,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         notifyDataSetChanged();
     }
 
-
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.ll_menu_item)
@@ -74,19 +71,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         @BindView(R.id.txt_subtitle)
         TextView txt_subtitle;
 
-
         public MyViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
             v.setOnClickListener(this);
-            Typeface raleway = Typeface.createFromAsset(context.getAssets(), context.getResources().getString(R.string.raleway));
-
-            Typeface exo2 = Typeface.createFromAsset(context.getAssets(), "exo2.ttf");
-
-
-            txt_title.setTypeface(exo2);
-            txt_subtitle.setTypeface(exo2);
-
+            txt_title.setTypeface(AppUtils.getAppTypeface(context));
+            txt_subtitle.setTypeface(AppUtils.getAppTypeface(context));
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) ll_menu_item.getLayoutParams();
             params.height = AppUtils.getDisplayMetrics(context).heightPixels/ 3;
             ll_menu_item.setLayoutParams(params);

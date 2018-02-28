@@ -20,7 +20,7 @@ public interface SmsWriterContract {
 
         void enableForegroundDispatch();
 
-        void writeTag(Intent intent, String text);
+        void writeTag(Intent intent, String number, String text);
 
         void disableForegroundDispatch();
     }
