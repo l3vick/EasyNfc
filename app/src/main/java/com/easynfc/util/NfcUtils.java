@@ -103,6 +103,18 @@ public class NfcUtils {
         writeNdefMessage(intent, ndefMsg, callback);
     }
 
+    public void writePhoneTag(Intent intent, String number, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord uriRecord = createUriRecord("tel:" + number);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
+    }
+
+    public void writeLocationTag(Intent intent, String latitude, String longitude, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord uriRecord = createUriRecord("geo:" + latitude +","+ longitude);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
+    }
+
 
     public void writeNdefMessage(Intent intent, NdefMessage ndefMessage, TagWrittenCallback callback) throws IOException, FormatException, ReadOnlyTagException, InsufficientSizeException, NdefFormatException {
 
