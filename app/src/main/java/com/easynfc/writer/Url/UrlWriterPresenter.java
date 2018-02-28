@@ -29,10 +29,10 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "TagsMenuPresenter: View can't be null.");
+                Log.d(TAG, "UrlWriterPresenter: View can't be null.");
             }
         } else {
-            Log.d(TAG, "TagsMenuPresenter: Users Repository can't be null.");
+            Log.d(TAG, "UrlWriterPresenter: Users Repository can't be null.");
         }
     }
 

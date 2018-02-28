@@ -1,18 +1,42 @@
 <resources>
     <string name="app_name">Easy NFC</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="raleway">raleway.ttf</string>
     <string name="simple_text">Simple-Text</string>
-    <string name="enter_simple_text">Enter some text</string>
-    <string name="enter_single_text_hint">Enter some text...</string>
+    <string name="enter_simple_text">Introduce some text</string>
+    <string name="enter_single_text_hint">Text...</string>
     <string name="save">Save</string>
     <string name="record">Record</string>
     <string name="tap_to_record">Tap a tag \n to record</string>
     <string name="url">URL</string>
-    <string name="enter_url">Enter a valid url</string>
-    <string name="enter_url_hint">Enter an url...</string>
+    <string name="enter_url">Introduce a valid url</string>
+    <string name="enter_url_hint">Url...</string>
     <string name="cancel">Cancel</string>
+    <string name="app_launcher">App-Launcher</string>
+    <string name="enter_app_launcher">Introduce a package app name</string>
+    <string name="enter_app_launcher_hint">package name...</string>
+    <string name="email">Email</string>
+    <string name="enter_email">Introduce an email</string>
+    <string name="enter_email_hint">Email...</string>
+    <string name="empty_tag">Do you really want to format ?</string>
+    <string name="format">Format</string>
+    <string name="tag_format">Tag-Formatter</string>
+    <string name="tag_lock">Tag-Locker</string>
+    <string name="locked_tag">Do you really want to lock ?</string>
+    <string name="lock">Lock</string>
+    <string name="location">Location</string>
+    <string name="enter_latitude">Introduce a latitude</string>
+    <string name="enter_longitude">Introduce a longitude</string>
+    <string name="enter_latitude_hint">Latitude...</string>
+    <string name="enter_longitude_hint">Longitude...</string>
+    <string name="phone">Phone</string>
+    <string name="enter_phone">Introduce a phone number</string>
+    <string name="enter_phone_hint">Phone number...</string>
+    <string name="sms">Sms</string>
+    <string name="wi_fi">Wi-Fi</string>
+    <string name="enter_wifi_ssid_hint">Network SSID...</string>
+    <string name="enter_wifi_ssid">Introduce a network SSID</string>
+    <string name="enter_wifi_password">Introduce a password</string>
+    <string name="enter_wifi_password_hint">Password...</string>
+    <string name="select_security_cypher">Select a Security Cypher</string>
 
 </resources>

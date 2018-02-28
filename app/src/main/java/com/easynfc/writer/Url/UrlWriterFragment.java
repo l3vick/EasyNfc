@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.easynfc.R;
@@ -46,7 +45,7 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_url_writer, container, false);
+        View v = inflater.inflate(R.layout.fragment_writer_url, container, false);
         setParentView(v);
         ButterKnife.bind(this, v);
         Typeface exo2 = Typeface.createFromAsset(getContext().getAssets(), "exo2.ttf");

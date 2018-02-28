@@ -46,7 +46,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_simple_text_writer, container, false);
+        View v = inflater.inflate(R.layout.fragment_writer_simple_text, container, false);
         setParentView(v);
         ButterKnife.bind(this, v);
         Typeface exo2 = Typeface.createFromAsset(getContext().getAssets(), "exo2.ttf");

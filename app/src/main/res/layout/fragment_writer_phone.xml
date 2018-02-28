@@ -1,0 +1,103 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/easy_black"
+    tools:context="com.easynfc.writer.phone.PhoneWriterFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/easy_black"
+        android:orientation="vertical"
+        android:weightSum="7">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@color/easy_black"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone"
+                android:textAllCaps="true"
+                android:textColor="@color/mustard"
+                android:textSize="@dimen/type_title" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/app_padding"
+            android:layout_marginRight="@dimen/app_padding"
+            android:background="@color/easy_black_superlight" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@color/easy_black"
+            android:gravity="center|left"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txt_simple_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_padding"
+                android:text="@string/enter_phone"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/input_title" />
+
+            <EditText
+                android:id="@+id/et_simple_text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_marginLeft="@dimen/app_padding"
+                android:layout_marginRight="@dimen/app_padding"
+                android:layout_marginTop="@dimen/app_padding"
+                android:background="@drawable/edit_text_rounded_border"
+                android:hint="@string/enter_phone_hint"
+                android:inputType="number"
+                android:paddingLeft="@dimen/app_padding"
+                android:textColor="@color/easy_black_ghost"
+                android:textColorHint="@color/easy_black_superlight" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/app_padding"
+            android:layout_marginRight="@dimen/app_padding"
+            android:background="@color/easy_black_superlight" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@color/easy_black"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="1dp"
+            android:weightSum="2">
+
+            <include layout="@layout/writer_action_buttons" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
+
+

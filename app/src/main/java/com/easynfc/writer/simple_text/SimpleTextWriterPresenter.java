@@ -28,10 +28,10 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "TagsMenuPresenter: View can't be null.");
+                Log.d(TAG, "SimpleTextWriterPresenter: View can't be null.");
             }
         } else {
-            Log.d(TAG, "TagsMenuPresenter: Users Repository can't be null.");
+            Log.d(TAG, "SimpleTextWriterPresenter: Users Repository can't be null.");
         }
     }
 

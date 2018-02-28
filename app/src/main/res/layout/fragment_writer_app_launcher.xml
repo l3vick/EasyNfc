@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/easy_black"
-    tools:context="com.easynfc.writer.simple_text.SimpleTextWriterFragment">
+    tools:context="com.easynfc.writer.app_launcher.AppLauncherWriterFragment">
 
 
     <LinearLayout
@@ -26,7 +26,7 @@
                 android:id="@+id/txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/url"
+                android:text="@string/app_launcher"
                 android:textAllCaps="true"
                 android:textColor="@color/mustard"
                 android:textSize="@dimen/type_title" />
@@ -54,20 +54,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/app_padding"
-                android:text="@string/enter_url"
+                android:text="@string/enter_app_launcher"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/input_title" />
 
             <EditText
-                android:id="@+id/et_url"
+                android:id="@+id/et_simple_text"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_marginLeft="@dimen/app_padding"
                 android:layout_marginRight="@dimen/app_padding"
                 android:layout_marginTop="@dimen/app_padding"
                 android:background="@drawable/edit_text_rounded_border"
-                android:hint="@string/enter_url_hint"
+                android:hint="@string/enter_app_launcher_hint"
                 android:paddingLeft="@dimen/app_padding"
                 android:textColor="@color/easy_black_ghost"
                 android:textColorHint="@color/easy_black_superlight" />
