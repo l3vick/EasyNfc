@@ -104,20 +104,25 @@ public class NfcUtils {
         writeNdefMessage(intent, ndefMsg, callback);
     }
 
+    public void writeAppLauncherTag(Intent intent, String aar, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord uriRecord = NdefRecord.createApplicationRecord(aar);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
+    }
+
     public void writeLocationTag(Intent intent, String latitude, String longitude, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
         NdefRecord uriRecord = createUriRecord("geo:" + latitude + "," + longitude);
         NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
         writeNdefMessage(intent, ndefMsg, callback);
     }
 
-    public void writeEmailTag(Intent intent, String email, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
-        NdefRecord uriRecord = createUriRecord("mailto:" + email);
-        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
-        writeNdefMessage(intent, ndefMsg, callback);
+
+    public void writeWifiTag(Intent intent, String ssid, String password, String securityCypher, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+
     }
 
-    public void writeAppLauncherTag(Intent intent, String aar, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
-        NdefRecord uriRecord = NdefRecord.createApplicationRecord(aar);
+    public void writeEmailTag(Intent intent, String email, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord uriRecord = createUriRecord("mailto:" + email);
         NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
         writeNdefMessage(intent, ndefMsg, callback);
     }

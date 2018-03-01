@@ -32,9 +32,9 @@
                 android:id="@+id/txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="@string/location"
                 android:textAllCaps="true"
-                android:layout_centerInParent="true"
                 android:textColor="@color/mustard"
                 android:textSize="@dimen/type_title" />
 
@@ -56,30 +56,51 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txt_latitude_title"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/app_padding"
-                android:text="@string/enter_latitude"
-                android:textAllCaps="true"
-                android:textColor="@color/easy_black_ghost"
-                android:textSize="@dimen/input_title" />
+                android:layout_marginRight="@dimen/app_padding">
+
+                <TextView
+                    android:id="@+id/txt_latitude_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_latitude"
+                    android:textAllCaps="true"
+                    android:textColor="@color/easy_black_ghost"
+                    android:textSize="@dimen/input_title" />
+
+
+                <ImageButton
+                    android:id="@+id/btn_location"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignBottom="@+id/txt_latitude_title"
+                    android:layout_alignRight="@+id/txt_latitude_title"
+                    android:layout_alignTop="@+id/txt_latitude_title"
+                    android:background="@android:color/transparent"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_my_location_eb_superlight" />
+
+            </RelativeLayout>
+
 
             <EditText
                 android:id="@+id/et_latitude"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
+                android:layout_marginBottom="@dimen/app_padding"
                 android:layout_marginLeft="@dimen/app_padding"
                 android:layout_marginRight="@dimen/app_padding"
                 android:layout_marginTop="@dimen/app_padding"
-                android:layout_marginBottom="@dimen/app_padding"
                 android:background="@drawable/edit_text_rounded_border"
                 android:hint="@string/enter_latitude_hint"
+                android:inputType="phone"
                 android:paddingLeft="@dimen/app_padding"
                 android:textColor="@color/easy_black_ghost"
                 android:textColorHint="@color/easy_black_superlight" />
-
 
 
             <TextView
@@ -93,7 +114,7 @@
                 android:textSize="@dimen/input_title" />
 
             <EditText
-                android:id="@+id/txt_longitude"
+                android:id="@+id/et_longitude"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_marginLeft="@dimen/app_padding"
@@ -101,6 +122,7 @@
                 android:layout_marginTop="@dimen/app_padding"
                 android:background="@drawable/edit_text_rounded_border"
                 android:hint="@string/enter_longitude_hint"
+                android:inputType="phone"
                 android:paddingLeft="@dimen/app_padding"
                 android:textColor="@color/easy_black_ghost"
                 android:textColorHint="@color/easy_black_superlight" />

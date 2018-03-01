@@ -1,5 +1,6 @@
 package com.easynfc.writer.location;
 
+import android.content.Context;
 import android.content.Intent;
 
 import com.easynfc.BasePresenter;
@@ -20,9 +21,27 @@ public interface LocationWriterContract {
 
         void enableForegroundDispatch();
 
-        void writeTag(Intent intent, String text);
+        void writeTag(Intent intent, String latitude, String longitude);
 
         void disableForegroundDispatch();
+
+        boolean isPermissionGranted();
+
+        void removeLocationUpdates();
+
+        void setPermissionGranted(boolean permissionGranted);
+
+        void connectApiClient();
+
+        void initLocationManager(Context context);
+
+        void disconnectApiClient();
+
+        Double getLatitude();
+
+        Double getLongitude();
+
+        void requestLocationUpdates();
     }
 }
 

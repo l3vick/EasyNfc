@@ -16,4 +16,5 @@ public class AppConstants {
     public static final int NDEF_FORMAT_TAG = 8;
     public static final int LOCK_TAG = 9;
 
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
 }
