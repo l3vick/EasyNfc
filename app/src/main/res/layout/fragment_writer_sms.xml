@@ -14,24 +14,30 @@
         android:orientation="vertical"
         android:weightSum="7">
 
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:background="@color/easy_black"
-            android:gravity="center">
+            android:background="@color/easy_black">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_sms_eb_light" />
 
             <TextView
                 android:id="@+id/txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="@string/sms"
                 android:textAllCaps="true"
                 android:textColor="@color/mustard"
                 android:textSize="@dimen/type_title" />
 
-        </LinearLayout>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -55,16 +61,16 @@
                 android:layout_marginLeft="@dimen/app_padding"
                 android:text="@string/enter_phone"
                 android:textAllCaps="true"
-                android:textColor="@android:color/white"
+                android:textColor="@color/easy_black_ghost"
                 android:textSize="@dimen/input_title" />
 
             <EditText
                 android:id="@+id/et_sms_phone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
+                android:layout_marginBottom="@dimen/app_padding"
                 android:layout_marginLeft="@dimen/app_padding"
                 android:layout_marginRight="@dimen/app_padding"
-                android:layout_marginBottom="@dimen/app_padding"
                 android:layout_marginTop="@dimen/app_padding"
                 android:background="@drawable/edit_text_rounded_border"
                 android:hint="@string/enter_phone_hint"
@@ -81,7 +87,7 @@
                 android:layout_marginLeft="@dimen/app_padding"
                 android:text="@string/enter_simple_text"
                 android:textAllCaps="true"
-                android:textColor="@android:color/white"
+                android:textColor="@color/easy_black_ghost"
                 android:textSize="@dimen/input_title" />
 
             <EditText

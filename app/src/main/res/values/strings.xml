@@ -14,7 +14,7 @@
     <string name="app_launcher">App-Launcher</string>
     <string name="enter_app_launcher">Introduce a package app name</string>
     <string name="enter_app_launcher_hint">package name...</string>
-    <string name="email">Email</string>
+    <string name="email">E-mail</string>
     <string name="enter_email">Introduce an email</string>
     <string name="enter_email_hint">Email...</string>
     <string name="empty_tag">Do you really want to empty a tag ?</string>
