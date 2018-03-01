@@ -15,6 +15,8 @@ import com.easynfc.R;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 
+import java.lang.reflect.Type;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -49,8 +51,10 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
         View v = inflater.inflate(R.layout.fragment_writer_url, container, false);
         setParentView(v);
         ButterKnife.bind(this, v);
-        txtTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
-        txtInputTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
+        Typeface typeface = AppUtils.getAppTypeface(getContext());
+        txtTitle.setTypeface(typeface);
+        txtInputTitle.setTypeface(typeface);
+        etUrl.setTypeface(typeface);
         return v;
     }
 
@@ -73,7 +77,7 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
 
     @Override
     public void OnTagWritten() {
-        super.hideDialog();
+        super.tagWritten();
     }
 
 

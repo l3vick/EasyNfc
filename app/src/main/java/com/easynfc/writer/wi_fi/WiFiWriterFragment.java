@@ -45,6 +45,6 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
 
     @Override
     public void OnTagWritten() {
-
+        super.tagWritten();
     }
 }

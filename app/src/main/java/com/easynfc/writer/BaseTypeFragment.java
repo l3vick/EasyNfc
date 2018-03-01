@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,15 +50,34 @@ public class BaseTypeFragment extends Fragment {
     }
 
 
-    public void setParentView(View view){
+    public void setParentView(View view) {
         parentView = view.findViewById(R.id.parentView);
     }
 
-    public void showDialog(){
+    public void showDialog() {
         parentView.addView(customDialogView);
     }
 
     public void hideDialog() {
         ((ViewGroup) customDialogView.getParent()).removeView(customDialogView);
+    }
+
+    public void tagWritten() {
+        Snackbar snackbar = Snackbar.make(parentView, R.string.written_succesfull, Snackbar.LENGTH_SHORT);
+        snackbar.show();
+
+        snackbar.addCallback(new Snackbar.Callback() {
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+                hideDialog();
+            }
+
+            @Override
+            public void onShown(Snackbar snackbar) {
+
+            }
+        });
+
+
     }
 }

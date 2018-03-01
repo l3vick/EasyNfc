@@ -13,16 +13,16 @@ public interface FormatWriterContract {
 
     interface View extends BaseView<Presenter> {
 
-        void OnTagWritten();
+        void onTagWritten();
     }
 
     interface Presenter extends BasePresenter {
 
         void enableForegroundDispatch();
 
-        void writeTag(Intent intent, String text);
-
         void disableForegroundDispatch();
+
+        void formatTag(Intent intent);
     }
 }
 

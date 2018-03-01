@@ -45,6 +45,6 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
 
     @Override
     public void OnTagWritten() {
-
+        super.tagWritten();
     }
 }

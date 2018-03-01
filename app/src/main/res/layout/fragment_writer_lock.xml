@@ -50,7 +50,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txt_simple_text_title"
+                android:id="@+id/txt_lock_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/app_padding"
@@ -58,6 +58,17 @@
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/input_title" />
+
+            <TextView
+                android:id="@+id/txt_lock_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_padding"
+                android:text="@string/action_irreversible"
+                android:textAllCaps="false"
+                android:textColor="@color/tomato"
+                android:textSize="@dimen/input_title" />
+
 
         </LinearLayout>
 
@@ -80,7 +91,7 @@
 
 
             <Button
-                android:id="@+id/btn_record"
+                android:id="@+id/btn_lock"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
                 android:background="@drawable/button_black_rounded_border"

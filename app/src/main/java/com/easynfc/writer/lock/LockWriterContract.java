@@ -12,17 +12,16 @@ import com.easynfc.BaseView;
 public interface LockWriterContract {
 
     interface View extends BaseView<Presenter> {
-
-        void OnTagWritten();
+        void onTagWritten();
     }
 
     interface Presenter extends BasePresenter {
 
         void enableForegroundDispatch();
 
-        void writeTag(Intent intent, String text);
-
         void disableForegroundDispatch();
+
+        void lockTag(Intent intent);
     }
 }
 

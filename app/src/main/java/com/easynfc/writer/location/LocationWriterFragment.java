@@ -45,6 +45,6 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
 
     @Override
     public void OnTagWritten() {
-
+        super.tagWritten();
     }
 }

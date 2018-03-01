@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.easynfc.util.NfcUtils;
-import com.easynfc.writer.phone.PhoneWriterContract;
 
 /**
  * Created by pablorojas on 28/2/18.
  */
 
-public class LockWriterPresenter  implements LockWriterContract.Presenter {
+public class LockWriterPresenter implements LockWriterContract.Presenter {
 
     private NfcUtils nfcUtils;
     private LockWriterContract.View view;
@@ -37,21 +36,31 @@ public class LockWriterPresenter  implements LockWriterContract.Presenter {
 
     @Override
     public void stop() {
-
+        this.view = null;
     }
 
     @Override
     public void enableForegroundDispatch() {
-
-    }
-
-    @Override
-    public void writeTag(Intent intent, String text) {
-
+        nfcUtils.enableForegroundDispatch();
     }
 
     @Override
     public void disableForegroundDispatch() {
+        nfcUtils.disableForegroundDispatch();
+    }
 
+    @Override
+    public void lockTag(Intent intent) {
+        nfcUtils.lockTag(intent, new NfcUtils.TagWrittenCallback() {
+            @Override
+            public void OnSuccess() {
+                view.onTagWritten();
+            }
+
+            @Override
+            public void OnError() {
+
+            }
+        });
     }
 }

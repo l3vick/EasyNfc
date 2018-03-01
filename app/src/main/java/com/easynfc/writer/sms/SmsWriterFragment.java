@@ -82,7 +82,7 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
 
     @Override
     public void OnTagWritten() {
-        super.hideDialog();
+        super.tagWritten();
     }
 
 

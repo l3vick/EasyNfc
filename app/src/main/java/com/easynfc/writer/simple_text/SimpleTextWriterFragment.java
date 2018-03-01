@@ -75,7 +75,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
 
     @Override
     public void OnTagWritten() {
-        super.hideDialog();
+        super.tagWritten();
     }
 
 

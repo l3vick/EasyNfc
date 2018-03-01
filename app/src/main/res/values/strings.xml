@@ -17,11 +17,11 @@
     <string name="email">Email</string>
     <string name="enter_email">Introduce an email</string>
     <string name="enter_email_hint">Email...</string>
-    <string name="empty_tag">Do you really want to format ?</string>
+    <string name="empty_tag">Do you really want to empty a tag ?</string>
     <string name="format">Format</string>
     <string name="tag_format">Tag-Formatter</string>
     <string name="tag_lock">Tag-Locker</string>
-    <string name="locked_tag">Do you really want to lock ?</string>
+    <string name="locked_tag">Do you really want to lock a tag ?</string>
     <string name="lock">Lock</string>
     <string name="location">Location</string>
     <string name="enter_latitude">Introduce a latitude</string>
@@ -38,5 +38,8 @@
     <string name="enter_wifi_password">Introduce a password</string>
     <string name="enter_wifi_password_hint">Password...</string>
     <string name="select_security_cypher">Select a Security Cypher</string>
+    <string name="written_succesfull">Tag written succesfully</string>
+    <string name="data_lost">Any data will be lost</string>
+    <string name="action_irreversible">This action is irreversible</string>
 
 </resources>

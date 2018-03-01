@@ -78,7 +78,7 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
 
     @Override
     public void OnTagWritten() {
-        super.hideDialog();
+        super.tagWritten();
     }
 
 

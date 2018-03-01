@@ -61,13 +61,9 @@ public class NfcUtils {
     public void enableForegroundDispatch() {
         if (isNfcEnabledDevice()) {
             Intent intent = new Intent(activity, activity.getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-
             PendingIntent pendingIntent = PendingIntent.getActivity(activity, 0, intent, 0);
-
             IntentFilter[] intentFilter = new IntentFilter[]{};
-
             String[][] techList = new String[][]{{Ndef.class.getName()}, {NdefFormatable.class.getName()}};
-
             nfcAdapter.enableForegroundDispatch(activity, pendingIntent, intentFilter, techList);
         }
 
@@ -77,7 +73,6 @@ public class NfcUtils {
         if (isNfcEnabledDevice()) {
             nfcAdapter.disableForegroundDispatch(activity);
         }
-
     }
 
     public boolean isNfcIntent(Intent intent) {
@@ -99,7 +94,7 @@ public class NfcUtils {
     public void writeSmsTag(Intent intent, String number, String text, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
         String smsUri = String.format("sms:%s?body=%s", number, URLEncoder.encode(text));
         NdefRecord uriRecord = createUriRecord(smsUri);
-        NdefMessage ndefMsg =  new NdefMessage(new NdefRecord[]{uriRecord});
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
         writeNdefMessage(intent, ndefMsg, callback);
     }
 
@@ -110,36 +105,44 @@ public class NfcUtils {
     }
 
     public void writeLocationTag(Intent intent, String latitude, String longitude, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
-        NdefRecord uriRecord = createUriRecord("geo:" + latitude +","+ longitude);
+        NdefRecord uriRecord = createUriRecord("geo:" + latitude + "," + longitude);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
+    }
+
+    public void writeEmailTag(Intent intent, String email, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord uriRecord = createUriRecord("mailto:" + email);
         NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
         writeNdefMessage(intent, ndefMsg, callback);
     }
 
 
+
+    public void formatEmptyTag(Intent intent, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord ndefEmptyRecord = new NdefRecord(NdefRecord.TNF_EMPTY, new byte[]{}, new byte[]{}, new byte[]{});
+        NdefMessage ndefMessage = new NdefMessage(new NdefRecord[]{ndefEmptyRecord});
+        writeNdefMessage(intent, ndefMessage, callback);
+    }
+
+    public void lockTag(Intent intent, TagWrittenCallback callback) {
+        if (isNfcIntent(intent)) {
+            makeTagReadonly(intent);
+        }
+    }
+
     public void writeNdefMessage(Intent intent, NdefMessage ndefMessage, TagWrittenCallback callback) throws IOException, FormatException, ReadOnlyTagException, InsufficientSizeException, NdefFormatException {
-
         Tag tag = getTagFromIntent(intent);
-
         Ndef ndef = Ndef.get(tag);
-
         if (ndef == null) {
             formatTag(tag, ndefMessage);
-
         } else {
-
             ndef.connect();
-
             int maxSize = ndef.getMaxSize();
             int messageSize = ndefMessage.toByteArray().length;
-
             if (!ndef.isWritable()) {
-
                 throw new ReadOnlyTagException();
-
             } else if (maxSize < messageSize) {
-
                 throw new InsufficientSizeException(messageSize, maxSize);
-
             } else {
                 ndef.writeNdefMessage(ndefMessage);
                 ndef.close();
@@ -192,22 +195,14 @@ public class NfcUtils {
 
 
     public NdefRecord createUriRecord(String uri) {
-
         NdefRecord rtdUriRecord = null;
-
         try {
-
             byte[] uriField;
-
             uriField = uri.getBytes("UTF-8");
-
             byte[] payload = new byte[uriField.length + 1];
             payload[0] = 0x00;
-
             System.arraycopy(uriField, 0, payload, 1, uriField.length);
-
             rtdUriRecord = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_URI, new byte[0], payload);
-
         } catch (UnsupportedEncodingException e) {
             Log.e("createUriRecord", e.getMessage());
         }
@@ -215,9 +210,28 @@ public class NfcUtils {
         return rtdUriRecord;
     }
 
+    public void makeTagReadonly(Intent intent) {
+        Tag tag = getTagFromIntent(intent);
+        try {
+            if (tag != null) {
+                Ndef ndef = Ndef.get(tag);
+                if (ndef != null) {
+                    ndef.connect();
+                    if (ndef.canMakeReadOnly()) {
+                        ndef.makeReadOnly();
+                    }
+                    ndef.close();
+                }
+            }
+        } catch (Exception e) {
+            Log.e("makeTagReadonly", "" + e.getMessage());
+        }
+
+    }
+
     public interface TagWrittenCallback {
         void OnSuccess();
-
         void OnError();
     }
+
 }
