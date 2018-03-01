@@ -116,7 +116,11 @@ public class NfcUtils {
         writeNdefMessage(intent, ndefMsg, callback);
     }
 
-
+    public void writeAppLauncherTag(Intent intent, String aar, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefRecord uriRecord = NdefRecord.createApplicationRecord(aar);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
+    }
 
     public void formatEmptyTag(Intent intent, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
         NdefRecord ndefEmptyRecord = new NdefRecord(NdefRecord.TNF_EMPTY, new byte[]{}, new byte[]{}, new byte[]{});
@@ -209,6 +213,7 @@ public class NfcUtils {
 
         return rtdUriRecord;
     }
+
 
     public void makeTagReadonly(Intent intent) {
         Tag tag = getTagFromIntent(intent);

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:wheel="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:background="@android:color/transparent">
+
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/custom_dialog_background"
+        android:gravity="bottom"
+        android:padding="@dimen/app_padding"
+        android:weightSum="4"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <ListView
+                android:id="@+id/aarlist"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+            </ListView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="bottom"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_custom_aar_list"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:background="@drawable/button_white_rounded_border"
+                android:text="@string/custom"
+                android:textAllCaps="false"
+                android:textColor="@color/easy_black_light"
+                android:textSize="@dimen/dialog_text_size" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

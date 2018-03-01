@@ -12,7 +12,8 @@
         android:theme="@style/EasyTheme">
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustPan"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+
             android:screenOrientation="portrait">
 
             <!-- Filtro-Tag General (NdefA, B, mifare, unformatted NDef...) -->
@@ -36,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".writer.WriterActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait"></activity>
     </application>
 

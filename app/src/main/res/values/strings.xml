@@ -41,5 +41,6 @@
     <string name="written_succesfull">Tag written succesfully</string>
     <string name="data_lost">Any data will be lost</string>
     <string name="action_irreversible">This action is irreversible</string>
+    <string name="custom">Custom</string>
 
 </resources>

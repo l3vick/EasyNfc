@@ -24,5 +24,9 @@ public interface AppLauncherWriterContract {
 
         void disableForegroundDispatch();
     }
+
+    interface OnAarItemClickedCallback {
+        void OnSuccess(String aar);
+    }
 }
 
