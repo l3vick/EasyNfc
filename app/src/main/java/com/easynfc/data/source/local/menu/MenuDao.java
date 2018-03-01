@@ -32,7 +32,12 @@ public interface MenuDao {
     @Query("SELECT COUNT(*) from Menu")
     int countMenus();
 
+    @Query("DELETE FROM MENU")
+    void deleteAllMenu();
+
     @Delete
     void delete(Menu menu);
 
+    @Query("DELETE FROM TagMenu")
+    void deleteAllTagMenu();
 }

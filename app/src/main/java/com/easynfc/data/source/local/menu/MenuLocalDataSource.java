@@ -35,6 +35,7 @@ public class MenuLocalDataSource implements MenuDataSource {
 
     @Override
     public void getMenu(final LoadMenuCallback callback) {
+
         final List<Menu> menus = menuDao.getMainMenu();
         if (menus.size() > 0) {
             callback.onMenusLoaded(menus);
@@ -45,6 +46,7 @@ public class MenuLocalDataSource implements MenuDataSource {
 
     @Override
     public void getTagMenu(LoadTagsMenuCallback callback) {
+        //menuDao.deleteAllTagMenu();
         final List<TagMenu> tagsMenu = menuDao.getTagsMenu();
         if (tagsMenu.size() > 0) {
             callback.onTagsMenuLoaded(tagsMenu);
@@ -73,16 +75,16 @@ public class MenuLocalDataSource implements MenuDataSource {
     }
 
     private List<TagMenu> addTagsMenuData() {
-        TagMenu simpleTextTag = new TagMenu("Simple-Text","ic_text_white");
-        TagMenu urlTag = new TagMenu("Url","ic_url_white");
-        TagMenu smsTag = new TagMenu("Sms","ic_sms_white");
-        TagMenu phoneTag = new TagMenu("Phone","ic_phone_white");
-        TagMenu launcherTag = new TagMenu("App-Launcher","ic_aar_white");
-        TagMenu locationTag = new TagMenu("Location","ic_location_white");
-        TagMenu wifiTag = new TagMenu("Wi-Fi","ic_wifi_white");
-        TagMenu emailTag = new TagMenu("Email","ic_email_white");
-        TagMenu ndefTag = new TagMenu("NDEF-Format","ic_format_white");
-        TagMenu lockTag = new TagMenu("Lock","ic_lock_white");
+        TagMenu simpleTextTag = new TagMenu("Simple-Text","ic_text_eb_superlight");
+        TagMenu urlTag = new TagMenu("Url","ic_url_eb_superlight");
+        TagMenu smsTag = new TagMenu("Sms","ic_sms_eb_superlight");
+        TagMenu phoneTag = new TagMenu("Phone","ic_phone_eb_superlight");
+        TagMenu launcherTag = new TagMenu("App-Launcher","ic_aar_eb_superlight");
+        TagMenu locationTag = new TagMenu("Location","ic_location_eb_superlight");
+        TagMenu wifiTag = new TagMenu("Wi-Fi","ic_wifi_eb_superlight");
+        TagMenu emailTag = new TagMenu("Email","ic_email_eb_superlight");
+        TagMenu ndefTag = new TagMenu("NDEF-Format","ic_format_eb_superlight");
+        TagMenu lockTag = new TagMenu("Lock","ic_lock_eb_superlight");
         addAllTagMenu(simpleTextTag,urlTag, smsTag, phoneTag, launcherTag, locationTag, wifiTag, emailTag, ndefTag, lockTag);
         return menuDao.getTagsMenu();
     }

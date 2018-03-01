@@ -24,7 +24,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_text_easy_black_light"
+                android:src="@drawable/ic_text_eb_light"
                 android:layout_height="100dp"
                 />
 
