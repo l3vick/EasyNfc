@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dropdown_item"
+        android:textColor="@color/easy_black_superlight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/app_padding"
+        android:background="@color/easy_black_light"
+        android:paddingBottom="@dimen/app_padding"
+        android:paddingRight="12dp"
+        android:paddingLeft="12dp"
+        android:gravity="left"
+        android:textSize="@dimen/spinner_text_size" />
+
+    <!-- This adds a black separator line between the title and the items. You can remove
+         if you want -->
+    <LinearLayout
+        android:id="@+id/separator"
+        android:layout_height="2dp"
+        android:paddingLeft="@dimen/app_padding"
+        android:paddingRight="@dimen/app_padding"
+        android:layout_width="match_parent"
+        android:background="@color/easy_black"
+        android:orientation="vertical"/>
+
+</LinearLayout>

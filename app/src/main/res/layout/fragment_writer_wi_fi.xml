@@ -95,18 +95,42 @@
                 android:layout_marginLeft="@dimen/app_padding"
                 android:layout_marginRight="@dimen/app_padding"
                 android:layout_marginTop="@dimen/app_padding"
+                android:inputType="textPassword"
                 android:background="@drawable/edit_text_rounded_border"
                 android:hint="@string/enter_wifi_password_hint"
                 android:paddingLeft="@dimen/app_padding"
                 android:textColor="@color/easy_black_ghost"
                 android:textColorHint="@color/easy_black_superlight" />
 
-            <Spinner
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_marginLeft="@dimen/app_padding"
                 android:layout_marginRight="@dimen/app_padding"
-                android:prompt="@string/select_security_cypher"></Spinner>
+                android:background="@android:color/transparent">
+
+                <Spinner
+                    android:id="@+id/sp_security_cypher"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_text_height"
+                    android:background="@drawable/spinner_rounded_border"
+                    android:paddingLeft="@dimen/spinner_padding"
+                    android:paddingRight="@dimen/spinner_padding"></Spinner>
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignBottom="@+id/sp_security_cypher"
+                    android:layout_alignRight="@+id/sp_security_cypher"
+                    android:layout_alignTop="@+id/sp_security_cypher"
+                    android:layout_marginRight="@dimen/spinner_arrow_margin_right"
+                    android:paddingRight="5dp"
+                    android:src="@drawable/ic_dropdown_arrow" />
+
+
+            </RelativeLayout>
+
 
         </LinearLayout>
 
