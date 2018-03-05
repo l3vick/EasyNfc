@@ -68,6 +68,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/enter_latitude"
                     android:textAllCaps="true"
+                    android:layout_centerInParent="true"
                     android:textColor="@color/easy_black_ghost"
                     android:textSize="@dimen/input_title" />
 
@@ -76,13 +77,11 @@
                     android:id="@+id/btn_location"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_alignBottom="@+id/txt_latitude_title"
                     android:layout_alignRight="@+id/txt_latitude_title"
-                    android:layout_alignTop="@+id/txt_latitude_title"
                     android:background="@android:color/transparent"
                     android:padding="5dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_my_location_eb_superlight" />
+                    android:src="@drawable/ic_my_location_tomato" />
 
             </RelativeLayout>
 

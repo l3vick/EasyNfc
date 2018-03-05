@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import com.easynfc.MainActivity;
 import com.easynfc.R;
 import com.easynfc.writer.app_launcher.AppLauncherWriterContract;
 
@@ -36,6 +39,7 @@ public class BaseTypeFragment extends Fragment {
     private RelativeLayout customDialogView;
     private RelativeLayout aarListView;
     private FrameLayout parentView;
+    private MainActivity main;
 
     public BaseTypeFragment() {
         // Required empty public constructors
@@ -44,6 +48,10 @@ public class BaseTypeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = ((MainActivity) getActivity()).getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        main = (MainActivity)getActivity();
+        setHasOptionsMenu(true);
         this.inflater = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         customDialogView = (RelativeLayout) this.inflater.inflate(R.layout.custom_dialog, null);
         Button cancelBtn = customDialogView.findViewById(R.id.btn_cancel_dialog);
@@ -136,6 +144,17 @@ public class BaseTypeFragment extends Fragment {
         }
 
         return list;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                main.navigateToTagsMenu();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 
