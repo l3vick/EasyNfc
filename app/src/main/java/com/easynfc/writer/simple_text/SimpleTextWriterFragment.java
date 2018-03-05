@@ -8,12 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
+
+import java.lang.reflect.Type;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,6 +33,11 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     TextView txtInputTitle;
     @BindView(R.id.et_simple_text)
     EditText etSimpleText;
+    @BindView(R.id.btn_save)
+    Button btnSave;
+    @BindView(R.id.btn_record)
+    Button btnRecord;
+
     private SimpleTextWriterContract.Presenter presenter;
 
     public static final String TAG = "SimpleTextWriterFragment";
@@ -50,9 +58,12 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
         View v = inflater.inflate(R.layout.fragment_writer_simple_text, container, false);
         setParentView(v);
         ButterKnife.bind(this, v);
-        txtTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
-        txtInputTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
-        etSimpleText.setTypeface(AppUtils.getAppTypeface(getContext()));
+        Typeface typeface = AppUtils.getAppTypeface(getContext());
+        txtTitle.setTypeface(typeface);
+        txtInputTitle.setTypeface(typeface);
+        etSimpleText.setTypeface(typeface);
+        btnSave.setTypeface(typeface);
+        btnRecord.setTypeface(typeface);
         return v;
     }
 

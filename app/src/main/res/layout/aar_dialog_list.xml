@@ -3,8 +3,8 @@
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
-    android:background="@android:color/transparent">
+    android:background="@android:color/transparent"
+    android:clickable="true">
 
 
     <LinearLayout
@@ -13,9 +13,35 @@
         android:layout_centerInParent="true"
         android:background="@drawable/custom_dialog_background"
         android:gravity="bottom"
+        android:orientation="vertical"
         android:padding="@dimen/app_padding"
-        android:weightSum="4"
-        android:orientation="vertical">
+        android:weightSum="5">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/txtDialogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAllCaps="true"
+                android:layout_centerInParent="true"
+                android:textColor="@color/tomato"
+                android:text="@string/installed_apps"
+                android:textSize="@dimen/dialog_text_size"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_alignRight="@+id/txtDialogTitle"
+                android:layout_alignLeft="@+id/txtDialogTitle"
+                android:layout_alignParentBottom="true"
+                android:background="@color/easy_black_superlight"
+                android:layout_height="2dp"></RelativeLayout>
+
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -25,17 +51,16 @@
 
             <ListView
                 android:id="@+id/aarlist"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
-            </ListView>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></ListView>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:gravity="bottom"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:gravity="bottom">
 
             <Button
                 android:id="@+id/btn_custom_aar_list"

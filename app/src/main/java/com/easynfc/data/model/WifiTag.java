@@ -4,17 +4,18 @@ package com.easynfc.data.model;
  * Created by pablorojas on 18/11/17.
  */
 
-public class WifiNetwork {
+public class WifiTag {
 
     String ssid;
-    WifiAuthType security;
     String password;
+    WifiAuthType security;
 
 
-    public WifiNetwork() {
+
+    public WifiTag() {
     }
 
-    public WifiNetwork(String ssid, WifiAuthType security, String password) {
+    public WifiTag(String ssid, WifiAuthType security, String password) {
         this.ssid = ssid;
         this.security = security;
         this.password = password;

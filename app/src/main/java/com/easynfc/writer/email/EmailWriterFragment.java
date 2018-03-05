@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -36,7 +37,10 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     TextView txtEmailTitle;
     @BindView(R.id.et_email)
     EditText etEmail;
-
+    @BindView(R.id.btn_save)
+    Button btnSave;
+    @BindView(R.id.btn_record)
+    Button btnRecord;
     public EmailWriterContract.Presenter presenter;
 
     public EmailWriterFragment() {
@@ -58,6 +62,8 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
         txtTitle.setTypeface(typeface);
         txtEmailTitle.setTypeface(typeface);
         etEmail.setTypeface(typeface);
+        btnSave.setTypeface(typeface);
+        btnRecord.setTypeface(typeface);
         return v;
     }
 

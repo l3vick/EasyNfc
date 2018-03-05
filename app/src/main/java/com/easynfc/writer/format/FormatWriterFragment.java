@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.easynfc.R;
@@ -37,6 +38,8 @@ public class FormatWriterFragment extends BaseTypeFragment implements FormatWrit
     TextView txtFormatTitle;
     @BindView(R.id.txt_format_subtitle)
     TextView txtSubtitle;
+    @BindView(R.id.btn_format)
+    Button btnFormat;
     public FormatWriterContract.Presenter presenter;
 
     public FormatWriterFragment() {
@@ -58,6 +61,7 @@ public class FormatWriterFragment extends BaseTypeFragment implements FormatWrit
         txtTitle.setTypeface(typeface);
         txtFormatTitle.setTypeface(typeface);
         txtSubtitle.setTypeface(typeface);
+        btnFormat.setTypeface(typeface);
         return v;
     }
 

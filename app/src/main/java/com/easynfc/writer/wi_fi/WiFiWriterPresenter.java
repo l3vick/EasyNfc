@@ -45,7 +45,7 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
     }
 
     @Override
-    public void writeTag(Intent intent, String text) {
+    public void writeTag(Intent intent, String text, String s, String toString) {
 
     }
 

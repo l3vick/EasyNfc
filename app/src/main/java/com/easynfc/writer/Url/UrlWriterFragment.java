@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -32,6 +33,10 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     TextView txtInputTitle;
     @BindView(R.id.et_url)
     EditText etUrl;
+    @BindView(R.id.btn_save)
+    Button btnSave;
+    @BindView(R.id.btn_record)
+    Button btnRecord;
     private UrlWriterContract.Presenter presenter;
 
     public static final String TAG = "UrlWriterFragment";
@@ -55,6 +60,8 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
         txtTitle.setTypeface(typeface);
         txtInputTitle.setTypeface(typeface);
         etUrl.setTypeface(typeface);
+        btnSave.setTypeface(typeface);
+        btnRecord.setTypeface(typeface);
         return v;
     }
 

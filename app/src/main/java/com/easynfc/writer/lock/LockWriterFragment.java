@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.easynfc.R;
@@ -40,6 +41,8 @@ public class LockWriterFragment extends BaseTypeFragment implements LockWriterCo
     @BindView(R.id.txt_lock_subtitle)
     TextView txtSubtitle;
     public LockWriterContract.Presenter presenter;
+    @BindView(R.id.btn_lock)
+    Button btnLock;
 
     public LockWriterFragment() {
         // Required empty public constructor
@@ -60,6 +63,7 @@ public class LockWriterFragment extends BaseTypeFragment implements LockWriterCo
         txtTitle.setTypeface(typeface);
         txtLockTitle.setTypeface(typeface);
         txtSubtitle.setTypeface(typeface);
+        btnLock.setTypeface(typeface);
         return v;
     }
 

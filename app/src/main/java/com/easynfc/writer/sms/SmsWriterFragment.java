@@ -2,11 +2,13 @@ package com.easynfc.writer.sms;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -37,7 +39,10 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
     EditText etPhone;
     @BindView(R.id.et_sms_text)
     EditText etText;
-
+    @BindView(R.id.btn_save)
+    Button btnSave;
+    @BindView(R.id.btn_record)
+    Button btnRecord;
     public SmsWriterContract.Presenter presenter;
 
     public SmsWriterFragment() {
@@ -54,11 +59,14 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_writer_sms, container, false);
         ButterKnife.bind(this, v);
-        txtTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
-        txtPhoneTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
-        txtTextTitle.setTypeface(AppUtils.getAppTypeface(getContext()));
-        etPhone.setTypeface(AppUtils.getAppTypeface(getContext()));
-        etText.setTypeface(AppUtils.getAppTypeface(getContext()));
+        Typeface typeface = AppUtils.getAppTypeface(getContext());
+        txtTitle.setTypeface(typeface);
+        txtPhoneTitle.setTypeface(typeface);
+        txtTextTitle.setTypeface(typeface);
+        etPhone.setTypeface(typeface);
+        etText.setTypeface(typeface);
+        btnSave.setTypeface(typeface);
+        btnRecord.setTypeface(typeface);
         setParentView(v);
         return v;
     }

@@ -20,7 +20,7 @@ import com.easynfc.BuildConfig;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
-import com.easynfc.data.model.WifiNetwork;
+import com.easynfc.data.model.WifiTag;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -579,7 +579,7 @@ public class NfcUtilsOld {
         }
     }
 
-    public NdefMessage writeNdefWifiMessage(Intent intent, WifiNetwork wifiTag) {
+    public NdefMessage writeNdefWifiMessage(Intent intent, WifiTag wifiTag) {
         byte[] payload = generateNdefPayload(wifiTag);
 
         Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
@@ -614,12 +614,12 @@ public class NfcUtilsOld {
     }
 
 
-    private static byte[] generateNdefPayload(WifiNetwork wifiNetwork) {
-        String ssid = wifiNetwork.getSsid();
+    private static byte[] generateNdefPayload(WifiTag wifiTag) {
+        String ssid = wifiTag.getSsid();
         short ssidSize = (short) ssid.getBytes().length;
 
         short authType;
-        switch (wifiNetwork.getSecurity()) {
+        switch (wifiTag.getSecurity()) {
             case WPA_PSK:
                 authType = AUTH_TYPE_WPA_PSK;
                 break;
@@ -638,7 +638,7 @@ public class NfcUtilsOld {
         }
 
         /*short encType;
-        switch (wifiNetwork.getEncType()) {
+        switch (wifiTag.getEncType()) {
             case WEP:
                 encType = ENC_TYPE_WEP;
                 break;
@@ -656,7 +656,7 @@ public class NfcUtilsOld {
                 break;
         }*/
 
-        String networkKey = wifiNetwork.getPassword();
+        String networkKey = wifiTag.getPassword();
         short networkKeySize = (short) networkKey.getBytes().length;
 
         byte[] macAddress = new byte[MAX_MAC_ADDRESS_SIZE_BYTES];

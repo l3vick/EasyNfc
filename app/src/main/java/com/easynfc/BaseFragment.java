@@ -16,7 +16,7 @@ import com.easynfc.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     public MainActivity main;
 

@@ -42,5 +42,7 @@
     <string name="data_lost">Any data will be lost</string>
     <string name="action_irreversible">This action is irreversible</string>
     <string name="custom">Custom</string>
+    <string name="installed_apps">Installed Applications</string>
+    <string name="available_networks">Available Networks</string>
 
 </resources>

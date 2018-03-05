@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -43,7 +44,12 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     EditText etLatitude;
     @BindView(R.id.et_longitude)
     EditText etLongitude;
+    @BindView(R.id.btn_save)
+    Button btnSave;
+    @BindView(R.id.btn_record)
+    Button btnRecord;
     public LocationWriterContract.Presenter presenter;
+
 
     public LocationWriterFragment() {
         // Required empty public constructor
@@ -66,6 +72,8 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
         txtLongitudeTitle.setTypeface(typeface);
         etLatitude.setTypeface(typeface);
         etLongitude.setTypeface(typeface);
+        btnSave.setTypeface(typeface);
+        btnRecord.setTypeface(typeface);
         presenter.initLocationManager(getContext());
         return v;
     }

@@ -1,6 +1,8 @@
 package com.easynfc.writer.wi_fi;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,13 +33,10 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-
-
-
         if (position == 0) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             LinearLayout v = (LinearLayout) inflater.inflate(R.layout.spinner_header, parent, false);
-            TextView tv =  v.findViewById(R.id.dropdown_item);
+            TextView tv = v.findViewById(R.id.dropdown_item);
             tv.setTypeface(AppUtils.getAppTypeface(getContext()));
             tv.setText(title);
             return v;
@@ -53,6 +52,14 @@ public class SpinnerAdapter extends ArrayAdapter<String> {
         }
 
 
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View v = super.getView(position, convertView, parent);
+        ((TextView) v).setTypeface(AppUtils.getAppTypeface(getContext()));
+        return v;
     }
 
     @Override

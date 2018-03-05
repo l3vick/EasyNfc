@@ -9,6 +9,7 @@ import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -39,6 +40,10 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     TextView txtAppLauncherTitle;
     @BindView(R.id.et_app_launcher)
     EditText etAppLauncher;
+    @BindView(R.id.btn_save)
+    Button btnSave;
+    @BindView(R.id.btn_record)
+    Button btnRecord;
 
     public AppLauncherWriterContract.Presenter presenter;
 
@@ -61,6 +66,8 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
         txtTitle.setTypeface(typeface);
         txtAppLauncherTitle.setTypeface(typeface);
         etAppLauncher.setTypeface(typeface);
+        btnSave.setTypeface(typeface);
+        btnRecord.setTypeface(typeface);
         super.showAarList(new AppLauncherWriterContract.OnAarItemClickedCallback() {
             @Override
             public void OnSuccess(String aar) {
