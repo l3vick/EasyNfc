@@ -5,7 +5,7 @@
 
     <TextView
         android:id="@+id/dropdown_item"
-        android:textColor="@color/easy_black_superlight"
+        android:textColor="@color/tomato"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/app_padding"

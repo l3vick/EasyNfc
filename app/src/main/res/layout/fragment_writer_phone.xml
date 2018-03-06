@@ -74,8 +74,8 @@
                 android:hint="@string/enter_phone_hint"
                 android:inputType="number"
                 android:paddingLeft="@dimen/app_padding"
-                android:textColor="@color/easy_black_ghost"
-                android:textColorHint="@color/easy_black_superlight" />
+                android:textColor="@color/tomato"
+                android:textColorHint="@color/tomato60" />
 
         </LinearLayout>
 

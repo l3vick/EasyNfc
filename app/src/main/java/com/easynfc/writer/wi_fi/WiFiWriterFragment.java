@@ -1,15 +1,24 @@
 package com.easynfc.writer.wi_fi;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Typeface;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,7 +27,6 @@ import com.easynfc.data.model.WifiTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +58,12 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    @BindView(R.id.parentView)
+    FrameLayout parentView;
+    ProgressBar progressBar;
+    private RelativeLayout wifiListView;
+    private ListView list;
+
 
     public WiFiWriterContract.Presenter presenter;
 
@@ -76,18 +90,36 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
         etWifiPassword.setTypeface(typeface);
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
-        final SpinnerAdapter adapter = new SpinnerAdapter(getActivity(), R.layout.spinner_item, getSecurityCypherList(), "Select Security cypher");
+        final SpinnerAdapter adapter = new SpinnerAdapter(getActivity(), R.layout.spinner_item, presenter.getSecurityCypherList(), "Select Security cypher");
         spSecurityCypher.setAdapter(adapter);
-        super.showWifiList(new WiFiWriterContract.OnWifiItemClickedCallback() {
+
+
+        //WIFI NETWORKS DIALOG RELATED
+        wifiListView = (RelativeLayout) inflater.inflate(R.layout.wifi_dialog_list, null);
+        list = wifiListView.findViewById(R.id.wifilist);
+        TextView txtTitle = wifiListView.findViewById(R.id.txtDialogTitle);
+        Button btnCustom = wifiListView.findViewById(R.id.btn_custom_wifi_list);
+        progressBar = wifiListView.findViewById(R.id.progress_wheel);
+        txtTitle.setTypeface(typeface);
+        btnCustom.setTypeface(typeface);
+        btnCustom.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void OnSuccess(WifiTag wifiTag) {
-                etWifiSsid.setText(wifiTag.getSsid());
-                spSecurityCypher.setSelection(adapter.getPosition(wifiTag.getSecurity().toString()));
+            public void onClick(View v) {
+                hideWifiNetowrksDialog();
             }
         });
+        showWifiNetworksDialog();
         return v;
     }
 
+
+    private void showWifiNetworksDialog() {
+        parentView.addView(wifiListView);
+    }
+
+    private void hideWifiNetowrksDialog() {
+        ((ViewGroup) wifiListView.getParent()).removeView(wifiListView);
+    }
 
     @OnClick(R.id.btn_record)
     void onRecordTagBtnPressed() {
@@ -98,6 +130,11 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
 
+    }
+
+    @OnClick(R.id.btn_wifi_networks)
+    void onShowWifiNetworksDialogBtn(){
+        showWifiNetworksDialog();
     }
 
     @Override
@@ -119,18 +156,53 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     @Override
     public void processNfc(Intent intent) {
         super.processNfc(intent);
-        presenter.writeTag(intent, spSecurityCypher.getSelectedItem().toString(),  etWifiSsid.getText().toString(), etWifiPassword.getText().toString());
+        presenter.writeTag(intent, etWifiSsid.getText().toString(), spSecurityCypher.getSelectedItem().toString(), etWifiPassword.getText().toString());
     }
 
-    private List<String> getSecurityCypherList() {
-        List<String> securityCypherList = new ArrayList<>();
-        securityCypherList.add("Open");
-        securityCypherList.add("WEP");
-        securityCypherList.add("WPA PSK");
-        securityCypherList.add("WPA EAP");
-        securityCypherList.add("WPA2 EAP");
-        securityCypherList.add("WPA2 PSK");
-        return securityCypherList;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        getActivity().registerReceiver(presenter.getWifiScanReceiver(),
+                new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+        presenter.startScan(new WiFiWriterContract.OnWifiNetworksLoadedCallback() {
+            @Override
+            public void OnSuccess(ArrayList<WifiTag> wifiTags) {
+                progressBar.setVisibility(View.GONE);
+                showWifiNetworksList(wifiTags);
+            }
+        });
+    }
+
+    private void showWifiNetworksList(final ArrayList<WifiTag> wifiTags) {
+        List<String> adapterList = new ArrayList<>();
+        for (WifiTag wifiTag : wifiTags) {
+            adapterList.add(wifiTag.getSsid());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.aar_item_tv, adapterList);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int row, long l) {
+                etWifiSsid.setText(wifiTags.get(row).getSsid());
+                int position = presenter.getWifiAuthPosition(wifiTags.get(row).getSecurity().toString());
+                spSecurityCypher.setSelection(position + 1);
+                hideWifiNetowrksDialog();
+            }
+        });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (presenter.getWifiScanReceiver() != null) {
+            try {
+                getActivity().unregisterReceiver(presenter.getWifiScanReceiver());
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

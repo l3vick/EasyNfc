@@ -53,15 +53,34 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txt_wifi_ssid_title"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/app_padding"
-                android:text="@string/enter_wifi_ssid"
-                android:textAllCaps="true"
-                android:textColor="@color/easy_black_ghost"
-                android:textSize="@dimen/input_title" />
+                android:layout_marginRight="@dimen/app_padding"
+                android:layout_marginLeft="@dimen/app_padding">
+
+                <TextView
+                    android:id="@+id/txt_wifi_ssid_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_wifi_ssid"
+                    android:textAllCaps="true"
+                    android:textColor="@color/easy_black_ghost"
+                    android:textSize="@dimen/input_title" />
+
+
+                <ImageButton
+                    android:id="@+id/btn_wifi_networks"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignRight="@+id/txt_wifi_ssid_title"
+                    android:background="@android:color/transparent"
+                    android:padding="5dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_reload_tomato" />
+
+            </RelativeLayout>
+
 
             <EditText
                 android:id="@+id/et_wifi_ssid"
@@ -74,8 +93,8 @@
                 android:background="@drawable/edit_text_rounded_border"
                 android:hint="@string/enter_wifi_ssid_hint"
                 android:paddingLeft="@dimen/app_padding"
-                android:textColor="@color/easy_black_ghost"
-                android:textColorHint="@color/easy_black_superlight" />
+                android:textColor="@color/tomato"
+                android:textColorHint="@color/tomato60" />
 
             <TextView
                 android:id="@+id/txt_wifi_password_title"
@@ -99,8 +118,8 @@
                 android:background="@drawable/edit_text_rounded_border"
                 android:hint="@string/enter_wifi_password_hint"
                 android:paddingLeft="@dimen/app_padding"
-                android:textColor="@color/easy_black_ghost"
-                android:textColorHint="@color/easy_black_superlight" />
+                android:textColor="@color/tomato"
+                android:textColorHint="@color/tomato60" />
 
 
             <RelativeLayout

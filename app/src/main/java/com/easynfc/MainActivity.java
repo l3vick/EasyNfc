@@ -1,6 +1,9 @@
 package com.easynfc;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -259,7 +262,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        WiFiWriterPresenter presenter = new WiFiWriterPresenter(wiFiWriterFragment, nfcUtils);
+
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        WiFiWriterPresenter presenter = new WiFiWriterPresenter(wiFiWriterFragment, nfcUtils, wifiManager);
     }
 
     private void navigateToEmailWriter() {

@@ -81,20 +81,20 @@
                     android:ellipsize="end"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:textColor="@color/easy_black_ghost"
-                    android:textColorHint="@color/easy_black_superlight" />
+                    android:textColor="@color/tomato"
+                    android:textColorHint="@color/tomato60" />
 
                 <ImageButton
                     android:id="@+id/btn_reload"
-                    android:padding="5dp"
-                    android:layout_alignTop="@+id/et_app_launcher"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignBottom="@+id/et_app_launcher"
                     android:layout_alignRight="@+id/et_app_launcher"
-                    android:layout_width="40dp"
+                    android:layout_alignTop="@+id/et_app_launcher"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_reload_eb_superlight"
+                    android:padding="5dp"
                     android:scaleType="fitCenter"
-                    android:layout_height="40dp" />
+                    android:src="@drawable/ic_reload_tomato" />
 
             </RelativeLayout>
 

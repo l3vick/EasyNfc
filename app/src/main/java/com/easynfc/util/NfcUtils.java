@@ -9,20 +9,27 @@ import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
+import android.nfc.NfcManager;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.util.Log;
 
+import com.easynfc.R;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.model.WifiTag;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.Locale;
+
+import static android.provider.ContactsContract.Directory.PACKAGE_NAME;
 
 
 /**
@@ -34,6 +41,18 @@ public class NfcUtils {
     private Activity activity;
     private NfcAdapter nfcAdapter;
     private static NfcUtils INSTANCE = null;
+
+    public static final short AUTH_TYPE_OPEN = 0x0001;
+    public static final short AUTH_TYPE_WPA_PSK = 0x0002;
+    public static final short AUTH_TYPE_WPA_EAP = 0x0008;
+    public static final short AUTH_TYPE_WPA2_EAP = 0x0010;
+    public static final short AUTH_TYPE_WPA2_PSK = 0x0020;
+    public static final int MAX_MAC_ADDRESS_SIZE_BYTES = 6;
+    public static final String NFC_TOKEN_MIME_TYPE = "application/vnd.wfa.wsc";
+    public static final short CREDENTIAL_FIELD_ID = 0x100e;
+    public static final short NETWORK_KEY_FIELD_ID = 0x1027;
+    public static final short SSID_FIELD_ID = 0x1045;
+    public static final short AUTH_TYPE_FIELD_ID = 0x1003;
 
     public static NfcUtils getInstance(Activity activity) {
         if (INSTANCE == null) {
@@ -117,8 +136,9 @@ public class NfcUtils {
     }
 
 
-    public void writeWifiTag(Intent intent, String ssid, String password, String securityCypher, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
-
+    public void writeWifiTag(Intent intent, WifiTag wifiTag, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefMessage ndefMessage = writeNdefWifiMessage(wifiTag);
+        writeNdefMessage(intent, ndefMessage, callback);
     }
 
     public void writeEmailTag(Intent intent, String email, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
@@ -159,6 +179,85 @@ public class NfcUtils {
             }
 
         }
+    }
+
+    public NdefMessage writeNdefWifiMessage(WifiTag wifiTag) {
+        byte[] payload = generateNdefPayload(wifiTag);
+        NdefRecord mimeRecord = new NdefRecord(
+                NdefRecord.TNF_MIME_MEDIA,
+                NFC_TOKEN_MIME_TYPE.getBytes(Charset.forName("US-ASCII")),
+                new byte[0],
+                payload);
+        NdefRecord aarRecord = NdefRecord.createApplicationRecord(PACKAGE_NAME);
+        NdefMessage ndefMessage = new NdefMessage(new NdefRecord[] {mimeRecord, aarRecord});
+        return ndefMessage;
+    }
+
+    private static byte[] generateNdefPayload(WifiTag wifiNetwork) {
+        String ssid = wifiNetwork.getSsid();
+        short ssidSize = (short) ssid.getBytes().length;
+
+        short authType;
+        switch (wifiNetwork.getSecurity()) {
+            case WPA_PSK:
+                authType = AUTH_TYPE_WPA_PSK;
+                break;
+            case WPA2_PSK:
+                authType = AUTH_TYPE_WPA2_PSK;
+                break;
+            case WPA_EAP:
+                authType = AUTH_TYPE_WPA_EAP;
+                break;
+            case WPA2_EAP:
+                authType = AUTH_TYPE_WPA2_EAP;
+                break;
+            default:
+                authType = AUTH_TYPE_OPEN;
+                break;
+        }
+
+
+        String networkKey = wifiNetwork.getPassword();
+        short networkKeySize = (short) networkKey.getBytes().length;
+
+        byte[] macAddress = new byte[MAX_MAC_ADDRESS_SIZE_BYTES];
+        for (int i = 0; i < MAX_MAC_ADDRESS_SIZE_BYTES; i++) {
+            macAddress[i] = (byte) 0xff;
+        }
+
+        /* Fill buffer */
+
+        int bufferSize = 18 + ssidSize + networkKeySize; // size of required credential attributes
+
+        ByteBuffer buffer = ByteBuffer.allocate(bufferSize);
+        buffer.putShort(CREDENTIAL_FIELD_ID);
+        buffer.putShort((short) (bufferSize - 4));
+
+//        buffer.putShort(NETWORK_INDEX_FIELD_ID);
+//        buffer.putShort((short) 1);
+//        buffer.put(NETWORK_INDEX_DEFAULT_VALUE);
+
+        buffer.putShort(SSID_FIELD_ID);
+        buffer.putShort(ssidSize);
+        buffer.put(ssid.getBytes());
+
+        buffer.putShort(AUTH_TYPE_FIELD_ID);
+        buffer.putShort((short) 2);
+        buffer.putShort(authType);
+
+//        buffer.putShort(ENC_TYPE_FIELD_ID);
+//        buffer.putShort((short) 2);
+//        buffer.putShort(ENC_TYPE_NONE); // FIXME
+
+        buffer.putShort(NETWORK_KEY_FIELD_ID);
+        buffer.putShort(networkKeySize);
+        buffer.put(networkKey.getBytes());
+
+//        buffer.putShort(MAC_ADDRESS_FIELD_ID);
+//        buffer.putShort((short) MAX_MAC_ADDRESS_SIZE_BYTES);
+//        buffer.put(macAddress);
+
+        return buffer.array();
     }
 
     public Tag getTagFromIntent(Intent intent) {
@@ -241,6 +340,7 @@ public class NfcUtils {
 
     public interface TagWrittenCallback {
         void OnSuccess();
+
         void OnError();
     }
 

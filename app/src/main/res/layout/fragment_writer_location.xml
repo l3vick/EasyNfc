@@ -75,8 +75,8 @@
 
                 <ImageButton
                     android:id="@+id/btn_location"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignRight="@+id/txt_latitude_title"
                     android:background="@android:color/transparent"
                     android:padding="5dp"
@@ -98,8 +98,8 @@
                 android:hint="@string/enter_latitude_hint"
                 android:inputType="phone"
                 android:paddingLeft="@dimen/app_padding"
-                android:textColor="@color/easy_black_ghost"
-                android:textColorHint="@color/easy_black_superlight" />
+                android:textColor="@color/tomato"
+                android:textColorHint="@color/tomato60" />
 
 
             <TextView
@@ -123,8 +123,8 @@
                 android:hint="@string/enter_longitude_hint"
                 android:inputType="phone"
                 android:paddingLeft="@dimen/app_padding"
-                android:textColor="@color/easy_black_ghost"
-                android:textColorHint="@color/easy_black_superlight" />
+                android:textColor="@color/tomato"
+                android:textColorHint="@color/tomato60" />
 
         </LinearLayout>
 
