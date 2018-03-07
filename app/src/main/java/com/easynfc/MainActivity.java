@@ -16,6 +16,7 @@ import com.easynfc.menu.MenuFragment;
 import com.easynfc.menu.MenuPresenter;
 import com.easynfc.mytags.MyTagsFragment;
 import com.easynfc.reader.ReaderFragment;
+import com.easynfc.reader.ReaderPresenter;
 import com.easynfc.tagsmenu.TagsMenuFragment;
 import com.easynfc.tagsmenu.TagsMenuPresenter;
 import com.easynfc.util.AppConstants;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (fragment instanceof BaseTypeFragment) {
             ((BaseTypeFragment) fragment).processNfc(intent);
+        }else if (fragment instanceof ReaderFragment){
+            ((ReaderFragment) fragment).processNfc(intent);
         }
     }
 
@@ -116,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, readerFragment)
                     .commit();
         }
+        NfcUtils nfcUtils = NfcUtils.getInstance(this);
+        ReaderPresenter presenter = new ReaderPresenter(readerFragment, nfcUtils);
     }
 
     public void navigateToMyTags() {

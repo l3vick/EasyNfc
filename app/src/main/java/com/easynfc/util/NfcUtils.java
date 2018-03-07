@@ -13,20 +13,29 @@ import android.nfc.NfcManager;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
+import android.os.Parcelable;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Pair;
 
 import com.easynfc.R;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.model.TagData;
 import com.easynfc.data.model.WifiTag;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Locale;
 
 import static android.provider.ContactsContract.Directory.PACKAGE_NAME;
@@ -97,6 +106,219 @@ public class NfcUtils {
     public boolean isNfcIntent(Intent intent) {
         return intent.hasExtra(NfcAdapter.EXTRA_TAG);
     }
+
+
+    public void handleIntent(Intent intent, TagReadedCallback callback) {
+        TagData tagData;
+        Tag tag = getTagFromIntent(intent);
+        NdefMessage ndefMessage = getNdefMessageFromIntent(intent);
+        if (ndefMessage != null) {
+            NdefRecord ndefRecord = getFirstNdefRecord(ndefMessage);
+            if (ndefRecord != null) {
+                Pair<String, String> tipeContent = getTextFromNdefRecord(ndefRecord);
+                tagData = new TagData(tipeContent.first, tipeContent.second, TextUtils.join(", ", tag.getTechList()), tnfToString(ndefRecord.getTnf()) + ", " + rtdToString(ndefRecord.getType()),tipeContent.first, Integer.toString(ndefRecord.getPayload().length));
+                callback.OnSuccess(tagData);
+            }
+        }
+    }
+
+
+    //TODO Refactor methos to read tags
+
+    private Pair<String, String> getTextFromNdefRecord(NdefRecord ndefRecord) {
+        byte[] payload = ndefRecord.getPayload();
+        //si contiene ndef tipo uri
+        if (ndefRecord.toUri() != null) {
+            //String payloadType = ndefRecord.toUri().toString().split()
+            String uri = ndefRecord.toUri().toString();
+            Log.d("PAYLOAD", "getTextFromNdefRecord: " + uri);
+            //Si es tipo sms
+            if (uri.startsWith("sms")) {
+                return Pair.create("sms", buildSmsContent(ndefRecord));
+                //Si es de tipo web
+            } else if (uri.startsWith("http")) {
+                Log.v("Url Http Record", "" + uri);
+                return Pair.create("url", uri);
+                //Otro tipo de Uri
+            } else if (uri.startsWith("tel")) {
+                Log.v("Phone Record", "" + uri);
+                return Pair.create("phone", buildPhoneContent(ndefRecord));
+                //Otro tipo de Uri
+            } else if (uri.startsWith("vnd.android.nfc")) {
+                Log.v("Aar Record", "" + getAarPackageName(ndefRecord));
+                return Pair.create("App-Launcher", getAarPackageName(ndefRecord));
+                //Otro tipo de Uri
+            } else if (uri.startsWith("geo:")) {
+                Log.v("Location record", "" + uri);
+                return Pair.create("Geolocation", buildLocationRecord(ndefRecord));
+                //Otro tipo de Uri
+            } else if (uri.startsWith("mailto:")) {
+                Log.v("Email record", "" + uri);
+                return Pair.create("Email", buildEmailRecord(ndefRecord));
+                //Otro tipo de Uri
+            }else {
+                Log.v("Uri Record", "" + uri);
+                return Pair.create("uri", uri);
+            }
+            //Si es de tipo text
+        } else if (isTextRecord(ndefRecord)) {
+            return getTextContent(payload);
+            //Otros Tipos
+        } else {
+            Log.v("TIPO DE TAG", "SIN TRATAR: " + String.valueOf(payload));
+            byte [] byteContetn = payload;
+            Object obj = bytesToObject(byteContetn);
+            return Pair.create("other", String.valueOf(payload));
+
+        }
+    }
+
+    private Object bytesToObject(byte[] bytes) {
+        Object o = null;
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        ObjectInput in = null;
+
+        try {
+            in = new ObjectInputStream(bis);
+
+            o = in.readObject();
+
+            bis.close();
+        } catch (Exception e) {
+            Log.e("bytesToObject",""+ e.getMessage());
+        }
+        return o;
+    }
+
+    private String buildEmailRecord(NdefRecord ndefRecord) {
+        String content  = ndefRecord.toUri().toString();
+        return ndefRecord.toUri().toString();
+    }
+
+    private String buildLocationRecord(NdefRecord ndefRecord) {
+        String content  = ndefRecord.toUri().toString();
+        content.substring(3,content.length());
+        String [] location = content.split(",");
+        return content;
+    }
+
+
+    private Pair<String, String> getTextContent(byte[] payload) {
+        try {
+            //Get the Text Encoding
+            String textEncoding = ((payload[0] & 0200) == 0) ? "UTF-8" : "UTF-16";
+            //Get the Language Code //Get the Text
+            int languageCodeLength = payload[0] & 0077;
+            String languageCode = new String(payload, 1, languageCodeLength, "US-ASCII");
+            String text = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
+            text = "Text: " + text.concat("\nLang: " + languageCode);
+            return Pair.create("text", text);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return new Pair<>("error", "Error reading tag");
+        }
+    }
+
+    private String buildSmsContent(NdefRecord ndefRecord) {
+        byte[] payload = ndefRecord.getPayload();
+        String textEncoding = "UTF-8";
+        String[] smsUriParts = ndefRecord.toUri().getSchemeSpecificPart().split("\\?body=");
+        String tag = new String(payload, StandardCharsets.UTF_8).trim();
+        String tag2 = tag.replaceAll("[^a-zA-Z0-9_-]", "");
+        Log.v(" TAG", " Content: " + tag + " TAG2: " + tag2);
+        String[] uriOcurrences = ndefRecord.toUri().toString().split("QT");
+        String[] langTitle = tag2.split("QT");
+        if ((langTitle.length - (uriOcurrences.length - 1)) > 1) {
+            String lang = langTitle[langTitle.length - 1].substring(0, 2);
+            String title = langTitle[langTitle.length - 1].substring(2);
+            Log.v("SMS TITLE---------", "Title:" + title + "Number: " + smsUriParts[1] + " Body: " + smsUriParts[0] + "Lang: " + lang);
+            return new String("Title: " + title + "\nNumber: " + smsUriParts[1] + "\nBody: " + smsUriParts[0] + "\nLang: " + lang);
+        } else {
+            Log.v("SMS-------------", "Number: " + smsUriParts[1] + " Body: " + smsUriParts[0]);
+            return new String("Number: " + smsUriParts[1] + "\nBody: " + smsUriParts[0]);
+        }
+    }
+
+
+    private String buildPhoneContent(NdefRecord ndefRecord) {
+        String content = null;
+        byte[] payload = ndefRecord.getPayload();
+        try {
+            String textEncoding = "UTF-8";
+            int languageCodeLength = payload[0] & 0077;
+
+            String phoneNumber = ndefRecord.toUri().toString();
+            String tittle = new String(payload, languageCodeLength + 1, payload.length - languageCodeLength - 1, textEncoding);
+
+            if(tittle.startsWith("tel:")){
+                content = phoneNumber;
+            }else{
+                content = tittle.substring(3,tittle.length());
+                content = phoneNumber + " " + content;
+
+            }
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return content;
+    }
+
+    private String getAarPackageName(NdefRecord ndefRecord) {
+        String content = null;
+        byte[] payload = ndefRecord.getPayload();
+        try {
+            String textEncoding = "UTF-8";
+            String phoneNumber = ndefRecord.toUri().toString();
+            content = new String(payload, 0, payload.length, textEncoding);
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return content;
+    }
+
+
+    private boolean isTextRecord(NdefRecord record) {
+
+        if (record == null) {
+            return false;
+        }
+
+        return isNdefRecordOfTnfAndRdt(record, NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT);
+    }
+
+    private boolean isNdefRecordOfTnfAndRdt(NdefRecord ndefRecord, short tnf, byte[] rdt) {
+        return ndefRecord.getTnf() == tnf && Arrays.equals(ndefRecord.getType(), rdt);
+    }
+    //TODO END OF READER
+
+
+    private NdefMessage getNdefMessageFromIntent(Intent intent) {
+
+        NdefMessage ndefMessage = null;
+
+        Parcelable[] extra = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+
+        if (extra != null && extra.length > 0) {
+            ndefMessage = (NdefMessage) extra[0];
+        }
+        return ndefMessage;
+    }
+
+    private NdefRecord getFirstNdefRecord(NdefMessage ndefMessage) {
+        NdefRecord ndefRecord = null;
+        NdefRecord[] ndefRecords = ndefMessage.getRecords();
+
+        if (ndefRecords != null && ndefRecords.length > 0) {
+            ndefRecord = ndefRecords[0];
+        }
+
+        return ndefRecord;
+    }
+
+
 
     public void writeSimpleTextTag(Intent intent, String text, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
         NdefRecord uriRecord = createTextRecord(text);
@@ -336,6 +558,50 @@ public class NfcUtils {
             Log.e("makeTagReadonly", "" + e.getMessage());
         }
 
+    }
+
+    private String rtdToString(byte[] rdt) {
+        if (Arrays.equals(rdt, NdefRecord.RTD_ALTERNATIVE_CARRIER)) {
+            return "RTD_ALTERNATIVE_CARRIER";
+        } else if (Arrays.equals(rdt, NdefRecord.RTD_HANDOVER_CARRIER)) {
+            return "RTD_HANDOVER_CARRIER";
+        } else if (Arrays.equals(rdt, NdefRecord.RTD_HANDOVER_REQUEST)) {
+            return "RTD_HANDOVER_REQUEST";
+        } else if (Arrays.equals(rdt, NdefRecord.RTD_HANDOVER_SELECT)) {
+            return "RTD_HANDOVER_SELECT";
+        } else if (Arrays.equals(rdt, NdefRecord.RTD_SMART_POSTER)) {
+            return "RTD_SMART_POSTER";
+        } else if (Arrays.equals(rdt, NdefRecord.RTD_TEXT)) {
+            return "RTD_TEXT";
+        } else if (Arrays.equals(rdt, NdefRecord.RTD_URI)) {
+            return "RTD_URI";
+        } else {
+            return "RTD_UNKNOWN";
+        }
+    }
+
+    private String tnfToString(short tnf) {
+        switch (tnf) {
+            case NdefRecord.TNF_EMPTY:
+                return "TNF_EMPTY";
+            case NdefRecord.TNF_ABSOLUTE_URI:
+                return "TNF_ABSOLUTE_URI";
+            case NdefRecord.TNF_EXTERNAL_TYPE:
+                return "TNF_EXTERNAL_TYPE";
+            case NdefRecord.TNF_MIME_MEDIA:
+                return "TNF_MIME_MEDIA";
+            case NdefRecord.TNF_UNCHANGED:
+                return "TNF_UNCHANGED";
+            case NdefRecord.TNF_WELL_KNOWN:
+                return "TNF_WELL_KNOWN";
+            default:
+            case NdefRecord.TNF_UNKNOWN:
+                return "TNF_UNKNOWN";
+        }
+    }
+
+    public interface TagReadedCallback{
+        void OnSuccess(TagData tagData);
     }
 
     public interface TagWrittenCallback {
