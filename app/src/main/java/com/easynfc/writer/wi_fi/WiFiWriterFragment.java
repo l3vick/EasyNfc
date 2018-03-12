@@ -133,7 +133,7 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     }
 
     @OnClick(R.id.btn_wifi_networks)
-    void onShowWifiNetworksDialogBtn(){
+    void onShowWifiNetworksDialogBtn() {
         showWifiNetworksDialog();
     }
 
@@ -156,7 +156,7 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     @Override
     public void processNfc(Intent intent) {
         super.processNfc(intent);
-        presenter.writeTag(intent, etWifiSsid.getText().toString(), spSecurityCypher.getSelectedItem().toString(), etWifiPassword.getText().toString());
+        presenter.writeTag(intent, etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
     }
 
 

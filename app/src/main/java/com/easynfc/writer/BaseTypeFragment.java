@@ -38,15 +38,14 @@ import com.easynfc.writer.wi_fi.WiFiWriterContract;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public abstract class BaseTypeFragment extends Fragment {
 
-    private LayoutInflater inflater;
     private RelativeLayout customDialogView;
-    private RelativeLayout aarListView;
     private FrameLayout parentView;
     private MainActivity main;
 
@@ -62,8 +61,8 @@ public abstract class BaseTypeFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         main = (MainActivity) getActivity();
         setHasOptionsMenu(true);
-        this.inflater = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        customDialogView = (RelativeLayout) this.inflater.inflate(R.layout.writer_dialog, null);
+        LayoutInflater inflater = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        customDialogView = (RelativeLayout) inflater.inflate(R.layout.writer_dialog, null);
         Button cancelBtn = customDialogView.findViewById(R.id.btn_cancel_dialog);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,17 +85,9 @@ public abstract class BaseTypeFragment extends Fragment {
         parentView.addView(customDialogView);
     }
 
-    public void showAarList(AppLauncherWriterContract.OnAarItemClickedCallback callback) {
-        setAarView(callback);
-        parentView.addView(aarListView);
-    }
 
     public void hideDialog() {
         ((ViewGroup) customDialogView.getParent()).removeView(customDialogView);
-    }
-
-    public void hideAarList() {
-        ((ViewGroup) aarListView.getParent()).removeView(aarListView);
     }
 
 
@@ -115,61 +106,6 @@ public abstract class BaseTypeFragment extends Fragment {
 
             }
         });
-    }
-
-    private void setAarView(final AppLauncherWriterContract.OnAarItemClickedCallback callback) {
-        aarListView = (RelativeLayout) this.inflater.inflate(R.layout.aar_dialog_list, null);
-
-        ListView list = aarListView.findViewById(R.id.aarlist);
-
-        final Typeface typeface = AppUtils.getAppTypeface(getContext());
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.aar_item_tv, getInstalledPackageNameList()) {
-            @NonNull
-            @Override
-            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                View v = super.getView(position, convertView, parent);
-                ((TextView) v).setTypeface(typeface);
-                return v;
-            }
-        };
-
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int row, long l) {
-                Object obj = adapterView.getItemAtPosition(row);
-                callback.OnSuccess(obj.toString());
-                hideAarList();
-            }
-        });
-
-        TextView txtTitle = aarListView.findViewById(R.id.txtDialogTitle);
-        Button btnCustom = aarListView.findViewById(R.id.btn_custom_aar_list);
-        txtTitle.setTypeface(typeface);
-        btnCustom.setTypeface(typeface);
-        btnCustom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                hideAarList();
-            }
-        });
-    }
-
-
-    private List<String> getInstalledPackageNameList() {
-        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
-        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
-        List<ResolveInfo> pkgAppsList = getActivity().getPackageManager().queryIntentActivities(mainIntent, 0);
-
-        List<String> list = new ArrayList<>();
-        for (ResolveInfo item : pkgAppsList) {
-
-            list.add(item.activityInfo.packageName);
-            String currentHomePackage = item.activityInfo.packageName;
-            Log.v("app", "" + currentHomePackage);
-        }
-
-        return list;
     }
 
 

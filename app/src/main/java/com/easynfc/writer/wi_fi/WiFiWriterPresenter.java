@@ -64,7 +64,7 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
     }
 
     @Override
-    public void writeTag(Intent intent, String ssid, String cypher, String password) {
+    public void writeTag(Intent intent, String ssid, String password, String cypher) {
         WifiTag wifiTag = new WifiTag(ssid, toWifiAuthType(cypher), password);
         try {
             nfcUtils.writeWifiTag(intent, wifiTag, new NfcUtils.TagWrittenCallback() {

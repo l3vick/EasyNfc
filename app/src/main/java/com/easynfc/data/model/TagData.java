@@ -6,35 +6,36 @@ package com.easynfc.data.model;
 
 public class TagData {
 
-    String imageType, content, subtype, tittle, typeTag, size;
+    String type, content, tnf, rtd, size;
+    String[] techList;
 
-    public TagData(String imageType, String content, String subtype, String tittle, String typeTag, String size) {
-        this.imageType = imageType;
+    public TagData(String type, String content, String[] techList, String tnf, String rtd, String size) {
+        this.type = type;
         this.content = content;
-        this.subtype = subtype;
-        this.tittle = tittle;
-        this.typeTag = typeTag;
+        this.techList = techList;
+        this.tnf = tnf;
+        this.rtd = rtd;
         this.size = size;
     }
 
-    public String getImageType() {
-        return imageType;
+    public String getType() {
+        return type;
     }
 
     public String getContent() {
         return content;
     }
 
-    public String getSubtype() {
-        return subtype;
+    public String[] getTechList() {
+        return techList;
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getTnf() {
+        return tnf;
     }
 
-    public String getTypeTag() {
-        return typeTag;
+    public String getRtd() {
+        return rtd;
     }
 
     public String getSize() {

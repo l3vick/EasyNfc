@@ -25,7 +25,7 @@ public interface WiFiWriterContract {
 
         void enableForegroundDispatch();
 
-        void writeTag(Intent intent, String ssid, String securityCypher, String password);
+        void writeTag(Intent intent, String ssid, String password, String securityCypher);
 
         void disableForegroundDispatch();
 

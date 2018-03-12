@@ -17,4 +17,16 @@ public class AppConstants {
     public static final int LOCK_TAG = 9;
 
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 1;
+
+    public static final String TEXT = "text";
+    public static final String URL = "url";
+    public static final String SMS = "sms";
+    public static final String PHONE = "phone";
+    public static final String AAR = "aar";
+    public static final String LOCATION = "location";
+    public static final String WIFI = "wifi";
+    public static final String EMAIL = "email";
+    public static final String OTHER = "unknown";
+
+
 }

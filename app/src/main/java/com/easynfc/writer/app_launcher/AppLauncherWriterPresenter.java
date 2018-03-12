@@ -1,6 +1,8 @@
 package com.easynfc.writer.app_launcher;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.nfc.FormatException;
 import android.util.Log;
 
@@ -10,6 +12,8 @@ import com.easynfc.data.exceptions.ReadOnlyTagException;
 import com.easynfc.util.NfcUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -80,5 +84,22 @@ public class AppLauncherWriterPresenter implements AppLauncherWriterContract.Pre
     @Override
     public void disableForegroundDispatch() {
         nfcUtils.disableForegroundDispatch();
+    }
+
+    @Override
+    public List<String> getInstalledPackageNameList(Activity activity) {
+        Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        List<ResolveInfo> pkgAppsList = activity.getPackageManager().queryIntentActivities(mainIntent, 0);
+
+        List<String> list = new ArrayList<>();
+        for (ResolveInfo item : pkgAppsList) {
+
+            list.add(item.activityInfo.packageName);
+            String currentHomePackage = item.activityInfo.packageName;
+            Log.v("app", "" + currentHomePackage);
+        }
+
+        return list;
     }
 }
