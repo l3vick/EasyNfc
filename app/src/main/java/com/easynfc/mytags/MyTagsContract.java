@@ -1,23 +1,23 @@
-package com.easynfc.menu;
+package com.easynfc.mytags;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.data.model.Menu;
+import com.easynfc.data.Text;
+import com.easynfc.menu.MenuContract;
 
 import java.util.List;
 
 /**
- * Created by pablorojas on 20/2/18.
+ * Created by pablorojas on 13/3/18.
  */
 
-public interface MenuContract {
+public interface MyTagsContract {
 
     interface View extends BaseView<Presenter> {
-
+        void setTags(List<Text> textTags);
     }
 
     interface Presenter extends BasePresenter {
 
     }
-
 }

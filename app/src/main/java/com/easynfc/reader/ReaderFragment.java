@@ -105,10 +105,18 @@ public class ReaderFragment extends BaseFragment implements ReaderContract.View 
     public void setTagData(TagData tagData) {
         hideDialog();
         txtType.setText(tagData.getType());
-
+        
         if (tagData.getTechList().length >= 3) {
             txtTag.setText(tagData.getTechList()[0].split("android.nfc.tech.")[1] + ", " + tagData.getTechList()[1].split("android.nfc.tech.")[1]);
             txtTech.setText(tagData.getTechList()[2].split("android.nfc.tech.")[1]);
+        }else{
+            if (tagData.getTechList().length == 2) {
+                txtTag.setText(tagData.getTechList()[0].split("android.nfc.tech.")[1]);
+                txtTech.setText(tagData.getTechList()[1].split("android.nfc.tech.")[1]);
+            }
+            if (tagData.getTechList().length == 1) {
+                txtTag.setText(tagData.getTechList()[0].split("android.nfc.tech.")[1]);
+            }
         }
         txtRtd.setText(tagData.getRtd());
         txtTnf.setText(tagData.getTnf());

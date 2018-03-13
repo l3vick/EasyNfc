@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.Text;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 /**
  * Created by pablorojas on 26/2/18.
@@ -19,11 +22,14 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
 
     private NfcUtils nfcUtils;
     private SimpleTextWriterContract.View view;
+    private TagsRepository tagsRepository;
     private static String TAG = "SimpleTextWriterPresenter";
 
-    public SimpleTextWriterPresenter(SimpleTextWriterContract.View view, NfcUtils nfcUtils) {
-        if (nfcUtils != null) {
+    public SimpleTextWriterPresenter(SimpleTextWriterContract.View view, NfcUtils nfcUtils, TagsRepository tagsRepository) {
+
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
+            this.tagsRepository = tagsRepository;
             if (view != null) {
                 this.view = view;
                 view.setPresenter(this);
@@ -31,7 +37,7 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
                 Log.d(TAG, "SimpleTextWriterPresenter: View can't be null.");
             }
         } else {
-            Log.d(TAG, "SimpleTextWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "SimpleTextWriterPresenter: NfcUtils && Tags Repository can't be null.");
         }
     }
 
@@ -82,6 +88,12 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
     @Override
     public void disableForegroundDispatch() {
         nfcUtils.disableForegroundDispatch();
+    }
+
+    @Override
+    public void saveTag(String content) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addAllTagMenu(new Text(timestamp.getTime(),content));
     }
 
 }

@@ -1,36 +1,21 @@
-package com.easynfc.data;
+package com.easynfc.data.model;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by pablorojas on 20/2/18.
  */
 
-@Entity(tableName = "menu")
 public class Menu {
 
-    @PrimaryKey(autoGenerate = true)
-    private int id;
-
-    @ColumnInfo(name = "title")
     private String title;
 
-    @ColumnInfo(name = "subtitle")
     private String subtitle;
 
     public Menu(String title, String subtitle) {
         this.title = title;
         this.subtitle = subtitle;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -47,5 +32,11 @@ public class Menu {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
+    }
+
+    public static List<Menu> getMenuList() {
+        return Arrays.asList(new Menu("Write/", "write & save your favorites tags"),
+                new Menu("Read/", "read tag content"),
+                new Menu("My Tags/", "write, emulate & update your tags"));
     }
 }

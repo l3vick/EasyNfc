@@ -2,7 +2,6 @@ package com.easynfc;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.wifi.WifiManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,11 +9,12 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.easynfc.data.source.MenuRepository;
-import com.easynfc.data.source.local.menu.MenuLocalDataSource;
+import com.easynfc.data.source.TagsRepository;
+import com.easynfc.data.source.local.tags.TagsLocalDataSource;
 import com.easynfc.menu.MenuFragment;
 import com.easynfc.menu.MenuPresenter;
 import com.easynfc.mytags.MyTagsFragment;
+import com.easynfc.mytags.MyTagsPresenter;
 import com.easynfc.reader.ReaderFragment;
 import com.easynfc.reader.ReaderPresenter;
 import com.easynfc.tagsmenu.TagsMenuFragment;
@@ -82,11 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
-        MenuLocalDataSource menuLocalDataSource = MenuLocalDataSource.getInstance(this);
-
-        MenuRepository menuRepository = MenuRepository.getInstance(menuLocalDataSource);
-
-        MenuPresenter presenter = new MenuPresenter(menuRepository, menuFragment);
+        MenuPresenter presenter = new MenuPresenter(menuFragment);
     }
 
     public void navigateToTagsMenu() {
@@ -101,11 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
-        MenuLocalDataSource menuLocalDataSource = MenuLocalDataSource.getInstance(this);
-
-        MenuRepository menuRepository = MenuRepository.getInstance(menuLocalDataSource);
-
-        TagsMenuPresenter presenter = new TagsMenuPresenter(menuRepository, tagsMenuFragment);
+        TagsMenuPresenter presenter = new TagsMenuPresenter(tagsMenuFragment);
     }
 
     public void navigateToTagReader() {
@@ -134,6 +126,13 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, myTagsFragment)
                     .commit();
         }
+
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
+
+        MyTagsPresenter presenter = new MyTagsPresenter(myTagsFragment, tagsRepository);
+
     }
 
     public void navigateToWriter(int typeWriter) {
@@ -182,8 +181,13 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
+
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        SimpleTextWriterPresenter presenter = new SimpleTextWriterPresenter(simpleTextWriterFragment, nfcUtils);
+
+        SimpleTextWriterPresenter presenter = new SimpleTextWriterPresenter(simpleTextWriterFragment, nfcUtils, tagsRepository);
     }
 
     private void navigateToUrlWriter() {

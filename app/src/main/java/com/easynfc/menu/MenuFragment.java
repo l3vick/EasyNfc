@@ -10,10 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.easynfc.MainActivity;
 import com.easynfc.R;
-import com.easynfc.data.Menu;
-import com.easynfc.data.source.local.EasyNfcDatabase;
+import com.easynfc.data.model.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +46,7 @@ public class MenuFragment extends Fragment implements MenuContract.View {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_menu, container, false);
         ButterKnife.bind(this,v);
-        List<Menu> menus = new ArrayList<>();
-        adapter = new MenuAdapter(getActivity(),menus);
+        adapter = new MenuAdapter(getActivity(),Menu.getMenuList());
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 1);  //displays number of cards per row
         recycler.setLayoutManager(mLayoutManager);
         recycler.setItemAnimator(new DefaultItemAnimator());
@@ -57,10 +54,9 @@ public class MenuFragment extends Fragment implements MenuContract.View {
         return v;
     }
 
-    @Override
-    public void setMenu(List<Menu> menus) {
-       adapter.update(menus);
-    }
+
+
+
 
     @Override
     public void onResume() {

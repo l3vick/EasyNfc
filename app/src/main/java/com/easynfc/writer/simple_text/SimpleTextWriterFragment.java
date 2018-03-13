@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.Text;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 
@@ -75,7 +76,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etSimpleText.getText().toString());
     }
 
     @Override

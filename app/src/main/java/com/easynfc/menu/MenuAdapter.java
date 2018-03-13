@@ -1,7 +1,6 @@
 package com.easynfc.menu;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 
 import com.easynfc.MainActivity;
 import com.easynfc.R;
-import com.easynfc.data.Menu;
+import com.easynfc.data.model.Menu;
 import com.easynfc.util.AppUtils;
 
 import java.util.List;
@@ -57,10 +56,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         return lst_menu.size();
     }
 
-    public void update(List<Menu> menus) {
-        this.lst_menu = menus;
-        notifyDataSetChanged();
-    }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

@@ -4,11 +4,7 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.data.Menu;
 import com.easynfc.data.model.TagData;
-import com.easynfc.menu.MenuContract;
-
-import java.util.List;
 
 /**
  * Created by pablorojas on 7/3/18.

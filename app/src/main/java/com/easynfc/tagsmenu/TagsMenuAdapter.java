@@ -1,20 +1,18 @@
 package com.easynfc.tagsmenu;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.easynfc.MainActivity;
 import com.easynfc.R;
-import com.easynfc.data.TagMenu;
+import com.easynfc.data.model.TagMenu;
 import com.easynfc.util.AppConstants;
 import com.easynfc.util.AppUtils;
 

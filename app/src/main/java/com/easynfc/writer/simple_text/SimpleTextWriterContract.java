@@ -22,5 +22,7 @@ public interface SimpleTextWriterContract {
         void enableForegroundDispatch();
 
         void disableForegroundDispatch();
+
+        void saveTag(String s);
     }
 }

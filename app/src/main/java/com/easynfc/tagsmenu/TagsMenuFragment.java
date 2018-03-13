@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 
 import com.easynfc.BaseFragment;
 import com.easynfc.R;
-import com.easynfc.data.Menu;
-import com.easynfc.data.TagMenu;
-import com.easynfc.menu.MenuAdapter;
+import com.easynfc.data.model.TagMenu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,8 +48,8 @@ public class TagsMenuFragment extends BaseFragment implements TagsMenuContract.V
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tags_menu, container, false);
         ButterKnife.bind(this, v);
-        List<TagMenu> tagsMenu = new ArrayList<>();
-        adapter = new TagsMenuAdapter(getActivity(),tagsMenu);
+
+        adapter = new TagsMenuAdapter(getActivity(),TagMenu.getTagMenuList());
         GridLayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);  //displays number of cards per row
         recycler.setLayoutManager(mLayoutManager);
         recycler.setItemAnimator(new DefaultItemAnimator());
@@ -68,7 +66,6 @@ public class TagsMenuFragment extends BaseFragment implements TagsMenuContract.V
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //presenter.stop();
     }
 
     @Override

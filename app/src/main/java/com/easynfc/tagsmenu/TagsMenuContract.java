@@ -2,7 +2,7 @@ package com.easynfc.tagsmenu;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.data.TagMenu;
+import com.easynfc.data.model.TagMenu;
 
 import java.util.List;
 
