@@ -1,7 +1,6 @@
 package com.easynfc.reader;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 
 import com.easynfc.BaseFragment;
 import com.easynfc.R;
-import com.easynfc.data.model.TagData;
+import com.easynfc.data.model.TagResponse;
 import com.easynfc.util.AppConstants;
 
 import butterknife.BindView;
@@ -102,28 +101,28 @@ public class ReaderFragment extends BaseFragment implements ReaderContract.View 
     }
 
     @Override
-    public void setTagData(TagData tagData) {
+    public void setTagData(TagResponse tagResponse) {
         hideDialog();
-        txtType.setText(tagData.getType());
+        txtType.setText(tagResponse.getType());
         
-        if (tagData.getTechList().length >= 3) {
-            txtTag.setText(tagData.getTechList()[0].split("android.nfc.tech.")[1] + ", " + tagData.getTechList()[1].split("android.nfc.tech.")[1]);
-            txtTech.setText(tagData.getTechList()[2].split("android.nfc.tech.")[1]);
+        if (tagResponse.getTechList().length >= 3) {
+            txtTag.setText(tagResponse.getTechList()[0].split("android.nfc.tech.")[1] + ", " + tagResponse.getTechList()[1].split("android.nfc.tech.")[1]);
+            txtTech.setText(tagResponse.getTechList()[2].split("android.nfc.tech.")[1]);
         }else{
-            if (tagData.getTechList().length == 2) {
-                txtTag.setText(tagData.getTechList()[0].split("android.nfc.tech.")[1]);
-                txtTech.setText(tagData.getTechList()[1].split("android.nfc.tech.")[1]);
+            if (tagResponse.getTechList().length == 2) {
+                txtTag.setText(tagResponse.getTechList()[0].split("android.nfc.tech.")[1]);
+                txtTech.setText(tagResponse.getTechList()[1].split("android.nfc.tech.")[1]);
             }
-            if (tagData.getTechList().length == 1) {
-                txtTag.setText(tagData.getTechList()[0].split("android.nfc.tech.")[1]);
+            if (tagResponse.getTechList().length == 1) {
+                txtTag.setText(tagResponse.getTechList()[0].split("android.nfc.tech.")[1]);
             }
         }
-        txtRtd.setText(tagData.getRtd());
-        txtTnf.setText(tagData.getTnf());
-        txtSize.setText(tagData.getSize());
-        txtContent.setText(tagData.getContent());
+        txtRtd.setText(tagResponse.getRtd());
+        txtTnf.setText(tagResponse.getTnf());
+        txtSize.setText(tagResponse.getSize());
+        txtContent.setText(tagResponse.getContent());
         imgType.setImageResource(0);
-        imgType.setImageResource(getResourceByType(tagData.getType()));
+        imgType.setImageResource(getResourceByType(tagResponse.getType()));
 
     }
 

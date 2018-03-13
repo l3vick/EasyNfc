@@ -2,9 +2,12 @@ package com.easynfc.data.source.local.tags;
 
 import android.content.Context;
 
-import com.easynfc.data.Text;
+import com.easynfc.data.TextTag;
+import com.easynfc.data.UrlTag;
+import com.easynfc.data.MyTag;
 import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.local.EasyNfcDatabase;
+import com.easynfc.util.AppConstants;
 
 import java.util.List;
 
@@ -32,17 +35,24 @@ public class TagsLocalDataSource implements TagsDataSource {
     }
 
     @Override
-    public void getTagMenu(LoadTextTagsCallback callback) {
-        final List<Text> textTags = tagsDao.getTextTags();
-        if (textTags.size() > 0) {
-            callback.onTextTagsLoaded(textTags);
+    public void getTags(LoadTagsCallback callback) {
+        final List<MyTag> tags = tagsDao.getTags();
+        if (tags.size() > 0) {
+            callback.onTagsLoaded(tags);
         } else {
             callback.onDataNotAvailable();
         }
     }
 
     @Override
-    public void addAllTagMenu(Text... textTags) {
-        tagsDao.insertTextTags(textTags);
+    public void addText(TextTag textTag) {
+        tagsDao.addTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(), AppConstants.TEXT));
+        tagsDao.insertTextTags(textTag);
+    }
+
+    @Override
+    public void addUrl(UrlTag urlTag) {
+        tagsDao.addTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.URL));
+        tagsDao.insertUrlTag(urlTag);
     }
 }

@@ -2,7 +2,7 @@ package com.easynfc.mytags;
 
 import android.util.Log;
 
-import com.easynfc.data.Text;
+import com.easynfc.data.MyTag;
 import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.TagsRepository;
 
@@ -37,10 +37,10 @@ public class MyTagsPresenter implements MyTagsContract.Presenter {
 
     @Override
     public void start() {
-        tagsRepository.getTagMenu(new TagsDataSource.LoadTextTagsCallback() {
+        tagsRepository.getTags(new TagsDataSource.LoadTagsCallback() {
             @Override
-            public void onTextTagsLoaded(List<Text> textTags) {
-                view.setTags(textTags);
+            public void onTagsLoaded(List<MyTag> tags) {
+                view.setTags(tags);
             }
 
             @Override

@@ -4,14 +4,13 @@ package com.easynfc.mytags;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.easynfc.BaseFragment;
 import com.easynfc.R;
-import com.easynfc.data.Text;
+import com.easynfc.data.MyTag;
 
 import java.util.List;
 
@@ -48,8 +47,9 @@ public class MyTagsFragment extends BaseFragment implements MyTagsContract.View 
         this.presenter = presenter;
     }
 
+
     @Override
-    public void setTags(List<Text> textTags) {
-        Toast.makeText(main, textTags.get(0).getContent()+ " " +textTags.get(0).getTimeStamp(), Toast.LENGTH_SHORT).show();
+    public void setTags(List<MyTag> tags) {
+        Toast.makeText(main, tags.get(0).getContent()+ " " + tags.get(0).getTimestamp(), Toast.LENGTH_SHORT).show();
     }
 }

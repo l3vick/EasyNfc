@@ -1,44 +1,23 @@
 package com.easynfc.writer;
 
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.ResolveInfo;
-import android.graphics.Typeface;
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.easynfc.MainActivity;
 import com.easynfc.R;
-import com.easynfc.data.model.WifiAuthType;
-import com.easynfc.data.model.WifiTag;
-import com.easynfc.util.AppUtils;
-import com.easynfc.writer.app_launcher.AppLauncherWriterContract;
-import com.easynfc.writer.wi_fi.WiFiWriterContract;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.

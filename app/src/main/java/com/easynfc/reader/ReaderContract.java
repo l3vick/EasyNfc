@@ -4,7 +4,7 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.data.model.TagData;
+import com.easynfc.data.model.TagResponse;
 
 /**
  * Created by pablorojas on 7/3/18.
@@ -16,7 +16,7 @@ public interface ReaderContract {
 
         void processNfc(Intent intent);
 
-        void setTagData(TagData tagData);
+        void setTagData(TagResponse tagResponse);
     }
 
     interface Presenter extends BasePresenter {

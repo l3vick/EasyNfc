@@ -2,8 +2,7 @@ package com.easynfc.mytags;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.data.Text;
-import com.easynfc.menu.MenuContract;
+import com.easynfc.data.MyTag;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
 public interface MyTagsContract {
 
     interface View extends BaseView<Presenter> {
-        void setTags(List<Text> textTags);
+        void setTags(List<MyTag> tags);
     }
 
     interface Presenter extends BasePresenter {

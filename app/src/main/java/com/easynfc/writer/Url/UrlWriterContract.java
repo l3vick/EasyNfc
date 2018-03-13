@@ -23,5 +23,7 @@ public interface UrlWriterContract {
         void writeTag(Intent intent, String text);
 
         void disableForegroundDispatch();
+
+        void saveTag(String content);
     }
 }

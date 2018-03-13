@@ -12,7 +12,7 @@ import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
 import com.easynfc.data.model.WifiAuthType;
-import com.easynfc.data.model.WifiTag;
+import com.easynfc.data.model.Wifi;
 import com.easynfc.util.NfcUtils;
 
 import java.io.IOException;
@@ -29,7 +29,7 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
     private WiFiWriterContract.View view;
     private static String TAG = "WiFiWriterPresenter";
 
-    private ArrayList<WifiTag> wifiNetworksList;
+    private ArrayList<Wifi> wifiNetworksList;
     private WifiManager wifiManager;
     private WiFiWriterContract.OnWifiNetworksLoadedCallback callback;
 
@@ -65,9 +65,9 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
 
     @Override
     public void writeTag(Intent intent, String ssid, String password, String cypher) {
-        WifiTag wifiTag = new WifiTag(ssid, toWifiAuthType(cypher), password);
+        Wifi wifi = new Wifi(ssid, toWifiAuthType(cypher), password);
         try {
-            nfcUtils.writeWifiTag(intent, wifiTag, new NfcUtils.TagWrittenCallback() {
+            nfcUtils.writeWifiTag(intent, wifi, new NfcUtils.TagWrittenCallback() {
                 @Override
                 public void OnSuccess() {
                     view.OnTagWritten();
@@ -135,7 +135,7 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
                     wifiNetworksList = new ArrayList<>();
 
                     for (ScanResult mScanResult : mScanResults) {
-                        wifiNetworksList.add(new WifiTag(mScanResult.SSID, toWifiAuthType(mScanResult.capabilities), null));
+                        wifiNetworksList.add(new Wifi(mScanResult.SSID, toWifiAuthType(mScanResult.capabilities), null));
                     }
                     callback.OnSuccess(wifiNetworksList);
                 }

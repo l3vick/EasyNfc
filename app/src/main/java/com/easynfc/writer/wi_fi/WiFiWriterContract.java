@@ -5,7 +5,7 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
-import com.easynfc.data.model.WifiTag;
+import com.easynfc.data.model.Wifi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public interface WiFiWriterContract {
     }
 
     interface OnWifiNetworksLoadedCallback {
-        void OnSuccess(ArrayList<WifiTag> wifiTag);
+        void OnSuccess(ArrayList<Wifi> wifi);
     }
 }
 

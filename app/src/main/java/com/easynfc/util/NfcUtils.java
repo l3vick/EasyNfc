@@ -9,36 +9,26 @@ import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.NfcManager;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Parcelable;
-import android.text.TextUtils;
 import android.util.Log;
-import android.util.Pair;
 
-import com.easynfc.R;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
-import com.easynfc.data.model.TagData;
-import com.easynfc.data.model.WifiTag;
+import com.easynfc.data.model.TagResponse;
+import com.easynfc.data.model.Wifi;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Locale;
-
-import static android.provider.ContactsContract.Directory.PACKAGE_NAME;
 
 
 /**
@@ -109,7 +99,7 @@ public class NfcUtils {
 
 
     public void handleIntent(Intent intent, TagReadedCallback callback) {
-        TagData tagData;
+        TagResponse tagResponse;
         Tag tag = getTagFromIntent(intent);
         NdefMessage ndefMessage = getNdefMessageFromIntent(intent);
         if (ndefMessage != null) {
@@ -117,8 +107,8 @@ public class NfcUtils {
             if (ndefRecord != null) {
                 String message = new String(ndefRecord.getPayload());
                 String type = getType(ndefRecord);
-                tagData = new TagData(type, message, tag.getTechList(), tnfToString(ndefRecord.getTnf()), rtdToString(ndefRecord.getType()), Integer.toString(ndefRecord.getPayload().length));
-                callback.OnSuccess(tagData);
+                tagResponse = new TagResponse(type, message, tag.getTechList(), tnfToString(ndefRecord.getTnf()), rtdToString(ndefRecord.getType()), Integer.toString(ndefRecord.getPayload().length));
+                callback.OnSuccess(tagResponse);
             }
         }
     }
@@ -230,8 +220,8 @@ public class NfcUtils {
     }
 
 
-    public void writeWifiTag(Intent intent, WifiTag wifiTag, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
-        NdefMessage ndefMessage = writeNdefWifiMessage(wifiTag);
+    public void writeWifiTag(Intent intent, Wifi wifi, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
+        NdefMessage ndefMessage = writeNdefWifiMessage(wifi);
         writeNdefMessage(intent, ndefMessage, callback);
     }
 
@@ -275,8 +265,8 @@ public class NfcUtils {
         }
     }
 
-    public NdefMessage writeNdefWifiMessage(WifiTag wifiTag) {
-        byte[] payload = generateNdefPayload(wifiTag);
+    public NdefMessage writeNdefWifiMessage(Wifi wifi) {
+        byte[] payload = generateNdefPayload(wifi);
         NdefRecord mimeRecord = new NdefRecord(
                 NdefRecord.TNF_MIME_MEDIA,
                 NFC_TOKEN_MIME_TYPE.getBytes(Charset.forName("US-ASCII")),
@@ -286,7 +276,7 @@ public class NfcUtils {
         return ndefMessage;
     }
 
-    private static byte[] generateNdefPayload(WifiTag wifiNetwork) {
+    private static byte[] generateNdefPayload(Wifi wifiNetwork) {
         String ssid = wifiNetwork.getSsid();
         short ssidSize = (short) ssid.getBytes().length;
 
@@ -472,7 +462,7 @@ public class NfcUtils {
     }
 
     public interface TagReadedCallback{
-        void OnSuccess(TagData tagData);
+        void OnSuccess(TagResponse tagResponse);
     }
 
     public interface TagWrittenCallback {

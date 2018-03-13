@@ -13,11 +13,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
-import com.easynfc.data.Text;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
-
-import java.lang.reflect.Type;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

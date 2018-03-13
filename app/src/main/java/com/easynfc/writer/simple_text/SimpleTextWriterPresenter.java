@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.nfc.FormatException;
 import android.util.Log;
 
-import com.easynfc.data.Text;
+import com.easynfc.data.TextTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
@@ -93,7 +93,7 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
     @Override
     public void saveTag(String content) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addAllTagMenu(new Text(timestamp.getTime(),content));
+        tagsRepository.addText(new TextTag(timestamp.getTime(),content));
     }
 
 }

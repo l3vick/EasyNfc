@@ -73,7 +73,7 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etUrl.getText().toString());
     }
 
     @Override

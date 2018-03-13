@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.UrlTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 /**
  * Created by pablorojas on 26/2/18.
@@ -19,20 +22,22 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
 
     private static final String TAG = "UrlWriterPresenter";
     private UrlWriterContract.View view;
+    private TagsRepository tagsRepository;
     private NfcUtils nfcUtils;
 
 
-    public UrlWriterPresenter(UrlWriterContract.View view, NfcUtils nfcUtils) {
-        if (nfcUtils != null) {
+    public UrlWriterPresenter(UrlWriterContract.View view, NfcUtils nfcUtils, TagsRepository tagsRepository) {
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
+            this.tagsRepository = tagsRepository;
             if (view != null) {
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "UrlWriterPresenter: View can't be null.");
+                Log.d(TAG, "View can't be null.");
             }
         } else {
-            Log.d(TAG, "UrlWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "NfcUtils & Tags Repository can't be null.");
         }
     }
 
@@ -81,5 +86,11 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
     @Override
     public void disableForegroundDispatch() {
         nfcUtils.disableForegroundDispatch();
+    }
+
+    @Override
+    public void saveTag(String content) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addUrl(new UrlTag(timestamp.getTime(), content));
     }
 }

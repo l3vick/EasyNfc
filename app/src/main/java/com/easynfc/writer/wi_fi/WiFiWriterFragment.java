@@ -1,7 +1,6 @@
 package com.easynfc.writer.wi_fi;
 
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Typeface;
@@ -23,7 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.easynfc.R;
-import com.easynfc.data.model.WifiTag;
+import com.easynfc.data.model.Wifi;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 
@@ -168,25 +167,25 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
                 new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
         presenter.startScan(new WiFiWriterContract.OnWifiNetworksLoadedCallback() {
             @Override
-            public void OnSuccess(ArrayList<WifiTag> wifiTags) {
+            public void OnSuccess(ArrayList<Wifi> wifis) {
                 progressBar.setVisibility(View.GONE);
-                showWifiNetworksList(wifiTags);
+                showWifiNetworksList(wifis);
             }
         });
     }
 
-    private void showWifiNetworksList(final ArrayList<WifiTag> wifiTags) {
+    private void showWifiNetworksList(final ArrayList<Wifi> wifis) {
         List<String> adapterList = new ArrayList<>();
-        for (WifiTag wifiTag : wifiTags) {
-            adapterList.add(wifiTag.getSsid());
+        for (Wifi wifi : wifis) {
+            adapterList.add(wifi.getSsid());
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.aar_item_tv, adapterList);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int row, long l) {
-                etWifiSsid.setText(wifiTags.get(row).getSsid());
-                int position = presenter.getWifiAuthPosition(wifiTags.get(row).getSecurity().toString());
+                etWifiSsid.setText(wifis.get(row).getSsid());
+                int position = presenter.getWifiAuthPosition(wifis.get(row).getSecurity().toString());
                 spSecurityCypher.setSelection(position + 1);
                 hideWifiNetowrksDialog();
             }

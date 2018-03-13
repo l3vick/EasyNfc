@@ -3,7 +3,7 @@ package com.easynfc.reader;
 import android.content.Intent;
 import android.util.Log;
 
-import com.easynfc.data.model.TagData;
+import com.easynfc.data.model.TagResponse;
 import com.easynfc.util.NfcUtils;
 
 /**
@@ -55,8 +55,8 @@ public class ReaderPresenter implements ReaderContract.Presenter {
     public void processNfc(Intent intent) {
         nfcUtils.handleIntent(intent, new NfcUtils.TagReadedCallback() {
             @Override
-            public void OnSuccess(TagData tagData) {
-                view.setTagData(tagData);
+            public void OnSuccess(TagResponse tagResponse) {
+                view.setTagData(tagResponse);
             }
         });
     }

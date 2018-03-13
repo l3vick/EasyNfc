@@ -1,6 +1,8 @@
 package com.easynfc.data.source;
 
-import com.easynfc.data.Text;
+import com.easynfc.data.TextTag;
+import com.easynfc.data.UrlTag;
+import com.easynfc.data.MyTag;
 
 import java.util.List;
 
@@ -10,12 +12,16 @@ import java.util.List;
 
 public interface TagsDataSource {
 
-    void getTagMenu(LoadTextTagsCallback callback);
+    void getTags(LoadTagsCallback callback);
 
-    void addAllTagMenu(Text... textTags);
+    void addText(TextTag textTag);
 
-    interface LoadTextTagsCallback {
-        void onTextTagsLoaded(List<Text> textTags);
+    void addUrl(UrlTag urlTag);
+
+    interface LoadTagsCallback {
+
+        void onTagsLoaded(List<MyTag> tags);
+
         void onDataNotAvailable();
     }
 

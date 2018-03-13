@@ -4,12 +4,12 @@ package com.easynfc.data.model;
  * Created by pablorojas on 7/3/18.
  */
 
-public class TagData {
+public class TagResponse {
 
     String type, content, tnf, rtd, size;
     String[] techList;
 
-    public TagData(String type, String content, String[] techList, String tnf, String rtd, String size) {
+    public TagResponse(String type, String content, String[] techList, String tnf, String rtd, String size) {
         this.type = type;
         this.content = content;
         this.techList = techList;

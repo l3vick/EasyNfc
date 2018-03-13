@@ -1,6 +1,8 @@
 package com.easynfc.data.source;
 
-import com.easynfc.data.Text;
+import com.easynfc.data.TextTag;
+import com.easynfc.data.UrlTag;
+import com.easynfc.data.MyTag;
 import com.easynfc.data.source.local.tags.TagsLocalDataSource;
 
 import java.util.List;
@@ -33,23 +35,29 @@ public class TagsRepository implements TagsDataSource {
     }
 
     @Override
-    public void getTagMenu(final LoadTextTagsCallback callback) {
-        remoteDataSource.getTagMenu(new LoadTextTagsCallback() {
+    public void getTags(final LoadTagsCallback callback) {
+        remoteDataSource.getTags(new LoadTagsCallback() {
             @Override
-            public void onTextTagsLoaded(List<Text> textTags) {
-                callback.onTextTagsLoaded(textTags);
+            public void onTagsLoaded(List<MyTag> tags) {
+                callback.onTagsLoaded(tags);
             }
 
             @Override
             public void onDataNotAvailable() {
-                callback.onDataNotAvailable();
+
             }
         });
     }
 
     @Override
-    public void addAllTagMenu(Text... textTags) {
-        remoteDataSource.addAllTagMenu(textTags);
+    public void addText(TextTag textTag) {
+
+        remoteDataSource.addText(textTag);
+    }
+
+    @Override
+    public void addUrl(UrlTag urlTag) {
+        remoteDataSource.addUrl(urlTag);
     }
 
 }

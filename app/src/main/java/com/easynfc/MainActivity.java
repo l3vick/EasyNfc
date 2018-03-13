@@ -200,8 +200,14 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
+
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
+
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        UrlWriterPresenter presenter = new UrlWriterPresenter(urlWriterFragment, nfcUtils);
+
+        UrlWriterPresenter presenter = new UrlWriterPresenter(urlWriterFragment, nfcUtils, tagsRepository);
     }
 
     private void navigateToSmsWriter() {
