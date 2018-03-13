@@ -89,7 +89,7 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etLatitude.getText().toString(), etLongitude.getText().toString());
     }
 
     @OnClick(R.id.btn_location)

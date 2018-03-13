@@ -23,6 +23,8 @@ public interface PhoneWriterContract {
         void writeTag(Intent intent, String text);
 
         void disableForegroundDispatch();
+
+        void saveTag(String phone);
     }
 }
 

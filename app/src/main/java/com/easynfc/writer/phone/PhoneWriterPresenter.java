@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.PhoneTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 import com.easynfc.writer.wi_fi.WiFiWriterContract;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -20,19 +23,21 @@ public class PhoneWriterPresenter  implements PhoneWriterContract.Presenter {
 
     private NfcUtils nfcUtils;
     private PhoneWriterContract.View view;
+    private TagsRepository tagsRepository;
     private static String TAG = "SmsWriterPresenter";
 
-    public PhoneWriterPresenter(PhoneWriterContract.View view, NfcUtils nfcUtils) {
-        if (nfcUtils != null) {
+    public PhoneWriterPresenter(PhoneWriterContract.View view, NfcUtils nfcUtils, TagsRepository tagsRepository) {
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
+            this.tagsRepository = tagsRepository;
             if (view != null) {
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "SmsWriterPresenter: View can't be null.");
+                Log.d(TAG, "View can't be null.");
             }
         } else {
-            Log.d(TAG, "SmsWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "NfcUtils & Tags Repository can't be null.");
         }
     }
 
@@ -81,5 +86,11 @@ public class PhoneWriterPresenter  implements PhoneWriterContract.Presenter {
     @Override
     public void disableForegroundDispatch() {
         nfcUtils.disableForegroundDispatch();
+    }
+
+    @Override
+    public void saveTag(String phone) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addPhone(new PhoneTag(timestamp.getTime(), phone));
     }
 }

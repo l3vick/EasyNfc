@@ -8,14 +8,17 @@ import android.net.wifi.WifiManager;
 import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.WifiTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
 import com.easynfc.data.model.WifiAuthType;
 import com.easynfc.data.model.Wifi;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,24 +30,25 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
 
     private NfcUtils nfcUtils;
     private WiFiWriterContract.View view;
-    private static String TAG = "WiFiWriterPresenter";
-
+    private TagsRepository tagsRepository;
     private ArrayList<Wifi> wifiNetworksList;
     private WifiManager wifiManager;
     private WiFiWriterContract.OnWifiNetworksLoadedCallback callback;
+    private static String TAG = "WiFiWriterPresenter";
 
-    public WiFiWriterPresenter(WiFiWriterContract.View view, NfcUtils nfcUtils, WifiManager wifiManager) {
-        if (nfcUtils != null) {
+    public WiFiWriterPresenter(WiFiWriterContract.View view, NfcUtils nfcUtils, WifiManager wifiManager, TagsRepository tagsRepository) {
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
             if (view != null) {
                 this.view = view;
                 this.wifiManager = wifiManager;
+                this.tagsRepository = tagsRepository;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "WiFiWriterPresenter: View can't be null.");
+                Log.d(TAG, "View can't be null.");
             }
         } else {
-            Log.d(TAG, "WiFiWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "NfcUtils & Tags Repository can't be null.");
         }
     }
 
@@ -123,6 +127,12 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
     @Override
     public int getWifiAuthPosition(String authType) {
        return toWifiAuthType(authType).ordinal();
+    }
+
+    @Override
+    public void saveTag(String ssid, String password, String auth) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addWifi(new WifiTag(timestamp.getTime(), ssid,auth, password));
     }
 
 

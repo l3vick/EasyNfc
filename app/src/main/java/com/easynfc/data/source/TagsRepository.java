@@ -1,8 +1,14 @@
 package com.easynfc.data.source;
 
+import com.easynfc.data.AarTag;
+import com.easynfc.data.EmailTag;
+import com.easynfc.data.LocationTag;
+import com.easynfc.data.PhoneTag;
+import com.easynfc.data.SmsTag;
 import com.easynfc.data.TextTag;
 import com.easynfc.data.UrlTag;
 import com.easynfc.data.MyTag;
+import com.easynfc.data.WifiTag;
 import com.easynfc.data.source.local.tags.TagsLocalDataSource;
 
 import java.util.List;
@@ -51,13 +57,42 @@ public class TagsRepository implements TagsDataSource {
 
     @Override
     public void addText(TextTag textTag) {
-
         remoteDataSource.addText(textTag);
     }
 
     @Override
     public void addUrl(UrlTag urlTag) {
         remoteDataSource.addUrl(urlTag);
+    }
+
+    @Override
+    public void addSms(SmsTag smsTag) {
+        remoteDataSource.addSms(smsTag);
+    }
+
+    @Override
+    public void addPhone(PhoneTag phoneTag) {
+        remoteDataSource.addPhone(phoneTag);
+    }
+
+    @Override
+    public void addAar(AarTag aarTag) {
+        remoteDataSource.addAar(aarTag);
+    }
+
+    @Override
+    public void addLocation(LocationTag locationTag) {
+        remoteDataSource.addLocation(locationTag);
+    }
+
+    @Override
+    public void addWifi(WifiTag wifiTag) {
+        remoteDataSource.addWifi(wifiTag);
+    }
+
+    @Override
+    public void addEmail(EmailTag emailTag) {
+        remoteDataSource.addEmail(emailTag);
     }
 
 }

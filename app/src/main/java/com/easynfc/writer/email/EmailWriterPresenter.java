@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.EmailTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 import com.easynfc.writer.location.LocationWriterContract;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -18,21 +21,24 @@ import java.io.IOException;
 
 public class EmailWriterPresenter implements EmailWriterContract.Presenter {
 
+
     private NfcUtils nfcUtils;
     private EmailWriterContract.View view;
+    private TagsRepository tagsRepository;
     private static String TAG = "EmailWriterPresenter";
 
-    public EmailWriterPresenter(EmailWriterContract.View view, NfcUtils nfcUtils) {
-        if (nfcUtils != null) {
+    public EmailWriterPresenter(EmailWriterContract.View view, NfcUtils nfcUtils, TagsRepository tagsRepository) {
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
+            this.tagsRepository = tagsRepository;
             if (view != null) {
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "EmailWriterPresenter: View can't be null.");
+                Log.d(TAG, "View can't be null.");
             }
         } else {
-            Log.d(TAG, "EmailWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "NfcUtils & Tags Repository can't be null.");
         }
     }
 
@@ -81,5 +87,11 @@ public class EmailWriterPresenter implements EmailWriterContract.Presenter {
     @Override
     public void disableForegroundDispatch() {
         nfcUtils.disableForegroundDispatch();
+    }
+
+    @Override
+    public void saveTag(String email) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addEmail(new EmailTag(timestamp.getTime(),email));
     }
 }

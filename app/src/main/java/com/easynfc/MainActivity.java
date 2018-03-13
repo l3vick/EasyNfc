@@ -220,8 +220,12 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
 
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
+
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        SmsWriterPresenter presenter = new SmsWriterPresenter(smsWriterFragment, nfcUtils);
+        SmsWriterPresenter presenter = new SmsWriterPresenter(smsWriterFragment, nfcUtils, tagsRepository);
     }
 
     private void navigateToPhone() {
@@ -233,9 +237,12 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, phoneWriterFragment)
                     .commit();
         }
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        PhoneWriterPresenter presenter = new PhoneWriterPresenter(phoneWriterFragment, nfcUtils);
+        PhoneWriterPresenter presenter = new PhoneWriterPresenter(phoneWriterFragment, nfcUtils, tagsRepository);
     }
 
     private void navigateToAppLauncherWriter() {
@@ -247,9 +254,12 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, appLauncherWriterFragment)
                     .commit();
         }
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        AppLauncherWriterPresenter presenter = new AppLauncherWriterPresenter(appLauncherWriterFragment, nfcUtils);
+        AppLauncherWriterPresenter presenter = new AppLauncherWriterPresenter(appLauncherWriterFragment, nfcUtils, tagsRepository);
     }
 
     private void navigateToLocationWriter() {
@@ -261,9 +271,12 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, locationWriterFragment)
                     .commit();
         }
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        LocationWriterPresenter presenter = new LocationWriterPresenter(locationWriterFragment, nfcUtils);
+        LocationWriterPresenter presenter = new LocationWriterPresenter(locationWriterFragment, nfcUtils, tagsRepository);
     }
 
     private void navigateToWifiWriter() {
@@ -275,11 +288,14 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, wiFiWriterFragment)
                     .commit();
         }
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        WiFiWriterPresenter presenter = new WiFiWriterPresenter(wiFiWriterFragment, nfcUtils, wifiManager);
+        WiFiWriterPresenter presenter = new WiFiWriterPresenter(wiFiWriterFragment, nfcUtils, wifiManager, tagsRepository);
     }
 
     private void navigateToEmailWriter() {
@@ -291,9 +307,12 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.container, emailWriterFragment)
                     .commit();
         }
+        TagsLocalDataSource tagsLocalDataSource = TagsLocalDataSource.getInstance(this);
+
+        TagsRepository tagsRepository = TagsRepository.getInstance(tagsLocalDataSource);
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
-        EmailWriterPresenter presenter = new EmailWriterPresenter(emailWriterFragment, nfcUtils);
+        EmailWriterPresenter presenter = new EmailWriterPresenter(emailWriterFragment, nfcUtils, tagsRepository);
     }
 
     private void navigateToFormatWriter() {

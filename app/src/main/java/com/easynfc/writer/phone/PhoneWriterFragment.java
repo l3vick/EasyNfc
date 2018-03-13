@@ -77,7 +77,7 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etPhone.getText().toString());
     }
 
     @Override

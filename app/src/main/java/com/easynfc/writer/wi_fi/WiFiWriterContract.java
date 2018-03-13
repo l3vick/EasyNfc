@@ -36,6 +36,8 @@ public interface WiFiWriterContract {
         void startScan(OnWifiNetworksLoadedCallback onWifiNetworksLoadedCallback);
 
         int getWifiAuthPosition(String authType);
+
+        void saveTag(String ssid, String password, String auth);
     }
 
     interface OnWifiNetworksLoadedCallback {

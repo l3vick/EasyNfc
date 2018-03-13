@@ -42,6 +42,8 @@ public interface LocationWriterContract {
         Double getLongitude();
 
         void requestLocationUpdates();
+
+        void saveTag(String latitude, String longitude);
     }
 }
 

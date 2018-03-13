@@ -23,6 +23,8 @@ public interface SmsWriterContract {
         void writeTag(Intent intent, String number, String text);
 
         void disableForegroundDispatch();
+
+        void saveTag(String s, String s1);
     }
 }
 

@@ -128,7 +128,7 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
     }
 
     @OnClick(R.id.btn_wifi_networks)

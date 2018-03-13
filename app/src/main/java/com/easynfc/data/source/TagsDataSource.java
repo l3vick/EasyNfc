@@ -1,8 +1,14 @@
 package com.easynfc.data.source;
 
+import com.easynfc.data.AarTag;
+import com.easynfc.data.EmailTag;
+import com.easynfc.data.LocationTag;
+import com.easynfc.data.PhoneTag;
+import com.easynfc.data.SmsTag;
 import com.easynfc.data.TextTag;
 import com.easynfc.data.UrlTag;
 import com.easynfc.data.MyTag;
+import com.easynfc.data.WifiTag;
 
 import java.util.List;
 
@@ -17,6 +23,18 @@ public interface TagsDataSource {
     void addText(TextTag textTag);
 
     void addUrl(UrlTag urlTag);
+
+    void addSms(SmsTag smsTag);
+
+    void addPhone(PhoneTag phoneTag);
+
+    void addAar(AarTag aarTag);
+
+    void addLocation(LocationTag locationTag);
+
+    void addWifi(WifiTag wifiTag);
+
+    void addEmail(EmailTag emailTag);
 
     interface LoadTagsCallback {
 

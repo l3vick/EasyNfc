@@ -5,13 +5,16 @@ import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.util.Log;
 
+import com.easynfc.data.SmsTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -21,19 +24,21 @@ public class SmsWriterPresenter implements SmsWriterContract.Presenter {
 
     private NfcUtils nfcUtils;
     private SmsWriterContract.View view;
+    private TagsRepository tagsRepository;
     private static String TAG = "SmsWriterPresenter";
 
-    public SmsWriterPresenter(SmsWriterContract.View view, NfcUtils nfcUtils) {
-        if (nfcUtils != null) {
+    public SmsWriterPresenter(SmsWriterContract.View view, NfcUtils nfcUtils, TagsRepository tagsRepository) {
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
+            this.tagsRepository = tagsRepository;
             if (view != null) {
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "SmsWriterPresenter: View can't be null.");
+                Log.d(TAG, "View can't be null.");
             }
         } else {
-            Log.d(TAG, "SmsWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "NfcUtils & Tags Repository can't be null.");
         }
     }
 
@@ -82,5 +87,11 @@ public class SmsWriterPresenter implements SmsWriterContract.Presenter {
     @Override
     public void disableForegroundDispatch() {
         nfcUtils.disableForegroundDispatch();
+    }
+
+    @Override
+    public void saveTag(String number, String text) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addSms(new SmsTag(timestamp.getTime(), number, text));
     }
 }

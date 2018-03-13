@@ -77,7 +77,7 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etEmail.getText().toString());
     }
     @Override
     public void setPresenter(EmailWriterContract.Presenter presenter) {

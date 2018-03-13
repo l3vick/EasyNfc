@@ -79,7 +79,7 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etPhone.getText().toString(), etText.getText().toString());
     }
 
     @Override

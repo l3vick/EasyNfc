@@ -23,6 +23,8 @@ public interface EmailWriterContract {
         void writeTag(Intent intent, String text);
 
         void disableForegroundDispatch();
+
+        void saveTag(String email);
     }
 }
 

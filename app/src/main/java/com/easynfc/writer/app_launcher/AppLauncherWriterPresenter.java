@@ -6,12 +6,15 @@ import android.content.pm.ResolveInfo;
 import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.AarTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,19 +26,21 @@ public class AppLauncherWriterPresenter implements AppLauncherWriterContract.Pre
 
     private NfcUtils nfcUtils;
     private AppLauncherWriterContract.View view;
+    private TagsRepository tagsRepository;
     private static String TAG = "AppLauncherWriterPresenter";
 
-    public AppLauncherWriterPresenter(AppLauncherWriterContract.View view, NfcUtils nfcUtils) {
-        if (nfcUtils != null) {
+    public AppLauncherWriterPresenter(AppLauncherWriterContract.View view, NfcUtils nfcUtils, TagsRepository tagsRepository) {
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
+            this.tagsRepository = tagsRepository;
             if (view != null) {
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "AppLauncherWriterPresenter: View can't be null.");
+                Log.d(TAG, "View can't be null.");
             }
         } else {
-            Log.d(TAG, "AppLauncherWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "NfcUtils & Tags Repository can't be null.");
         }
     }
 
@@ -101,5 +106,11 @@ public class AppLauncherWriterPresenter implements AppLauncherWriterContract.Pre
         }
 
         return list;
+    }
+
+    @Override
+    public void saveTag(String aar) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addAar(new AarTag(timestamp.getTime(), aar));
     }
 }

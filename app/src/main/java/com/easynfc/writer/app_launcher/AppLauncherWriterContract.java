@@ -28,6 +28,8 @@ public interface AppLauncherWriterContract {
         void disableForegroundDispatch();
 
         List<String> getInstalledPackageNameList(Activity activity);
+
+        void saveTag(String s);
     }
 
     interface OnAarItemClickedCallback {

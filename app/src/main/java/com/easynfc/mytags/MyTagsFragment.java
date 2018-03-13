@@ -50,6 +50,6 @@ public class MyTagsFragment extends BaseFragment implements MyTagsContract.View 
 
     @Override
     public void setTags(List<MyTag> tags) {
-        Toast.makeText(main, tags.get(0).getContent()+ " " + tags.get(0).getTimestamp(), Toast.LENGTH_SHORT).show();
+        final List<MyTag> tags1 = tags;
     }
 }

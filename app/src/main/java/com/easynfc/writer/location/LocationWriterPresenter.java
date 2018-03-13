@@ -5,14 +5,18 @@ import android.content.Intent;
 import android.nfc.FormatException;
 import android.util.Log;
 
+import com.easynfc.data.LocationTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.LocationUtils;
 import com.easynfc.util.NfcUtils;
 import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -22,21 +26,22 @@ public class LocationWriterPresenter implements LocationWriterContract.Presenter
 
     private NfcUtils nfcUtils;
     private LocationWriterContract.View view;
-    private static String TAG = "LocationWriterPresenter";
-    //Location Api
     private LocationUtils locationManager;
+    private TagsRepository tagsRepository;
+    private static String TAG = "LocationWriterPresenter";
 
-    public LocationWriterPresenter(LocationWriterContract.View view, NfcUtils nfcUtils) {
-        if (nfcUtils != null) {
+    public LocationWriterPresenter(LocationWriterContract.View view, NfcUtils nfcUtils, TagsRepository tagsRepository) {
+        if (nfcUtils != null && tagsRepository != null) {
             this.nfcUtils = nfcUtils;
+            this.tagsRepository = tagsRepository;
             if (view != null) {
                 this.view = view;
                 view.setPresenter(this);
             } else {
-                Log.d(TAG, "LocationWriterPresenter: View can't be null.");
+                Log.d(TAG, "View can't be null.");
             }
         } else {
-            Log.d(TAG, "LocationWriterPresenter: Users Repository can't be null.");
+            Log.d(TAG, "NfcUtils & Tags Repository can't be null.");
         }
     }
 
@@ -134,6 +139,12 @@ public class LocationWriterPresenter implements LocationWriterContract.Presenter
     @Override
     public void requestLocationUpdates() {
         locationManager.requestLocationUpdates();
+    }
+
+    @Override
+    public void saveTag(String latitude, String longitude) {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        tagsRepository.addLocation(new LocationTag(timestamp.getTime(), latitude,longitude));
     }
 
 }

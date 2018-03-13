@@ -97,7 +97,7 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-
+        presenter.saveTag(etAppLauncher.getText().toString());
     }
 
     @OnClick(R.id.btn_reload)
