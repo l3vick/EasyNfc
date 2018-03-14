@@ -7,6 +7,8 @@ import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
 
+import com.easynfc.R;
+
 /**
  * Created by pablorojas on 19/2/18.
  */
@@ -28,11 +30,14 @@ public class AppUtils {
     }
 
 
-    public static void setTypeface(Context context, TextView textview) {
+    public static void setTypeface(Context context, TextView... textviews) {
         if (typeface == null) {
             typeface = Typeface.createFromAsset(context.getAssets(), "exo2.ttf");
         }
-        textview.setTypeface(typeface);
+        for (TextView textview : textviews) {
+            textview.setTypeface(typeface);
+        }
+
     }
 
     private static int getStatusActionBarHeight(Activity activity) {
@@ -52,4 +57,27 @@ public class AppUtils {
         return statusBarHeight + actionBarHeight;
     }
 
+
+    public static int getResourceByType(String type) {
+        switch (type) {
+            case AppConstants.TEXT:
+                return R.drawable.ic_text_eb_superlight;
+            case AppConstants.URL:
+                return R.drawable.ic_url_eb_superlight;
+            case AppConstants.SMS:
+                return R.drawable.ic_sms_eb_superlight;
+            case AppConstants.PHONE:
+                return R.drawable.ic_phone_eb_superlight;
+            case AppConstants.AAR:
+                return R.drawable.ic_aar_eb_superlight;
+            case AppConstants.LOCATION:
+                return R.drawable.ic_location_eb_superlight;
+            case AppConstants.WIFI:
+                return R.drawable.ic_wifi_eb_superlight;
+            case AppConstants.EMAIL:
+                return R.drawable.ic_email_eb_superlight;
+            default:
+                return R.drawable.ic_nfc_eb_ghost;
+        }
+    }
 }

@@ -9,6 +9,7 @@ import com.easynfc.data.TextTag;
 import com.easynfc.data.UrlTag;
 import com.easynfc.data.MyTag;
 import com.easynfc.data.WifiTag;
+import com.easynfc.mytags.MyTagsContract;
 
 import java.util.List;
 
@@ -35,6 +36,8 @@ public interface TagsDataSource {
     void addWifi(WifiTag wifiTag);
 
     void addEmail(EmailTag emailTag);
+
+    void deleteTag(MyTag myTag, MyTagsContract.OnDeleteTagCallback callback);
 
     interface LoadTagsCallback {
 

@@ -14,9 +14,18 @@ public interface MyTagsContract {
 
     interface View extends BaseView<Presenter> {
         void setTags(List<MyTag> tags);
+
+        void updateView(MyTag myTag);
     }
 
     interface Presenter extends BasePresenter {
+        void deleteTag(MyTag myTag);
+    }
 
+    interface OnDeleteTagCallback{
+        void OnSuccess();
+    }
+    interface OnMyTagClickListener{
+        void OnDelete(MyTag myTag);
     }
 }

@@ -19,5 +19,8 @@
     <dimen name="spinner_arrow_margin_right">10dp</dimen>
     <dimen name="spinner_padding">4dp</dimen>
     <dimen name="app_double_padding">32dp</dimen>
+    <dimen name="my_tag_item_height">64dp</dimen>
+    <dimen name="input_title_small">16dp</dimen>
+    <dimen name="input_title_tiny">14dp</dimen>
 
 </resources>

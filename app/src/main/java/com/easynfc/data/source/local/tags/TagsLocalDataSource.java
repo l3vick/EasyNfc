@@ -13,6 +13,7 @@ import com.easynfc.data.MyTag;
 import com.easynfc.data.WifiTag;
 import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.local.EasyNfcDatabase;
+import com.easynfc.mytags.MyTagsContract;
 import com.easynfc.util.AppConstants;
 
 import java.util.List;
@@ -52,49 +53,83 @@ public class TagsLocalDataSource implements TagsDataSource {
 
     @Override
     public void addText(TextTag textTag) {
-        tagsDao.addTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(), AppConstants.TEXT));
+        tagsDao.insertTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(), AppConstants.TEXT));
         tagsDao.insertTextTag(textTag);
     }
 
     @Override
     public void addUrl(UrlTag urlTag) {
-        tagsDao.addTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.URL));
+        tagsDao.insertTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.URL));
         tagsDao.insertUrlTag(urlTag);
     }
 
     @Override
     public void addSms(SmsTag smsTag) {
-        tagsDao.addTag(new MyTag(smsTag.getTimeStamp(), smsTag.getText(), AppConstants.SMS));
+        tagsDao.insertTag(new MyTag(smsTag.getTimeStamp(), smsTag.getText(), AppConstants.SMS));
         tagsDao.insertSmsTag(smsTag);
     }
 
     @Override
     public void addPhone(PhoneTag phoneTag) {
-        tagsDao.addTag(new MyTag(phoneTag.getTimeStamp(), phoneTag.getPhone(), AppConstants.PHONE));
+        tagsDao.insertTag(new MyTag(phoneTag.getTimeStamp(), phoneTag.getPhone(), AppConstants.PHONE));
         tagsDao.insertPhoneTag(phoneTag);
     }
 
     @Override
     public void addAar(AarTag aarTag) {
-        tagsDao.addTag(new MyTag(aarTag.getTimeStamp(), aarTag.getAar(), AppConstants.AAR));
+        tagsDao.insertTag(new MyTag(aarTag.getTimeStamp(), aarTag.getAar(), AppConstants.AAR));
         tagsDao.insertAarTag(aarTag);
     }
 
     @Override
     public void addLocation(LocationTag locationTag) {
-        tagsDao.addTag(new MyTag(locationTag.getTimeStamp(), locationTag.getLatitude() + ", " + locationTag.getLongitude(), AppConstants.LOCATION));
+        tagsDao.insertTag(new MyTag(locationTag.getTimeStamp(), locationTag.getLatitude() + ", " + locationTag.getLongitude(), AppConstants.LOCATION));
         tagsDao.insertLocationTag(locationTag);
     }
 
     @Override
     public void addWifi(WifiTag wifiTag) {
-        tagsDao.addTag(new MyTag(wifiTag.getTimeStamp(), wifiTag.getSsid(), AppConstants.WIFI));
+        tagsDao.insertTag(new MyTag(wifiTag.getTimeStamp(), wifiTag.getSsid(), AppConstants.WIFI));
         tagsDao.insertWifiTag(wifiTag);
     }
 
     @Override
     public void addEmail(EmailTag emailTag) {
-        tagsDao.addTag(new MyTag(emailTag.getTimeStamp(), emailTag.getContent(), AppConstants.EMAIL));
+        tagsDao.insertTag(new MyTag(emailTag.getTimeStamp(), emailTag.getContent(), AppConstants.EMAIL));
         tagsDao.insertEmailTag(emailTag);
+    }
+
+    @Override
+    public void deleteTag(MyTag myTag,  MyTagsContract.OnDeleteTagCallback callback) {
+        tagsDao.deleteTag(myTag);
+        switch (myTag.getType()) {
+            case AppConstants.TEXT:
+                tagsDao.deleteTextTag(myTag.getTimestamp());
+                break;
+            case AppConstants.URL:
+                tagsDao.deleteUrlTag(myTag.getTimestamp());
+                break;
+            case AppConstants.SMS:
+                tagsDao.deleteSmsTag(myTag.getTimestamp());
+                break;
+            case AppConstants.PHONE:
+                tagsDao.deletePhoneTag(myTag.getTimestamp());
+                break;
+            case AppConstants.AAR:
+                tagsDao.deleteAarTag(myTag.getTimestamp());
+                break;
+            case AppConstants.LOCATION:
+                tagsDao.deleteLocationTag(myTag.getTimestamp());
+                break;
+            case AppConstants.WIFI:
+                tagsDao.deleteWifiTag(myTag.getTimestamp());
+                break;
+            case AppConstants.EMAIL:
+                tagsDao.deleteEmailTag(myTag.getTimestamp());
+                break;
+            default:
+                break;
+        }
+        callback.OnSuccess();
     }
 }

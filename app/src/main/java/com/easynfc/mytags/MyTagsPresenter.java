@@ -54,4 +54,14 @@ public class MyTagsPresenter implements MyTagsContract.Presenter {
     public void stop() {
         this.view = null;
     }
+
+    @Override
+    public void deleteTag(final MyTag myTag) {
+        tagsRepository.deleteTag(myTag, new MyTagsContract.OnDeleteTagCallback() {
+            @Override
+            public void OnSuccess() {
+                view.updateView(myTag);
+            }
+        });
+    }
 }

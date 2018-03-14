@@ -10,6 +10,7 @@ import com.easynfc.data.UrlTag;
 import com.easynfc.data.MyTag;
 import com.easynfc.data.WifiTag;
 import com.easynfc.data.source.local.tags.TagsLocalDataSource;
+import com.easynfc.mytags.MyTagsContract;
 
 import java.util.List;
 
@@ -93,6 +94,11 @@ public class TagsRepository implements TagsDataSource {
     @Override
     public void addEmail(EmailTag emailTag) {
         remoteDataSource.addEmail(emailTag);
+    }
+
+    @Override
+    public void deleteTag(MyTag myTag, MyTagsContract.OnDeleteTagCallback callback) {
+        remoteDataSource.deleteTag(myTag, callback);
     }
 
 }

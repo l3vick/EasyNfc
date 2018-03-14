@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MenuFragment extends Fragment implements MenuContract.View {
+public class    MenuFragment extends Fragment implements MenuContract.View {
 
 
     @BindView(R.id.recycler)
