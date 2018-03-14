@@ -1,8 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/parent_view"
     tools:context="com.easynfc.reader.ReaderFragment">
 
     <LinearLayout
@@ -102,6 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/app_double_padding"
+                        android:textAllCaps="true"
                         android:textColor="@color/easy_black_ghost"
                         android:textSize="@dimen/input_title" />
 
@@ -271,12 +273,31 @@
 
         </LinearLayout>
 
+
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/app_padding"
-            android:layout_marginRight="@dimen/app_padding"
-            android:background="@color/easy_black_ghost"></RelativeLayout>
+            android:layout_marginRight="@dimen/app_padding">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerInParent="true"
+                android:background="@color/easy_black_ghost"></RelativeLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_reload_reader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/tomato"
+                app:borderWidth="0dp"
+                app:elevation="6dp"
+                app:fabSize="mini"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_scan_tag_eb_ghost" />
+
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -284,12 +305,16 @@
             android:layout_height="0dp"
             android:layout_weight="3"
             android:orientation="vertical"
-            android:padding="@dimen/app_double_padding">
+            android:paddingLeft="@dimen/app_double_padding"
+            android:paddingRight="@dimen/app_double_padding"
+            android:paddingBottom="@dimen/app_padding">
+
 
             <com.easynfc.util.custom.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CONTENT"
+                android:layout_marginBottom="@dimen/app_padding"
                 android:textColor="@color/mustard"
                 android:textSize="@dimen/input_title" />
 
@@ -301,8 +326,9 @@
                 android:layout_weight="2"
                 android:gravity="center"
                 android:lineSpacingMultiplier="1.2"
-                android:lines="4"
-                android:maxLines="4"
+                android:lines="6"
+                android:maxLines="6"
+                android:scrollbars="vertical"
                 android:textColor="@color/easy_black_ghost"
                 android:textSize="@dimen/input_title" />
 

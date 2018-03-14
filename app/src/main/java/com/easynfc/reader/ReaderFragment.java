@@ -4,6 +4,7 @@ package com.easynfc.reader;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.easynfc.util.AppUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,6 +70,7 @@ public class ReaderFragment extends BaseFragment implements ReaderContract.View 
         View v = inflater.inflate(R.layout.fragment_reader, container, false);
         ButterKnife.bind(this, v);
         customDialogView = (RelativeLayout) inflater.inflate(R.layout.reader_dialog, null);
+        txtContent.setMovementMethod(new ScrollingMovementMethod());
         showDialog();
         return v;
     }
@@ -80,7 +83,6 @@ public class ReaderFragment extends BaseFragment implements ReaderContract.View 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.enableForegroundDispatch();
     }
 
     @Override
@@ -120,17 +122,19 @@ public class ReaderFragment extends BaseFragment implements ReaderContract.View 
 
     }
 
-
+    @OnClick(R.id.btn_reload_reader)
+    void OnReloadReaderClick () {
+        showDialog();
+    }
 
 
     public void showDialog() {
-        presenter.enableForegroundDispatch();
         parentView.addView(customDialogView);
+        presenter.enableForegroundDispatch();
     }
 
 
     public void hideDialog() {
-        presenter.disableForegroundDispatch();
         ((ViewGroup) customDialogView.getParent()).removeView(customDialogView);
     }
 
