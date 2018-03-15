@@ -135,36 +135,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void navigateToWriter(int typeWriter) {
-        switch (typeWriter) {
-            case AppConstants.SIMPLE_TEXT_TAG:
+    public void navigateToWriter(AppConstants.TagTypes tagTypes) {
+        switch (tagTypes) {
+            case TEXT:
                 navigateToSimpleTextWriter();
                 break;
-            case AppConstants.URL_TAG:
+            case URL:
                 navigateToUrlWriter();
                 break;
-            case AppConstants.SMS_TAG:
+            case SMS:
                 navigateToSmsWriter();
                 break;
-            case AppConstants.PHONE_TAG:
+            case PHONE:
                 navigateToPhone();
                 break;
-            case AppConstants.APP_LAUNCHER_TAG:
+            case AAR:
                 navigateToAppLauncherWriter();
                 break;
-            case AppConstants.LOCATION_TAG:
+            case LOCATION:
                 navigateToLocationWriter();
                 break;
-            case AppConstants.WIFI_TAG:
+            case WIFI:
                 navigateToWifiWriter();
                 break;
-            case AppConstants.EMAIL_TAG:
+            case EMAIL:
                 navigateToEmailWriter();
                 break;
-            case AppConstants.NDEF_FORMAT_TAG:
+            case NDEF:
                 navigateToFormatWriter();
                 break;
-            case AppConstants.LOCK_TAG:
+            case LOCK:
                 navigateToLockWriter();
                 break;
             default:

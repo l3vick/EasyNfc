@@ -59,22 +59,23 @@ public class AppUtils {
 
 
     public static int getResourceByType(String type) {
-        switch (type) {
-            case AppConstants.TEXT:
+        AppConstants.TagTypes tagTypes = AppConstants.getTypeTag(type);
+        switch (tagTypes) {
+            case TEXT:
                 return R.drawable.ic_text_eb_superlight;
-            case AppConstants.URL:
+            case URL:
                 return R.drawable.ic_url_eb_superlight;
-            case AppConstants.SMS:
+            case SMS:
                 return R.drawable.ic_sms_eb_superlight;
-            case AppConstants.PHONE:
+            case PHONE:
                 return R.drawable.ic_phone_eb_superlight;
-            case AppConstants.AAR:
+            case AAR:
                 return R.drawable.ic_aar_eb_superlight;
-            case AppConstants.LOCATION:
+            case LOCATION:
                 return R.drawable.ic_location_eb_superlight;
-            case AppConstants.WIFI:
+            case WIFI:
                 return R.drawable.ic_wifi_eb_superlight;
-            case AppConstants.EMAIL:
+            case EMAIL:
                 return R.drawable.ic_email_eb_superlight;
             default:
                 return R.drawable.ic_nfc_eb_ghost;

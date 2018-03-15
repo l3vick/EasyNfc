@@ -84,6 +84,7 @@ public class MyTagsAdapter extends RecyclerView.Adapter<MyTagsAdapter.MyViewHold
         public MyViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
+            v.setOnClickListener(this);
             btnDelete.setOnClickListener(this);
 
         }
@@ -92,6 +93,8 @@ public class MyTagsAdapter extends RecyclerView.Adapter<MyTagsAdapter.MyViewHold
         public void onClick(View view) {
             if (view.getId() == R.id.btn_delete) {
                 onMyTagClickListener.OnDelete(myTag);
+            }else{
+                onMyTagClickListener.OnItemSelected(myTag);
             }
         }
 

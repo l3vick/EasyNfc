@@ -27,5 +27,6 @@ public interface MyTagsContract {
     }
     interface OnMyTagClickListener{
         void OnDelete(MyTag myTag);
+        void OnItemSelected(MyTag myTag);
     }
 }

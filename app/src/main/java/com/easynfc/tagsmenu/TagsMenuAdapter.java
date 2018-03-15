@@ -21,6 +21,17 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.easynfc.util.AppConstants.TagTypes.AAR;
+import static com.easynfc.util.AppConstants.TagTypes.EMAIL;
+import static com.easynfc.util.AppConstants.TagTypes.LOCATION;
+import static com.easynfc.util.AppConstants.TagTypes.LOCK;
+import static com.easynfc.util.AppConstants.TagTypes.NDEF;
+import static com.easynfc.util.AppConstants.TagTypes.PHONE;
+import static com.easynfc.util.AppConstants.TagTypes.SMS;
+import static com.easynfc.util.AppConstants.TagTypes.TEXT;
+import static com.easynfc.util.AppConstants.TagTypes.URL;
+import static com.easynfc.util.AppConstants.TagTypes.WIFI;
+
 /**
  * Created by pablorojas on 21/2/18.
  */
@@ -88,26 +99,26 @@ public class TagsMenuAdapter extends RecyclerView.Adapter<TagsMenuAdapter.MyView
 
         @Override
         public void onClick(View view) {
-            if (getLayoutPosition() == AppConstants.SIMPLE_TEXT_TAG){
-                main.navigateToWriter(AppConstants.SIMPLE_TEXT_TAG);
-            }else if (getLayoutPosition() == AppConstants.URL_TAG){
-                main.navigateToWriter(AppConstants.URL_TAG);
-            }else if (getLayoutPosition() == AppConstants.SMS_TAG){
-                main.navigateToWriter(AppConstants.SMS_TAG);
-            }else if (getLayoutPosition() == AppConstants.PHONE_TAG){
-                main.navigateToWriter(AppConstants.PHONE_TAG);
-            }else if (getLayoutPosition() == AppConstants.APP_LAUNCHER_TAG){
-                main.navigateToWriter(AppConstants.APP_LAUNCHER_TAG);
-            }else if (getLayoutPosition() == AppConstants.LOCATION_TAG){
-                main.navigateToWriter(AppConstants.LOCATION_TAG);
-            }else if (getLayoutPosition() == AppConstants.WIFI_TAG){
-                main.navigateToWriter(AppConstants.WIFI_TAG);
-            }else if (getLayoutPosition() == AppConstants.EMAIL_TAG){
-                main.navigateToWriter(AppConstants.EMAIL_TAG);
-            }else if (getLayoutPosition() == AppConstants.NDEF_FORMAT_TAG){
-                main.navigateToWriter(AppConstants.NDEF_FORMAT_TAG);
-            }else if (getLayoutPosition() == AppConstants.LOCK_TAG){
-                main.navigateToWriter(AppConstants.LOCK_TAG);
+            if (getLayoutPosition() == TEXT.ordinal()){
+                main.navigateToWriter(TEXT);
+            }else if (getLayoutPosition() == URL.ordinal()){
+                main.navigateToWriter(URL);
+            }else if (getLayoutPosition() == SMS.ordinal()){
+                main.navigateToWriter(SMS);
+            }else if (getLayoutPosition() == PHONE.ordinal()){
+                main.navigateToWriter(PHONE);
+            }else if (getLayoutPosition() == AAR.ordinal()){
+                main.navigateToWriter(AAR);
+            }else if (getLayoutPosition() == LOCATION.ordinal()){
+                main.navigateToWriter(LOCATION);
+            }else if (getLayoutPosition() == WIFI.ordinal()){
+                main.navigateToWriter(WIFI);
+            }else if (getLayoutPosition() == EMAIL.ordinal()){
+                main.navigateToWriter(EMAIL);
+            }else if (getLayoutPosition() == NDEF.ordinal()){
+                main.navigateToWriter(NDEF);
+            }else if (getLayoutPosition() == LOCK.ordinal()){
+                main.navigateToWriter(LOCK);
             }
         }
 

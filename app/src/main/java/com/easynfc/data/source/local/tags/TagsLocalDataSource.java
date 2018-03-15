@@ -53,78 +53,78 @@ public class TagsLocalDataSource implements TagsDataSource {
 
     @Override
     public void addText(TextTag textTag) {
-        tagsDao.insertTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(), AppConstants.TEXT));
+        tagsDao.insertTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(), AppConstants.TagTypes.TEXT.toString()));
         tagsDao.insertTextTag(textTag);
     }
 
     @Override
     public void addUrl(UrlTag urlTag) {
-        tagsDao.insertTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.URL));
+        tagsDao.insertTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.TagTypes.URL.toString()));
         tagsDao.insertUrlTag(urlTag);
     }
 
     @Override
     public void addSms(SmsTag smsTag) {
-        tagsDao.insertTag(new MyTag(smsTag.getTimeStamp(), smsTag.getText(), AppConstants.SMS));
+        tagsDao.insertTag(new MyTag(smsTag.getTimeStamp(), smsTag.getText(), AppConstants.TagTypes.SMS.toString()));
         tagsDao.insertSmsTag(smsTag);
     }
 
     @Override
     public void addPhone(PhoneTag phoneTag) {
-        tagsDao.insertTag(new MyTag(phoneTag.getTimeStamp(), phoneTag.getPhone(), AppConstants.PHONE));
+        tagsDao.insertTag(new MyTag(phoneTag.getTimeStamp(), phoneTag.getPhone(), AppConstants.TagTypes.PHONE.toString()));
         tagsDao.insertPhoneTag(phoneTag);
     }
 
     @Override
     public void addAar(AarTag aarTag) {
-        tagsDao.insertTag(new MyTag(aarTag.getTimeStamp(), aarTag.getAar(), AppConstants.AAR));
+        tagsDao.insertTag(new MyTag(aarTag.getTimeStamp(), aarTag.getAar(), AppConstants.TagTypes.AAR.toString()));
         tagsDao.insertAarTag(aarTag);
     }
 
     @Override
     public void addLocation(LocationTag locationTag) {
-        tagsDao.insertTag(new MyTag(locationTag.getTimeStamp(), locationTag.getLatitude() + ", " + locationTag.getLongitude(), AppConstants.LOCATION));
+        tagsDao.insertTag(new MyTag(locationTag.getTimeStamp(), locationTag.getLatitude() + ", " + locationTag.getLongitude(), AppConstants.TagTypes.LOCATION.toString()));
         tagsDao.insertLocationTag(locationTag);
     }
 
     @Override
     public void addWifi(WifiTag wifiTag) {
-        tagsDao.insertTag(new MyTag(wifiTag.getTimeStamp(), wifiTag.getSsid(), AppConstants.WIFI));
+        tagsDao.insertTag(new MyTag(wifiTag.getTimeStamp(), wifiTag.getSsid(), AppConstants.TagTypes.WIFI.toString()));
         tagsDao.insertWifiTag(wifiTag);
     }
 
     @Override
     public void addEmail(EmailTag emailTag) {
-        tagsDao.insertTag(new MyTag(emailTag.getTimeStamp(), emailTag.getContent(), AppConstants.EMAIL));
+        tagsDao.insertTag(new MyTag(emailTag.getTimeStamp(), emailTag.getContent(), AppConstants.TagTypes.EMAIL.toString()));
         tagsDao.insertEmailTag(emailTag);
     }
 
     @Override
     public void deleteTag(MyTag myTag,  MyTagsContract.OnDeleteTagCallback callback) {
         tagsDao.deleteTag(myTag);
-        switch (myTag.getType()) {
-            case AppConstants.TEXT:
+        switch (AppConstants.getTypeTag(myTag.getType())) {
+            case TEXT:
                 tagsDao.deleteTextTag(myTag.getTimestamp());
                 break;
-            case AppConstants.URL:
+            case URL:
                 tagsDao.deleteUrlTag(myTag.getTimestamp());
                 break;
-            case AppConstants.SMS:
+            case SMS:
                 tagsDao.deleteSmsTag(myTag.getTimestamp());
                 break;
-            case AppConstants.PHONE:
+            case PHONE:
                 tagsDao.deletePhoneTag(myTag.getTimestamp());
                 break;
-            case AppConstants.AAR:
+            case AAR:
                 tagsDao.deleteAarTag(myTag.getTimestamp());
                 break;
-            case AppConstants.LOCATION:
+            case LOCATION:
                 tagsDao.deleteLocationTag(myTag.getTimestamp());
                 break;
-            case AppConstants.WIFI:
+            case WIFI:
                 tagsDao.deleteWifiTag(myTag.getTimestamp());
                 break;
-            case AppConstants.EMAIL:
+            case EMAIL:
                 tagsDao.deleteEmailTag(myTag.getTimestamp());
                 break;
             default:

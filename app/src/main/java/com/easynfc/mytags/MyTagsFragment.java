@@ -16,6 +16,8 @@ import com.easynfc.R;
 import com.easynfc.data.MyTag;
 import com.easynfc.data.model.Menu;
 import com.easynfc.menu.MenuAdapter;
+import com.easynfc.util.AppConstants;
+import com.easynfc.util.AppUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -88,6 +90,11 @@ public class MyTagsFragment extends BaseFragment implements MyTagsContract.View 
         @Override
         public void OnDelete(MyTag myTag) {
             presenter.deleteTag(myTag);
+        }
+
+        @Override
+        public void OnItemSelected(MyTag myTag) {
+            main.navigateToWriter(AppConstants.getTypeTag(myTag.getType()));
         }
     };
 }
