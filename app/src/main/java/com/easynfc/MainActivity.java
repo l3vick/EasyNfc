@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
         if (fragment instanceof BaseTypeFragment) {
             ((BaseTypeFragment) fragment).processNfc(intent);
-        }else if (fragment instanceof ReaderFragment){
+        } else if (fragment instanceof ReaderFragment) {
             ((ReaderFragment) fragment).processNfc(intent);
         }
     }
@@ -135,31 +135,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void navigateToWriter(AppConstants.TagTypes tagTypes) {
+    public void navigateToWriter(AppConstants.TagTypes tagTypes, long tagId) {
         switch (tagTypes) {
             case TEXT:
-                navigateToSimpleTextWriter();
+                navigateToSimpleTextWriter(tagId);
                 break;
             case URL:
-                navigateToUrlWriter();
+                navigateToUrlWriter(tagId);
                 break;
             case SMS:
-                navigateToSmsWriter();
+                navigateToSmsWriter(tagId);
                 break;
             case PHONE:
-                navigateToPhone();
+                navigateToPhone(tagId);
                 break;
             case AAR:
-                navigateToAppLauncherWriter();
+                navigateToAppLauncherWriter(tagId);
                 break;
             case LOCATION:
-                navigateToLocationWriter();
+                navigateToLocationWriter(tagId);
                 break;
             case WIFI:
-                navigateToWifiWriter();
+                navigateToWifiWriter(tagId);
                 break;
             case EMAIL:
-                navigateToEmailWriter();
+                navigateToEmailWriter(tagId);
                 break;
             case NDEF:
                 navigateToFormatWriter();
@@ -169,9 +169,10 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
         }
+
     }
 
-    private void navigateToSimpleTextWriter() {
+    private void navigateToSimpleTextWriter(long tagId) {
         SimpleTextWriterFragment simpleTextWriterFragment = (SimpleTextWriterFragment) getSupportFragmentManager().findFragmentByTag(SimpleTextWriterFragment.TAG);
         if (simpleTextWriterFragment == null) {
             simpleTextWriterFragment = SimpleTextWriterFragment.newInstance();
@@ -188,9 +189,13 @@ public class MainActivity extends AppCompatActivity {
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
 
         SimpleTextWriterPresenter presenter = new SimpleTextWriterPresenter(simpleTextWriterFragment, nfcUtils, tagsRepository);
+
+        if (tagId != 0) {
+            simpleTextWriterFragment.setTag(tagId);
+        }
     }
 
-    private void navigateToUrlWriter() {
+    private void navigateToUrlWriter(long tagId) {
         UrlWriterFragment urlWriterFragment = (UrlWriterFragment) getSupportFragmentManager().findFragmentByTag(UrlWriterFragment.TAG);
         if (urlWriterFragment == null) {
             urlWriterFragment = UrlWriterFragment.newInstance();
@@ -208,9 +213,13 @@ public class MainActivity extends AppCompatActivity {
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
 
         UrlWriterPresenter presenter = new UrlWriterPresenter(urlWriterFragment, nfcUtils, tagsRepository);
+
+        if (tagId != 0) {
+            urlWriterFragment.setTag(tagId);
+        }
     }
 
-    private void navigateToSmsWriter() {
+    private void navigateToSmsWriter(long tagId) {
         SmsWriterFragment smsWriterFragment = (SmsWriterFragment) getSupportFragmentManager().findFragmentByTag(SmsWriterFragment.TAG);
         if (smsWriterFragment == null) {
             smsWriterFragment = SmsWriterFragment.newInstance();
@@ -226,9 +235,13 @@ public class MainActivity extends AppCompatActivity {
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
         SmsWriterPresenter presenter = new SmsWriterPresenter(smsWriterFragment, nfcUtils, tagsRepository);
+
+        if (tagId != 0) {
+            smsWriterFragment.setTag(tagId);
+        }
     }
 
-    private void navigateToPhone() {
+    private void navigateToPhone(long tagId) {
         PhoneWriterFragment phoneWriterFragment = (PhoneWriterFragment) getSupportFragmentManager().findFragmentByTag(PhoneWriterFragment.TAG);
         if (phoneWriterFragment == null) {
             phoneWriterFragment = PhoneWriterFragment.newInstance();
@@ -243,9 +256,14 @@ public class MainActivity extends AppCompatActivity {
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
         PhoneWriterPresenter presenter = new PhoneWriterPresenter(phoneWriterFragment, nfcUtils, tagsRepository);
+
+
+        if (tagId != 0) {
+            phoneWriterFragment.setTag(tagId);
+        }
     }
 
-    private void navigateToAppLauncherWriter() {
+    private void navigateToAppLauncherWriter(long tagId) {
         AppLauncherWriterFragment appLauncherWriterFragment = (AppLauncherWriterFragment) getSupportFragmentManager().findFragmentByTag(AppLauncherWriterFragment.TAG);
         if (appLauncherWriterFragment == null) {
             appLauncherWriterFragment = AppLauncherWriterFragment.newInstance();
@@ -260,9 +278,14 @@ public class MainActivity extends AppCompatActivity {
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
         AppLauncherWriterPresenter presenter = new AppLauncherWriterPresenter(appLauncherWriterFragment, nfcUtils, tagsRepository);
+
+
+        if (tagId != 0) {
+            appLauncherWriterFragment.setTag(tagId);
+        }
     }
 
-    private void navigateToLocationWriter() {
+    private void navigateToLocationWriter(long tagId) {
         LocationWriterFragment locationWriterFragment = (LocationWriterFragment) getSupportFragmentManager().findFragmentByTag(LocationWriterFragment.TAG);
         if (locationWriterFragment == null) {
             locationWriterFragment = LocationWriterFragment.newInstance();
@@ -277,9 +300,13 @@ public class MainActivity extends AppCompatActivity {
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
         LocationWriterPresenter presenter = new LocationWriterPresenter(locationWriterFragment, nfcUtils, tagsRepository);
+
+        if (tagId != 0) {
+            locationWriterFragment.setTag(tagId);
+        }
     }
 
-    private void navigateToWifiWriter() {
+    private void navigateToWifiWriter(long tagId) {
         WiFiWriterFragment wiFiWriterFragment = (WiFiWriterFragment) getSupportFragmentManager().findFragmentByTag(WiFiWriterFragment.TAG);
         if (wiFiWriterFragment == null) {
             wiFiWriterFragment = WiFiWriterFragment.newInstance();
@@ -296,9 +323,14 @@ public class MainActivity extends AppCompatActivity {
 
         WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         WiFiWriterPresenter presenter = new WiFiWriterPresenter(wiFiWriterFragment, nfcUtils, wifiManager, tagsRepository);
+
+
+        if (tagId != 0) {
+            wiFiWriterFragment.setTag(tagId);
+        }
     }
 
-    private void navigateToEmailWriter() {
+    private void navigateToEmailWriter(long tagId) {
         EmailWriterFragment emailWriterFragment = (EmailWriterFragment) getSupportFragmentManager().findFragmentByTag(EmailWriterFragment.TAG);
         if (emailWriterFragment == null) {
             emailWriterFragment = EmailWriterFragment.newInstance();
@@ -313,6 +345,11 @@ public class MainActivity extends AppCompatActivity {
 
         NfcUtils nfcUtils = NfcUtils.getInstance(this);
         EmailWriterPresenter presenter = new EmailWriterPresenter(emailWriterFragment, nfcUtils, tagsRepository);
+
+
+        if (tagId != 0) {
+            emailWriterFragment.setTag(tagId);
+        }
     }
 
     private void navigateToFormatWriter() {

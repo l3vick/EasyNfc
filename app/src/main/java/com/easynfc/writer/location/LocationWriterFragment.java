@@ -15,9 +15,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.EmailTag;
+import com.easynfc.data.LocationTag;
 import com.easynfc.util.AppConstants;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
+import com.easynfc.writer.email.EmailWriterContract;
 import com.easynfc.writer.sms.SmsWriterContract;
 import com.easynfc.writer.wi_fi.WiFiWriterContract;
 import com.easynfc.writer.wi_fi.WiFiWriterFragment;
@@ -49,6 +52,7 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     @BindView(R.id.btn_record)
     Button btnRecord;
     public LocationWriterContract.Presenter presenter;
+    private long tagId = 0;
 
 
     public LocationWriterFragment() {
@@ -125,6 +129,26 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (tagId != 0){
+            presenter.loadTag(tagId, new LocationWriterContract.LoadLocationTagCallback() {
+
+                @Override
+                public void onTagLoaded(LocationTag locationTag) {
+                    etLatitude.setText(locationTag.getLatitude());
+                    etLongitude.setText(locationTag.getLongitude());
+                }
+
+                @Override
+                public void onDatanotAvailable() {
+
+                }
+            });
+        }
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == AppConstants.MY_PERMISSIONS_REQUEST_LOCATION) {
@@ -151,5 +175,9 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etLatitude.getText().toString(), etLongitude.getText().toString());
+    }
+
+    public void setTag(long timestamp) {
+        tagId = timestamp;
     }
 }

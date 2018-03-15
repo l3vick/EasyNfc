@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.PhoneTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.sms.SmsWriterContract;
@@ -41,6 +42,7 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    private long tagId = 0;
 
     public PhoneWriterContract.Presenter presenter;
 
@@ -98,9 +100,31 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (tagId != 0){
+            presenter.loadTag(tagId, new PhoneWriterContract.LoadPhoneTagCallback() {
+                @Override
+                public void onTagLoaded(PhoneTag phoneTag) {
+                    etPhone.setText(phoneTag.getPhone());
+                }
+
+                @Override
+                public void onDatanotAvailable() {
+
+                }
+            });
+        }
+    }
+
+    @Override
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etPhone.getText().toString());
+    }
+
+    public void setTag(long timestamp) {
+        tagId = timestamp;
     }
 
 }

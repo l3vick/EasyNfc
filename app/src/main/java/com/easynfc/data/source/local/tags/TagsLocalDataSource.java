@@ -11,11 +11,21 @@ import com.easynfc.data.TextTag;
 import com.easynfc.data.UrlTag;
 import com.easynfc.data.MyTag;
 import com.easynfc.data.WifiTag;
+import com.easynfc.data.model.Wifi;
 import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.local.EasyNfcDatabase;
 import com.easynfc.mytags.MyTagsContract;
 import com.easynfc.util.AppConstants;
+import com.easynfc.writer.app_launcher.AppLauncherWriterContract;
+import com.easynfc.writer.email.EmailWriterContract;
+import com.easynfc.writer.location.LocationWriterContract;
+import com.easynfc.writer.phone.PhoneWriterContract;
+import com.easynfc.writer.simple_text.SimpleTextWriterContract;
+import com.easynfc.writer.sms.SmsWriterContract;
+import com.easynfc.writer.url.UrlWriterContract;
+import com.easynfc.writer.wi_fi.WiFiWriterContract;
 
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -131,5 +141,85 @@ public class TagsLocalDataSource implements TagsDataSource {
                 break;
         }
         callback.OnSuccess();
+    }
+
+    @Override
+    public void getTextTag(long timestamp, SimpleTextWriterContract.LoadTextTagCallback callback) {
+        TextTag textTag = tagsDao.getTextTag(timestamp);
+        if (textTag != null){
+            callback.onTagLoaded(textTag);
+        }else {
+            callback.onDatanotAvailable();
+        }
+    }
+
+    @Override
+    public void getAarTag(long tagId, AppLauncherWriterContract.LoadAarTagCallback callback) {
+        AarTag aarTag = tagsDao.getAarTag(tagId);
+        if (aarTag != null){
+            callback.onTagLoaded(aarTag);
+        }else {
+            callback.onDatanotAvailable();
+        }
+    }
+
+    @Override
+    public void getEmailTag(long tagId, EmailWriterContract.LoadEmailTagCallback callback) {
+       EmailTag emailTag = tagsDao.getEmailTag(tagId);
+       if (emailTag != null){
+           callback.onTagLoaded(emailTag);
+       }else {
+           callback.onDatanotAvailable();
+       }
+    }
+
+    @Override
+    public void getLocationTag(long tagId, LocationWriterContract.LoadLocationTagCallback callback) {
+        LocationTag locationTag = tagsDao.getLocationTag(tagId);
+        if (locationTag != null){
+            callback.onTagLoaded(locationTag);
+        }else {
+            callback.onDatanotAvailable();
+        }
+    }
+
+    @Override
+    public void getPhoneTag(long tagId, PhoneWriterContract.LoadPhoneTagCallback callback) {
+        PhoneTag phoneTag = tagsDao.getPhoneTag(tagId);
+        if (phoneTag != null){
+            callback.onTagLoaded(phoneTag);
+        }else{
+            callback.onDatanotAvailable();
+        }
+    }
+
+    @Override
+    public void getSmsTag(long tagId, SmsWriterContract.LoadSmsTagCallback callback) {
+        SmsTag smsTag = tagsDao.getSmsTag(tagId);
+        if (smsTag != null){
+            callback.onTagLoaded(smsTag);
+        }else {
+            callback.onDatanotAvailable();
+        }
+    }
+
+    @Override
+    public void getUrlTag(long tagId, UrlWriterContract.LoadUrlTagCallback callback) {
+        UrlTag urlTag= tagsDao.getUrlTag(tagId);
+        if (urlTag != null){
+            callback.onTagLoaded(urlTag);
+        }else {
+            callback.onDatanotAvailable();
+        }
+    }
+
+    @Override
+    public void getWifiTag(long tagId, WiFiWriterContract.LoadWifiTagCallback callback) {
+        WifiTag wifiTag= tagsDao.getWifiTag(tagId);
+        if (wifiTag != null){
+            callback.onTagLoaded(wifiTag);
+        }else {
+            callback.onDatanotAvailable();
+        }
     }
 }

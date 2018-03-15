@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 
@@ -35,6 +36,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    private long tagId = 0;
 
     private SimpleTextWriterContract.Presenter presenter;
 
@@ -83,7 +85,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
 
 
     @Override
-    public void OnTagWritten() {
+    public void onTagWritten() {
         super.tagWritten();
     }
 
@@ -95,8 +97,30 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (tagId != 0){
+            presenter.loadTag(tagId, new SimpleTextWriterContract.LoadTextTagCallback() {
+                @Override
+                public void onTagLoaded(TextTag textTag) {
+                    etSimpleText.setText(textTag.getContent());
+                }
+
+                @Override
+                public void onDatanotAvailable() {
+
+                }
+            });
+        }
+    }
+
+    @Override
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etSimpleText.getText().toString());
+    }
+
+    public void setTag(long timestamp) {
+        tagId = timestamp;
     }
 }

@@ -94,4 +94,19 @@ public class SmsWriterPresenter implements SmsWriterContract.Presenter {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         tagsRepository.addSms(new SmsTag(timestamp.getTime(), number, text));
     }
+
+    @Override
+    public void loadTag(long tagId, final SmsWriterContract.LoadSmsTagCallback callback) {
+        tagsRepository.getSmsTag(tagId, new SmsWriterContract.LoadSmsTagCallback() {
+            @Override
+            public void onTagLoaded(SmsTag smsTag) {
+                callback.onTagLoaded(smsTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
+    }
 }

@@ -4,6 +4,8 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
+import com.easynfc.data.SmsTag;
+import com.easynfc.data.TextTag;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -25,6 +27,13 @@ public interface SmsWriterContract {
         void disableForegroundDispatch();
 
         void saveTag(String s, String s1);
+
+        void loadTag(long tagId, LoadSmsTagCallback loadSmsTagCallback);
+    }
+
+    interface LoadSmsTagCallback {
+        void onTagLoaded(SmsTag smsTag);
+        void onDatanotAvailable();
     }
 }
 

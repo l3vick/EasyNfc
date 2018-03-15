@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.WifiTag;
 import com.easynfc.data.model.Wifi;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
@@ -62,7 +63,7 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     ProgressBar progressBar;
     private RelativeLayout wifiListView;
     private ListView list;
-
+    private long tagId = 0;
 
     public WiFiWriterContract.Presenter presenter;
 
@@ -107,7 +108,6 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
                 hideWifiNetowrksDialog();
             }
         });
-        showWifiNetworksDialog();
         return v;
     }
 
@@ -153,16 +153,8 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     }
 
     @Override
-    public void processNfc(Intent intent) {
-        super.processNfc(intent);
-        presenter.writeTag(intent, etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
-    }
-
-
-    @Override
     public void onResume() {
         super.onResume();
-
         getActivity().registerReceiver(presenter.getWifiScanReceiver(),
                 new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
         presenter.startScan(new WiFiWriterContract.OnWifiNetworksLoadedCallback() {
@@ -172,6 +164,37 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
                 showWifiNetworksList(wifis);
             }
         });
+
+        if (tagId != 0) {
+            presenter.loadTag(tagId, new WiFiWriterContract.LoadWifiTagCallback() {
+                @Override
+                public void onTagLoaded(WifiTag wifiTag) {
+                    etWifiPassword.setText(wifiTag.getPassword());
+                    etWifiSsid.setText(wifiTag.getSsid());
+                    int position = presenter.getWifiAuthPosition(wifiTag.getAuth());
+                    spSecurityCypher.setSelection(position + 1);
+                }
+
+                @Override
+                public void onDatanotAvailable() {
+
+                }
+            });
+        } else {
+            showWifiNetworksDialog();
+        }
+
+    }
+
+    @Override
+    public void processNfc(Intent intent) {
+        super.processNfc(intent);
+        presenter.writeTag(intent, etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
+    }
+
+
+    public void setTag(long timestamp) {
+        tagId = timestamp;
     }
 
     private void showWifiNetworksList(final ArrayList<Wifi> wifis) {

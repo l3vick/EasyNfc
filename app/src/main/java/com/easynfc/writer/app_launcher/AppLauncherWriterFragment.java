@@ -22,6 +22,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.AarTag;
+import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.simple_text.SimpleTextWriterContract;
@@ -55,6 +57,7 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     @BindView(R.id.parentView)
     FrameLayout parentView;
     private RelativeLayout aarListView;
+    private long tagId = 0;
 
     public AppLauncherWriterContract.Presenter presenter;
 
@@ -79,12 +82,6 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
         etAppLauncher.setTypeface(typeface);
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
-        showAarList(new AppLauncherWriterContract.OnAarItemClickedCallback() {
-            @Override
-            public void OnSuccess(String aar) {
-                etAppLauncher.setText(aar);
-            }
-        });
         return v;
     }
 
@@ -127,9 +124,38 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (tagId != 0){
+            presenter.loadTag(tagId, new AppLauncherWriterContract.LoadAarTagCallback() {
+                @Override
+                public void onTagLoaded(AarTag aarTag) {
+                    etAppLauncher.setText(aarTag.getAar());
+                }
+
+                @Override
+                public void onDatanotAvailable() {
+
+                }
+            });
+        }else{
+            showAarList(new AppLauncherWriterContract.OnAarItemClickedCallback() {
+                @Override
+                public void OnSuccess(String aar) {
+                    etAppLauncher.setText(aar);
+                }
+            });
+        }
+    }
+
+    @Override
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etAppLauncher.getText().toString());
+    }
+
+    public void setTag(long timestamp) {
+        tagId = timestamp;
     }
 
     public void showAarList(AppLauncherWriterContract.OnAarItemClickedCallback callback) {

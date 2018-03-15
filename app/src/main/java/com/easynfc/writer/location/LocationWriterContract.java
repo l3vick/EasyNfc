@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
+import com.easynfc.data.EmailTag;
+import com.easynfc.data.LocationTag;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -44,6 +46,13 @@ public interface LocationWriterContract {
         void requestLocationUpdates();
 
         void saveTag(String latitude, String longitude);
+
+        void loadTag(long tagId, LoadLocationTagCallback loadLocationTagCallback);
+    }
+
+    interface LoadLocationTagCallback {
+        void onTagLoaded(LocationTag locationTag);
+        void onDatanotAvailable();
     }
 }
 

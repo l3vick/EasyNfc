@@ -4,6 +4,8 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
+import com.easynfc.data.PhoneTag;
+import com.easynfc.data.TextTag;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -25,6 +27,13 @@ public interface PhoneWriterContract {
         void disableForegroundDispatch();
 
         void saveTag(String phone);
+
+        void loadTag(long tagId, LoadPhoneTagCallback loadPhoneTagCallback);
+    }
+
+    interface LoadPhoneTagCallback {
+        void onTagLoaded(PhoneTag phoneTag);
+        void onDatanotAvailable();
     }
 }
 

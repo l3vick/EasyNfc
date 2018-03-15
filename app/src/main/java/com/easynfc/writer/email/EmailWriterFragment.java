@@ -13,9 +13,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.EmailTag;
+import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.phone.PhoneWriterContract;
+import com.easynfc.writer.simple_text.SimpleTextWriterContract;
 import com.easynfc.writer.wi_fi.WiFiWriterContract;
 import com.easynfc.writer.wi_fi.WiFiWriterFragment;
 
@@ -42,6 +45,7 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     @BindView(R.id.btn_record)
     Button btnRecord;
     public EmailWriterContract.Presenter presenter;
+    private long tagId = 0;
 
     public EmailWriterFragment() {
         // Required empty public constructor
@@ -55,8 +59,8 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_writer_email, container, false);
-        ButterKnife.bind(this,v);
+        View v = inflater.inflate(R.layout.fragment_writer_email, container, false);
+        ButterKnife.bind(this, v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
         txtTitle.setTypeface(typeface);
@@ -66,7 +70,6 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
         btnRecord.setTypeface(typeface);
         return v;
     }
-
 
 
     @OnClick(R.id.btn_record)
@@ -79,6 +82,7 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     void onSaveTagBtnPressed() {
         presenter.saveTag(etEmail.getText().toString());
     }
+
     @Override
     public void setPresenter(EmailWriterContract.Presenter presenter) {
         this.presenter = presenter;
@@ -98,9 +102,30 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (tagId != 0) {
+            presenter.loadTag(tagId, new EmailWriterContract.LoadEmailTagCallback() {
+                @Override
+                public void onTagLoaded(EmailTag emailTag) {
+                    etEmail.setText(emailTag.getContent());
+                }
+
+                @Override
+                public void onDatanotAvailable() {
+
+                }
+            });
+        }
+    }
+
+    @Override
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etEmail.getText().toString());
     }
 
+    public void setTag(long timestamp) {
+        tagId = timestamp;
+    }
 }

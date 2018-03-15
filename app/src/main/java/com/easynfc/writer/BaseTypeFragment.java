@@ -55,7 +55,6 @@ public abstract class BaseTypeFragment extends Fragment {
 
     }
 
-
     public void setParentView(View view) {
         parentView = view.findViewById(R.id.parentView);
     }
@@ -98,6 +97,5 @@ public abstract class BaseTypeFragment extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 }

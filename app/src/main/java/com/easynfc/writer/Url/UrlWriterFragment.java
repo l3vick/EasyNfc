@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.data.UrlTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.writer.BaseTypeFragment;
 
@@ -38,6 +39,7 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     @BindView(R.id.btn_record)
     Button btnRecord;
     private UrlWriterContract.Presenter presenter;
+    private long tagId = 0;
 
     public static final String TAG = "UrlWriterFragment";
 
@@ -95,8 +97,30 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (tagId != 0){
+            presenter.loadTag(tagId, new UrlWriterContract.LoadUrlTagCallback() {
+                @Override
+                public void onTagLoaded(UrlTag urlTag) {
+                    etUrl.setText(urlTag.getContent());
+                }
+
+                @Override
+                public void onDatanotAvailable() {
+
+                }
+            });
+        }
+    }
+
+    @Override
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etUrl.getText().toString());
+    }
+
+    public void setTag(long timestamp) {
+        tagId = timestamp;
     }
 }

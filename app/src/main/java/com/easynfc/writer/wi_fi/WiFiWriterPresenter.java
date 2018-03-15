@@ -135,6 +135,21 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
         tagsRepository.addWifi(new WifiTag(timestamp.getTime(), ssid,auth, password));
     }
 
+    @Override
+    public void loadTag(long tagId, final WiFiWriterContract.LoadWifiTagCallback callback) {
+        tagsRepository.getWifiTag(tagId, new WiFiWriterContract.LoadWifiTagCallback() {
+            @Override
+            public void onTagLoaded(WifiTag wifiTag) {
+                callback.onTagLoaded(wifiTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
+    }
+
 
     private final BroadcastReceiver wifiScanReceiver = new BroadcastReceiver() {
         @Override

@@ -92,6 +92,21 @@ public class EmailWriterPresenter implements EmailWriterContract.Presenter {
     @Override
     public void saveTag(String email) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addEmail(new EmailTag(timestamp.getTime(),email));
+        tagsRepository.addEmail(new EmailTag(timestamp.getTime(), email));
+    }
+
+    @Override
+    public void loadTag(long tagId, final EmailWriterContract.LoadEmailTagCallback callback) {
+        tagsRepository.getEmailTag(tagId, new EmailWriterContract.LoadEmailTagCallback() {
+            @Override
+            public void onTagLoaded(EmailTag emailTag) {
+                callback.onTagLoaded(emailTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
     }
 }

@@ -93,4 +93,19 @@ public class PhoneWriterPresenter  implements PhoneWriterContract.Presenter {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         tagsRepository.addPhone(new PhoneTag(timestamp.getTime(), phone));
     }
+
+    @Override
+    public void loadTag(long tagId, final PhoneWriterContract.LoadPhoneTagCallback callback) {
+        tagsRepository.getPhoneTag(tagId, new PhoneWriterContract.LoadPhoneTagCallback() {
+            @Override
+            public void onTagLoaded(PhoneTag phoneTag) {
+                callback.onTagLoaded(phoneTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
+    }
 }

@@ -7,11 +7,13 @@ import android.nfc.FormatException;
 import android.util.Log;
 
 import com.easynfc.data.AarTag;
+import com.easynfc.data.TextTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
+import com.easynfc.writer.simple_text.SimpleTextWriterContract;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -112,5 +114,20 @@ public class AppLauncherWriterPresenter implements AppLauncherWriterContract.Pre
     public void saveTag(String aar) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         tagsRepository.addAar(new AarTag(timestamp.getTime(), aar));
+    }
+
+    @Override
+    public void loadTag(long tagId, final AppLauncherWriterContract.LoadAarTagCallback callback) {
+        tagsRepository.getAarTag(tagId, new AppLauncherWriterContract.LoadAarTagCallback() {
+            @Override
+            public void onTagLoaded(AarTag aarTag) {
+                callback.onTagLoaded(aarTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
     }
 }

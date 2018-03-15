@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
+import com.easynfc.data.TextTag;
 
 /**
  * Created by pablorojas on 26/2/18.
@@ -12,7 +13,7 @@ import com.easynfc.BaseView;
 public interface SimpleTextWriterContract {
 
     interface View extends BaseView<Presenter> {
-        void OnTagWritten();
+        void onTagWritten();
     }
 
     interface Presenter extends BasePresenter {
@@ -23,6 +24,13 @@ public interface SimpleTextWriterContract {
 
         void disableForegroundDispatch();
 
-        void saveTag(String s);
+        void saveTag(String content);
+
+        void loadTag(long timestamp, LoadTextTagCallback loadTextTagCallback);
+    }
+
+    interface LoadTextTagCallback {
+        void onTagLoaded(TextTag textTag);
+        void onDatanotAvailable();
     }
 }

@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
+import com.easynfc.data.AarTag;
+import com.easynfc.data.TextTag;
 
 import java.util.List;
 
@@ -29,11 +31,18 @@ public interface AppLauncherWriterContract {
 
         List<String> getInstalledPackageNameList(Activity activity);
 
-        void saveTag(String s);
+        void saveTag(String content);
+
+        void loadTag(long tagId, LoadAarTagCallback loadAarTagCallback);
     }
 
     interface OnAarItemClickedCallback {
         void OnSuccess(String aar);
+    }
+
+    interface LoadAarTagCallback {
+        void onTagLoaded(AarTag aarTag);
+        void onDatanotAvailable();
     }
 }
 

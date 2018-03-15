@@ -93,4 +93,19 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         tagsRepository.addUrl(new UrlTag(timestamp.getTime(), content));
     }
+
+    @Override
+    public void loadTag(long tagId, final UrlWriterContract.LoadUrlTagCallback callback) {
+        tagsRepository.getUrlTag(tagId, new UrlWriterContract.LoadUrlTagCallback() {
+            @Override
+            public void onTagLoaded(UrlTag urlTag) {
+                callback.onTagLoaded(urlTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
+    }
 }

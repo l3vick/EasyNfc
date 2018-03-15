@@ -43,6 +43,7 @@ public class LockWriterFragment extends BaseTypeFragment implements LockWriterCo
     public LockWriterContract.Presenter presenter;
     @BindView(R.id.btn_lock)
     Button btnLock;
+    private long tagId = 0;
 
     public LockWriterFragment() {
         // Required empty public constructor

@@ -94,7 +94,7 @@ public class MyTagsFragment extends BaseFragment implements MyTagsContract.View 
 
         @Override
         public void OnItemSelected(MyTag myTag) {
-            main.navigateToWriter(AppConstants.getTypeTag(myTag.getType()));
+            main.navigateToWriter(AppConstants.getTypeTag(myTag.getType()), myTag.getTimestamp());
         }
     };
 }

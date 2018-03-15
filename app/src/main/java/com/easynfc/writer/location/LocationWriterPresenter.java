@@ -147,4 +147,19 @@ public class LocationWriterPresenter implements LocationWriterContract.Presenter
         tagsRepository.addLocation(new LocationTag(timestamp.getTime(), latitude,longitude));
     }
 
+    @Override
+    public void loadTag(long tagId, final LocationWriterContract.LoadLocationTagCallback callback) {
+        tagsRepository.getLocationTag(tagId, new LocationWriterContract.LoadLocationTagCallback() {
+            @Override
+            public void onTagLoaded(LocationTag locationTag) {
+                callback.onTagLoaded(locationTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
+    }
+
 }

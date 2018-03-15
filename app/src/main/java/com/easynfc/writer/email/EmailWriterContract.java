@@ -4,6 +4,8 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
+import com.easynfc.data.EmailTag;
+import com.easynfc.data.TextTag;
 
 /**
  * Created by pablorojas on 28/2/18.
@@ -25,6 +27,13 @@ public interface EmailWriterContract {
         void disableForegroundDispatch();
 
         void saveTag(String email);
+
+        void loadTag(long tagId, LoadEmailTagCallback loadEmailTagCallback);
+    }
+
+    interface LoadEmailTagCallback {
+        void onTagLoaded(EmailTag emailTag);
+        void onDatanotAvailable();
     }
 }
 

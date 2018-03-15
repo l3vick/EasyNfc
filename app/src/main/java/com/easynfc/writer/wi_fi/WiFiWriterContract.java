@@ -5,6 +5,8 @@ import android.content.Intent;
 
 import com.easynfc.BasePresenter;
 import com.easynfc.BaseView;
+import com.easynfc.data.TextTag;
+import com.easynfc.data.WifiTag;
 import com.easynfc.data.model.Wifi;
 
 import java.util.ArrayList;
@@ -38,10 +40,17 @@ public interface WiFiWriterContract {
         int getWifiAuthPosition(String authType);
 
         void saveTag(String ssid, String password, String auth);
+
+        void loadTag(long tagId, LoadWifiTagCallback loadWifiTagCallback);
     }
 
     interface OnWifiNetworksLoadedCallback {
         void OnSuccess(ArrayList<Wifi> wifi);
+    }
+
+    interface LoadWifiTagCallback {
+        void onTagLoaded(WifiTag wifiTag);
+        void onDatanotAvailable();
     }
 }
 

@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.easynfc.MainActivity;
 import com.easynfc.R;
 import com.easynfc.data.model.TagMenu;
-import com.easynfc.util.AppConstants;
 import com.easynfc.util.AppUtils;
 
 import java.util.List;
@@ -100,25 +99,25 @@ public class TagsMenuAdapter extends RecyclerView.Adapter<TagsMenuAdapter.MyView
         @Override
         public void onClick(View view) {
             if (getLayoutPosition() == TEXT.ordinal()){
-                main.navigateToWriter(TEXT);
+                main.navigateToWriter(TEXT, 0);
             }else if (getLayoutPosition() == URL.ordinal()){
-                main.navigateToWriter(URL);
+                main.navigateToWriter(URL, 0);
             }else if (getLayoutPosition() == SMS.ordinal()){
-                main.navigateToWriter(SMS);
+                main.navigateToWriter(SMS, 0);
             }else if (getLayoutPosition() == PHONE.ordinal()){
-                main.navigateToWriter(PHONE);
+                main.navigateToWriter(PHONE, 0);
             }else if (getLayoutPosition() == AAR.ordinal()){
-                main.navigateToWriter(AAR);
+                main.navigateToWriter(AAR, 0);
             }else if (getLayoutPosition() == LOCATION.ordinal()){
-                main.navigateToWriter(LOCATION);
+                main.navigateToWriter(LOCATION, 0);
             }else if (getLayoutPosition() == WIFI.ordinal()){
-                main.navigateToWriter(WIFI);
+                main.navigateToWriter(WIFI, 0);
             }else if (getLayoutPosition() == EMAIL.ordinal()){
-                main.navigateToWriter(EMAIL);
+                main.navigateToWriter(EMAIL, 0);
             }else if (getLayoutPosition() == NDEF.ordinal()){
-                main.navigateToWriter(NDEF);
+                main.navigateToWriter(NDEF, 0);
             }else if (getLayoutPosition() == LOCK.ordinal()){
-                main.navigateToWriter(LOCK);
+                main.navigateToWriter(LOCK, 0);
             }
         }
 

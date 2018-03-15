@@ -58,7 +58,7 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
                 nfcUtils.writeSimpleTextTag(intent, text, new NfcUtils.TagWrittenCallback() {
                     @Override
                     public void OnSuccess() {
-                        view.OnTagWritten();
+                        view.onTagWritten();
                     }
 
                     @Override
@@ -94,6 +94,21 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
     public void saveTag(String content) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         tagsRepository.addText(new TextTag(timestamp.getTime(),content));
+    }
+
+    @Override
+    public void loadTag(long timestamp, final SimpleTextWriterContract.LoadTextTagCallback callback) {
+        tagsRepository.getTextTag(timestamp, new SimpleTextWriterContract.LoadTextTagCallback() {
+            @Override
+            public void onTagLoaded(TextTag textTag) {
+                callback.onTagLoaded(textTag);
+            }
+
+            @Override
+            public void onDatanotAvailable() {
+                callback.onDatanotAvailable();
+            }
+        });
     }
 
 }
