@@ -25,6 +25,7 @@ import com.easynfc.R;
 import com.easynfc.data.WifiTag;
 import com.easynfc.data.model.Wifi;
 import com.easynfc.util.AppUtils;
+import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
 
 import java.util.ArrayList;
@@ -39,17 +40,8 @@ import butterknife.OnClick;
  */
 public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterContract.View {
 
-
-    public static final String TAG = "WiFiWriterFragment";
-
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_wifi_password_title)
-    TextView txtWifiPasswordTitle;
     @BindView(R.id.et_wifi_password)
     EditText etWifiPassword;
-    @BindView(R.id.txt_wifi_ssid_title)
-    TextView txtWifiSsidTitle;
     @BindView(R.id.et_wifi_ssid)
     EditText etWifiSsid;
     @BindView(R.id.sp_security_cypher)
@@ -63,8 +55,9 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     ProgressBar progressBar;
     private RelativeLayout wifiListView;
     private ListView list;
-
     public WiFiWriterContract.Presenter presenter;
+
+    public static final String TAG = "WiFiWriterFragment";
 
     public WiFiWriterFragment() {
         // Required empty public constructor
@@ -82,11 +75,10 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
         ButterKnife.bind(this, v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtWifiSsidTitle.setTypeface(typeface);
-        txtWifiPasswordTitle.setTypeface(typeface);
         etWifiSsid.setTypeface(typeface);
+        etWifiSsid.addTextChangedListener(new FieldTextWatcher());
         etWifiPassword.setTypeface(typeface);
+        etWifiPassword.addTextChangedListener(new FieldTextWatcher());
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
         final SpinnerAdapter adapter = new SpinnerAdapter(getActivity(), R.layout.spinner_item, presenter.getSecurityCypherList(), "Select Security cypher");
@@ -188,6 +180,28 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
+    }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+        tryEnableButtons();
+    }
+
+    private void tryEnableButtons() {
+        btnSave.setEnabled(etWifiPassword.getText().length() > 0
+                && etWifiSsid.getText().length() > 0);
+        btnRecord.setEnabled(etWifiPassword.getText().length() > 0
+                && etWifiSsid.getText().length() > 0);
+    }
+
+
+    private class FieldTextWatcher extends EditTextWatcher {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            onAnyTextChanged(count);
+        }
     }
 
     private void showWifiNetworksList(final ArrayList<Wifi> wifis) {

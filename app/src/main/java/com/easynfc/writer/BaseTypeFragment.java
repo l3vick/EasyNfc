@@ -108,4 +108,6 @@ public abstract class BaseTypeFragment extends Fragment {
         }
     }
 
+    protected abstract void onAnyTextChanged(int count);
+
 }

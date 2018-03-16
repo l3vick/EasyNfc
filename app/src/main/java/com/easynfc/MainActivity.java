@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.inputmethod.InputMethodManager;
 
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.data.source.local.tags.TagsLocalDataSource;
@@ -400,4 +402,14 @@ public class MainActivity extends AppCompatActivity {
         LockWriterPresenter presenter = new LockWriterPresenter(lockWriterFragment, nfcUtils);
     }
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(getApplicationContext().
+                INPUT_METHOD_SERVICE);
+        if (getCurrentFocus() != null){
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return true;
+    }
 }

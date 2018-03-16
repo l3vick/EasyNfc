@@ -25,6 +25,7 @@ import com.easynfc.R;
 import com.easynfc.data.AarTag;
 import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
+import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.simple_text.SimpleTextWriterContract;
 import com.easynfc.writer.wi_fi.WiFiWriterContract;
@@ -42,12 +43,6 @@ import butterknife.OnClick;
 public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLauncherWriterContract.View {
 
 
-    public static final String TAG = "AppLauncherWriterFragment";
-
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_app_launcher_title)
-    TextView txtAppLauncherTitle;
     @BindView(R.id.et_app_launcher)
     EditText etAppLauncher;
     @BindView(R.id.btn_save)
@@ -57,6 +52,8 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     @BindView(R.id.parentView)
     FrameLayout parentView;
     private RelativeLayout aarListView;
+
+    public static final String TAG = "AppLauncherWriterFragment";
 
     public AppLauncherWriterContract.Presenter presenter;
 
@@ -76,9 +73,8 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
         ButterKnife.bind(this, v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtAppLauncherTitle.setTypeface(typeface);
         etAppLauncher.setTypeface(typeface);
+        etAppLauncher.addTextChangedListener(new FieldTextWatcher());
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
         return v;
@@ -152,6 +148,27 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
         super.processNfc(intent);
         presenter.writeTag(intent, etAppLauncher.getText().toString());
     }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+        tryEnableButtons();
+    }
+
+    private void tryEnableButtons() {
+        btnSave.setEnabled(etAppLauncher.getText().length() > 0);
+        btnRecord.setEnabled(etAppLauncher.getText().length() > 0);
+    }
+
+
+    private class FieldTextWatcher extends EditTextWatcher {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            onAnyTextChanged(count);
+        }
+    }
+
 
     public void showAarList(AppLauncherWriterContract.OnAarItemClickedCallback callback) {
         setAarView(callback);

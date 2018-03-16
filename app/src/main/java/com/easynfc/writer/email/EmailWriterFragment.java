@@ -16,6 +16,7 @@ import com.easynfc.R;
 import com.easynfc.data.EmailTag;
 import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
+import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.phone.PhoneWriterContract;
 import com.easynfc.writer.simple_text.SimpleTextWriterContract;
@@ -32,12 +33,6 @@ import butterknife.OnClick;
 public class EmailWriterFragment extends BaseTypeFragment implements EmailWriterContract.View {
 
 
-    public static final String TAG = "EmailWriterFragment";
-
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_email_title)
-    TextView txtEmailTitle;
     @BindView(R.id.et_email)
     EditText etEmail;
     @BindView(R.id.btn_save)
@@ -45,6 +40,8 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     @BindView(R.id.btn_record)
     Button btnRecord;
     public EmailWriterContract.Presenter presenter;
+
+    public static final String TAG = "EmailWriterFragment";
 
     public EmailWriterFragment() {
         // Required empty public constructor
@@ -62,9 +59,8 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
         ButterKnife.bind(this, v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtEmailTitle.setTypeface(typeface);
         etEmail.setTypeface(typeface);
+        etEmail.addTextChangedListener(new FieldTextWatcher());
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
         return v;
@@ -122,6 +118,26 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etEmail.getText().toString());
+    }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+        tryEnableButtons();
+    }
+
+    private void tryEnableButtons() {
+        btnSave.setEnabled(etEmail.getText().length() > 0);
+        btnRecord.setEnabled(etEmail.getText().length() > 0);
+    }
+
+
+    private class FieldTextWatcher extends EditTextWatcher {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            onAnyTextChanged(count);
+        }
     }
 
 }

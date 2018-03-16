@@ -22,8 +22,6 @@ public class CustomTextView extends android.support.v7.widget.AppCompatTextView 
     public CustomTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         AppUtils.setTypeface(getContext(), this);
-        //setTextSize(getResources().getDimension(R.dimen.input_title) / getResources().getDisplayMetrics().density);
-        //setTextColor(getResources().getColor(R.color.tomato));
     }
 
     public CustomTextView(Context context, AttributeSet attrs, int defStyleAttr) {

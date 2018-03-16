@@ -19,6 +19,7 @@ import com.easynfc.data.EmailTag;
 import com.easynfc.data.LocationTag;
 import com.easynfc.util.AppConstants;
 import com.easynfc.util.AppUtils;
+import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.email.EmailWriterContract;
 import com.easynfc.writer.sms.SmsWriterContract;
@@ -35,14 +36,6 @@ import butterknife.OnClick;
 public class LocationWriterFragment extends BaseTypeFragment implements LocationWriterContract.View {
 
 
-    public static final String TAG = "LocationWriterFragment";
-
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_latitude_title)
-    TextView txtLatitudeTitle;
-    @BindView(R.id.txt_longitude_title)
-    TextView txtLongitudeTitle;
     @BindView(R.id.et_latitude)
     EditText etLatitude;
     @BindView(R.id.et_longitude)
@@ -52,6 +45,8 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     @BindView(R.id.btn_record)
     Button btnRecord;
     public LocationWriterContract.Presenter presenter;
+    
+    public static final String TAG = "LocationWriterFragment";
 
 
     public LocationWriterFragment() {
@@ -70,11 +65,10 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
         ButterKnife.bind(this,v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtLatitudeTitle.setTypeface(typeface);
-        txtLongitudeTitle.setTypeface(typeface);
         etLatitude.setTypeface(typeface);
+        etLatitude.addTextChangedListener(new FieldTextWatcher());
         etLongitude.setTypeface(typeface);
+        etLongitude.addTextChangedListener(new FieldTextWatcher());
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
         presenter.initLocationManager(getContext());
@@ -175,5 +169,26 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
         super.processNfc(intent);
         presenter.writeTag(intent, etLatitude.getText().toString(), etLongitude.getText().toString());
     }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+        tryEnableButtons();
+    }
+
+    private void tryEnableButtons() {
+        btnSave.setEnabled(etLongitude.getText().length() > 0 && etLatitude.getText().length() > 0);
+        btnRecord.setEnabled(etLongitude.getText().length() > 0 && etLatitude.getText().length() > 0);
+    }
+
+
+    private class FieldTextWatcher extends EditTextWatcher {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            onAnyTextChanged(count);
+        }
+    }
+
 
 }

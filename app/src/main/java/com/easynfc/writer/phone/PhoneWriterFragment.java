@@ -10,15 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.easynfc.R;
 import com.easynfc.data.PhoneTag;
 import com.easynfc.util.AppUtils;
+import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
-import com.easynfc.writer.sms.SmsWriterContract;
-import com.easynfc.writer.wi_fi.WiFiWriterContract;
-import com.easynfc.writer.wi_fi.WiFiWriterFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,10 +29,6 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
 
     public static final String TAG = "PhoneWriterFragment";
 
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_phone_title)
-    TextView txtPhoneTitle;
     @BindView(R.id.et_phone)
     EditText etPhone;
     @BindView(R.id.btn_save)
@@ -61,9 +54,8 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
         ButterKnife.bind(this,v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtPhoneTitle.setTypeface(typeface);
         etPhone.setTypeface(typeface);
+        etPhone.addTextChangedListener(new FieldTextWatcher());
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
         return v;
@@ -121,5 +113,26 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
         super.processNfc(intent);
         presenter.writeTag(intent, etPhone.getText().toString());
     }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+        tryEnableButtons();
+    }
+
+    private void tryEnableButtons() {
+        btnSave.setEnabled(etPhone.getText().length() > 0);
+        btnRecord.setEnabled(etPhone.getText().length() > 0);
+    }
+
+
+    private class FieldTextWatcher extends EditTextWatcher {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            onAnyTextChanged(count);
+        }
+    }
+
 
 }

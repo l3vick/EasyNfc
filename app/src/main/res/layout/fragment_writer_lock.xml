@@ -26,7 +26,7 @@
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_lock_eb_light" />
 
-            <TextView
+            <com.easynfc.util.custom.CustomTextView
                 android:id="@+id/txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:gravity="center|left"
             android:orientation="vertical">
 
-            <TextView
+            <com.easynfc.util.custom.CustomTextView
                 android:id="@+id/txt_lock_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:textColor="@color/easy_black_ghost"
                 android:textSize="@dimen/input_title" />
 
-            <TextView
+            <com.easynfc.util.custom.CustomTextView
                 android:layout_marginTop="@dimen/app_padding"
                 android:id="@+id/txt_lock_subtitle"
                 android:layout_width="wrap_content"

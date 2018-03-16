@@ -10,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.easynfc.R;
 import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
+import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
 
 import butterknife.BindView;
@@ -26,10 +26,6 @@ import butterknife.OnClick;
  */
 public class SimpleTextWriterFragment extends BaseTypeFragment implements SimpleTextWriterContract.View {
 
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_simple_text_title)
-    TextView txtInputTitle;
     @BindView(R.id.et_simple_text)
     EditText etSimpleText;
     @BindView(R.id.btn_save)
@@ -58,9 +54,8 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
         setParentView(v);
         ButterKnife.bind(this, v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtInputTitle.setTypeface(typeface);
         etSimpleText.setTypeface(typeface);
+        etSimpleText.addTextChangedListener(new FieldTextWatcher());
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
         return v;
@@ -118,5 +113,25 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
         super.processNfc(intent);
         presenter.writeTag(intent, etSimpleText.getText().toString());
     }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+        tryEnableButtons();
+    }
+
+    private void tryEnableButtons() {
+        btnSave.setEnabled(etSimpleText.getText().length() > 0);
+        btnRecord.setEnabled(etSimpleText.getText().length() > 0);
+    }
+
+    private class FieldTextWatcher extends EditTextWatcher {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            onAnyTextChanged(count);
+        }
+    }
+
 
 }

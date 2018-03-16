@@ -31,18 +31,11 @@ import butterknife.OnClick;
  */
 public class LockWriterFragment extends BaseTypeFragment implements LockWriterContract.View {
 
-
-    public static final String TAG = "LockWriterFragment";
-
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_lock_title)
-    TextView txtLockTitle;
-    @BindView(R.id.txt_lock_subtitle)
-    TextView txtSubtitle;
     public LockWriterContract.Presenter presenter;
     @BindView(R.id.btn_lock)
     Button btnLock;
+
+    public static final String TAG = "LockWriterFragment";
 
     public LockWriterFragment() {
         // Required empty public constructor
@@ -60,9 +53,6 @@ public class LockWriterFragment extends BaseTypeFragment implements LockWriterCo
         ButterKnife.bind(this, v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtLockTitle.setTypeface(typeface);
-        txtSubtitle.setTypeface(typeface);
         btnLock.setTypeface(typeface);
         return v;
     }
@@ -94,6 +84,11 @@ public class LockWriterFragment extends BaseTypeFragment implements LockWriterCo
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.lockTag(intent);
+    }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+
     }
 
 

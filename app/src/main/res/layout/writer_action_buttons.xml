@@ -17,8 +17,9 @@
             android:layout_height="@dimen/edit_text_height"
             android:background="@drawable/button_black_rounded_border"
             android:text="@string/save"
+            android:enabled="false"
             android:textAllCaps="false"
-            android:textColor="@color/easy_black_ghost"
+            android:textColor="@color/btn_text_color"
             android:textSize="@dimen/button_txt" />
 
     </LinearLayout>
@@ -39,8 +40,9 @@
             android:layout_height="@dimen/edit_text_height"
             android:background="@drawable/button_black_rounded_border"
             android:text="@string/record"
+            android:enabled="false"
             android:textAllCaps="false"
-            android:textColor="@color/easy_black_ghost"
+            android:textColor="@color/btn_text_color"
             android:textSize="@dimen/button_txt" />
 
     </LinearLayout>

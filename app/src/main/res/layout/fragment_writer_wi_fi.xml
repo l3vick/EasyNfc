@@ -26,7 +26,7 @@
                 android:layout_centerInParent="true"
                 android:src="@drawable/ic_wifi_eb_light" />
 
-            <TextView
+            <com.easynfc.util.custom.CustomTextView
                 android:id="@+id/txt_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
                 android:layout_marginRight="@dimen/app_padding"
                 android:layout_marginLeft="@dimen/app_padding">
 
-                <TextView
+                <com.easynfc.util.custom.CustomTextView
                     android:id="@+id/txt_wifi_ssid_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 android:textColor="@color/tomato"
                 android:textColorHint="@color/tomato60" />
 
-            <TextView
+            <com.easynfc.util.custom.CustomTextView
                 android:id="@+id/txt_wifi_password_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -30,17 +30,11 @@ import butterknife.OnClick;
 public class FormatWriterFragment extends BaseTypeFragment implements FormatWriterContract.View {
 
 
-    public static final String TAG = "FormatWriterFragment";
-
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_format_title)
-    TextView txtFormatTitle;
-    @BindView(R.id.txt_format_subtitle)
-    TextView txtSubtitle;
     @BindView(R.id.btn_format)
     Button btnFormat;
     public FormatWriterContract.Presenter presenter;
+
+    public static final String TAG = "FormatWriterFragment";
 
     public FormatWriterFragment() {
         // Required empty public constructor
@@ -58,9 +52,6 @@ public class FormatWriterFragment extends BaseTypeFragment implements FormatWrit
         ButterKnife.bind(this, v);
         setParentView(v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtFormatTitle.setTypeface(typeface);
-        txtSubtitle.setTypeface(typeface);
         btnFormat.setTypeface(typeface);
         return v;
     }
@@ -91,6 +82,11 @@ public class FormatWriterFragment extends BaseTypeFragment implements FormatWrit
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.formatTag(intent);
+    }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+
     }
 
 }

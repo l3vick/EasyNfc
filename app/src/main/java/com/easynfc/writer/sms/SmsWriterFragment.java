@@ -10,13 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.easynfc.R;
 import com.easynfc.data.SmsTag;
 import com.easynfc.util.AppUtils;
+import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
-import com.easynfc.writer.simple_text.SimpleTextWriterContract;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,12 +29,6 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
 
     public static final String TAG = "SmsWriterFragment";
 
-    @BindView(R.id.txt_title)
-    TextView txtTitle;
-    @BindView(R.id.txt_sms_phone_title)
-    TextView txtPhoneTitle;
-    @BindView(R.id.txt_sms_text_title)
-    TextView txtTextTitle;
     @BindView(R.id.et_sms_phone)
     EditText etPhone;
     @BindView(R.id.et_sms_text)
@@ -61,11 +54,10 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
         View v = inflater.inflate(R.layout.fragment_writer_sms, container, false);
         ButterKnife.bind(this, v);
         Typeface typeface = AppUtils.getAppTypeface(getContext());
-        txtTitle.setTypeface(typeface);
-        txtPhoneTitle.setTypeface(typeface);
-        txtTextTitle.setTypeface(typeface);
         etPhone.setTypeface(typeface);
         etText.setTypeface(typeface);
+        etPhone.addTextChangedListener(new FieldTextWatcher());
+        etText.addTextChangedListener(new FieldTextWatcher());
         btnSave.setTypeface(typeface);
         btnRecord.setTypeface(typeface);
         setParentView(v);
@@ -125,5 +117,28 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
         super.processNfc(intent);
         presenter.writeTag(intent, etPhone.getText().toString(), etText.getText().toString());
     }
+
+    @Override
+    protected void onAnyTextChanged(int count) {
+        tryEnableButtons();
+    }
+
+    private void tryEnableButtons() {
+        btnSave.setEnabled(etText.getText().length() > 0
+                && etPhone.getText().length() > 0);
+        btnRecord.setEnabled(etText.getText().length() > 0
+                && etPhone.getText().length() > 0);
+    }
+
+
+    private class FieldTextWatcher extends EditTextWatcher {
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            super.onTextChanged(s, start, before, count);
+            onAnyTextChanged(count);
+        }
+    }
+
 
 }
