@@ -63,7 +63,6 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     ProgressBar progressBar;
     private RelativeLayout wifiListView;
     private ListView list;
-    private long tagId = 0;
 
     public WiFiWriterContract.Presenter presenter;
 
@@ -174,7 +173,6 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
                     int position = presenter.getWifiAuthPosition(wifiTag.getAuth());
                     spSecurityCypher.setSelection(position + 1);
                 }
-
                 @Override
                 public void onDatanotAvailable() {
 
@@ -190,11 +188,6 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
-    }
-
-
-    public void setTag(long timestamp) {
-        tagId = timestamp;
     }
 
     private void showWifiNetworksList(final ArrayList<Wifi> wifis) {

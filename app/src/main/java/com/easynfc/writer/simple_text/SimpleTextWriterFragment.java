@@ -36,7 +36,6 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
-    private long tagId = 0;
 
     private SimpleTextWriterContract.Presenter presenter;
 
@@ -120,7 +119,4 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
         presenter.writeTag(intent, etSimpleText.getText().toString());
     }
 
-    public void setTag(long timestamp) {
-        tagId = timestamp;
-    }
 }

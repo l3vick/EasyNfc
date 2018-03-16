@@ -45,7 +45,6 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     @BindView(R.id.btn_record)
     Button btnRecord;
     public EmailWriterContract.Presenter presenter;
-    private long tagId = 0;
 
     public EmailWriterFragment() {
         // Required empty public constructor
@@ -125,7 +124,4 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
         presenter.writeTag(intent, etEmail.getText().toString());
     }
 
-    public void setTag(long timestamp) {
-        tagId = timestamp;
-    }
 }

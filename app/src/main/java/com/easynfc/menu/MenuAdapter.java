@@ -80,11 +80,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         @Override
         public void onClick(View view) {
             if (getLayoutPosition() == WRITE){
-                main.navigateToTagsMenu();
+                main.navigateToTagsMenu(false);
             }else if (getLayoutPosition() == READ){
                 main.navigateToTagReader();
             }else if (getLayoutPosition() == MYTAGS){
-                main.navigateToMyTags();
+                main.navigateToMyTags(false);
             }
         }
 

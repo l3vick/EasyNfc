@@ -42,7 +42,6 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
-    private long tagId = 0;
 
     public PhoneWriterContract.Presenter presenter;
 
@@ -121,10 +120,6 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etPhone.getText().toString());
-    }
-
-    public void setTag(long timestamp) {
-        tagId = timestamp;
     }
 
 }

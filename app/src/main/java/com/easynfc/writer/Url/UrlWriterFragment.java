@@ -39,7 +39,6 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     @BindView(R.id.btn_record)
     Button btnRecord;
     private UrlWriterContract.Presenter presenter;
-    private long tagId = 0;
 
     public static final String TAG = "UrlWriterFragment";
 
@@ -120,7 +119,4 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
         presenter.writeTag(intent, etUrl.getText().toString());
     }
 
-    public void setTag(long timestamp) {
-        tagId = timestamp;
-    }
 }

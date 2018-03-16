@@ -45,7 +45,6 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
     @BindView(R.id.btn_record)
     Button btnRecord;
     public SmsWriterContract.Presenter presenter;
-    private long tagId = 0;
 
     public SmsWriterFragment() {
         // Required empty public constructor
@@ -127,7 +126,4 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
         presenter.writeTag(intent, etPhone.getText().toString(), etText.getText().toString());
     }
 
-    public void setTag(long timestamp) {
-        tagId = timestamp;
-    }
 }

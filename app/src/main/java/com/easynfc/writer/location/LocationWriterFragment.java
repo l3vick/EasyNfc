@@ -52,7 +52,6 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     @BindView(R.id.btn_record)
     Button btnRecord;
     public LocationWriterContract.Presenter presenter;
-    private long tagId = 0;
 
 
     public LocationWriterFragment() {
@@ -177,7 +176,4 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
         presenter.writeTag(intent, etLatitude.getText().toString(), etLongitude.getText().toString());
     }
 
-    public void setTag(long timestamp) {
-        tagId = timestamp;
-    }
 }

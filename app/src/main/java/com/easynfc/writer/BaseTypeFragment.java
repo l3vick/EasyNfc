@@ -27,6 +27,7 @@ public abstract class BaseTypeFragment extends Fragment {
     private RelativeLayout customDialogView;
     private FrameLayout parentView;
     private MainActivity main;
+    public long tagId = 0;
 
 
     public BaseTypeFragment() {
@@ -53,6 +54,10 @@ public abstract class BaseTypeFragment extends Fragment {
 
     public void processNfc(Intent intent) {
 
+    }
+
+    public void setTag(long timestamp) {
+        tagId = timestamp;
     }
 
     public void setParentView(View view) {
@@ -91,7 +96,12 @@ public abstract class BaseTypeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                main.navigateToTagsMenu();
+                if (tagId != 0 ){
+                    main.navigateToMyTags(true);
+                } else {
+                    main.navigateToTagsMenu(true);
+                }
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

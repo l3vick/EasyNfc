@@ -85,15 +85,19 @@ public class MainActivity extends AppCompatActivity {
         MenuPresenter presenter = new MenuPresenter(menuFragment);
     }
 
-    public void navigateToTagsMenu() {
+    public void navigateToTagsMenu(boolean reverseAnimation) {
         TagsMenuFragment tagsMenuFragment = (TagsMenuFragment) getSupportFragmentManager().findFragmentByTag(TagsMenuFragment.TAG);
         if (tagsMenuFragment == null) {
             tagsMenuFragment = TagsMenuFragment.newInstance();
 
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
-                    .replace(R.id.container, tagsMenuFragment)
+            final FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                    .beginTransaction();
+            if (reverseAnimation) {
+                fragmentTransaction.setCustomAnimations(R.anim.slide_from_left, R.anim.slide_to_right);
+            } else {
+                fragmentTransaction.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left);
+            }
+            fragmentTransaction.replace(R.id.container, tagsMenuFragment)
                     .commit();
         }
 
@@ -115,15 +119,21 @@ public class MainActivity extends AppCompatActivity {
         ReaderPresenter presenter = new ReaderPresenter(readerFragment, nfcUtils);
     }
 
-    public void navigateToMyTags() {
+    public void navigateToMyTags(boolean reverseAnimation) {
         MyTagsFragment myTagsFragment = (MyTagsFragment) getSupportFragmentManager().findFragmentByTag(MyTagsFragment.TAG);
         if (myTagsFragment == null) {
             myTagsFragment = MyTagsFragment.newInstance();
 
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
-                    .replace(R.id.container, myTagsFragment)
+
+            final FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                    .beginTransaction();
+            if (reverseAnimation) {
+                fragmentTransaction.setCustomAnimations(R.anim.slide_from_left, R.anim.slide_to_right);
+            } else {
+                fragmentTransaction.setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left);
+            }
+
+            fragmentTransaction.replace(R.id.container, myTagsFragment)
                     .commit();
         }
 
@@ -178,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
             simpleTextWriterFragment = SimpleTextWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, simpleTextWriterFragment)
                     .commit();
         }
@@ -201,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
             urlWriterFragment = UrlWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, urlWriterFragment)
                     .commit();
         }
@@ -225,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
             smsWriterFragment = SmsWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, smsWriterFragment)
                     .commit();
         }
@@ -247,6 +260,7 @@ public class MainActivity extends AppCompatActivity {
             phoneWriterFragment = PhoneWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, phoneWriterFragment)
                     .commit();
         }
@@ -269,6 +283,7 @@ public class MainActivity extends AppCompatActivity {
             appLauncherWriterFragment = AppLauncherWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, appLauncherWriterFragment)
                     .commit();
         }
@@ -291,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
             locationWriterFragment = LocationWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, locationWriterFragment)
                     .commit();
         }
@@ -312,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
             wiFiWriterFragment = WiFiWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, wiFiWriterFragment)
                     .commit();
         }
@@ -336,6 +353,7 @@ public class MainActivity extends AppCompatActivity {
             emailWriterFragment = EmailWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, emailWriterFragment)
                     .commit();
         }
@@ -358,6 +376,7 @@ public class MainActivity extends AppCompatActivity {
             formatWriterFragment = FormatWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, formatWriterFragment)
                     .commit();
         }
@@ -372,6 +391,7 @@ public class MainActivity extends AppCompatActivity {
             lockWriterFragment = LockWriterFragment.newInstance();
             getSupportFragmentManager()
                     .beginTransaction()
+                    .setCustomAnimations(R.anim.slide_from_right, R.anim.slide_to_left)
                     .replace(R.id.container, lockWriterFragment)
                     .commit();
         }

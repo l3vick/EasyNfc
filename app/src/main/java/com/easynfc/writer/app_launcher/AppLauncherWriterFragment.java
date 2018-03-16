@@ -57,7 +57,6 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     @BindView(R.id.parentView)
     FrameLayout parentView;
     private RelativeLayout aarListView;
-    private long tagId = 0;
 
     public AppLauncherWriterContract.Presenter presenter;
 
@@ -152,10 +151,6 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     public void processNfc(Intent intent) {
         super.processNfc(intent);
         presenter.writeTag(intent, etAppLauncher.getText().toString());
-    }
-
-    public void setTag(long timestamp) {
-        tagId = timestamp;
     }
 
     public void showAarList(AppLauncherWriterContract.OnAarItemClickedCallback callback) {
