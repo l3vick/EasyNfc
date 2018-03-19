@@ -83,6 +83,16 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
         super.tagWritten();
     }
 
+    @Override
+    public void showMessageSuccess() {
+        super.showMessageSuccess();
+        btnSave.setEnabled(false);
+    }
+
+    @Override
+    public void showMessageError() {
+        super.showMessageError();
+    }
 
     @Override
     public void onPause() {

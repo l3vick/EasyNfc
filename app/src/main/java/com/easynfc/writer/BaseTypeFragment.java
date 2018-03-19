@@ -110,4 +110,13 @@ public abstract class BaseTypeFragment extends Fragment {
 
     protected abstract void onAnyTextChanged(int count);
 
+    public void showMessageSuccess() {
+        Snackbar snackbar = Snackbar.make(parentView, R.string.tag_saved, Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
+
+    public void showMessageError() {
+        Snackbar snackbar = Snackbar.make(parentView, R.string.tag_saved_error, Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
 }

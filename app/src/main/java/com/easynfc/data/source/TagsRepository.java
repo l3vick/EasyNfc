@@ -65,43 +65,123 @@ public class TagsRepository implements TagsDataSource {
     }
 
     @Override
-    public void addText(TextTag textTag) {
-        remoteDataSource.addText(textTag);
+    public void addText(TextTag textTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addText(textTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override
-    public void addUrl(UrlTag urlTag) {
-        remoteDataSource.addUrl(urlTag);
+    public void addUrl(UrlTag urlTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addUrl(urlTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override
-    public void addSms(SmsTag smsTag) {
-        remoteDataSource.addSms(smsTag);
+    public void addSms(SmsTag smsTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addSms(smsTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override
-    public void addPhone(PhoneTag phoneTag) {
-        remoteDataSource.addPhone(phoneTag);
+    public void addPhone(PhoneTag phoneTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addPhone(phoneTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override
-    public void addAar(AarTag aarTag) {
-        remoteDataSource.addAar(aarTag);
+    public void addAar(AarTag aarTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addAar(aarTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+              callback.onError();
+            }
+        });
     }
 
     @Override
-    public void addLocation(LocationTag locationTag) {
-        remoteDataSource.addLocation(locationTag);
+    public void addLocation(LocationTag locationTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addLocation(locationTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override
-    public void addWifi(WifiTag wifiTag) {
-        remoteDataSource.addWifi(wifiTag);
+    public void addWifi(WifiTag wifiTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addWifi(wifiTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override
-    public void addEmail(EmailTag emailTag) {
-        remoteDataSource.addEmail(emailTag);
+    public void addEmail(EmailTag emailTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addEmail(emailTag, new OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
     }
 
     @Override

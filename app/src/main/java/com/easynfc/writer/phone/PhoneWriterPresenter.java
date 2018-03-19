@@ -8,6 +8,7 @@ import com.easynfc.data.PhoneTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 import com.easynfc.writer.wi_fi.WiFiWriterContract;
@@ -91,7 +92,17 @@ public class PhoneWriterPresenter  implements PhoneWriterContract.Presenter {
     @Override
     public void saveTag(String phone) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addPhone(new PhoneTag(timestamp.getTime(), phone));
+        tagsRepository.addPhone(new PhoneTag(timestamp.getTime(), phone), new TagsDataSource.OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showMessageSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.easynfc.data.SmsTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
@@ -92,7 +93,17 @@ public class SmsWriterPresenter implements SmsWriterContract.Presenter {
     @Override
     public void saveTag(String number, String text) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addSms(new SmsTag(timestamp.getTime(), number, text));
+        tagsRepository.addSms(new SmsTag(timestamp.getTime(), number, text), new TagsDataSource.OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showMessageSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
     }
 
     @Override

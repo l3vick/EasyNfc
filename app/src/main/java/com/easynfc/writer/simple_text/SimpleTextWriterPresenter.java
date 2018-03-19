@@ -8,6 +8,7 @@ import com.easynfc.data.TextTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
@@ -93,7 +94,17 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
     @Override
     public void saveTag(String content) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addText(new TextTag(timestamp.getTime(),content));
+        tagsRepository.addText(new TextTag(timestamp.getTime(), content), new TagsDataSource.OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showMessageSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
     }
 
     @Override

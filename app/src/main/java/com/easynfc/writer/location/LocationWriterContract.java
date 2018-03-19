@@ -17,6 +17,10 @@ public interface LocationWriterContract {
     interface View extends BaseView<Presenter> {
 
         void OnTagWritten();
+
+        void showMessageSuccess();
+
+        void showMessageError();
     }
 
     interface Presenter extends BasePresenter {

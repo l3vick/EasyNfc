@@ -8,6 +8,7 @@ import com.easynfc.data.UrlTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
@@ -91,7 +92,17 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
     @Override
     public void saveTag(String content) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addUrl(new UrlTag(timestamp.getTime(), content));
+        tagsRepository.addUrl(new UrlTag(timestamp.getTime(), content), new TagsDataSource.OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showMessageSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
     }
 
     @Override

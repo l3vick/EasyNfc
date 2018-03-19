@@ -9,6 +9,7 @@ import com.easynfc.data.LocationTag;
 import com.easynfc.data.exceptions.InsufficientSizeException;
 import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
+import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.LocationUtils;
 import com.easynfc.util.NfcUtils;
@@ -144,7 +145,17 @@ public class LocationWriterPresenter implements LocationWriterContract.Presenter
     @Override
     public void saveTag(String latitude, String longitude) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addLocation(new LocationTag(timestamp.getTime(), latitude,longitude));
+        tagsRepository.addLocation(new LocationTag(timestamp.getTime(), latitude, longitude), new TagsDataSource.OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showMessageSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
     }
 
     @Override

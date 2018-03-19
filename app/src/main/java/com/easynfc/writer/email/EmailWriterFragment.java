@@ -89,6 +89,18 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
         super.tagWritten();
     }
 
+    @Override
+    public void showMessageSuccess() {
+        super.showMessageSuccess();
+        btnSave.setEnabled(false);
+    }
+
+    @Override
+    public void showMessageError() {
+        super.showMessageError();
+    }
+
+
 
     @Override
     public void onPause() {

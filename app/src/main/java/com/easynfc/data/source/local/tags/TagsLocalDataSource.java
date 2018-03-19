@@ -11,7 +11,6 @@ import com.easynfc.data.TextTag;
 import com.easynfc.data.UrlTag;
 import com.easynfc.data.MyTag;
 import com.easynfc.data.WifiTag;
-import com.easynfc.data.model.Wifi;
 import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.local.EasyNfcDatabase;
 import com.easynfc.mytags.MyTagsContract;
@@ -25,7 +24,6 @@ import com.easynfc.writer.sms.SmsWriterContract;
 import com.easynfc.writer.url.UrlWriterContract;
 import com.easynfc.writer.wi_fi.WiFiWriterContract;
 
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -62,51 +60,99 @@ public class TagsLocalDataSource implements TagsDataSource {
     }
 
     @Override
-    public void addText(TextTag textTag) {
+    public void addText(TextTag textTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(), AppConstants.TagTypes.TEXT.toString()));
         tagsDao.insertTextTag(textTag);
+        TextTag textTagAux = tagsDao.getTextTag(textTag.getTimeStamp());
+        if (textTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override
-    public void addUrl(UrlTag urlTag) {
+    public void addUrl(UrlTag urlTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.TagTypes.URL.toString()));
         tagsDao.insertUrlTag(urlTag);
+        UrlTag urlTagAux= tagsDao.getUrlTag(urlTag.getTimeStamp());
+        if (urlTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override
-    public void addSms(SmsTag smsTag) {
+    public void addSms(SmsTag smsTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(smsTag.getTimeStamp(), smsTag.getText(), AppConstants.TagTypes.SMS.toString()));
         tagsDao.insertSmsTag(smsTag);
+        SmsTag smsTagAux= tagsDao.getSmsTag(smsTag.getTimeStamp());
+        if (smsTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override
-    public void addPhone(PhoneTag phoneTag) {
+    public void addPhone(PhoneTag phoneTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(phoneTag.getTimeStamp(), phoneTag.getPhone(), AppConstants.TagTypes.PHONE.toString()));
         tagsDao.insertPhoneTag(phoneTag);
+        PhoneTag phoneTagAux= tagsDao.getPhoneTag(phoneTag.getTimeStamp());
+        if (phoneTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override
-    public void addAar(AarTag aarTag) {
+    public void addAar(AarTag aarTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(aarTag.getTimeStamp(), aarTag.getAar(), AppConstants.TagTypes.AAR.toString()));
         tagsDao.insertAarTag(aarTag);
+        AarTag aarTagAux= tagsDao.getAarTag(aarTag.getTimeStamp());
+        if (aarTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override
-    public void addLocation(LocationTag locationTag) {
+    public void addLocation(LocationTag locationTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(locationTag.getTimeStamp(), locationTag.getLatitude() + ", " + locationTag.getLongitude(), AppConstants.TagTypes.LOCATION.toString()));
         tagsDao.insertLocationTag(locationTag);
+        LocationTag locationTagAux= tagsDao.getLocationTag(locationTag.getTimeStamp());
+        if (locationTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override
-    public void addWifi(WifiTag wifiTag) {
+    public void addWifi(WifiTag wifiTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(wifiTag.getTimeStamp(), wifiTag.getSsid(), AppConstants.TagTypes.WIFI.toString()));
         tagsDao.insertWifiTag(wifiTag);
+        WifiTag wifiTagAux= tagsDao.getWifiTag(wifiTag.getTimeStamp());
+        if (wifiTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override
-    public void addEmail(EmailTag emailTag) {
+    public void addEmail(EmailTag emailTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(emailTag.getTimeStamp(), emailTag.getContent(), AppConstants.TagTypes.EMAIL.toString()));
         tagsDao.insertEmailTag(emailTag);
+        EmailTag emailTagAux= tagsDao.getEmailTag(emailTag.getTimeStamp());
+        if (emailTagAux != null){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 
     @Override

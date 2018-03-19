@@ -110,6 +110,18 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     }
 
     @Override
+    public void showMessageSuccess() {
+        super.showMessageSuccess();
+        btnSave.setEnabled(false);
+    }
+
+    @Override
+    public void showMessageError() {
+        super.showMessageError();
+    }
+
+
+    @Override
     public void onStart() {
         super.onStart();
         presenter.connectApiClient();

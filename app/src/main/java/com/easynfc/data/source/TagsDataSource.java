@@ -29,21 +29,21 @@ public interface TagsDataSource {
 
     void getTags(LoadTagsCallback callback);
 
-    void addText(TextTag textTag);
+    void addText(TextTag textTag, OnTagSavedCallback callback);
 
-    void addUrl(UrlTag urlTag);
+    void addUrl(UrlTag urlTag, OnTagSavedCallback callback);
 
-    void addSms(SmsTag smsTag);
+    void addSms(SmsTag smsTag, OnTagSavedCallback callback);
 
-    void addPhone(PhoneTag phoneTag);
+    void addPhone(PhoneTag phoneTag, OnTagSavedCallback callback);
 
-    void addAar(AarTag aarTag);
+    void addAar(AarTag aarTag, OnTagSavedCallback callback);
 
-    void addLocation(LocationTag locationTag);
+    void addLocation(LocationTag locationTag, OnTagSavedCallback callback);
 
-    void addWifi(WifiTag wifiTag);
+    void addWifi(WifiTag wifiTag, OnTagSavedCallback callback);
 
-    void addEmail(EmailTag emailTag);
+    void addEmail(EmailTag emailTag, OnTagSavedCallback callback);
 
     void deleteTag(MyTag myTag, MyTagsContract.OnDeleteTagCallback callback);
 
@@ -68,6 +68,11 @@ public interface TagsDataSource {
         void onTagsLoaded(List<MyTag> tags);
 
         void onDataNotAvailable();
+    }
+
+    interface OnTagSavedCallback {
+        void onSuccess();
+        void onError();
     }
 
 }

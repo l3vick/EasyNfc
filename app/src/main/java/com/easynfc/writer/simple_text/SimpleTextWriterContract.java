@@ -14,6 +14,10 @@ public interface SimpleTextWriterContract {
 
     interface View extends BaseView<Presenter> {
         void onTagWritten();
+
+        void showMessageSuccess();
+
+        void showMessageError();
     }
 
     interface Presenter extends BasePresenter {

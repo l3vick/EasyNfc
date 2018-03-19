@@ -14,6 +14,7 @@ import com.easynfc.data.exceptions.NdefFormatException;
 import com.easynfc.data.exceptions.ReadOnlyTagException;
 import com.easynfc.data.model.WifiAuthType;
 import com.easynfc.data.model.Wifi;
+import com.easynfc.data.source.TagsDataSource;
 import com.easynfc.data.source.TagsRepository;
 import com.easynfc.util.NfcUtils;
 
@@ -132,7 +133,17 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
     @Override
     public void saveTag(String ssid, String password, String auth) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addWifi(new WifiTag(timestamp.getTime(), ssid,auth, password));
+        tagsRepository.addWifi(new WifiTag(timestamp.getTime(), ssid,auth, password), new TagsDataSource.OnTagSavedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showMessageSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
     }
 
     @Override

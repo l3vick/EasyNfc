@@ -83,6 +83,17 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
         super.tagWritten();
     }
 
+    @Override
+    public void showMessageSuccess() {
+        super.showMessageSuccess();
+        btnSave.setEnabled(false);
+    }
+
+    @Override
+    public void showMessageError() {
+        super.showMessageError();
+    }
+
 
     @Override
     public void onPause() {

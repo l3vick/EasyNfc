@@ -44,5 +44,7 @@
     <string name="custom">Custom</string>
     <string name="installed_apps">Installed Applications</string>
     <string name="available_networks">Available Networks</string>
+    <string name="tag_saved">Tag succesfully saved</string>
+    <string name="tag_saved_error">An error has ocurred, try again</string>
 
 </resources>
