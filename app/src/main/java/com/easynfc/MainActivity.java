@@ -22,6 +22,7 @@ import com.easynfc.reader.ReaderPresenter;
 import com.easynfc.tagsmenu.TagsMenuFragment;
 import com.easynfc.tagsmenu.TagsMenuPresenter;
 import com.easynfc.util.AppConstants;
+import com.easynfc.util.AppUtils;
 import com.easynfc.util.NfcUtils;
 import com.easynfc.writer.BaseTypeFragment;
 import com.easynfc.writer.app_launcher.AppLauncherWriterFragment;
@@ -47,10 +48,14 @@ import com.easynfc.writer.wi_fi.WiFiWriterPresenter;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        actionBar = getSupportActionBar();
+        AppUtils.setActionBarTypeface(actionBar);
         navigateToMenu(false);
     }
 
@@ -67,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void navigateToMenu(boolean animated) {
-        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-
         MenuFragment menuFragment = (MenuFragment) getSupportFragmentManager().findFragmentByTag(MenuFragment.TAG);
         if (menuFragment == null) {
             menuFragment = MenuFragment.newInstance();

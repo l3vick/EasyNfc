@@ -112,6 +112,8 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
                 public void onTagLoaded(SmsTag smsTag) {
                     etPhone.setText(smsTag.getNumber());
                     etText.setText(smsTag.getText());
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
 
                 @Override

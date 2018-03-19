@@ -175,6 +175,8 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
                     etWifiSsid.setText(wifiTag.getSsid());
                     int position = presenter.getWifiAuthPosition(wifiTag.getAuth());
                     spSecurityCypher.setSelection(position + 1);
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
                 @Override
                 public void onDatanotAvailable() {

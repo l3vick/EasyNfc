@@ -1,6 +1,5 @@
 package com.easynfc.menu;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.easynfc.R;
 import com.easynfc.data.model.Menu;
+import com.easynfc.util.AppUtils;
 
 import java.util.ArrayList;
 import java.util.List;

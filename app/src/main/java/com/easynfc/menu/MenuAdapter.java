@@ -70,8 +70,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
             super(v);
             ButterKnife.bind(this, v);
             v.setOnClickListener(this);
-            txt_title.setTypeface(AppUtils.getAppTypeface(context));
-            txt_subtitle.setTypeface(AppUtils.getAppTypeface(context));
             GridLayoutManager.LayoutParams params = (GridLayoutManager.LayoutParams) ll_menu_item.getLayoutParams();
             params.height = AppUtils.getDisplayMetrics(context).heightPixels/ 3;
             ll_menu_item.setLayoutParams(params);

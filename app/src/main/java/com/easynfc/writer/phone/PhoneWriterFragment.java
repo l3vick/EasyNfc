@@ -108,6 +108,8 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
                 @Override
                 public void onTagLoaded(PhoneTag phoneTag) {
                     etPhone.setText(phoneTag.getPhone());
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
 
                 @Override

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.util.AppUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +32,7 @@ public abstract class BaseFragment extends Fragment {
         actionBar.setDisplayHomeAsUpEnabled(true);
         main = (MainActivity)getActivity();
         setHasOptionsMenu(true);
+        AppUtils.setActionBarTypeface(actionBar);
     }
 
     @Override

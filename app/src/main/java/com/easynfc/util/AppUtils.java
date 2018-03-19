@@ -3,11 +3,17 @@ package com.easynfc.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.support.v7.app.ActionBar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.widget.TextView;
 
 import com.easynfc.R;
+import com.easynfc.util.shared.TypefaceSpan;
 
 /**
  * Created by pablorojas on 19/2/18.
@@ -26,22 +32,19 @@ public class AppUtils {
     }
 
     public static Typeface getAppTypeface(Context context) {
-        return Typeface.createFromAsset(context.getAssets(), "exo2.ttf");
+        return Typeface.createFromAsset(context.getAssets(), "fonts/exo2.ttf");
     }
-
 
     public static void setTypeface(Context context, TextView... textviews) {
         if (typeface == null) {
-            typeface = Typeface.createFromAsset(context.getAssets(), "exo2.ttf");
+            typeface = Typeface.createFromAsset(context.getAssets(), "fonts/exo2.ttf");
         }
         for (TextView textview : textviews) {
             textview.setTypeface(typeface);
         }
-
     }
 
     private static int getStatusActionBarHeight(Activity activity) {
-        // status bar height
         int statusBarHeight = 0;
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
@@ -80,5 +83,13 @@ public class AppUtils {
             default:
                 return R.drawable.ic_nfc_eb_ghost;
         }
+    }
+
+    public static void setActionBarTypeface(ActionBar actionBar) {
+        SpannableString s = new SpannableString(actionBar.getThemedContext().getString(R.string.app_name));
+        s.setSpan(new TypefaceSpan(actionBar.getThemedContext(), "exo2.ttf"), 0, s.length(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        s.setSpan(new ForegroundColorSpan(actionBar.getThemedContext().getResources().getColor(R.color.easy_black_ghost)), 0, actionBar.getTitle().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        actionBar.setTitle(s);
     }
 }

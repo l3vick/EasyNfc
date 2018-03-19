@@ -109,6 +109,8 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
                 @Override
                 public void onTagLoaded(TextTag textTag) {
                     etSimpleText.setText(textTag.getContent());
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
 
                 @Override

@@ -106,6 +106,8 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
                 @Override
                 public void onTagLoaded(UrlTag urlTag) {
                     etUrl.setText(urlTag.getContent());
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
 
                 @Override

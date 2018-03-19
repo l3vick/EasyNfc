@@ -138,6 +138,8 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
                 @Override
                 public void onTagLoaded(AarTag aarTag) {
                     etAppLauncher.setText(aarTag.getAar());
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
 
                 @Override

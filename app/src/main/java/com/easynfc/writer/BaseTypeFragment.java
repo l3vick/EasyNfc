@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 
 import com.easynfc.MainActivity;
 import com.easynfc.R;
+import com.easynfc.util.AppUtils;
 
 /**
  * A simple {@link Fragment} subclass.

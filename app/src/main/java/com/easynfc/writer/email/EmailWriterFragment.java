@@ -116,6 +116,8 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
                 @Override
                 public void onTagLoaded(EmailTag emailTag) {
                     etEmail.setText(emailTag.getContent());
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
 
                 @Override

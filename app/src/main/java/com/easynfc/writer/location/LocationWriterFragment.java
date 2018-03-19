@@ -143,6 +143,8 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
                 public void onTagLoaded(LocationTag locationTag) {
                     etLatitude.setText(locationTag.getLatitude());
                     etLongitude.setText(locationTag.getLongitude());
+                    btnRecord.setEnabled(true);
+                    btnSave.setEnabled(false);
                 }
 
                 @Override
