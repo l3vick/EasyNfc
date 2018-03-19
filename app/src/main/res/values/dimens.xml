@@ -22,5 +22,7 @@
     <dimen name="my_tag_item_height">64dp</dimen>
     <dimen name="input_title_small">16dp</dimen>
     <dimen name="input_title_tiny">14dp</dimen>
+    <dimen name="input_title_big">30sp</dimen>
+    <dimen name="close_padding">25dp</dimen>
 
 </resources>

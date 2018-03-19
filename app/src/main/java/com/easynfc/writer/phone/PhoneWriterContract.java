@@ -33,6 +33,8 @@ public interface PhoneWriterContract {
         void saveTag(String phone);
 
         void loadTag(long tagId, LoadPhoneTagCallback loadPhoneTagCallback);
+
+        void emulateTag(String phone);
     }
 
     interface LoadPhoneTagCallback {

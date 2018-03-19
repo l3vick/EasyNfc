@@ -120,4 +120,9 @@ public class SmsWriterPresenter implements SmsWriterContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void emulateTag(String number, String text) {
+        nfcUtils.emulateSmsTag(number, text);
+    }
 }

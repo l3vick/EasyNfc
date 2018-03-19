@@ -4,6 +4,7 @@ package com.easynfc.writer.email;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,8 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     public EmailWriterContract.Presenter presenter;
 
     public static final String TAG = "EmailWriterFragment";
@@ -76,6 +79,12 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
         presenter.saveTag(etEmail.getText().toString());
+    }
+
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etEmail.getText().toString());
+        super.showEmulateDialog();
     }
 
     @Override
@@ -118,6 +127,7 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
                     etEmail.setText(emailTag.getContent());
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
 
                 @Override

@@ -52,6 +52,8 @@ public interface LocationWriterContract {
         void saveTag(String latitude, String longitude);
 
         void loadTag(long tagId, LoadLocationTagCallback loadLocationTagCallback);
+
+        void emulateTag(String latitude, String longitude);
     }
 
     interface LoadLocationTagCallback {

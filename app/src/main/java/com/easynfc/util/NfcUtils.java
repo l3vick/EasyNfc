@@ -184,14 +184,14 @@ public class NfcUtils {
 
     public void writeSimpleTextTag(Intent intent, String text, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
         NdefRecord uriRecord = createTextRecord(text);
-        NdefMessage ndefMessage = new NdefMessage(new NdefRecord[]{uriRecord});
-        writeNdefMessage(intent, ndefMessage, callback);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
     }
 
     public void writeUrlTag(Intent intent, String text, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
         NdefRecord uriRecord = createUriRecord(text);
-        NdefMessage ndefMessage = new NdefMessage(new NdefRecord[]{uriRecord});
-        writeNdefMessage(intent, ndefMessage, callback);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        writeNdefMessage(intent, ndefMsg, callback);
     }
 
     public void writeSmsTag(Intent intent, String number, String text, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
@@ -221,8 +221,8 @@ public class NfcUtils {
 
 
     public void writeWifiTag(Intent intent, Wifi wifi, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
-        NdefMessage ndefMessage = writeNdefWifiMessage(wifi);
-        writeNdefMessage(intent, ndefMessage, callback);
+        NdefMessage ndefMsg = writeNdefWifiMessage(wifi);
+        writeNdefMessage(intent, ndefMsg, callback);
     }
 
     public void writeEmailTag(Intent intent, String email, TagWrittenCallback callback) throws ReadOnlyTagException, NdefFormatException, FormatException, InsufficientSizeException, IOException {
@@ -459,6 +459,54 @@ public class NfcUtils {
             case NdefRecord.TNF_UNKNOWN:
                 return "TNF_UNKNOWN";
         }
+    }
+
+    public void emulateTextTag(String text) {
+        NdefRecord uriRecord = createTextRecord(text);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
+    }
+
+    public void emulateAarTag(String aar) {
+        NdefRecord uriRecord = NdefRecord.createApplicationRecord(aar);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
+    }
+
+    public void emulateEmailTag(String email) {
+        NdefRecord uriRecord = createUriRecord("mailto:" + email);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
+    }
+
+    public void emulateLocationTag(String latitude, String longitude) {
+        NdefRecord uriRecord = createUriRecord("geo:" + latitude + "," + longitude);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
+    }
+
+    public void emulatePhoneTag(String phone) {
+        NdefRecord uriRecord = createUriRecord("tel:" + phone);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
+    }
+
+    public void emulateSmsTag(String number, String text) {
+        String smsUri = String.format("sms:%s?body=%s", number, URLEncoder.encode(text));
+        NdefRecord uriRecord = createUriRecord(smsUri);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
+    }
+
+    public void emulateUrlTag(String url) {
+        NdefRecord uriRecord = createUriRecord(url);
+        NdefMessage ndefMsg = new NdefMessage(new NdefRecord[]{uriRecord});
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
+    }
+
+    public void emulateWifiTag(Wifi wifi) {
+        NdefMessage ndefMsg = writeNdefWifiMessage(wifi);
+        nfcAdapter.setNdefPushMessage(ndefMsg, activity);
     }
 
     public interface TagReadedCallback{

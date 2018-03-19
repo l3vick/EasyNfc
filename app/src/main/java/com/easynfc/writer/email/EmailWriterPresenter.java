@@ -120,4 +120,9 @@ public class EmailWriterPresenter implements EmailWriterContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void emulateTag(String email) {
+        nfcUtils.emulateEmailTag(email);
+    }
 }

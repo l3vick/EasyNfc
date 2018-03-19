@@ -141,4 +141,9 @@ public class AppLauncherWriterPresenter implements AppLauncherWriterContract.Pre
             }
         });
     }
+
+    @Override
+    public void emulateTag(String aar) {
+        nfcUtils.emulateAarTag(aar);
+    }
 }

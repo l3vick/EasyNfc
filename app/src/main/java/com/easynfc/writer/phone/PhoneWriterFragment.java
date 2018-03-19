@@ -4,6 +4,7 @@ package com.easynfc.writer.phone;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +36,8 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
-
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     public PhoneWriterContract.Presenter presenter;
 
     public PhoneWriterFragment() {
@@ -78,6 +80,13 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
         this.presenter = presenter;
     }
 
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etPhone.getText().toString());
+        super.showEmulateDialog();
+    }
+
+
     @Override
     public void OnTagWritten() {
         super.tagWritten();
@@ -110,6 +119,7 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
                     etPhone.setText(phoneTag.getPhone());
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
 
                 @Override

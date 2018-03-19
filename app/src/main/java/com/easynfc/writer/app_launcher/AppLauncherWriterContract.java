@@ -38,6 +38,8 @@ public interface AppLauncherWriterContract {
         void saveTag(String content);
 
         void loadTag(long tagId, LoadAarTagCallback loadAarTagCallback);
+
+        void emulateTag(String aar);
     }
 
     interface OnAarItemClickedCallback {

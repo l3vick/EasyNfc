@@ -33,6 +33,8 @@ public interface SmsWriterContract {
         void saveTag(String s, String s1);
 
         void loadTag(long tagId, LoadSmsTagCallback loadSmsTagCallback);
+
+        void emulateTag(String number, String text);
     }
 
     interface LoadSmsTagCallback {

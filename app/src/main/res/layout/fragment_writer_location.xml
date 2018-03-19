@@ -1,4 +1,5 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentView"
     android:layout_width="match_parent"
@@ -66,9 +67,9 @@
                     android:id="@+id/txt_latitude_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:text="@string/enter_latitude"
                     android:textAllCaps="true"
-                    android:layout_centerInParent="true"
                     android:textColor="@color/easy_black_ghost"
                     android:textSize="@dimen/input_title" />
 
@@ -130,11 +131,30 @@
 
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/app_padding"
-            android:layout_marginRight="@dimen/app_padding"
-            android:background="@color/easy_black_superlight" />
+            android:layout_marginRight="@dimen/app_padding">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_centerInParent="true"
+                android:background="@color/easy_black_superlight"></RelativeLayout>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/btn_emulate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/ic_multiple_device_eb_ghost"
+                android:visibility="gone"
+                app:backgroundTint="@color/easy_black_light"
+                app:borderWidth="0dp"
+                app:elevation="6dp"
+                app:fabSize="mini" />
+
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

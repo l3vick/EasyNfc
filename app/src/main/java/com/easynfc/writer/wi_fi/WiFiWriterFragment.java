@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.graphics.Typeface;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,8 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     @BindView(R.id.parentView)
     FrameLayout parentView;
     ProgressBar progressBar;
@@ -127,6 +130,13 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
         showWifiNetworksDialog();
     }
 
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
+        super.showEmulateDialog();
+    }
+
+
     @Override
     public void setPresenter(WiFiWriterContract.Presenter presenter) {
         this.presenter = presenter;
@@ -177,6 +187,7 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
                     spSecurityCypher.setSelection(position + 1);
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
                 @Override
                 public void onDatanotAvailable() {

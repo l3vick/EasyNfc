@@ -161,6 +161,11 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
         });
     }
 
+    @Override
+    public void emulateTag(String ssid, String password, String cypher) {
+        nfcUtils.emulateWifiTag(new Wifi(ssid, toWifiAuthType(cypher), password));
+    }
+
 
     private final BroadcastReceiver wifiScanReceiver = new BroadcastReceiver() {
         @Override

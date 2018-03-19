@@ -8,14 +8,15 @@
 
 
     <ImageButton
-        android:id="@+id/btn_close_writer_dialog"
+        android:id="@+id/btn_close_emulate_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:padding="@dimen/close_padding"
-        android:src="@drawable/ic_close_ghost_35dp" />
+        android:src="@drawable/ic_close_ghost_35dp"
+        />
 
 
     <ImageView
@@ -23,15 +24,18 @@
         android:layout_height="300dp"
         android:layout_centerInParent="true"
         android:scaleType="fitCenter"
-        android:src="@drawable/nfc_dialog_background"
-        android:tint="@color/easy_black_ghost" />
+        android:src="@drawable/ic_emulate_transfer_device"
+        android:tint="@color/easy_black_superlight" />
 
-
-    <ProgressBar
-        android:id="@+id/progress_wheel"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <com.easynfc.util.custom.CustomTextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:indeterminateTint="@color/mustard" />
+        android:gravity="center"
+        android:text="@string/tap_android_device"
+        android:textAllCaps="true"
+        android:textColor="@color/mustard"
+        android:textSize="@dimen/input_title_big" />
+
 
 </RelativeLayout>

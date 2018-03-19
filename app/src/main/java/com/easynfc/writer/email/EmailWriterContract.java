@@ -33,6 +33,8 @@ public interface EmailWriterContract {
         void saveTag(String email);
 
         void loadTag(long tagId, LoadEmailTagCallback loadEmailTagCallback);
+
+        void emulateTag(String email);
     }
 
     interface LoadEmailTagCallback {

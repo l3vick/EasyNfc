@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.easynfc.MainActivity;
@@ -25,7 +27,7 @@ import com.easynfc.util.AppUtils;
  */
 public abstract class BaseTypeFragment extends Fragment {
 
-    private RelativeLayout customDialogView;
+    private RelativeLayout customDialogView, emulateDialogView;
     private FrameLayout parentView;
     private MainActivity main;
     public long tagId = 0;
@@ -44,17 +46,31 @@ public abstract class BaseTypeFragment extends Fragment {
         setHasOptionsMenu(true);
         LayoutInflater inflater = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         customDialogView = (RelativeLayout) inflater.inflate(R.layout.writer_dialog, null);
-        Button cancelBtn = customDialogView.findViewById(R.id.btn_cancel_dialog);
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
+        emulateDialogView = (RelativeLayout) inflater.inflate(R.layout.emulate_dialog, null);
+        ImageButton closeWriterBtn = customDialogView.findViewById(R.id.btn_close_writer_dialog);
+        closeWriterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 hideDialog();
             }
         });
+        ImageButton closeEmulateBtn = emulateDialogView.findViewById(R.id.btn_close_emulate_dialog);
+        closeEmulateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideEmulateDialog();
+            }
+        });
+
     }
 
     public void processNfc(Intent intent) {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     public void setTag(long timestamp) {
@@ -119,5 +135,13 @@ public abstract class BaseTypeFragment extends Fragment {
     public void showMessageError() {
         Snackbar snackbar = Snackbar.make(parentView, R.string.tag_saved_error, Snackbar.LENGTH_LONG);
         snackbar.show();
+    }
+
+    public void showEmulateDialog() {
+        parentView.addView(emulateDialogView);
+    }
+
+    private void hideEmulateDialog() {
+        ((ViewGroup) emulateDialogView.getParent()).removeView(emulateDialogView);
     }
 }

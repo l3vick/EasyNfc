@@ -4,6 +4,7 @@ package com.easynfc.writer.url;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,8 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     private UrlWriterContract.Presenter presenter;
 
     public static final String TAG = "UrlWriterFragment";
@@ -69,6 +72,13 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     void onSaveTagBtnPressed() {
         presenter.saveTag(etUrl.getText().toString());
     }
+
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etUrl.getText().toString());
+        super.showEmulateDialog();
+    }
+
 
     @Override
     public void setPresenter(UrlWriterContract.Presenter presenter) {
@@ -108,6 +118,7 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
                     etUrl.setText(urlTag.getContent());
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
 
                 @Override

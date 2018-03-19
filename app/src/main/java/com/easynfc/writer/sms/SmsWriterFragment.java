@@ -4,6 +4,7 @@ package com.easynfc.writer.sms;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,8 +28,6 @@ import butterknife.OnClick;
 public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterContract.View {
 
 
-    public static final String TAG = "SmsWriterFragment";
-
     @BindView(R.id.et_sms_phone)
     EditText etPhone;
     @BindView(R.id.et_sms_text)
@@ -37,7 +36,11 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     public SmsWriterContract.Presenter presenter;
+
+    public static final String TAG = "SmsWriterFragment";
 
     public SmsWriterFragment() {
         // Required empty public constructor
@@ -74,6 +77,13 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
     void onSaveTagBtnPressed() {
         presenter.saveTag(etPhone.getText().toString(), etText.getText().toString());
     }
+
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etPhone.getText().toString(), etText.getText().toString());
+        super.showEmulateDialog();
+    }
+
 
     @Override
     public void setPresenter(SmsWriterContract.Presenter presenter) {
@@ -114,6 +124,7 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
                     etText.setText(smsTag.getText());
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
 
                 @Override

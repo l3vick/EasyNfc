@@ -173,4 +173,9 @@ public class LocationWriterPresenter implements LocationWriterContract.Presenter
         });
     }
 
+    @Override
+    public void emulateTag(String latitude, String longitude) {
+        nfcUtils.emulateLocationTag(latitude, longitude);
+    }
+
 }

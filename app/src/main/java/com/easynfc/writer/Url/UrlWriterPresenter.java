@@ -119,4 +119,9 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void emulateTag(String url) {
+        nfcUtils.emulateUrlTag(url);
+    }
 }

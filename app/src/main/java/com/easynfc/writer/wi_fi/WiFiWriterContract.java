@@ -46,6 +46,8 @@ public interface WiFiWriterContract {
         void saveTag(String ssid, String password, String auth);
 
         void loadTag(long tagId, LoadWifiTagCallback loadWifiTagCallback);
+
+        void emulateTag(String ssid, String password, String cypher);
     }
 
     interface OnWifiNetworksLoadedCallback {

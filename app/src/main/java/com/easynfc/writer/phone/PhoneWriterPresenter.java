@@ -119,4 +119,9 @@ public class PhoneWriterPresenter  implements PhoneWriterContract.Presenter {
             }
         });
     }
+
+    @Override
+    public void emulateTag(String phone) {
+        nfcUtils.emulatePhoneTag(phone);
+    }
 }

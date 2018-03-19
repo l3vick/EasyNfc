@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -51,6 +52,8 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     Button btnRecord;
     @BindView(R.id.parentView)
     FrameLayout parentView;
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     private RelativeLayout aarListView;
 
     public static final String TAG = "AppLauncherWriterFragment";
@@ -102,6 +105,13 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
         });
     }
 
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etAppLauncher.getText().toString());
+        super.showEmulateDialog();
+    }
+
+
     @Override
     public void setPresenter(AppLauncherWriterContract.Presenter presenter) {
         this.presenter = presenter;
@@ -140,6 +150,7 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
                     etAppLauncher.setText(aarTag.getAar());
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
 
                 @Override

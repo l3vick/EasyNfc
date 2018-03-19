@@ -33,6 +33,8 @@ public interface UrlWriterContract {
         void saveTag(String content);
 
         void loadTag(long tagId, LoadUrlTagCallback loadUrlTagCallback);
+
+        void emulateTag(String url);
     }
 
     interface LoadUrlTagCallback {

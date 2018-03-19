@@ -122,4 +122,9 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
         });
     }
 
+    @Override
+    public void emulateTag(String text) {
+        nfcUtils.emulateTextTag(text);
+    }
+
 }

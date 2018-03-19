@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,8 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     public LocationWriterContract.Presenter presenter;
     
     public static final String TAG = "LocationWriterFragment";
@@ -99,6 +102,12 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
         }
     }
 
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etLatitude.getText().toString(), etLongitude.getText().toString());
+        super.showEmulateDialog();
+    }
+
     @Override
     public void setPresenter(LocationWriterContract.Presenter presenter) {
         this.presenter = presenter;
@@ -145,6 +154,7 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
                     etLongitude.setText(locationTag.getLongitude());
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
 
                 @Override

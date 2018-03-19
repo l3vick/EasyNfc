@@ -4,6 +4,7 @@ package com.easynfc.writer.simple_text;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +33,8 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     Button btnSave;
     @BindView(R.id.btn_record)
     Button btnRecord;
-
+    @BindView(R.id.btn_emulate)
+    FloatingActionButton btnEmulate;
     private SimpleTextWriterContract.Presenter presenter;
 
     public static final String TAG = "SimpleTextWriterFragment";
@@ -70,6 +72,12 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
         presenter.saveTag(etSimpleText.getText().toString());
+    }
+
+    @OnClick(R.id.btn_emulate)
+    void onEmulateAarBtnPressed() {
+        presenter.emulateTag(etSimpleText.getText().toString());
+        super.showEmulateDialog();
     }
 
     @Override
@@ -111,6 +119,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
                     etSimpleText.setText(textTag.getContent());
                     btnRecord.setEnabled(true);
                     btnSave.setEnabled(false);
+                    btnEmulate.setVisibility(View.VISIBLE);
                 }
 
                 @Override
@@ -120,6 +129,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
             });
         }
     }
+
 
     @Override
     public void processNfc(Intent intent) {

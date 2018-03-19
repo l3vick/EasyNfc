@@ -31,6 +31,8 @@ public interface SimpleTextWriterContract {
         void saveTag(String content);
 
         void loadTag(long timestamp, LoadTextTagCallback loadTextTagCallback);
+
+        void emulateTag(String text);
     }
 
     interface LoadTextTagCallback {
