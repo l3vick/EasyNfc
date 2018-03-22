@@ -47,5 +47,6 @@
     <string name="tag_saved">Tag succesfully saved</string>
     <string name="tag_saved_error">An error has ocurred, try again</string>
     <string name="tap_android_device">Tap another device to transfer nfc</string>
+    <string name="update">Update</string>
 
 </resources>

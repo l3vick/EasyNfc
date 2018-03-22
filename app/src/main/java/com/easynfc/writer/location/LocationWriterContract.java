@@ -18,7 +18,7 @@ public interface LocationWriterContract {
 
         void OnTagWritten();
 
-        void showMessageSuccess();
+        void showAddedSuccess();
 
         void showMessageError();
     }

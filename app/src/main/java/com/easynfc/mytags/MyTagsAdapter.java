@@ -68,6 +68,11 @@ public class MyTagsAdapter extends RecyclerView.Adapter<MyTagsAdapter.MyViewHold
         notifyDataSetChanged();
     }
 
+    public void updateRemove(List<MyTag> lstMyTags, int position) {
+        this.lstMyTags = lstMyTags;
+        notifyItemRemoved(position);
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -86,7 +91,6 @@ public class MyTagsAdapter extends RecyclerView.Adapter<MyTagsAdapter.MyViewHold
             ButterKnife.bind(this, v);
             v.setOnClickListener(this);
             btnDelete.setOnClickListener(this);
-
         }
 
         @Override

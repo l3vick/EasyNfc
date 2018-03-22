@@ -95,7 +95,7 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
         tagsRepository.addUrl(new UrlTag(timestamp.getTime(), content), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showMessageSuccess();
+                view.showAddedSuccess();
             }
 
             @Override

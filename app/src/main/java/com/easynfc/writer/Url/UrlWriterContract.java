@@ -17,7 +17,7 @@ public interface UrlWriterContract {
 
         void OnTagWritten();
 
-        void showMessageSuccess();
+        void showAddedSuccess();
 
         void showMessageError();
     }

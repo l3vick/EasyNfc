@@ -93,8 +93,8 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
     }
 
     @Override
-    public void showMessageSuccess() {
-        super.showMessageSuccess();
+    public void showAddedSuccess() {
+        super.showAddedSuccess();
         btnSave.setEnabled(false);
     }
 

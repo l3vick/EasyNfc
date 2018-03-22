@@ -117,7 +117,7 @@ public class AppLauncherWriterPresenter implements AppLauncherWriterContract.Pre
         tagsRepository.addAar(new AarTag(timestamp.getTime(), aar), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showMessageSuccess();
+                view.showAddedSuccess();
             }
 
             @Override

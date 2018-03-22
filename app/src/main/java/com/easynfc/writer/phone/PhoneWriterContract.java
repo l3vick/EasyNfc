@@ -17,7 +17,7 @@ public interface PhoneWriterContract {
 
         void OnTagWritten();
 
-        void showMessageSuccess();
+        void showAddedSuccess();
 
         void showMessageError();
     }

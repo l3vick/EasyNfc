@@ -22,7 +22,7 @@ public interface WiFiWriterContract {
 
         void OnTagWritten();
 
-        void showMessageSuccess();
+        void showAddedSuccess();
 
         void showMessageError();
     }

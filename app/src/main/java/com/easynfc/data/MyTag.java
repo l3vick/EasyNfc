@@ -21,7 +21,6 @@ public class MyTag {
     @ColumnInfo(name = "type")
     String type;
 
-
     public MyTag(long timestamp, String content, String type) {
         this.timestamp = timestamp;
         this.content = content;
@@ -38,5 +37,20 @@ public class MyTag {
 
     public String getType() {
         return type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MyTag myTag = (MyTag) o;
+
+        return timestamp == myTag.timestamp;
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (timestamp ^ (timestamp >>> 32));
     }
 }

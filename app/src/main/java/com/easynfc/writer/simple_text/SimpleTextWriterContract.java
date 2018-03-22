@@ -15,7 +15,7 @@ public interface SimpleTextWriterContract {
     interface View extends BaseView<Presenter> {
         void onTagWritten();
 
-        void showMessageSuccess();
+        void showAddedSuccess();
 
         void showMessageError();
     }
@@ -33,6 +33,8 @@ public interface SimpleTextWriterContract {
         void loadTag(long timestamp, LoadTextTagCallback loadTextTagCallback);
 
         void emulateTag(String text);
+
+        void updateTag(long tagId, String content);
     }
 
     interface LoadTextTagCallback {

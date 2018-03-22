@@ -65,8 +65,8 @@ public class TagsRepository implements TagsDataSource {
     }
 
     @Override
-    public void addText(TextTag textTag, final OnTagSavedCallback callback) {
-        remoteDataSource.addText(textTag, new OnTagSavedCallback() {
+    public void addTextTag(TextTag textTag, final OnTagSavedCallback callback) {
+        remoteDataSource.addTextTag(textTag, new OnTagSavedCallback() {
             @Override
             public void onSuccess() {
                 callback.onSuccess();
@@ -307,6 +307,11 @@ public class TagsRepository implements TagsDataSource {
                 callback.onDatanotAvailable();
             }
         });
+    }
+
+    @Override
+    public void updateTag(TextTag textTag, OnTagUpdatedCallback callback) {
+
     }
 
 }

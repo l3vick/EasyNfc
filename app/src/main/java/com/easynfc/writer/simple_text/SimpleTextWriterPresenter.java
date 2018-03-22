@@ -94,10 +94,25 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
     @Override
     public void saveTag(String content) {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        tagsRepository.addText(new TextTag(timestamp.getTime(), content), new TagsDataSource.OnTagSavedCallback() {
+        tagsRepository.addTextTag(new TextTag(timestamp.getTime(), content), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showMessageSuccess();
+                view.showAddedSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
+
+    @Override
+    public void updateTag(long tagId, String content) {
+        tagsRepository.updateTag(new TextTag(tagId, content), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showAddedSuccess();
             }
 
             @Override

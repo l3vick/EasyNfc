@@ -81,8 +81,9 @@ public class MyTagsFragment extends BaseFragment implements MyTagsContract.View 
 
     @Override
     public void updateView(MyTag myTag) {
+        int position = lstMyTags.indexOf(myTag);
         lstMyTags.remove(myTag);
-        adapter.updateAdapter(lstMyTags);
+        adapter.updateRemove(lstMyTags, position);
     }
 
 

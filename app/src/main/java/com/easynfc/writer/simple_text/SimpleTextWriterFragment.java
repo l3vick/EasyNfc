@@ -71,7 +71,11 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etSimpleText.getText().toString());
+        if (tagId != 0){
+            presenter.updateTag(tagId, etSimpleText.getText().toString());
+        }else {
+            presenter.saveTag(etSimpleText.getText().toString());
+        }
     }
 
     @OnClick(R.id.btn_emulate)
@@ -92,8 +96,8 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     }
 
     @Override
-    public void showMessageSuccess() {
-        super.showMessageSuccess();
+    public void showAddedSuccess() {
+        super.showAddedSuccess();
         btnSave.setEnabled(false);
     }
 
@@ -127,6 +131,7 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
 
                 }
             });
+            btnSave.setText(R.string.update);
         }
     }
 

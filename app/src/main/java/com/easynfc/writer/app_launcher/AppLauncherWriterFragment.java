@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,15 +23,9 @@ import android.widget.TextView;
 
 import com.easynfc.R;
 import com.easynfc.data.AarTag;
-import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
-import com.easynfc.writer.simple_text.SimpleTextWriterContract;
-import com.easynfc.writer.wi_fi.WiFiWriterContract;
-import com.easynfc.writer.wi_fi.WiFiWriterFragment;
-
-import java.lang.reflect.Type;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,8 +116,8 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
     }
 
     @Override
-    public void showMessageSuccess() {
-        super.showMessageSuccess();
+    public void showAddedSuccess() {
+        super.showAddedSuccess();
         btnSave.setEnabled(false);
     }
 

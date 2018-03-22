@@ -29,7 +29,7 @@ public interface TagsDataSource {
 
     void getTags(LoadTagsCallback callback);
 
-    void addText(TextTag textTag, OnTagSavedCallback callback);
+    void addTextTag(TextTag textTag, OnTagSavedCallback callback);
 
     void addUrl(UrlTag urlTag, OnTagSavedCallback callback);
 
@@ -63,6 +63,8 @@ public interface TagsDataSource {
 
     void getWifiTag(long tagId, WiFiWriterContract.LoadWifiTagCallback callback);
 
+    void updateTag(TextTag textTag, OnTagUpdatedCallback callback);
+
     interface LoadTagsCallback {
 
         void onTagsLoaded(List<MyTag> tags);
@@ -71,6 +73,11 @@ public interface TagsDataSource {
     }
 
     interface OnTagSavedCallback {
+        void onSuccess();
+        void onError();
+    }
+
+    interface OnTagUpdatedCallback {
         void onSuccess();
         void onError();
     }

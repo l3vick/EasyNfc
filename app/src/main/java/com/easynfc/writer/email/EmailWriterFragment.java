@@ -11,18 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.easynfc.R;
 import com.easynfc.data.EmailTag;
-import com.easynfc.data.TextTag;
 import com.easynfc.util.AppUtils;
 import com.easynfc.util.shared.EditTextWatcher;
 import com.easynfc.writer.BaseTypeFragment;
-import com.easynfc.writer.phone.PhoneWriterContract;
-import com.easynfc.writer.simple_text.SimpleTextWriterContract;
-import com.easynfc.writer.wi_fi.WiFiWriterContract;
-import com.easynfc.writer.wi_fi.WiFiWriterFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -99,8 +93,8 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
     }
 
     @Override
-    public void showMessageSuccess() {
-        super.showMessageSuccess();
+    public void showAddedSuccess() {
+        super.showAddedSuccess();
         btnSave.setEnabled(false);
     }
 

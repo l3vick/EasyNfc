@@ -34,8 +34,6 @@ public interface TagsDao {
     @Insert
     void insertTag(MyTag myTag);
 
-    @Update
-    void updateTag(MyTag... myTags);
 
     @Delete
     void deleteTag(MyTag... myTags);

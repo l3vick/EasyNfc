@@ -148,8 +148,8 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     }
 
     @Override
-    public void showMessageSuccess() {
-        super.showMessageSuccess();
+    public void showAddedSuccess() {
+        super.showAddedSuccess();
         btnSave.setEnabled(false);
     }
 

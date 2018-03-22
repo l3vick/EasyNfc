@@ -60,13 +60,13 @@ public class TagsLocalDataSource implements TagsDataSource {
     }
 
     @Override
-    public void addText(TextTag textTag, OnTagSavedCallback callback) {
+    public void addTextTag(TextTag textTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(), AppConstants.TagTypes.TEXT.toString()));
         tagsDao.insertTextTag(textTag);
         TextTag textTagAux = tagsDao.getTextTag(textTag.getTimeStamp());
-        if (textTagAux != null){
+        if (textTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
@@ -75,10 +75,10 @@ public class TagsLocalDataSource implements TagsDataSource {
     public void addUrl(UrlTag urlTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.TagTypes.URL.toString()));
         tagsDao.insertUrlTag(urlTag);
-        UrlTag urlTagAux= tagsDao.getUrlTag(urlTag.getTimeStamp());
-        if (urlTagAux != null){
+        UrlTag urlTagAux = tagsDao.getUrlTag(urlTag.getTimeStamp());
+        if (urlTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
@@ -87,10 +87,10 @@ public class TagsLocalDataSource implements TagsDataSource {
     public void addSms(SmsTag smsTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(smsTag.getTimeStamp(), smsTag.getText(), AppConstants.TagTypes.SMS.toString()));
         tagsDao.insertSmsTag(smsTag);
-        SmsTag smsTagAux= tagsDao.getSmsTag(smsTag.getTimeStamp());
-        if (smsTagAux != null){
+        SmsTag smsTagAux = tagsDao.getSmsTag(smsTag.getTimeStamp());
+        if (smsTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
@@ -99,10 +99,10 @@ public class TagsLocalDataSource implements TagsDataSource {
     public void addPhone(PhoneTag phoneTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(phoneTag.getTimeStamp(), phoneTag.getPhone(), AppConstants.TagTypes.PHONE.toString()));
         tagsDao.insertPhoneTag(phoneTag);
-        PhoneTag phoneTagAux= tagsDao.getPhoneTag(phoneTag.getTimeStamp());
-        if (phoneTagAux != null){
+        PhoneTag phoneTagAux = tagsDao.getPhoneTag(phoneTag.getTimeStamp());
+        if (phoneTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
@@ -111,10 +111,10 @@ public class TagsLocalDataSource implements TagsDataSource {
     public void addAar(AarTag aarTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(aarTag.getTimeStamp(), aarTag.getAar(), AppConstants.TagTypes.AAR.toString()));
         tagsDao.insertAarTag(aarTag);
-        AarTag aarTagAux= tagsDao.getAarTag(aarTag.getTimeStamp());
-        if (aarTagAux != null){
+        AarTag aarTagAux = tagsDao.getAarTag(aarTag.getTimeStamp());
+        if (aarTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
@@ -123,10 +123,10 @@ public class TagsLocalDataSource implements TagsDataSource {
     public void addLocation(LocationTag locationTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(locationTag.getTimeStamp(), locationTag.getLatitude() + ", " + locationTag.getLongitude(), AppConstants.TagTypes.LOCATION.toString()));
         tagsDao.insertLocationTag(locationTag);
-        LocationTag locationTagAux= tagsDao.getLocationTag(locationTag.getTimeStamp());
-        if (locationTagAux != null){
+        LocationTag locationTagAux = tagsDao.getLocationTag(locationTag.getTimeStamp());
+        if (locationTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
@@ -135,10 +135,10 @@ public class TagsLocalDataSource implements TagsDataSource {
     public void addWifi(WifiTag wifiTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(wifiTag.getTimeStamp(), wifiTag.getSsid(), AppConstants.TagTypes.WIFI.toString()));
         tagsDao.insertWifiTag(wifiTag);
-        WifiTag wifiTagAux= tagsDao.getWifiTag(wifiTag.getTimeStamp());
-        if (wifiTagAux != null){
+        WifiTag wifiTagAux = tagsDao.getWifiTag(wifiTag.getTimeStamp());
+        if (wifiTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
@@ -147,16 +147,16 @@ public class TagsLocalDataSource implements TagsDataSource {
     public void addEmail(EmailTag emailTag, OnTagSavedCallback callback) {
         tagsDao.insertTag(new MyTag(emailTag.getTimeStamp(), emailTag.getContent(), AppConstants.TagTypes.EMAIL.toString()));
         tagsDao.insertEmailTag(emailTag);
-        EmailTag emailTagAux= tagsDao.getEmailTag(emailTag.getTimeStamp());
-        if (emailTagAux != null){
+        EmailTag emailTagAux = tagsDao.getEmailTag(emailTag.getTimeStamp());
+        if (emailTagAux != null) {
             callback.onSuccess();
-        }else{
+        } else {
             callback.onError();
         }
     }
 
     @Override
-    public void deleteTag(MyTag myTag,  MyTagsContract.OnDeleteTagCallback callback) {
+    public void deleteTag(MyTag myTag, MyTagsContract.OnDeleteTagCallback callback) {
         tagsDao.deleteTag(myTag);
         switch (AppConstants.getTypeTag(myTag.getType())) {
             case TEXT:
@@ -192,9 +192,9 @@ public class TagsLocalDataSource implements TagsDataSource {
     @Override
     public void getTextTag(long timestamp, SimpleTextWriterContract.LoadTextTagCallback callback) {
         TextTag textTag = tagsDao.getTextTag(timestamp);
-        if (textTag != null){
+        if (textTag != null) {
             callback.onTagLoaded(textTag);
-        }else {
+        } else {
             callback.onDatanotAvailable();
         }
     }
@@ -202,29 +202,29 @@ public class TagsLocalDataSource implements TagsDataSource {
     @Override
     public void getAarTag(long tagId, AppLauncherWriterContract.LoadAarTagCallback callback) {
         AarTag aarTag = tagsDao.getAarTag(tagId);
-        if (aarTag != null){
+        if (aarTag != null) {
             callback.onTagLoaded(aarTag);
-        }else {
+        } else {
             callback.onDatanotAvailable();
         }
     }
 
     @Override
     public void getEmailTag(long tagId, EmailWriterContract.LoadEmailTagCallback callback) {
-       EmailTag emailTag = tagsDao.getEmailTag(tagId);
-       if (emailTag != null){
-           callback.onTagLoaded(emailTag);
-       }else {
-           callback.onDatanotAvailable();
-       }
+        EmailTag emailTag = tagsDao.getEmailTag(tagId);
+        if (emailTag != null) {
+            callback.onTagLoaded(emailTag);
+        } else {
+            callback.onDatanotAvailable();
+        }
     }
 
     @Override
     public void getLocationTag(long tagId, LocationWriterContract.LoadLocationTagCallback callback) {
         LocationTag locationTag = tagsDao.getLocationTag(tagId);
-        if (locationTag != null){
+        if (locationTag != null) {
             callback.onTagLoaded(locationTag);
-        }else {
+        } else {
             callback.onDatanotAvailable();
         }
     }
@@ -232,9 +232,9 @@ public class TagsLocalDataSource implements TagsDataSource {
     @Override
     public void getPhoneTag(long tagId, PhoneWriterContract.LoadPhoneTagCallback callback) {
         PhoneTag phoneTag = tagsDao.getPhoneTag(tagId);
-        if (phoneTag != null){
+        if (phoneTag != null) {
             callback.onTagLoaded(phoneTag);
-        }else{
+        } else {
             callback.onDatanotAvailable();
         }
     }
@@ -242,30 +242,35 @@ public class TagsLocalDataSource implements TagsDataSource {
     @Override
     public void getSmsTag(long tagId, SmsWriterContract.LoadSmsTagCallback callback) {
         SmsTag smsTag = tagsDao.getSmsTag(tagId);
-        if (smsTag != null){
+        if (smsTag != null) {
             callback.onTagLoaded(smsTag);
-        }else {
+        } else {
             callback.onDatanotAvailable();
         }
     }
 
     @Override
     public void getUrlTag(long tagId, UrlWriterContract.LoadUrlTagCallback callback) {
-        UrlTag urlTag= tagsDao.getUrlTag(tagId);
-        if (urlTag != null){
+        UrlTag urlTag = tagsDao.getUrlTag(tagId);
+        if (urlTag != null) {
             callback.onTagLoaded(urlTag);
-        }else {
+        } else {
             callback.onDatanotAvailable();
         }
     }
 
     @Override
     public void getWifiTag(long tagId, WiFiWriterContract.LoadWifiTagCallback callback) {
-        WifiTag wifiTag= tagsDao.getWifiTag(tagId);
-        if (wifiTag != null){
+        WifiTag wifiTag = tagsDao.getWifiTag(tagId);
+        if (wifiTag != null) {
             callback.onTagLoaded(wifiTag);
-        }else {
+        } else {
             callback.onDatanotAvailable();
         }
+    }
+
+    @Override
+    public void updateTag(TextTag textTag, OnTagUpdatedCallback callback) {
+
     }
 }
