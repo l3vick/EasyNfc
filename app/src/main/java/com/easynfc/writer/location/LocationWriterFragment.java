@@ -83,7 +83,12 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etLatitude.getText().toString(), etLongitude.getText().toString());
+        if (tagId != 0){
+            presenter.updateTag(tagId, etLatitude.getText().toString(), etLongitude.getText().toString());
+        }else{
+            presenter.saveTag(etLatitude.getText().toString(), etLongitude.getText().toString());
+        }
+
     }
 
     @OnClick(R.id.btn_location)
@@ -123,6 +128,12 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
         super.showMessageError();
     }
 
+    @Override
+    public void showUpdatedSuccess() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
+    }
+
 
     @Override
     public void onStart() {
@@ -156,6 +167,7 @@ public class LocationWriterFragment extends BaseTypeFragment implements Location
 
                 }
             });
+            btnSave.setText(R.string.update);
         }
     }
 

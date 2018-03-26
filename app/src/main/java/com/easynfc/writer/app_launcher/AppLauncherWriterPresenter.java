@@ -146,4 +146,19 @@ public class AppLauncherWriterPresenter implements AppLauncherWriterContract.Pre
     public void emulateTag(String aar) {
         nfcUtils.emulateAarTag(aar);
     }
+
+    @Override
+    public void updateTag(long tagId, String aar) {
+        tagsRepository.updateAarTag(new AarTag(tagId, aar), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showUpdatedSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
 }

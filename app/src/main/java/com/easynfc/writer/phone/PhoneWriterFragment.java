@@ -127,6 +127,7 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
 
                 }
             });
+            btnSave.setText(R.string.update);
         }
     }
 

@@ -125,4 +125,19 @@ public class EmailWriterPresenter implements EmailWriterContract.Presenter {
     public void emulateTag(String email) {
         nfcUtils.emulateEmailTag(email);
     }
+
+    @Override
+    public void updateTag(long tagId, String email) {
+        tagsRepository.updateEmailTag(new EmailTag(tagId, email), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showUpdatedSucces();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
 }

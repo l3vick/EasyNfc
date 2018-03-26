@@ -65,6 +65,12 @@ public interface TagsDataSource {
 
     void updateTextTag(TextTag textTag, OnTagUpdatedCallback callback);
 
+    void updateAarTag(AarTag aarTag, OnTagUpdatedCallback onTagUpdatedCallback);
+
+    void updateEmailTag(EmailTag emailTag, OnTagUpdatedCallback callback);
+
+    void updateLocationTag(LocationTag locationTag, OnTagUpdatedCallback callback);
+
     interface LoadTagsCallback {
 
         void onTagsLoaded(List<MyTag> tags);

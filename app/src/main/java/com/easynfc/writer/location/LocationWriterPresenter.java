@@ -178,4 +178,19 @@ public class LocationWriterPresenter implements LocationWriterContract.Presenter
         nfcUtils.emulateLocationTag(latitude, longitude);
     }
 
+    @Override
+    public void updateTag(long tagId, String latitude, String longitude) {
+        tagsRepository.updateLocationTag(new LocationTag(tagId, latitude, longitude), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showUpdatedSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
+
 }

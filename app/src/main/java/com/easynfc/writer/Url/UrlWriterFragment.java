@@ -126,6 +126,7 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
 
                 }
             });
+            btnSave.setText(R.string.update);
         }
     }
 

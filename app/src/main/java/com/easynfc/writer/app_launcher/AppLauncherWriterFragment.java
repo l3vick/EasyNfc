@@ -85,7 +85,12 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etAppLauncher.getText().toString());
+        if (tagId != 0){
+            presenter.updateTag(tagId, etAppLauncher.getText().toString());
+        }else {
+            presenter.saveTag(etAppLauncher.getText().toString());
+        }
+
     }
 
     @OnClick(R.id.btn_reload)
@@ -126,6 +131,12 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
         super.showMessageError();
     }
 
+    @Override
+    public void showUpdatedSuccess() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
+    }
+
 
     @Override
     public void onPause() {
@@ -151,6 +162,7 @@ public class AppLauncherWriterFragment extends BaseTypeFragment implements AppLa
 
                 }
             });
+            btnSave.setText(R.string.update);
         }else{
             showAarList(new AppLauncherWriterContract.OnAarItemClickedCallback() {
                 @Override

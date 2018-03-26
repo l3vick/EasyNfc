@@ -23,6 +23,8 @@ public interface AppLauncherWriterContract {
         void showInserted();
 
         void showMessageError();
+
+        void showUpdatedSuccess();
     }
 
     interface Presenter extends BasePresenter {
@@ -40,6 +42,8 @@ public interface AppLauncherWriterContract {
         void loadTag(long tagId, LoadAarTagCallback loadAarTagCallback);
 
         void emulateTag(String aar);
+
+        void updateTag(long tagId, String aar);
     }
 
     interface OnAarItemClickedCallback {

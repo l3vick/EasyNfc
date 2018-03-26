@@ -72,7 +72,12 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etEmail.getText().toString());
+        if (tagId != 0) {
+            presenter.updateTag(tagId, etEmail.getText().toString());
+        }else{
+            presenter.saveTag(etEmail.getText().toString());
+        }
+
     }
 
     @OnClick(R.id.btn_emulate)
@@ -103,6 +108,11 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
         super.showMessageError();
     }
 
+    @Override
+    public void showUpdatedSucces() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
+    }
 
 
     @Override
@@ -129,6 +139,7 @@ public class EmailWriterFragment extends BaseTypeFragment implements EmailWriter
 
                 }
             });
+            btnSave.setText(R.string.update);
         }
     }
 

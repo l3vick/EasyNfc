@@ -325,4 +325,49 @@ public class TagsRepository implements TagsDataSource {
 
     }
 
+    @Override
+    public void updateAarTag(AarTag aarTag, final OnTagUpdatedCallback callback) {
+        remoteDataSource.updateAarTag(aarTag, new OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
+    }
+
+    @Override
+    public void updateEmailTag(EmailTag emailTag, final OnTagUpdatedCallback callback) {
+        remoteDataSource.updateEmailTag(emailTag, new OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
+    }
+
+    @Override
+    public void updateLocationTag(LocationTag locationTag, final OnTagUpdatedCallback callback) {
+        remoteDataSource.updateLocationTag(locationTag, new OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
+    }
+
 }

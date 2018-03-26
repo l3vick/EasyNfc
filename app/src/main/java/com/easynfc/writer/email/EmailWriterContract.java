@@ -20,6 +20,8 @@ public interface EmailWriterContract {
         void showInserted();
 
         void showMessageError();
+
+        void showUpdatedSucces();
     }
 
     interface Presenter extends BasePresenter {
@@ -35,6 +37,8 @@ public interface EmailWriterContract {
         void loadTag(long tagId, LoadEmailTagCallback loadEmailTagCallback);
 
         void emulateTag(String email);
+
+        void updateTag(long tagId, String email);
     }
 
     interface LoadEmailTagCallback {

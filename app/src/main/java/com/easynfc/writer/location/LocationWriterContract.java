@@ -21,6 +21,8 @@ public interface LocationWriterContract {
         void showInserted();
 
         void showMessageError();
+
+        void showUpdatedSuccess();
     }
 
     interface Presenter extends BasePresenter {
@@ -54,6 +56,8 @@ public interface LocationWriterContract {
         void loadTag(long tagId, LoadLocationTagCallback loadLocationTagCallback);
 
         void emulateTag(String latitude, String longitude);
+
+        void updateTag(long tagId, String latitude, String longitude);
     }
 
     interface LoadLocationTagCallback {

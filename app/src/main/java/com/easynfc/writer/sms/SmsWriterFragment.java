@@ -132,6 +132,7 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
 
                 }
             });
+            btnSave.setText(R.string.update);
         }
     }
 

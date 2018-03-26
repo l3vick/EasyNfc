@@ -59,6 +59,9 @@ public interface TagsDao {
     @Insert
     void insertUrlTag(UrlTag urlTag);
 
+    @Update
+    void updateUrlTag(UrlTag urlTag);
+
     @Query("DELETE FROM UrlTag WHERE timestamp=:timestamp")
     void deleteUrlTag(long timestamp);
 
@@ -69,6 +72,10 @@ public interface TagsDao {
     //SMS
     @Insert
     void insertSmsTag(SmsTag smsTag);
+
+
+    @Update
+    void updateSmsTag(SmsTag smsTag);
 
     @Query("DELETE FROM SmsTag WHERE timestamp=:timestamp")
     void deleteSmsTag(long timestamp);
@@ -81,6 +88,9 @@ public interface TagsDao {
     @Insert
     void insertPhoneTag(PhoneTag phoneTag);
 
+    @Update
+    void updatePhoneTag(PhoneTag phoneTag);
+
     @Query("DELETE FROM SmsTag WHERE timestamp=:timestamp")
     void deletePhoneTag(long timestamp);
 
@@ -91,6 +101,9 @@ public interface TagsDao {
     //AAR
     @Insert
     void insertAarTag(AarTag aarTag);
+
+    @Update
+    void updateAarTag(AarTag aarTag);
 
     @Query("DELETE FROM AarTag WHERE timestamp=:timestamp")
     void deleteAarTag(long timestamp);
@@ -103,6 +116,9 @@ public interface TagsDao {
     @Insert
     void insertLocationTag(LocationTag locationTag);
 
+    @Update
+    void updateLocationTag(LocationTag locationTag);
+
     @Query("DELETE FROM LocationTag WHERE timestamp=:timestamp")
     void deleteLocationTag(long timestamp);
 
@@ -114,6 +130,9 @@ public interface TagsDao {
     @Insert
     void insertWifiTag(WifiTag wifiTag);
 
+    @Update
+    void updateWifiTag(WifiTag wifiTag);
+
     @Query("DELETE FROM WifiTag WHERE timestamp=:timestamp")
     void deleteWifiTag(long timestamp);
 
@@ -124,6 +143,9 @@ public interface TagsDao {
     //EMAIL
     @Insert
     void insertEmailTag(EmailTag emailTag);
+
+    @Update
+    void updateEmailTag(EmailTag emailTag);
 
     @Query("DELETE FROM EmailTag WHERE timestamp=:timestamp")
     void deleteEmailTag(long timestamp);

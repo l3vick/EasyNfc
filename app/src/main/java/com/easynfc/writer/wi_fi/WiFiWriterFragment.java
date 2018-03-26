@@ -195,6 +195,7 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
 
                 }
             });
+            btnSave.setText(R.string.update);
         } else {
             showWifiNetworksDialog();
         }

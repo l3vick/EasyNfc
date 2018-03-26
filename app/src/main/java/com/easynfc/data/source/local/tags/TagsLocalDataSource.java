@@ -281,4 +281,43 @@ public class TagsLocalDataSource implements TagsDataSource {
             callback.onError();
         }
     }
+
+    @Override
+    public void updateAarTag(AarTag aarTag, OnTagUpdatedCallback callback) {
+        tagsDao.updateAarTag(aarTag);
+        tagsDao.updateTag(new MyTag(aarTag.getTimeStamp(), aarTag.getAar(),AppConstants.TagTypes.AAR.toString()));
+
+        final AarTag auxAarTag = tagsDao.getAarTag(aarTag.getTimeStamp());
+        if (auxAarTag.getAar().equals(aarTag.getAar())  && auxAarTag.getTimeStamp() == aarTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
+    }
+
+    @Override
+    public void updateEmailTag(EmailTag emailTag, OnTagUpdatedCallback callback) {
+        tagsDao.updateEmailTag(emailTag);
+        tagsDao.updateTag(new MyTag(emailTag.getTimeStamp(), emailTag.getContent(),AppConstants.TagTypes.EMAIL.toString()));
+
+        final EmailTag auxEmailTag = tagsDao.getEmailTag(emailTag.getTimeStamp());
+        if (auxEmailTag.getContent().equals(emailTag.getContent())  && auxEmailTag.getTimeStamp() == emailTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
+    }
+
+    @Override
+    public void updateLocationTag(LocationTag locationTag, OnTagUpdatedCallback callback) {
+        tagsDao.updateLocationTag(locationTag);
+        tagsDao.updateTag(new MyTag(locationTag.getTimeStamp(), locationTag.getLatitude() + ", " +locationTag.getLatitude() ,AppConstants.TagTypes.LOCATION.toString()));
+
+        final LocationTag auxLocationTag = tagsDao.getLocationTag(locationTag.getTimeStamp());
+        if (auxLocationTag.getLatitude().equals(locationTag.getLatitude())  && auxLocationTag.getTimeStamp() == locationTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
+    }
 }
