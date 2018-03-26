@@ -20,7 +20,7 @@ public interface AppLauncherWriterContract {
 
         void OnTagWritten();
 
-        void showAddedSuccess();
+        void showInserted();
 
         void showMessageError();
     }

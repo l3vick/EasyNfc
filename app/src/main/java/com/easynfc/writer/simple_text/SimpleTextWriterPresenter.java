@@ -97,7 +97,7 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
         tagsRepository.addTextTag(new TextTag(timestamp.getTime(), content), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showAddedSuccess();
+                view.insertSuccess();
             }
 
             @Override
@@ -109,10 +109,10 @@ public class SimpleTextWriterPresenter implements SimpleTextWriterContract.Prese
 
     @Override
     public void updateTag(long tagId, String content) {
-        tagsRepository.updateTag(new TextTag(tagId, content), new TagsDataSource.OnTagUpdatedCallback() {
+        tagsRepository.updateTextTag(new TextTag(tagId, content), new TagsDataSource.OnTagUpdatedCallback() {
             @Override
             public void onSuccess() {
-                view.showAddedSuccess();
+                view.updatedSuccess();
             }
 
             @Override

@@ -17,7 +17,7 @@ public interface SmsWriterContract {
 
         void OnTagWritten();
 
-        void showAddedSuccess();
+        void showInserted();
 
         void showMessageError();
     }

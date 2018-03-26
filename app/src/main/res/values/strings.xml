@@ -46,7 +46,10 @@
     <string name="available_networks">Available Networks</string>
     <string name="tag_saved">Tag succesfully saved</string>
     <string name="tag_saved_error">An error has ocurred, try again</string>
-    <string name="tap_android_device">Tap another device to transfer nfc</string>
+    <string name="tap_android_device">Tap other device to transfer</string>
     <string name="update">Update</string>
+    <string name="tag_updated">Tag succesfully updated</string>
+    <string name="tap_tag_write">Tap a tag to write</string>
+    <string name="tap_tag_read">Tap a tag to read</string>
 
 </resources>

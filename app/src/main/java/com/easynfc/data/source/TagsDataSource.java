@@ -63,7 +63,7 @@ public interface TagsDataSource {
 
     void getWifiTag(long tagId, WiFiWriterContract.LoadWifiTagCallback callback);
 
-    void updateTag(TextTag textTag, OnTagUpdatedCallback callback);
+    void updateTextTag(TextTag textTag, OnTagUpdatedCallback callback);
 
     interface LoadTagsCallback {
 

@@ -134,7 +134,7 @@ public class TagsRepository implements TagsDataSource {
 
             @Override
             public void onError() {
-              callback.onError();
+                callback.onError();
             }
         });
     }
@@ -310,7 +310,18 @@ public class TagsRepository implements TagsDataSource {
     }
 
     @Override
-    public void updateTag(TextTag textTag, OnTagUpdatedCallback callback) {
+    public void updateTextTag(TextTag textTag, final OnTagUpdatedCallback callback) {
+        remoteDataSource.updateTextTag(textTag, new OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                callback.onSuccess();
+            }
+
+            @Override
+            public void onError() {
+                callback.onError();
+            }
+        });
 
     }
 

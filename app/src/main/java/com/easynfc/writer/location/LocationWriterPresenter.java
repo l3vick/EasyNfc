@@ -148,7 +148,7 @@ public class LocationWriterPresenter implements LocationWriterContract.Presenter
         tagsRepository.addLocation(new LocationTag(timestamp.getTime(), latitude, longitude), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showAddedSuccess();
+                view.showInserted();
             }
 
             @Override

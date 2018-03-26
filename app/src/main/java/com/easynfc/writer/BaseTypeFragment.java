@@ -12,22 +12,21 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.easynfc.MainActivity;
 import com.easynfc.R;
-import com.easynfc.util.AppUtils;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public abstract class BaseTypeFragment extends Fragment {
 
-    private RelativeLayout customDialogView, emulateDialogView;
+    private RelativeLayout writerDialogView, emulateDialogView;
     private FrameLayout parentView;
     private MainActivity main;
     public long tagId = 0;
@@ -45,9 +44,9 @@ public abstract class BaseTypeFragment extends Fragment {
         main = (MainActivity) getActivity();
         setHasOptionsMenu(true);
         LayoutInflater inflater = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        customDialogView = (RelativeLayout) inflater.inflate(R.layout.writer_dialog, null);
+        writerDialogView = (RelativeLayout) inflater.inflate(R.layout.writer_dialog, null);
         emulateDialogView = (RelativeLayout) inflater.inflate(R.layout.emulate_dialog, null);
-        ImageButton closeWriterBtn = customDialogView.findViewById(R.id.btn_close_writer_dialog);
+        ImageButton closeWriterBtn = writerDialogView.findViewById(R.id.btn_close_writer_dialog);
         closeWriterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,17 +81,20 @@ public abstract class BaseTypeFragment extends Fragment {
     }
 
     public void showDialog() {
-        parentView.addView(customDialogView);
+        writerDialogView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_in));
+        parentView.addView(writerDialogView);
     }
 
 
     public void hideDialog() {
-        ((ViewGroup) customDialogView.getParent()).removeView(customDialogView);
+        writerDialogView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_out));
+        ((ViewGroup) writerDialogView.getParent()).removeView(writerDialogView);
     }
 
 
     public void tagWritten() {
         Snackbar snackbar = Snackbar.make(parentView, R.string.written_succesfull, Snackbar.LENGTH_SHORT);
+        setStyle(snackbar);
         snackbar.show();
 
         snackbar.addCallback(new Snackbar.Callback() {
@@ -107,7 +109,6 @@ public abstract class BaseTypeFragment extends Fragment {
             }
         });
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -127,21 +128,37 @@ public abstract class BaseTypeFragment extends Fragment {
 
     protected abstract void onAnyTextChanged(int count);
 
-    public void showAddedSuccess() {
+    public void showInserted() {
         Snackbar snackbar = Snackbar.make(parentView, R.string.tag_saved, Snackbar.LENGTH_LONG);
+        setStyle(snackbar);
+        snackbar.show();
+    }
+
+    public void showUpdated() {
+        Snackbar snackbar = Snackbar.make(parentView, R.string.tag_updated, Snackbar.LENGTH_LONG);
+        setStyle(snackbar);
         snackbar.show();
     }
 
     public void showMessageError() {
         Snackbar snackbar = Snackbar.make(parentView, R.string.tag_saved_error, Snackbar.LENGTH_LONG);
+        setStyle(snackbar);
         snackbar.show();
     }
 
     public void showEmulateDialog() {
+        emulateDialogView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_in));
         parentView.addView(emulateDialogView);
     }
 
     private void hideEmulateDialog() {
+        emulateDialogView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_out));
         ((ViewGroup) emulateDialogView.getParent()).removeView(emulateDialogView);
+    }
+
+    private void setStyle(Snackbar snackbar) {
+        snackbar.getView().setBackgroundColor(getResources().getColor(R.color.easy_black_ghost));
+        TextView textView = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(getResources().getColor(R.color.easy_black_dark));
     }
 }

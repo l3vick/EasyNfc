@@ -17,7 +17,7 @@ public interface EmailWriterContract {
 
         void OnTagWritten();
 
-        void showAddedSuccess();
+        void showInserted();
 
         void showMessageError();
     }

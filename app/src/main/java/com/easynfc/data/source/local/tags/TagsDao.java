@@ -34,6 +34,8 @@ public interface TagsDao {
     @Insert
     void insertTag(MyTag myTag);
 
+    @Update
+    void updateTag(MyTag myTag);
 
     @Delete
     void deleteTag(MyTag... myTags);
@@ -43,14 +45,14 @@ public interface TagsDao {
     @Insert
     void insertTextTag(TextTag textTags);
 
+    @Update
+    void updateTextTag(TextTag textTag);
+
     @Query("DELETE FROM TextTag WHERE timestamp=:timestamp")
     void deleteTextTag(long timestamp);
 
     @Query("SELECT * FROM TextTag WHERE timestamp=:timestamp")
     TextTag getTextTag(long timestamp);
-
-    @Query("SELECT * FROM TextTag")
-    List<TextTag> getTextTags();
 
 
     //URL
@@ -128,7 +130,5 @@ public interface TagsDao {
 
     @Query("SELECT * FROM EmailTag WHERE timestamp=:timestamp")
     EmailTag getEmailTag(long timestamp);
-
-
 
 }

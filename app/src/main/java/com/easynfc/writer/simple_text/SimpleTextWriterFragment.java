@@ -96,14 +96,20 @@ public class SimpleTextWriterFragment extends BaseTypeFragment implements Simple
     }
 
     @Override
-    public void showAddedSuccess() {
-        super.showAddedSuccess();
+    public void insertSuccess() {
+        super.showInserted();
         btnSave.setEnabled(false);
     }
 
     @Override
     public void showMessageError() {
         super.showMessageError();
+    }
+
+    @Override
+    public void updatedSuccess() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
     }
 
 

@@ -96,7 +96,7 @@ public class SmsWriterPresenter implements SmsWriterContract.Presenter {
         tagsRepository.addSms(new SmsTag(timestamp.getTime(), number, text), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showAddedSuccess();
+                view.showInserted();
             }
 
             @Override

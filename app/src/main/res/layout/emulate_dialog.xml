@@ -15,17 +15,24 @@
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:padding="@dimen/close_padding"
-        android:src="@drawable/ic_close_ghost_35dp"
-        />
+        android:src="@drawable/ic_close_ghost_35dp" />
 
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
+        android:padding="@dimen/app_double_padding"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_emulate_transfer_device"
         android:tint="@color/easy_black_superlight" />
+
+    <ProgressBar
+        android:id="@+id/progress_wheel"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:indeterminateTint="@color/easy_black_superlight" />
 
     <com.easynfc.util.custom.CustomTextView
         android:layout_width="250dp"

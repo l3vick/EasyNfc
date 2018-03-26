@@ -136,7 +136,7 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
         tagsRepository.addWifi(new WifiTag(timestamp.getTime(), ssid,auth, password), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showAddedSuccess();
+                view.showInserted();
             }
 
             @Override

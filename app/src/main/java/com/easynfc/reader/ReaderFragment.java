@@ -8,8 +8,9 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,7 +18,6 @@ import android.widget.TextView;
 import com.easynfc.BaseFragment;
 import com.easynfc.R;
 import com.easynfc.data.model.TagResponse;
-import com.easynfc.util.AppConstants;
 import com.easynfc.util.AppUtils;
 
 import butterknife.BindView;
@@ -70,8 +70,15 @@ public class ReaderFragment extends BaseFragment implements ReaderContract.View 
         View v = inflater.inflate(R.layout.fragment_reader, container, false);
         ButterKnife.bind(this, v);
         customDialogView = (RelativeLayout) inflater.inflate(R.layout.reader_dialog, null);
+        ImageButton btnCloseDialog = customDialogView.findViewById(R.id.btn_close_reader_dialog);
+        btnCloseDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hideDialog();
+            }
+        });
         txtContent.setMovementMethod(new ScrollingMovementMethod());
-        showDialog();
+        showDialog(false);
         return v;
     }
 
@@ -124,17 +131,21 @@ public class ReaderFragment extends BaseFragment implements ReaderContract.View 
 
     @OnClick(R.id.btn_reload_reader)
     void OnReloadReaderClick () {
-        showDialog();
+        showDialog(true);
     }
 
 
-    public void showDialog() {
+    public void showDialog(boolean animated) {
+        if (animated){
+            customDialogView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_in));
+        }
         parentView.addView(customDialogView);
         presenter.enableForegroundDispatch();
     }
 
 
     public void hideDialog() {
+        customDialogView.startAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.fade_out));
         ((ViewGroup) customDialogView.getParent()).removeView(customDialogView);
     }
 

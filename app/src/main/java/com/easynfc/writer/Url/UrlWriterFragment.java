@@ -92,8 +92,8 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     }
 
     @Override
-    public void showAddedSuccess() {
-        super.showAddedSuccess();
+    public void showInserted() {
+        super.showInserted();
         btnSave.setEnabled(false);
     }
 

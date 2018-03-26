@@ -147,9 +147,10 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
         super.tagWritten();
     }
 
+
     @Override
-    public void showAddedSuccess() {
-        super.showAddedSuccess();
+    public void showInserted() {
+        super.showInserted();
         btnSave.setEnabled(false);
     }
 

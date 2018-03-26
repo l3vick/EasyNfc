@@ -96,7 +96,7 @@ public class EmailWriterPresenter implements EmailWriterContract.Presenter {
         tagsRepository.addEmail(new EmailTag(timestamp.getTime(), email), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showAddedSuccess();
+                view.showInserted();
             }
 
             @Override

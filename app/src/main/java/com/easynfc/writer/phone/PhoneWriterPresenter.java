@@ -95,7 +95,7 @@ public class PhoneWriterPresenter  implements PhoneWriterContract.Presenter {
         tagsRepository.addPhone(new PhoneTag(timestamp.getTime(), phone), new TagsDataSource.OnTagSavedCallback() {
             @Override
             public void onSuccess() {
-                view.showAddedSuccess();
+                view.showInserted();
             }
 
             @Override

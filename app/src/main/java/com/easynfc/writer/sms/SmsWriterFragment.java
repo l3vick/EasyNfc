@@ -97,8 +97,8 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
     }
 
     @Override
-    public void showAddedSuccess() {
-        super.showAddedSuccess();
+    public void showInserted() {
+        super.showInserted();
         btnSave.setEnabled(false);
     }
 

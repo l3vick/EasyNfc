@@ -270,7 +270,15 @@ public class TagsLocalDataSource implements TagsDataSource {
     }
 
     @Override
-    public void updateTag(TextTag textTag, OnTagUpdatedCallback callback) {
+    public void updateTextTag(final TextTag textTag, OnTagUpdatedCallback callback) {
+        tagsDao.updateTextTag(textTag);
+        tagsDao.updateTag(new MyTag(textTag.getTimeStamp(), textTag.getContent(),AppConstants.TagTypes.TEXT.toString()));
+        final TextTag auxTextTag = tagsDao.getTextTag(textTag.getTimeStamp());
 
+        if (auxTextTag.getContent().equals(textTag.getContent())  && auxTextTag.getTimeStamp() == textTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
     }
 }
