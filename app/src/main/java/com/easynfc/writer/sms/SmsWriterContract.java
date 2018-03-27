@@ -20,6 +20,8 @@ public interface SmsWriterContract {
         void showInserted();
 
         void showMessageError();
+
+        void showUpdatedSuccess();
     }
 
     interface Presenter extends BasePresenter {
@@ -35,6 +37,8 @@ public interface SmsWriterContract {
         void loadTag(long tagId, LoadSmsTagCallback loadSmsTagCallback);
 
         void emulateTag(String number, String text);
+
+        void updateTag(long tagId, String phone, String sms);
     }
 
     interface LoadSmsTagCallback {

@@ -72,7 +72,12 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etPhone.getText().toString());
+        if (tagId != 0) {
+            presenter.updateTag(tagId, etPhone.getText().toString());
+        }else{
+            presenter.saveTag(etPhone.getText().toString());
+        }
+
     }
 
     @Override
@@ -101,6 +106,12 @@ public class PhoneWriterFragment extends BaseTypeFragment implements PhoneWriter
     @Override
     public void showMessageError() {
         super.showMessageError();
+    }
+
+    @Override
+    public void showUpdatedSuccess() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
     }
 
     @Override

@@ -125,4 +125,19 @@ public class SmsWriterPresenter implements SmsWriterContract.Presenter {
     public void emulateTag(String number, String text) {
         nfcUtils.emulateSmsTag(number, text);
     }
+
+    @Override
+    public void updateTag(long tagId, String phone, String sms) {
+        tagsRepository.updateSmsTag(new SmsTag(tagId, phone, sms), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showUpdatedSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
 }

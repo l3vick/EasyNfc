@@ -20,6 +20,8 @@ public interface UrlWriterContract {
         void showInserted();
 
         void showMessageError();
+
+        void showUpdatedSuccess();
     }
 
     interface Presenter extends BasePresenter {
@@ -35,6 +37,8 @@ public interface UrlWriterContract {
         void loadTag(long tagId, LoadUrlTagCallback loadUrlTagCallback);
 
         void emulateTag(String url);
+
+        void updateTag(long tagId, String url);
     }
 
     interface LoadUrlTagCallback {

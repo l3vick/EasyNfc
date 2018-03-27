@@ -20,6 +20,8 @@ public interface PhoneWriterContract {
         void showInserted();
 
         void showMessageError();
+
+        void showUpdatedSuccess();
     }
 
     interface Presenter extends BasePresenter {
@@ -35,6 +37,8 @@ public interface PhoneWriterContract {
         void loadTag(long tagId, LoadPhoneTagCallback loadPhoneTagCallback);
 
         void emulateTag(String phone);
+
+        void updateTag(long tagId, String phone);
     }
 
     interface LoadPhoneTagCallback {

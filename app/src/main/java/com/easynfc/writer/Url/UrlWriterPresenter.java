@@ -124,4 +124,19 @@ public class UrlWriterPresenter implements UrlWriterContract.Presenter {
     public void emulateTag(String url) {
         nfcUtils.emulateUrlTag(url);
     }
+
+    @Override
+    public void updateTag(long tagId, String url) {
+        tagsRepository.updateUrlTag(new UrlTag(tagId, url), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showUpdatedSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
 }

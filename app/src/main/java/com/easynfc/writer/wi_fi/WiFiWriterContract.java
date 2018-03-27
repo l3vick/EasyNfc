@@ -25,6 +25,8 @@ public interface WiFiWriterContract {
         void showInserted();
 
         void showMessageError();
+
+        void showUpdatedSuccess();
     }
 
     interface Presenter extends BasePresenter {
@@ -48,6 +50,8 @@ public interface WiFiWriterContract {
         void loadTag(long tagId, LoadWifiTagCallback loadWifiTagCallback);
 
         void emulateTag(String ssid, String password, String cypher);
+
+        void updateTag(long tagId, String ssid, String password, String cypher);
     }
 
     interface OnWifiNetworksLoadedCallback {

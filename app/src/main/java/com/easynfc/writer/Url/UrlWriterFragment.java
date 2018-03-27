@@ -70,7 +70,12 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etUrl.getText().toString());
+        if (tagId != 0 ){
+            presenter.updateTag(tagId, etUrl.getText().toString());
+        }else{
+            presenter.saveTag(etUrl.getText().toString());
+        }
+
     }
 
     @OnClick(R.id.btn_emulate)
@@ -100,6 +105,12 @@ public class UrlWriterFragment extends BaseTypeFragment implements UrlWriterCont
     @Override
     public void showMessageError() {
         super.showMessageError();
+    }
+
+    @Override
+    public void showUpdatedSuccess() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
     }
 
     @Override

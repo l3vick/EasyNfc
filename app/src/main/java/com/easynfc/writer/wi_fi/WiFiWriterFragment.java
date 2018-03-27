@@ -122,7 +122,12 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
+        if (tagId != 0){
+            presenter.updateTag(tagId, etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
+        } else {
+            presenter.saveTag(etWifiSsid.getText().toString(), etWifiPassword.getText().toString(), spSecurityCypher.getSelectedItem().toString());
+        }
+
     }
 
     @OnClick(R.id.btn_wifi_networks)
@@ -157,6 +162,12 @@ public class WiFiWriterFragment extends BaseTypeFragment implements WiFiWriterCo
     @Override
     public void showMessageError() {
         super.showMessageError();
+    }
+
+    @Override
+    public void showUpdatedSuccess() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
     }
 
     @Override

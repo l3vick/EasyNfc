@@ -320,4 +320,56 @@ public class TagsLocalDataSource implements TagsDataSource {
             callback.onError();
         }
     }
+
+    @Override
+    public void updatePhoneTag(PhoneTag phoneTag, OnTagUpdatedCallback callback) {
+        tagsDao.updatePhoneTag(phoneTag);
+        tagsDao.updateTag(new MyTag(phoneTag.getTimeStamp(), phoneTag.getPhone(),AppConstants.TagTypes.PHONE.toString()));
+
+        final PhoneTag auxPhoneTag = tagsDao.getPhoneTag(phoneTag.getTimeStamp());
+        if (auxPhoneTag.getPhone().equals(phoneTag.getPhone())  && auxPhoneTag.getTimeStamp() == phoneTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
+    }
+
+    @Override
+    public void updateSmsTag(SmsTag smsTag, OnTagUpdatedCallback callback) {
+        tagsDao.updateSmsTag(smsTag);
+        tagsDao.updateTag(new MyTag(smsTag.getTimeStamp(), smsTag.getNumber(), AppConstants.TagTypes.SMS.toString()));
+
+        final SmsTag auxSmsTag= tagsDao.getSmsTag(smsTag.getTimeStamp());
+        if (auxSmsTag.getNumber().equals(smsTag.getNumber())  && auxSmsTag.getTimeStamp() == smsTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
+    }
+
+    @Override
+    public void updateUrlTag(UrlTag urlTag, OnTagUpdatedCallback callback) {
+        tagsDao.updateUrlTag(urlTag);
+        tagsDao.updateTag(new MyTag(urlTag.getTimeStamp(), urlTag.getContent(), AppConstants.TagTypes.URL.toString()));
+
+        final UrlTag auxUrlTag = tagsDao.getUrlTag(urlTag.getTimeStamp());
+        if (auxUrlTag.getContent().equals(urlTag.getContent())  && auxUrlTag.getTimeStamp() == urlTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
+    }
+
+    @Override
+    public void updateWifiTag(WifiTag wifiTag, OnTagUpdatedCallback callback) {
+        tagsDao.updateWifiTag(wifiTag);
+        tagsDao.updateTag(new MyTag(wifiTag.getTimeStamp(), wifiTag.getSsid(), AppConstants.TagTypes.WIFI.toString()));
+
+        final WifiTag auxWifiTag = tagsDao.getWifiTag(wifiTag.getTimeStamp());
+        if (auxWifiTag.getSsid().equals(wifiTag.getSsid())  && auxWifiTag.getTimeStamp() == wifiTag.getTimeStamp()){
+            callback.onSuccess();
+        }else{
+            callback.onError();
+        }
+    }
 }

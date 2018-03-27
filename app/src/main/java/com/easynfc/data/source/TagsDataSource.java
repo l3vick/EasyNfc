@@ -71,6 +71,14 @@ public interface TagsDataSource {
 
     void updateLocationTag(LocationTag locationTag, OnTagUpdatedCallback callback);
 
+    void updatePhoneTag(PhoneTag phoneTag, OnTagUpdatedCallback callback);
+
+    void updateSmsTag(SmsTag smsTag, OnTagUpdatedCallback callback);
+
+    void updateUrlTag(UrlTag urlTag, OnTagUpdatedCallback callback);
+
+    void updateWifiTag(WifiTag wifiTag, OnTagUpdatedCallback callback);
+
     interface LoadTagsCallback {
 
         void onTagsLoaded(List<MyTag> tags);

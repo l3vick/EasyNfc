@@ -75,7 +75,12 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
 
     @OnClick(R.id.btn_save)
     void onSaveTagBtnPressed() {
-        presenter.saveTag(etPhone.getText().toString(), etText.getText().toString());
+        if (tagId != 0 ){
+            presenter.updateTag(tagId, etPhone.getText().toString(), etText.getText().toString());
+        }else{
+            presenter.saveTag(etPhone.getText().toString(), etText.getText().toString());
+        }
+
     }
 
     @OnClick(R.id.btn_emulate)
@@ -105,6 +110,12 @@ public class SmsWriterFragment extends BaseTypeFragment implements SmsWriterCont
     @Override
     public void showMessageError() {
         super.showMessageError();
+    }
+
+    @Override
+    public void showUpdatedSuccess() {
+        super.showUpdated();
+        btnSave.setEnabled(false);
     }
 
     @Override

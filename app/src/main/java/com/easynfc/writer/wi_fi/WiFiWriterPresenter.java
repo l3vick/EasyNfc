@@ -166,6 +166,21 @@ public class WiFiWriterPresenter implements WiFiWriterContract.Presenter {
         nfcUtils.emulateWifiTag(new Wifi(ssid, toWifiAuthType(cypher), password));
     }
 
+    @Override
+    public void updateTag(long tagId, String ssid, String password, String cypher) {
+        tagsRepository.updateWifiTag(new WifiTag(tagId,ssid,cypher,password), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showUpdatedSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
+
 
     private final BroadcastReceiver wifiScanReceiver = new BroadcastReceiver() {
         @Override

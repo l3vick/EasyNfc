@@ -124,4 +124,19 @@ public class PhoneWriterPresenter  implements PhoneWriterContract.Presenter {
     public void emulateTag(String phone) {
         nfcUtils.emulatePhoneTag(phone);
     }
+
+    @Override
+    public void updateTag(long tagId, String phone) {
+        tagsRepository.updatePhoneTag(new PhoneTag(tagId, phone), new TagsDataSource.OnTagUpdatedCallback() {
+            @Override
+            public void onSuccess() {
+                view.showUpdatedSuccess();
+            }
+
+            @Override
+            public void onError() {
+                view.showMessageError();
+            }
+        });
+    }
 }
