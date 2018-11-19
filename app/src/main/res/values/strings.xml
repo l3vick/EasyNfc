@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EasyNFC</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_read">Read</string>
+    <string name="btn_mytags">My Tags</string>
+    <string name="btn_write">Write</string>
 </resources>

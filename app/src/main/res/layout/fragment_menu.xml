@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.menu.MenuFragment">
+
+    <Button
+        android:id="@+id/btnWrite"
+        style="@style/menu_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/gray_material_700"
+        android:text="@string/btn_write"
+        app:layout_constraintBottom_toTopOf="@+id/btnRead"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnRead"
+        style="@style/menu_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/gray_material_600"
+        android:text="@string/btn_read"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMyTags"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnWrite" />
+
+    <Button
+        android:id="@+id/btnMyTags"
+        style="@style/menu_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/gray_material_800"
+        android:text="@string/btn_mytags"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRead" />
+
+
+</android.support.constraint.ConstraintLayout>
