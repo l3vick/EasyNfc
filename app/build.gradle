@@ -31,4 +31,17 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+
+    //ANKO COMMONS
+    implementation "org.jetbrains.anko:anko:$anko_version"
+
+    //ROOM
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    implementation "android.arch.persistence.room:rxjava2:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
+
+    //VIEWMODEL LIVEDATA
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
 }

@@ -2,14 +2,43 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/gray_material_700</item>
+        <item name="colorPrimaryDark">@color/gray_material_900</item>
+        <item name="colorAccent">@color/gray_material_50</item>
     </style>
 
-    <style name="menu_btn" parent="@android:style/Widget.Button">
-        <item name="android:textColor">#FFFFFFFF</item>
+
+    <!-- Buttons Style -->
+    <style name="menu_btn_light" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/gray_material_50</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:fontFamily">@font/roboto_mono_bold</item>
+    </style>
+
+    <style name="menu_btn_dark" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/gray_material_900</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:fontFamily">@font/roboto_mono_bold</item>
+    </style>
+
+
+    <style name="menu_btn_dark_big" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/gray_material_50</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:fontFamily">@font/roboto_mono_bold</item>
+    </style>
+
+    <style name="menu_btn_light_big" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/gray_material_900</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">32sp</item>
         <item name="android:lineSpacingExtra">4dp</item>

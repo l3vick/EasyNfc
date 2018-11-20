@@ -2,6 +2,10 @@
 
 buildscript {
     ext.kotlin_version = '1.2.60'
+    ext.anko_version='0.10.5'
+    ext.lifecycle_version = "1.1.1"
+    ext.room_version = "1.1.1"
+
     repositories {
         google()
         jcenter()

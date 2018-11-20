@@ -8,11 +8,12 @@
 
     <Button
         android:id="@+id/btnWrite"
-        style="@style/menu_btn"
+        style="@style/menu_btn_dark_big"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/gray_material_700"
+        android:background="@color/gray_material_500"
         android:text="@string/btn_write"
+        android:drawableRight="@drawable/ic_write_item"
         app:layout_constraintBottom_toTopOf="@+id/btnRead"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -20,11 +21,12 @@
 
     <Button
         android:id="@+id/btnRead"
-        style="@style/menu_btn"
+        style="@style/menu_btn_light_big"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/gray_material_600"
+        android:background="@color/gray_material_200"
         android:text="@string/btn_read"
+        android:drawableLeft="@drawable/ic_read_item"
         app:layout_constraintBottom_toBottomOf="@+id/btnMyTags"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -32,11 +34,12 @@
 
     <Button
         android:id="@+id/btnMyTags"
-        style="@style/menu_btn"
+        style="@style/menu_btn_dark_big"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/gray_material_800"
         android:text="@string/btn_mytags"
+        android:drawableLeft="@drawable/ic_mytags_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
