@@ -1,142 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.tags.TagsFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
+    <data>
+
+        <variable
+            name="title"
+            type="java.lang.String" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <android.support.constraint.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btnText"
-                style="@style/menu_btn_dark"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_200"
-                android:text="@string/btn_text"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/btnUrl"
-                app:layout_constraintTop_toTopOf="parent" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btnUrl"
-                style="@style/menu_btn_light"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_800"
-                android:text="@string/btn_url"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toRightOf="@+id/btnText"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/btnText"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btnUrl"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <Button
-                android:id="@+id/btnSms"
-                style="@style/menu_btn_light"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_500"
-                android:text="@string/btn_sms"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/btnPhone"
-                app:layout_constraintTop_toBottomOf="@+id/btnText" />
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{"text"}' />
 
-            <Button
-                android:id="@+id/btnPhone"
-                style="@style/menu_btn_dark"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_400"
-                android:text="@string/btn_phone"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toRightOf="@+id/btnSms"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnUrl" />
+                </android.support.constraint.ConstraintLayout>
+
+                <!-- <Button
+                     android:id="@+id/btnText"
+                     style="@style/menu_btn_dark"
+                     android:layout_width="0dp"
+                     android:layout_height="0dp"
+                     android:background="@color/gray_material_200"
+                     android:text="@string/btn_text"
+                     app:layout_constraintDimensionRatio="1:1"
+                     app:layout_constraintLeft_toLeftOf="parent"
+                     app:layout_constraintRight_toLeftOf="@+id/btnUrl"
+                     app:layout_constraintTop_toTopOf="parent" />
+     -->
+                <Button
+                    android:id="@+id/btnUrl"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_800"
+                    android:text="@string/btn_url"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@+id/btnText"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btnSms"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_500"
+                    android:text="@string/btn_sms"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btnPhone"
+                    app:layout_constraintTop_toBottomOf="@+id/btnText" />
+
+                <Button
+                    android:id="@+id/btnPhone"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_400"
+                    android:text="@string/btn_phone"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@+id/btnSms"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnUrl" />
 
 
-            <Button
-                android:id="@+id/btnLauncher"
-                style="@style/menu_btn_dark"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_100"
-                android:text="@string/btn_launcher"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/btnLocation"
-                app:layout_constraintTop_toBottomOf="@+id/btnSms" />
+                <Button
+                    android:id="@+id/btnLauncher"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_100"
+                    android:text="@string/btn_launcher"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btnLocation"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSms" />
 
-            <Button
-                android:id="@+id/btnLocation"
-                style="@style/menu_btn_light"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_700"
-                android:text="@string/btn_location"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toRightOf="@+id/btnLauncher"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnPhone" />
+                <Button
+                    android:id="@+id/btnLocation"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_700"
+                    android:text="@string/btn_location"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@+id/btnLauncher"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnPhone" />
 
-            <Button
-                android:id="@+id/btnWifi"
-                style="@style/menu_btn_light"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_900"
-                android:text="@string/btn_wi_fi"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/btnEmail"
-                app:layout_constraintTop_toBottomOf="@+id/btnLauncher" />
+                <Button
+                    android:id="@+id/btnWifi"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_900"
+                    android:text="@string/btn_wi_fi"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btnEmail"
+                    app:layout_constraintTop_toBottomOf="@+id/btnLauncher" />
 
-            <Button
-                android:id="@+id/btnEmail"
-                style="@style/menu_btn_dark"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_300"
-                android:text="@string/btn_email"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toRightOf="@+id/btnWifi"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnLocation" />
+                <Button
+                    android:id="@+id/btnEmail"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_300"
+                    android:text="@string/btn_email"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@+id/btnWifi"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnLocation" />
 
-            <Button
-                android:id="@+id/btnFormat"
-                style="@style/menu_btn_dark"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_50"
-                android:text="@string/btn_format"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/btnLock"
-                app:layout_constraintTop_toBottomOf="@+id/btnWifi" />
+                <Button
+                    android:id="@+id/btnFormat"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_50"
+                    android:text="@string/btn_format"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/btnLock"
+                    app:layout_constraintTop_toBottomOf="@+id/btnWifi" />
 
-            <Button
-                android:id="@+id/btnLock"
-                style="@style/menu_btn_light"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@color/gray_material_600"
-                android:text="@string/btn_lock"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintLeft_toRightOf="@+id/btnFormat"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnEmail" />
+                <Button
+                    android:id="@+id/btnLock"
+                    style="@style/tag_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@color/gray_material_600"
+                    android:text="@string/btn_lock"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@+id/btnFormat"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnEmail" />
 
-        </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
 
-    </ScrollView>
+        </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

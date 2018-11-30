@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">EasyNFC</string>
 
-    <!--Menu Buttons -->
-    <string name="btn_read">Read</string>
-    <string name="btn_mytags">My Tags</string>
-    <string name="btn_write">Write</string>
+    <!--Menu -->
+    <string name="read_title">Read/</string>
+    <string name="mytags_title">My Tags/</string>
+    <string name="write_title">Write/</string>
+    <string name="write_subtitle">write &amp; save your favorites tags</string>
+    <string name="read_subtitle">read tag content</string>
+    <string name="mytags_subtitle">write, emulate &amp; update your tags</string>
 
-    <!--Tags Buttons -->
+    <!--Tags-->
     <string name="btn_text">Text</string>
     <string name="btn_url">Url</string>
     <string name="btn_sms">Sms</string>
@@ -17,5 +20,12 @@
     <string name="btn_email">Email</string>
     <string name="btn_format">Format</string>
     <string name="btn_lock">Lock</string>
+
+    <string name="title">Text</string>
+    <string name="src">"@drawable/ic_read"</string>
+
+
+
+
 
 </resources>

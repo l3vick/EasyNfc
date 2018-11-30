@@ -15,5 +15,7 @@
     <color name="gray_material_700">#616161</color>
     <color name="gray_material_800">#424242</color>
     <color name="gray_material_900">#212121</color>
+    <color name="amber_material_500">#ffc107</color>
+    <color name="amber_material_600">#ffb300</color>
 
 </resources>
