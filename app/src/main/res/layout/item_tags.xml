@@ -5,7 +5,7 @@
         <variable
             name="title"
             type="java.lang.String" />
-
+        
         <variable
             name="image"
             type="android.graphics.drawable.Drawable" />

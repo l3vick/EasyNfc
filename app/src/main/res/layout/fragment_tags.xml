@@ -4,11 +4,8 @@
 
     <data>
         <variable
-            name="title"
-            type="java.lang.String" />
-        <variable
-            name="image"
-            type="android.graphics.drawable.Drawable" />
+            name="list"
+            type="java.util.List&lt;com.easynfc.model.Tag&gt;"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -34,131 +31,154 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{"text"}'
-                        android:image='@{@drawable/ic_write_item}'/>
+                        android:title='@{list[0].name}'
+                        android:image='@{list[0].drawable}'/>
 
                 </android.support.constraint.ConstraintLayout>
 
-                <!-- <Button
-                     android:id="@+id/btnText"
-                     style="@style/menu_btn_dark"
-                     android:layout_width="0dp"
-                     android:layout_height="0dp"
-                     android:background="@color/gray_material_200"
-                     android:text="@string/btn_text"
-                     app:layout_constraintDimensionRatio="1:1"
-                     app:layout_constraintLeft_toLeftOf="parent"
-                     app:layout_constraintRight_toLeftOf="@+id/btnUrl"
-                     app:layout_constraintTop_toTopOf="parent" />
-     -->
-                <Button
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnUrl"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_800"
-                    android:text="@string/btn_url"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toRightOf="@+id/btnText"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <Button
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[1].name}'
+                        android:image='@{list[1].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnSms"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_500"
-                    android:text="@string/btn_sms"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/btnPhone"
-                    app:layout_constraintTop_toBottomOf="@+id/btnText" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnText">
 
-                <Button
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[2].name}'
+                        android:image='@{list[2].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnPhone"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_400"
-                    android:text="@string/btn_phone"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toRightOf="@+id/btnSms"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnUrl" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnUrl">
 
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[3].name}'
+                        android:image='@{list[3].drawable}'/>
 
-                <Button
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnLauncher"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_100"
-                    android:text="@string/btn_launcher"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/btnLocation"
-                    app:layout_constraintTop_toBottomOf="@+id/btnSms" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnSms">
 
-                <Button
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[4].name}'
+                        android:image='@{list[4].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnLocation"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_700"
-                    android:text="@string/btn_location"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toRightOf="@+id/btnLauncher"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnPhone" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnPhone">
 
-                <Button
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[5].name}'
+                        android:image='@{list[5].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnWifi"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_900"
-                    android:text="@string/btn_wi_fi"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/btnEmail"
-                    app:layout_constraintTop_toBottomOf="@+id/btnLauncher" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnLauncher">
 
-                <Button
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[6].name}'
+                        android:image='@{list[6].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnEmail"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_300"
-                    android:text="@string/btn_email"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toRightOf="@+id/btnWifi"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnLocation" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnLocation">
 
-                <Button
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[7].name}'
+                        android:image='@{list[7].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnFormat"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_50"
-                    android:text="@string/btn_format"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/btnLock"
-                    app:layout_constraintTop_toBottomOf="@+id/btnWifi" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnWifi">
 
-                <Button
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[8].name}'
+                        android:image='@{list[8].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
                     android:id="@+id/btnLock"
-                    style="@style/tag_btn"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/gray_material_600"
-                    android:text="@string/btn_lock"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintLeft_toRightOf="@+id/btnFormat"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btnEmail" />
+                    app:layout_constraintTop_toBottomOf="@+id/btnEmail">
+
+                    <include
+                        layout="@layout/item_tags"
+                        android:title='@{list[9].name}'
+                        android:image='@{list[9].drawable}'/>
+
+                </android.support.constraint.ConstraintLayout>
 
             </android.support.constraint.ConstraintLayout>
 

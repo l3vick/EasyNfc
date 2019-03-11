@@ -24,7 +24,6 @@ class MenuFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
 
         view.btnWrite.onClick {
-            val g = 58
             FragmentUtils.show(activity!!.supportFragmentManager!!,TagsFragment.TAG, R.id.container, null)
         }
 

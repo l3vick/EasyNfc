@@ -1,7 +1,6 @@
 package com.easynfc.ui.tags
 
 
-import android.databinding.DataBindingComponent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -9,8 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.easynfc.R
-import com.easynfc.adapter.DataBindingAdapters
 import com.easynfc.databinding.FragmentTagsBinding
+import com.easynfc.model.Tags
 
 
 class TagsFragment : Fragment() {
@@ -18,9 +17,10 @@ class TagsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        val binding: FragmentTagsBinding =  DataBindingUtil.inflate(inflater,R.layout.fragment_tags, container,false)
 
+        val binding: FragmentTagsBinding =  DataBindingUtil.inflate(inflater,R.layout.fragment_tags, container,false)
+        var tags = Tags.getList(context!!)
+        binding.list = tags
         return binding.root
     }
 
