@@ -1,4 +1,4 @@
-package com.easynfc.ui.write
+package com.easynfc.ui.main.read
 
 
 import android.os.Bundle
@@ -10,23 +10,25 @@ import android.view.ViewGroup
 import com.easynfc.R
 
 
-class WriteFragment : Fragment() {
+class ReadFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_write, container, false)
+        val view = inflater.inflate(R.layout.fragment_read, container, false)
+
 
         return view
     }
 
+
+
     companion object {
 
-        val TAG = this::class.java.name
+        val TAG = ReadFragment::class.java.name
 
-        fun newInstance(): WriteFragment {
-            return WriteFragment()
+        fun newInstance (): ReadFragment {
+            return ReadFragment()
         }
     }
-
 }

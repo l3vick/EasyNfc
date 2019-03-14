@@ -1,4 +1,4 @@
-package com.easynfc.ui.tags
+package com.easynfc.ui.main.tags
 
 
 import android.databinding.DataBindingUtil
@@ -18,7 +18,7 @@ class TagsFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val binding: FragmentTagsBinding =  DataBindingUtil.inflate(inflater,R.layout.fragment_tags, container,false)
+        val binding: FragmentTagsBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_tags, container,false)
         var tags = Tags.getList(context!!)
         binding.list = tags
         return binding.root

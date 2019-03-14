@@ -2,7 +2,7 @@ package com.easynfc
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.easynfc.ui.menu.MenuFragment
+import com.easynfc.ui.main.menu.MenuFragment
 import com.vipera.onepay.util.AppConstants
 import com.vipera.onepay.util.FragmentUtils
 

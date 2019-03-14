@@ -1,4 +1,4 @@
-package com.easynfc.ui.read
+package com.easynfc.ui.main.menu.mytags
 
 
 import android.os.Bundle
@@ -10,25 +10,23 @@ import android.view.ViewGroup
 import com.easynfc.R
 
 
-class ReadFragment : Fragment() {
+class MyTagsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_read, container, false)
-
+        val view =  inflater.inflate(R.layout.fragment_my_tags, container, false)
 
         return view
     }
 
 
-
     companion object {
 
-        val TAG = ReadFragment::class.java.name
+        val TAG = this::class.java.name
 
-        fun newInstance (): ReadFragment {
-            return ReadFragment()
+        fun newInstance (): MyTagsFragment {
+            return MyTagsFragment()
         }
     }
 }

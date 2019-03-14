@@ -2,11 +2,11 @@ package com.vipera.onepay.util
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import com.easynfc.ui.menu.MenuFragment
-import com.easynfc.ui.mytags.MyTagsFragment
-import com.easynfc.ui.read.ReadFragment
-import com.easynfc.ui.tags.TagsFragment
-import com.easynfc.ui.write.WriteFragment
+import com.easynfc.ui.main.menu.MenuFragment
+import com.easynfc.ui.main.menu.mytags.MyTagsFragment
+import com.easynfc.ui.main.read.ReadFragment
+import com.easynfc.ui.main.tags.TagsFragment
+import com.easynfc.ui.main.write.WriteFragment
 
 
 class FragmentUtils {

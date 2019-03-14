@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-
     <data>
         <variable
             name="title"
             type="java.lang.String" />
-        
         <variable
             name="image"
             type="android.graphics.drawable.Drawable" />
@@ -20,15 +18,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:background="@color/gray_material_300">
+            android:elevation="@dimen/elevation"
+            android:layout_margin="@dimen/item_tags_margin_border"
+            android:background="@drawable/item_tag_rounded_border">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="1dp"
-                android:background="@color/gray_material_800"
-                android:elevation="@dimen/elevation">
+                android:background="@color/gray_material_800">
 
                 <ImageView
                     android:id="@+id/img_type"

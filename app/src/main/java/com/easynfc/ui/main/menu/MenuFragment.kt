@@ -1,4 +1,4 @@
-package com.easynfc.ui.menu
+package com.easynfc.ui.main.menu
 
 
 import android.os.Bundle
@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.easynfc.R
-import com.easynfc.ui.mytags.MyTagsFragment
-import com.easynfc.ui.read.ReadFragment
-import com.easynfc.ui.tags.TagsFragment
+import com.easynfc.ui.main.menu.mytags.MyTagsFragment
+import com.easynfc.ui.main.read.ReadFragment
+import com.easynfc.ui.main.tags.TagsFragment
 import com.vipera.onepay.util.FragmentUtils
 import kotlinx.android.synthetic.main.fragment_menu.view.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
@@ -24,15 +24,15 @@ class MenuFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
 
         view.btnWrite.onClick {
-            FragmentUtils.show(activity!!.supportFragmentManager!!,TagsFragment.TAG, R.id.container, null)
+            FragmentUtils.show(activity!!.supportFragmentManager!!, TagsFragment.TAG, R.id.container, null)
         }
 
         view.btnRead.onClick {
-            FragmentUtils.show(activity!!.supportFragmentManager!!,ReadFragment.TAG, R.id.container, null)
+            FragmentUtils.show(activity!!.supportFragmentManager!!, ReadFragment.TAG, R.id.container, null)
         }
 
         view.btnMyTags.onClick {
-            FragmentUtils.show(activity!!.supportFragmentManager!!,MyTagsFragment.TAG, R.id.container, null)
+            FragmentUtils.show(activity!!.supportFragmentManager!!, MyTagsFragment.TAG, R.id.container, null)
         }
 
         return view

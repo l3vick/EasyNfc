@@ -1,4 +1,4 @@
-package com.easynfc.adapter
+package com.easynfc.ui.component.adapter
 
 import android.databinding.BindingAdapter
 import android.graphics.drawable.Drawable
