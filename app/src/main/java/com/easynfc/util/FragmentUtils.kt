@@ -49,15 +49,16 @@ class FragmentUtils {
         //-------------------------------------------------------------------------------------------------------------------------------------------
 
         private fun getFragment(fragmentTag: String, manager: FragmentManager, data: Any?): Fragment? {
-            when (fragmentTag) {
-                MenuFragment.TAG -> return getMenuFragment(manager)
-                TagsFragment.TAG -> return getTagsFragment(manager)
-                ReadFragment.TAG -> return getReadFragment(manager)
-                MyTagsFragment.TAG -> return getMyTagsFragment(manager)
-                WriteFragment.TAG -> return getWriteFragment(manager)
+            return manager.findFragmentByTag(fragmentTag) ?: when (fragmentTag) {
+                MenuFragment.TAG -> MenuFragment.newInstance()
+                TagsFragment.TAG -> TagsFragment.newInstance()
+                ReadFragment.TAG -> ReadFragment.newInstance()
+                MyTagsFragment.TAG -> MyTagsFragment.newInstance()
+                WriteFragment.TAG -> WriteFragment.newInstance()
+                else -> null
             }
-            return null
         }
+
 
         /*private fun getQRPaymentDeclineFragment(manager: FragmentManager, data: Any?): Fragment? {
                var fragment = manager.findFragmentByTag(AppConstants.QR_PAYMENT_DECLINE_FRAGMENT) as QRPaymentDeclineFragment?
@@ -67,44 +68,13 @@ class FragmentUtils {
                return fragment
            }*/
 
-        private fun getMenuFragment(manager: FragmentManager): Fragment {
+        /*private fun getMenuFragment(manager: FragmentManager): Fragment {
             var fragment = manager.findFragmentByTag(MenuFragment.TAG) as MenuFragment?
             if (fragment == null) {
                 fragment = MenuFragment.newInstance()
             }
             return fragment
-        }
+        }*/
 
-        private fun getTagsFragment(manager: FragmentManager): Fragment {
-            var fragment = manager.findFragmentByTag(TagsFragment.TAG) as TagsFragment?
-            if (fragment == null) {
-                fragment = TagsFragment.newInstance()
-            }
-            return fragment
-        }
-
-        private fun getReadFragment(manager: FragmentManager): Fragment {
-            var fragment = manager.findFragmentByTag(ReadFragment.TAG) as ReadFragment?
-            if (fragment == null) {
-                fragment = ReadFragment.newInstance()
-            }
-            return fragment
-        }
-
-        private fun getMyTagsFragment(manager: FragmentManager): Fragment {
-            var fragment = manager.findFragmentByTag(MyTagsFragment.TAG) as MyTagsFragment?
-            if (fragment == null) {
-                fragment = MyTagsFragment.newInstance()
-            }
-            return fragment
-        }
-
-        private fun getWriteFragment(manager: FragmentManager): Fragment {
-            var fragment = manager.findFragmentByTag(WriteFragment.TAG) as WriteFragment?
-            if (fragment == null) {
-                fragment = WriteFragment.newInstance()
-            }
-            return fragment
-        }
     }
 }

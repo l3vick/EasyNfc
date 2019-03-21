@@ -23,7 +23,7 @@ class MyTagsFragment : Fragment() {
 
     companion object {
 
-        val TAG = this::class.java.name
+        val TAG = MyTagsFragment::class.java.name
 
         fun newInstance (): MyTagsFragment {
             return MyTagsFragment()

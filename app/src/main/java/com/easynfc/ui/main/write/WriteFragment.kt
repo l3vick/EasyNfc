@@ -22,7 +22,7 @@ class WriteFragment : Fragment() {
 
     companion object {
 
-        val TAG = this::class.java.name
+        val TAG = WriteFragment::class.java.name
 
         fun newInstance(): WriteFragment {
             return WriteFragment()

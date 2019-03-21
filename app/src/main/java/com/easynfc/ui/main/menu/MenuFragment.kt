@@ -40,7 +40,7 @@ class MenuFragment : Fragment() {
 
     companion object {
 
-        val TAG = this::class.java.name
+        val TAG = MenuFragment::class.java.name
 
         fun newInstance (): MenuFragment {
             return MenuFragment()
