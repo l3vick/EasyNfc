@@ -13,7 +13,6 @@ class FragmentUtils {
 
     companion object {
 
-
         fun show(manager: FragmentManager, fragmentTag: String, container: Int, data: Any?): Companion {
             var fragment = manager.findFragmentByTag(fragmentTag)
             if (fragment != null) {
@@ -58,23 +57,6 @@ class FragmentUtils {
                 else -> null
             }
         }
-
-
-        /*private fun getQRPaymentDeclineFragment(manager: FragmentManager, data: Any?): Fragment? {
-               var fragment = manager.findFragmentByTag(AppConstants.QR_PAYMENT_DECLINE_FRAGMENT) as QRPaymentDeclineFragment?
-               if (fragment == null && data is PaymentsRequestResponse) {
-                   fragment = QRPaymentDeclineFragment.newInstance(data)
-               }
-               return fragment
-           }*/
-
-        /*private fun getMenuFragment(manager: FragmentManager): Fragment {
-            var fragment = manager.findFragmentByTag(MenuFragment.TAG) as MenuFragment?
-            if (fragment == null) {
-                fragment = MenuFragment.newInstance()
-            }
-            return fragment
-        }*/
 
     }
 }
