@@ -2,13 +2,12 @@ package com.vipera.onepay.util
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import com.easynfc.ui.main.menu.MenuFragment
 import com.easynfc.ui.main.menu.mytags.MyTagsFragment
 import com.easynfc.ui.main.read.ReadFragment
 import com.easynfc.ui.main.tags.TagsFragment
 import com.easynfc.ui.main.write.WriteFragment
 
-
+//3
 class FragmentUtils {
 
     companion object {
@@ -49,11 +48,11 @@ class FragmentUtils {
 
         private fun getFragment(fragmentTag: String, manager: FragmentManager, data: Any?): Fragment? {
             return manager.findFragmentByTag(fragmentTag) ?: when (fragmentTag) {
-                MenuFragment.TAG -> MenuFragment.newInstance()
+                /*MenuFragment.TAG -> MenuFragment.newInstance()
                 TagsFragment.TAG -> TagsFragment.newInstance()
                 ReadFragment.TAG -> ReadFragment.newInstance()
                 MyTagsFragment.TAG -> MyTagsFragment.newInstance()
-                WriteFragment.TAG -> WriteFragment.newInstance()
+                WriteFragment.TAG -> WriteFragment.newInstance()*/
                 else -> null
             }
         }

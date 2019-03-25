@@ -14,7 +14,7 @@ class WriteFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+
         val view = inflater.inflate(R.layout.fragment_write, container, false)
 
         return view
@@ -24,9 +24,6 @@ class WriteFragment : Fragment() {
 
         val TAG = WriteFragment::class.java.name
 
-        fun newInstance(): WriteFragment {
-            return WriteFragment()
-        }
     }
 
 }

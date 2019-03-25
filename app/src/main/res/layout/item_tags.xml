@@ -30,8 +30,8 @@
 
                 <ImageView
                     android:id="@+id/img_type"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/item_tags_img_size"
+                    android:layout_height="@dimen/item_tags_img_size"
                     android:src="@{image}"
                     android:layout_centerInParent="true" />
 

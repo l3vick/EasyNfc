@@ -5,8 +5,9 @@
 
     <dimen name="elevation">4dp</dimen>
 
-    <dimen name="item_tags_txt_size">20sp</dimen>
+    <dimen name="item_tags_txt_size">18sp</dimen>
     <dimen name="item_tags_txt_margin_top">4dp</dimen>
     <dimen name="item_tags_margin_border">5dp</dimen>
+    <dimen name="item_tags_img_size">36dp</dimen>
 
 </resources>

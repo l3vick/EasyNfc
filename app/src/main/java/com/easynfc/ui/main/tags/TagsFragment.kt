@@ -29,9 +29,6 @@ class TagsFragment : Fragment() {
 
         val TAG = TagsFragment::class.java.name
 
-        fun newInstance(): TagsFragment {
-            return TagsFragment()
-        }
     }
 
 }
