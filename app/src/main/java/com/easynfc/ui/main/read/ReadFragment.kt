@@ -22,8 +22,6 @@ class ReadFragment : Fragment() {
 
 
     companion object {
-
         val TAG = ReadFragment::class.java.name
-
     }
 }
