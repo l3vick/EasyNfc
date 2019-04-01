@@ -21,7 +21,7 @@
         <item name="android:textSize">40sp</item>
         <item name="android:lineSpacingExtra">1dp</item>
         <item name="android:letterSpacing">0.08</item>
-        <item name="android:fontFamily">@font/exo2</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="menu_txt_small" parent="@android:style/Widget.TextView">
@@ -30,16 +30,56 @@
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">1dp</item>
         <item name="android:letterSpacing">0.08</item>
-        <item name="android:fontFamily">@font/exo2</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
     <!-- Tags  Style -->
     <style name="tag_txt" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/amber_material_500</item>
         <item name="android:textSize">@dimen/item_tags_txt_size</item>
-        <item name="android:fontFamily">@font/exo2</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginTop">@dimen/item_tags_txt_margin_top</item>
     </style>
+
+
+    <style name="txt_content_auto" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/gray_material_800</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMaxTextSize">100sp</item>
+        <item name="android:autoSizeMinTextSize">12sp</item>
+        <item name="android:autoSizeStepGranularity">2sp</item>
+    </style>
+
+
+    <style name="txt_content" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/gray_material_800</item>
+        <item name="android:textSize">@dimen/txt_content_size</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+
+    <style name="txt_content_clear" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/gray_material_200</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textSize">@dimen/txt_content_size</item>
+    </style>
+
+
+    <style name="txt_title" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/gray_material_600</item>
+        <item name="android:textSize">@dimen/txt_title_size</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+
+    <style name="txt_value" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/gray_material_800</item>
+        <item name="android:textSize">@dimen/txt_value_size</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
 
 </resources>

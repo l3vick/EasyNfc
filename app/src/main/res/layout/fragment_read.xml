@@ -4,20 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray_material_300"
     android:clickable="true"
+    android:focusable="true"
     android:padding="@dimen/app_padding"
     tools:context=".ui.main.read.ReadFragment">
 
-
     <TextView
         android:id="@+id/txtContent"
+        style="@style/txt_content_auto"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:autoSizeTextType="uniform"
-        android:text="asdsf fg g ggggggg asdasdas dasd asd"
-        app:autoSizeMaxTextSize="100sp"
-        app:autoSizeMinTextSize="12sp"
-        app:autoSizeStepGranularity="2sp"
+        android:text="@string/txt_content_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.4"
@@ -33,143 +31,172 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContent" />
 
-    <!--<TextView
-        android:id="@+id/txtType"
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="titulo"
-        app:layout_constraintEnd_toStartOf="@+id/txtTypeValue"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/separator" />
+        app:layout_constraintTop_toBottomOf="@id/separator"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5">
+
+        <TextView
+            android:id="@+id/txtType"
+            style="@style/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type"
+            app:layout_constraintBottom_toTopOf="@+id/txtTag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <TextView
+            android:id="@+id/txtTag"
+            style="@style/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tag"
+            app:layout_constraintBottom_toTopOf="@id/txtTech"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtType" />
+
+        <TextView
+            android:id="@+id/txtTech"
+            style="@style/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tech"
+            app:layout_constraintBottom_toTopOf="@id/txtTnf"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTag" />
+
+        <TextView
+            android:id="@+id/txtTnf"
+            style="@style/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tnf"
+            app:layout_constraintBottom_toTopOf="@id/txtRtd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTech" />
+
+        <TextView
+            android:id="@+id/txtRtd"
+            style="@style/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rtd"
+            app:layout_constraintBottom_toTopOf="@id/txtSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTnf" />
+
+        <TextView
+            android:id="@+id/txtSize"
+            style="@style/txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtRtd" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
-    <TextView
-        android:id="@+id/txtTypeValue"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:text="valor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/txtType"
-        app:layout_constraintTop_toBottomOf="@id/separator" />
-
-
-    <TextView
-        android:id="@+id/txtTag"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="titulo"
-        app:layout_constraintEnd_toStartOf="@+id/txtTagValue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtType" />
-
-
-    <TextView
-        android:id="@+id/txtTagValue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:text="valor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/txtTag"
-        app:layout_constraintTop_toBottomOf="@id/txtTypeValue" />-->
-
-
-    <TextView
-        android:id="@+id/label_a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="right"
-        android:text="type"
-        app:layout_constraintBottom_toTopOf="@id/label_b"
-        app:layout_constraintEnd_toStartOf="@+id/label_g"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/separator" />
-
-
-    <TextView
-        android:id="@+id/label_g"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="asdasdasd"
-        app:layout_constraintBottom_toTopOf="@id/label_b"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/label_a"
-        app:layout_constraintTop_toTopOf="@+id/separator" />
-
-    <TextView
-        android:id="@+id/label_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="tag"
-        app:layout_constraintBottom_toTopOf="@id/label_c"
-        app:layout_constraintEnd_toStartOf="@+id/label_h"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_a" />
-
-    <TextView
-        android:id="@+id/label_h"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="asdasdasd"
-        app:layout_constraintBottom_toTopOf="@id/label_c"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/label_b"
-        app:layout_constraintTop_toBottomOf="@+id/label_a" />
-
-    <TextView
-        android:id="@+id/label_c"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="tech"
-        app:layout_constraintBottom_toTopOf="@+id/label_d"
-        app:layout_constraintEnd_toStartOf="@+id/label_j"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_b" />
-
-    <TextView
-        android:id="@+id/label_j"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="asdasdasdasd"
-        app:layout_constraintBottom_toTopOf="@+id/label_d"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/label_c"
-        app:layout_constraintTop_toBottomOf="@+id/label_b" />
-
-
-    <TextView
-        android:id="@+id/label_d"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="d"
-        app:layout_constraintBottom_toTopOf="@+id/label_e"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_c" />
-
-
-    <TextView
-        android:id="@+id/label_e"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="e"
-
-        app:layout_constraintBottom_toTopOf="@+id/label_f"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_d" />
-
-
-    <TextView
-        android:id="@+id/label_f"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="f"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_e" />
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintTop_toBottomOf="@id/separator"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5">
 
+        <TextView
+            android:id="@+id/txtTypeValue"
+            style="@style/txt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_value_placeholder"
+            app:layout_constraintBottom_toTopOf="@+id/txtTagValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+
+        <TextView
+            android:id="@+id/txtTagValue"
+            style="@style/txt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_value_placeholder"
+            app:layout_constraintBottom_toTopOf="@id/txtTechValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTypeValue" />
+
+
+        <TextView
+            android:id="@+id/txtTechValue"
+            style="@style/txt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_value_placeholder"
+            app:layout_constraintBottom_toTopOf="@id/txtTnfValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTagValue" />
+
+
+        <TextView
+            android:id="@+id/txtTnfValue"
+            style="@style/txt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_value_placeholder"
+            app:layout_constraintBottom_toTopOf="@id/txtRtdValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTechValue" />
+
+
+        <TextView
+            android:id="@+id/txtRtdValue"
+            style="@style/txt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_value_placeholder"
+            app:layout_constraintBottom_toTopOf="@id/txtSizeValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtTnfValue" />
+
+
+        <TextView
+            android:id="@+id/txtSizeValue"
+            style="@style/txt_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_value_placeholder"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtRtdValue" />
+
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -21,10 +21,21 @@
     <string name="btn_format">Format</string>
     <string name="btn_lock">Lock</string>
 
-    <string name="title">Text</string>
-    <string name="src">"@drawable/ic_read"</string>
+    <!--Read-->
+    <string name="type">Type</string>
+    <string name="tag">Tag</string>
+    <string name="tech">Tech</string>
+    <string name="tnf">Tnf</string>
+    <string name="rtd">Rtd</string>
+    <string name="size">Size</string>
+
+    <string name="txt_content_placeholder">Tag content…</string>
+    <string name="txt_value_placeholder">Value…</string>
 
 
+    <!--Loading-->
+    <string name="loading_iv_desc">Loading image</string>
+    <string name="loading_title">Please, tap a tag to read…</string>
 
 
 
