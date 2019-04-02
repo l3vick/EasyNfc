@@ -29,8 +29,8 @@
 
     <ImageView
         android:id="@+id/ivLoading"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:contentDescription="@string/loading_iv_desc"
         android:src="@drawable/ic_loading2"
         app:layout_constraintBottom_toBottomOf="parent"

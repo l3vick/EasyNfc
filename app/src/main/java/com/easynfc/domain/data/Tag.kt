@@ -6,6 +6,8 @@ import android.support.v4.content.ContextCompat
 import com.easynfc.R
 
 
+
+
 class Tags {
     companion object {
         fun getList(context: Context) :  List<Tag> {
@@ -20,3 +22,11 @@ data class Tag (
 )
 
 
+data class TagData (
+        var type: String,
+        var content: String,
+        var techList: Array<String>,
+        var tnf: String,
+        var rtd: String,
+        var size: String
+)
