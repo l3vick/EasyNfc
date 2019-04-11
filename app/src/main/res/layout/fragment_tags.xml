@@ -2,13 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="list"
-            type="java.util.List&lt;com.easynfc.model.Tag&gt;"/>
-    </data>
-
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,11 +11,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnText"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -31,13 +25,12 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <include
-                        layout="@layout/item_tags"
-                        android:title='@{list[0].name}'
-                        android:image='@{list[0].drawable}'/>
+                        android:id="@+id/text_layout"
+                        layout="@layout/item_tags"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnUrl"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -48,12 +41,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[1].name}'
-                        android:image='@{list[1].drawable}'/>
+                        android:id="@+id/url_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnSms"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -64,12 +56,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[2].name}'
-                        android:image='@{list[2].drawable}'/>
+                        android:id="@+id/sms_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnPhone"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -80,12 +71,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[3].name}'
-                        android:image='@{list[3].drawable}'/>
+                        android:id="@+id/phone_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnLauncher"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -96,12 +86,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[4].name}'
-                        android:image='@{list[4].drawable}'/>
+                        android:id="@+id/launcher_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnLocation"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -112,12 +101,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[5].name}'
-                        android:image='@{list[5].drawable}'/>
+                        android:id="@+id/location_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnWifi"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -128,12 +116,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[6].name}'
-                        android:image='@{list[6].drawable}'/>
+                        android:id="@+id/wifi_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnEmail"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -144,12 +131,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[7].name}'
-                        android:image='@{list[7].drawable}'/>
+                        android:id="@+id/email_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnFormat"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -160,12 +146,11 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[8].name}'
-                        android:image='@{list[8].drawable}'/>
+                        android:id="@+id/format_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/btnLock"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
@@ -176,15 +161,14 @@
 
                     <include
                         layout="@layout/item_tags"
-                        android:title='@{list[9].name}'
-                        android:image='@{list[9].drawable}'/>
+                        android:id="@+id/lock_layout"/>
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

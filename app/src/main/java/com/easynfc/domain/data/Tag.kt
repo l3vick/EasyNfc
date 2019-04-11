@@ -2,7 +2,8 @@ package com.easynfc.model
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.support.v4.content.ContextCompat
+import android.view.View
+import androidx.core.content.ContextCompat
 import com.easynfc.R
 
 
@@ -10,15 +11,16 @@ import com.easynfc.R
 
 class Tags {
     companion object {
-        fun getList(context: Context) :  List<Tag> {
-            return listOf(Tag("text", ContextCompat.getDrawable(context, R.drawable.ic_text)!!),Tag("url", ContextCompat.getDrawable(context, R.drawable.ic_url)!!),Tag("sms", ContextCompat.getDrawable(context, R.drawable.ic_sms)!!),Tag("phone", ContextCompat.getDrawable(context, R.drawable.ic_phone)!!),Tag("launcher", ContextCompat.getDrawable(context, R.drawable.ic_launcher)!!),Tag("location", ContextCompat.getDrawable(context, R.drawable.ic_location)!!),Tag("wifi", ContextCompat.getDrawable(context, R.drawable.ic_wifi)!!),Tag("email", ContextCompat.getDrawable(context, R.drawable.ic_mail)!!),Tag("format", ContextCompat.getDrawable(context, R.drawable.ic_remove)!!),Tag("lock", ContextCompat.getDrawable(context, R.drawable.ic_lock)!!))
+        fun getList() :  List<Tag> {
+            return listOf(Tag("text", R.drawable.ic_text, null),Tag("url",  R.drawable.ic_url, null),Tag("sms", R.drawable.ic_sms, null),Tag("phone", R.drawable.ic_phone, null),Tag("launcher", R.drawable.ic_launcher, null),Tag("location", R.drawable.ic_location, null),Tag("wifi", R.drawable.ic_wifi, null),Tag("email", R.drawable.ic_mail, null),Tag("format", R.drawable.ic_remove, null),Tag("lock",  R.drawable.ic_lock, null))
         }
     }
 }
 
 data class Tag (
         var name: String,
-        var drawable: Drawable
+        var drawable: Int,
+        var view: View?
 )
 
 

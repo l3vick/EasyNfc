@@ -1,34 +1,40 @@
 package com.easynfc.ui.main.tags
 
-
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.easynfc.R
-import com.easynfc.databinding.FragmentTagsBinding
+import com.easynfc.base.BaseFragment
 import com.easynfc.model.Tags
+import instanceOf
+import kotlinx.android.synthetic.main.fragment_tags.view.*
+import kotlinx.android.synthetic.main.item_tags.view.*
+import org.jetbrains.anko.imageResource
 
 
-class TagsFragment : Fragment() {
+class TagsFragment : BaseFragment() {
 
+    lateinit var v: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-        val binding: FragmentTagsBinding =  DataBindingUtil.inflate(inflater, R.layout.fragment_tags, container,false)
-        var tags = Tags.getList(context!!)
-        binding.list = tags
-        return binding.root
+        v =  inflater.inflate(R.layout.fragment_tags, container, false)
+        setupUI()
+        return v
     }
 
+    fun setupUI(){
+        val views = arrayOf(v.text_layout, v.url_layout, v.sms_layout, v.phone_layout, v.launcher_layout, v.location_layout, v.wifi_layout, v.email_layout, v.format_layout, v.lock_layout)
+        Tags.getList().forEachIndexed { index, element ->
+            views[index].txt_type.text = element.name
+            views[index].img_type.imageResource = element.drawable
+        }
+    }
 
     companion object {
-
+        fun newInstance() = instanceOf<TagsFragment>()
         val TAG = TagsFragment::class.java.name
-
     }
 
 }

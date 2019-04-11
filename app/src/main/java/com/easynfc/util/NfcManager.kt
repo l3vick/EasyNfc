@@ -3,7 +3,7 @@ import android.app.Activity
 import android.app.PendingIntent
 import android.content.Intent
 import android.nfc.NfcAdapter
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 import android.nfc.tech.NdefFormatable
 import android.nfc.tech.Ndef
 import android.content.IntentFilter

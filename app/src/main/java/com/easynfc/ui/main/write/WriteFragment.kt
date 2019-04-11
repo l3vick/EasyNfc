@@ -2,15 +2,15 @@ package com.easynfc.ui.main.write
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.easynfc.R
+import com.easynfc.base.BaseFragment
+import instanceOf
 
 
-class WriteFragment : Fragment() {
+class WriteFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -21,9 +21,8 @@ class WriteFragment : Fragment() {
     }
 
     companion object {
-
+        fun newInstance() = instanceOf<WriteFragment>()
         val TAG = WriteFragment::class.java.name
-
     }
 
 }

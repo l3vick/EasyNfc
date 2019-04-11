@@ -1,18 +1,18 @@
 package com.easynfc.ui.main.loading
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import com.easynfc.MainActivity
 import com.easynfc.R
-import com.easynfc.ui.main.menu.MenuFragment
+import com.easynfc.base.BaseFragment
+import instanceOf
 import kotlinx.android.synthetic.main.fragment_loading.view.*
 
 
-class LoadingFragment : Fragment() {
+class LoadingFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -35,6 +35,7 @@ class LoadingFragment : Fragment() {
 
 
     companion object {
+        fun newInstance() = instanceOf<LoadingFragment>()
         val TAG = LoadingFragment::class.java.name
     }
 }
