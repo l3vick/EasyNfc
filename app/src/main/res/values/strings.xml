@@ -37,5 +37,14 @@
     <string name="loading_iv_desc">Loading image</string>
     <string name="loading_title">Please, tap a tag to read…</string>
 
+    <!--Category-->
+    <string name="category_txt_title">Text</string>
+    <string name="category_txt_subtitle">simple text tag</string>
+    <string name="category_comm_title">Contact</string>
+    <string name="category_comm_subtitle">email, phone, sms…</string>
+    <string name="category_utils_title">Utils</string>
+    <string name="category_utils_subtitle">url, wifi, location, launcher…</string>
+    <string name="category_tag_title">Clean</string>
+    <string name="category_tag_subtitle">format, lock…</string>
 
 </resources>

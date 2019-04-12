@@ -8,6 +8,7 @@ import com.easynfc.MainActivity
 import com.easynfc.R
 import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
+import com.easynfc.presentation.ui.category.CategoryFragment
 import com.easynfc.presentation.ui.menu.mytags.MyTagsFragment
 import com.easynfc.presentation.ui.read.ReadFragment
 import com.easynfc.presentation.ui.tags.TagsFragment
@@ -24,7 +25,7 @@ class MenuFragment : BaseFragment() {
         val view = inflater.inflate(R.layout.fragment_menu, container, false)
 
         view.btnWrite.onClick {
-            (activity as BaseActivity).display{ TagsFragment.newInstance()}
+            (activity as BaseActivity).display{ CategoryFragment.newInstance()}
         }
 
         view.btnRead.onClick {
