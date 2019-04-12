@@ -3,10 +3,10 @@
 
 
     <gradient
-        android:type="linear"
         android:angle="135"
-        android:startColor="#0EB7DE"
-        android:endColor="#25EE8A" />
+        android:endColor="@color/subu_end"
+        android:startColor="@color/subu_start"
+        android:type="linear" />
 
     <!--
     <gradient

@@ -24,4 +24,8 @@
     <color name="subu_start">#0EB7DE</color>
     <color name="subu_end">#25EE8A</color>
 
+    <color name="subu_start_80t">#CC0EB7DE</color>
+    <color name="subu_end_80t">#CC25EE8A</color>
+
+
 </resources>
