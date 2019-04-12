@@ -8,7 +8,7 @@
     android:padding="@dimen/app_padding"
     android:clickable="true"
     android:focusable="true"
-    tools:context=".ui.main.loading.LoadingFragment">
+    tools:context=".presentation.ui.loading.LoadingFragment">
 
 
     <TextView

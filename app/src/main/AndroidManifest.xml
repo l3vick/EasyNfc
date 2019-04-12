@@ -11,6 +11,7 @@
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="false" />
+
     <uses-permission android:name="android.permission.NFC" />
 
     <application
@@ -21,22 +22,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".presentation.ui.read.ReadActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <!-- Filtro-Tag General (NdefA, B, mifare, unformatted NDef...) -->
             <intent-filter>
                 <action android:name="android.nfc.action.TECH_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
-
     </application>
 
 </manifest>

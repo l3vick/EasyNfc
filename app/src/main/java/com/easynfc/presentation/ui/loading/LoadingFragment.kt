@@ -1,4 +1,4 @@
-package com.easynfc.ui.main.loading
+package com.easynfc.presentation.ui.loading
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import com.easynfc.MainActivity
 import com.easynfc.R
-import com.easynfc.base.BaseFragment
+import com.easynfc.presentation.base.BaseFragment
+import com.easynfc.presentation.ui.read.ReadActivity
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_loading.view.*
 
@@ -24,13 +25,13 @@ class LoadingFragment : BaseFragment() {
 
     override fun onPause() {
         super.onPause()
-        (activity as MainActivity).nfcManager?.disableForegroundDispatch()
+        (activity as ReadActivity).nfcManager?.disableForegroundDispatch()
     }
 
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).nfcManager?.enableForegroundDispatch()
+        (activity as ReadActivity).nfcManager?.enableForegroundDispatch()
     }
 
 

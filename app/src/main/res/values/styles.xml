@@ -8,7 +8,6 @@
     </style>
 
     <style name="menu_box">
-        <item name="android:background">@color/gray_material_800</item>
         <item name="android:paddingBottom">@dimen/app_padding</item>
         <item name="android:paddingEnd">@dimen/app_padding</item>
         <item name="android:paddingStart">@dimen/app_padding</item>
@@ -16,16 +15,16 @@
 
     <!-- Menu Buttons Style -->
     <style name="menu_txt" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/gray_material_100</item>
-        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/gray_material_50</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:textSize">40sp</item>
         <item name="android:lineSpacingExtra">1dp</item>
         <item name="android:letterSpacing">0.08</item>
-        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
     <style name="menu_txt_small" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/amber_material_500</item>
+        <item name="android:textColor">@color/gray_material_50</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">1dp</item>
@@ -79,6 +78,10 @@
         <item name="android:textColor">@color/gray_material_800</item>
         <item name="android:textSize">@dimen/txt_value_size</item>
         <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="separator">
+        <item name="android:background">@color/gray_material_50</item>
     </style>
 
 

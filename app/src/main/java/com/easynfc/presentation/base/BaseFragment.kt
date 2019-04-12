@@ -1,4 +1,4 @@
-package com.easynfc.base
+package com.easynfc.presentation.base
 
 import androidx.fragment.app.Fragment
 

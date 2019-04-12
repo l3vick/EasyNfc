@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.menu.MenuFragment">
+    android:background="@drawable/backgorund_gradient"
+    tools:context=".presentation.ui.menu.MenuFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnWrite"
+        style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        style="@style/menu_box"
         app:layout_constraintBottom_toTopOf="@+id/btnRead"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,41 +23,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/write_title"
+            app:layout_constraintBottom_toTopOf="@+id/txtWriteSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/txtWriteSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:text="@string/write_subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtWriteTitle" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/app_double_padding"
+            android:scaleType="center"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
+            style="@style/separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_material_700"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnRead"
+        style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        style="@style/menu_box"
         app:layout_constraintBottom_toBottomOf="@+id/btnMyTags"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -68,9 +71,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/read_title"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtReadSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/txtReadSubtitle"
@@ -78,31 +82,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/read_subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtReadTitle" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/app_double_padding"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
+            style="@style/separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_material_700"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnMyTags"
+        style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        style="@style/menu_box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -114,9 +118,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mytags_title"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/txtSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/txtSubtitle"
@@ -124,22 +129,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mytags_subtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+            app:layout_constraintTop_toBottomOf="@id/txtTitle"  />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/app_double_padding"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
+            style="@style/separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/gray_material_700"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

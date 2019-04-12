@@ -3,7 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.ui.menu.mytags.MyTagsFragment">
-
-
-</FrameLayout>
+    android:id="@+id/container"
+    tools:context=".presentation.ui.read.ReadActivity"/>

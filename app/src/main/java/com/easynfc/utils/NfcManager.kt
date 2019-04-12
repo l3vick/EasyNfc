@@ -1,9 +1,8 @@
-package com.easynfc.util
+package com.easynfc.utils
 import android.app.Activity
 import android.app.PendingIntent
 import android.content.Intent
 import android.nfc.NfcAdapter
-import androidx.fragment.app.FragmentActivity
 import android.nfc.tech.NdefFormatable
 import android.nfc.tech.Ndef
 import android.content.IntentFilter

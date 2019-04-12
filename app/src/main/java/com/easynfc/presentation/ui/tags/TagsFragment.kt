@@ -1,11 +1,11 @@
-package com.easynfc.ui.main.tags
+package com.easynfc.presentation.ui.tags
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.easynfc.R
-import com.easynfc.base.BaseFragment
+import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.model.Tags
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_tags.view.*

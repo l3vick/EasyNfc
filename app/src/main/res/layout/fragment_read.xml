@@ -8,7 +8,7 @@
     android:clickable="true"
     android:focusable="true"
     android:padding="@dimen/app_padding"
-    tools:context=".ui.main.read.ReadFragment">
+    tools:context=".presentation.ui.read.ReadFragment">
 
     <TextView
         android:id="@+id/txtContent"
