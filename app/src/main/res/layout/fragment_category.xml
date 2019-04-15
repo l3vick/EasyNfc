@@ -51,7 +51,7 @@
         <RelativeLayout
             style="@style/separator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/separator_height"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -98,7 +98,7 @@
         <RelativeLayout
             style="@style/separator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/separator_height"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -145,7 +145,7 @@
         <RelativeLayout
             style="@style/separator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/separator_height"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -193,7 +193,7 @@
         <RelativeLayout
             style="@style/separator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/separator_height"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

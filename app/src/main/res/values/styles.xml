@@ -43,14 +43,13 @@
 
 
     <style name="txt_content_auto" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/gray_material_800</item>
+        <item name="android:textColor">@color/gray_material_50</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:autoSizeMaxTextSize">100sp</item>
         <item name="android:autoSizeMinTextSize">12sp</item>
         <item name="android:autoSizeStepGranularity">2sp</item>
     </style>
-
 
     <style name="txt_content" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/gray_material_800</item>
@@ -67,7 +66,7 @@
 
 
     <style name="txt_title" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/gray_material_600</item>
+        <item name="android:textColor">@color/gray_material_100</item>
         <item name="android:textSize">@dimen/txt_title_size</item>
         <item name="android:layout_marginLeft">16dp</item>
         <item name="android:fontFamily">@font/montserrat_light</item>
@@ -75,13 +74,24 @@
 
 
     <style name="txt_value" parent="@android:style/Widget.TextView">
-        <item name="android:textColor">@color/gray_material_800</item>
+        <item name="android:textColor">@color/gray_material_50</item>
         <item name="android:textSize">@dimen/txt_value_size</item>
         <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:ellipsize">start</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="separator">
         <item name="android:background">@color/gray_material_50</item>
+    </style>
+
+    <style name="btn_footer">
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginStart">@dimen/app_padding</item>
+        <item name="android:layout_marginEnd">@dimen/app_padding</item>
+        <item name="android:textColor">@color/gray_material_50</item>
+        <item name="android:textSize">@dimen/txt_value_size</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
 

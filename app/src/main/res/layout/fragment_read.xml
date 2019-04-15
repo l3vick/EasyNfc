@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_material_300"
+    android:background="@android:color/transparent"
     android:clickable="true"
     android:focusable="true"
-    android:padding="@dimen/app_padding"
+    android:paddingBottom="@dimen/app_padding"
+    android:paddingStart="@dimen/app_padding"
+    android:paddingEnd="@dimen/app_padding"
     tools:context=".presentation.ui.read.ReadFragment">
 
     <TextView
@@ -15,6 +17,9 @@
         style="@style/txt_content_auto"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:paddingBottom="@dimen/app_padding"
+        android:paddingStart="@dimen/app_padding"
+        android:paddingEnd="@dimen/app_padding"
         android:text="@string/txt_content_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
@@ -24,24 +29,25 @@
 
     <RelativeLayout
         android:id="@+id/separator"
+        style="@style/separator"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray_material_900"
+        android:layout_height="@dimen/separator_height"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContent" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/column_key"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
+        app:layout_constraintEnd_toStartOf="@+id/column_value"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/separator"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.5">
+        app:layout_constraintWidth_percent="0.2">
 
         <TextView
             android:id="@+id/txtType"
@@ -50,7 +56,6 @@
             android:layout_height="wrap_content"
             android:text="@string/type"
             app:layout_constraintBottom_toTopOf="@+id/txtTag"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="spread" />
@@ -62,7 +67,6 @@
             android:layout_height="wrap_content"
             android:text="@string/tag"
             app:layout_constraintBottom_toTopOf="@id/txtTech"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtType" />
 
@@ -73,7 +77,6 @@
             android:layout_height="wrap_content"
             android:text="@string/tech"
             app:layout_constraintBottom_toTopOf="@id/txtTnf"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTag" />
 
@@ -84,7 +87,6 @@
             android:layout_height="wrap_content"
             android:text="@string/tnf"
             app:layout_constraintBottom_toTopOf="@id/txtRtd"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTech" />
 
@@ -95,7 +97,6 @@
             android:layout_height="wrap_content"
             android:text="@string/rtd"
             app:layout_constraintBottom_toTopOf="@id/txtSize"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTnf" />
 
@@ -106,7 +107,6 @@
             android:layout_height="wrap_content"
             android:text="@string/size"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtRtd" />
 
@@ -114,15 +114,16 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/column_value"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnSave"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.6"
+        app:layout_constraintStart_toEndOf="@id/column_key"
         app:layout_constraintTop_toBottomOf="@id/separator"
         app:layout_constraintWidth_default="percent"
-        app:layout_constraintWidth_percent="0.5">
+        app:layout_constraintWidth_percent="0.8">
+
 
         <TextView
             android:id="@+id/txtTypeValue"
@@ -131,7 +132,6 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_value_placeholder"
             app:layout_constraintBottom_toTopOf="@+id/txtTagValue"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="spread" />
@@ -144,7 +144,6 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_value_placeholder"
             app:layout_constraintBottom_toTopOf="@id/txtTechValue"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTypeValue" />
 
@@ -156,7 +155,6 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_value_placeholder"
             app:layout_constraintBottom_toTopOf="@id/txtTnfValue"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTagValue" />
 
@@ -168,7 +166,6 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_value_placeholder"
             app:layout_constraintBottom_toTopOf="@id/txtRtdValue"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTechValue" />
 
@@ -180,7 +177,6 @@
             android:layout_height="wrap_content"
             android:text="@string/txt_value_placeholder"
             app:layout_constraintBottom_toTopOf="@id/txtSizeValue"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtTnfValue" />
 
@@ -190,13 +186,25 @@
             style="@style/txt_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
             android:text="@string/txt_value_placeholder"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/txtRtdValue" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/btnSave"
+        style="@style/btn_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_footer"
+        android:text="@string/btn_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

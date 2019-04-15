@@ -46,5 +46,6 @@
     <string name="category_utils_subtitle">url, wifi, location, launcher…</string>
     <string name="category_tag_title">Clean</string>
     <string name="category_tag_subtitle">format, lock…</string>
+    <string name="btn_save">Save</string>
 
 </resources>

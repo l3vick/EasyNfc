@@ -17,7 +17,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="1dp"
+                android:layout_margin="@dimen/separator_height"
                 android:background="@color/gray_material_800">
 
                 <ImageView

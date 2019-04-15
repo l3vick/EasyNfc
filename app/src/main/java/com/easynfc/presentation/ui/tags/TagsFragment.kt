@@ -34,7 +34,6 @@ class TagsFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = instanceOf<TagsFragment>()
-        val TAG = TagsFragment::class.java.name
     }
 
 }

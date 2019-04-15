@@ -22,7 +22,6 @@ class WriteFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = instanceOf<WriteFragment>()
-        val TAG = WriteFragment::class.java.name
     }
 
 }

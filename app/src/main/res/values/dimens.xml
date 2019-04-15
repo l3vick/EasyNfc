@@ -5,6 +5,8 @@
 
     <dimen name="elevation">4dp</dimen>
 
+    <dimen name="separator_height">1dp</dimen>
+
     <dimen name="item_tags_txt_size">18sp</dimen>
     <dimen name="item_tags_txt_margin_top">4dp</dimen>
     <dimen name="item_tags_margin_border">5dp</dimen>
@@ -13,5 +15,8 @@
     <dimen name="txt_content_size">40sp</dimen>
     <dimen name="txt_title_size">18sp</dimen>
     <dimen name="txt_value_size">20sp</dimen>
+
+    <dimen name="btn_footer_size">20sp</dimen>
+
 
 </resources>

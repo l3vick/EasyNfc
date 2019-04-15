@@ -22,6 +22,5 @@ class MyTagsFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = instanceOf<MyTagsFragment>()
-        val TAG = MyTagsFragment::class.java.name
     }
 }

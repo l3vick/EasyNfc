@@ -3,14 +3,18 @@ package com.easynfc.presentation.ui.read
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.core.content.ContextCompat
 import com.easynfc.R
 import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
-import com.easynfc.presentation.ui.category.CategoryFragment
 import com.easynfc.presentation.ui.loading.LoadingFragment
-import com.easynfc.presentation.ui.menu.MenuFragment
 import com.easynfc.utils.NfcManager
+import kotlinx.android.synthetic.main.activity_read.*
+import org.jetbrains.anko.backgroundColor
 import org.jetbrains.anko.startActivity
+
+
 
 class ReadActivity : BaseActivity() {
 
@@ -27,13 +31,26 @@ class ReadActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         nfcManager = NfcManager(this)
+        toolbar.title = ""
+        toolbar.backgroundColor =  ContextCompat.getColor(this, android.R.color.transparent)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         display { ReadFragment.newInstance() }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onBackPressed() {
-        var fragment = getFragment<BaseFragment>()
-        when (fragment ){
-            is ReadFragment -> getNavigator().startMainActivity()
+        when (getFragment<BaseFragment>()){
+            is ReadFragment ->  display { LoadingFragment.newInstance() }
             is LoadingFragment -> getNavigator().startMainActivity()
         }
     }
@@ -41,9 +58,8 @@ class ReadActivity : BaseActivity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         val tagData = nfcManager?.proccessIntent(intent!!)
-        val fragment = supportFragmentManager.findFragmentById(R.id.container)
-        if (fragment is ReadFragment) {
-            fragment.showTagData(tagData)
+        display {
+            ReadFragment.newInstance(tagData!!)
         }
     }
 }

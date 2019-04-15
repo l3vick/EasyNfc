@@ -37,6 +37,5 @@ class LoadingFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = instanceOf<LoadingFragment>()
-        val TAG = LoadingFragment::class.java.name
     }
 }

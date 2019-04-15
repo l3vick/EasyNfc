@@ -1,12 +1,9 @@
 package com.easynfc.model
 
-import android.content.Context
-import android.graphics.drawable.Drawable
+import android.os.Parcelable
 import android.view.View
-import androidx.core.content.ContextCompat
 import com.easynfc.R
-
-
+import kotlinx.android.parcel.Parcelize
 
 
 class Tags {
@@ -24,6 +21,7 @@ data class Tag (
 )
 
 
+@Parcelize
 data class TagData (
         var type: String,
         var content: String,
@@ -31,4 +29,4 @@ data class TagData (
         var tnf: String,
         var rtd: String,
         var size: String
-)
+) : Parcelable

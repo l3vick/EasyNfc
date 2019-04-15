@@ -41,7 +41,6 @@ class MenuFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = instanceOf<MenuFragment>()
-        val TAG = MenuFragment::class.java.name
     }
 
 
