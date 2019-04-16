@@ -13,34 +13,34 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class CategoryFragment : BaseFragment() {
 
+    lateinit var v: View
+
     companion object {
         fun newInstance() = instanceOf<CategoryFragment>()
-        val TAG = CategoryFragment::class.java.name
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
 
-        val view = inflater.inflate(R.layout.fragment_category, container, false)
+        v = inflater.inflate(R.layout.fragment_category, container, false)
 
-        view.btnText.onClick {
-
-        }
-
-        view.btnContact.onClick {
+        v.btnText.onClick {
 
         }
 
-        view.btnUtils.onClick {
+        v.btnContact.onClick {
 
         }
 
-        view.btnClean.onClick {
+        v.btnUtils.onClick {
 
         }
 
-        return view
+        v.btnClean.onClick {
+
+        }
+
+        return v
     }
 
 

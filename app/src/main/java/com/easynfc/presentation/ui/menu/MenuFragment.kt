@@ -18,31 +18,30 @@ import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class MenuFragment : BaseFragment() {
 
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-
-        val view = inflater.inflate(R.layout.fragment_menu, container, false)
-
-        view.btnWrite.onClick {
-            (activity as BaseActivity).display{ CategoryFragment.newInstance()}
-        }
-
-        view.btnRead.onClick {
-            (activity as MainActivity).getNavigator().startReadActivity()
-        }
-
-        view.btnMyTags.onClick {
-            (activity as BaseActivity).display{ MyTagsFragment.newInstance()}
-        }
-
-        return view
-    }
+    lateinit var v: View
 
     companion object {
         fun newInstance() = instanceOf<MenuFragment>()
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
+        v = inflater.inflate(R.layout.fragment_menu, container, false)
+
+        v.btnWrite.onClick {
+            (activity as BaseActivity).display{ CategoryFragment.newInstance()}
+        }
+
+        v.btnRead.onClick {
+            (activity as MainActivity).getNavigator().startReadActivity()
+        }
+
+        v.btnMyTags.onClick {
+            (activity as BaseActivity).display{ MyTagsFragment.newInstance()}
+        }
+
+        return v
+    }
 
 }

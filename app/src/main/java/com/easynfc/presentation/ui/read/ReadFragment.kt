@@ -2,7 +2,6 @@ package com.easynfc.presentation.ui.read
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -18,13 +17,14 @@ import kotlinx.android.synthetic.main.fragment_read.view.*
 
 class ReadFragment : BaseFragment() {
 
-    lateinit var contentTxt: TextView
-    lateinit var typeTxt: TextView
-    lateinit var tagTxt: TextView
-    lateinit var techTxt: TextView
-    lateinit var tnfTxt: TextView
-    lateinit var rtdTxt: TextView
-    lateinit var sizeTxt: TextView
+    private lateinit var v: View
+    private lateinit var contentTxt: TextView
+    private lateinit var typeTxt: TextView
+    private lateinit var tagTxt: TextView
+    private lateinit var techTxt: TextView
+    private lateinit var tnfTxt: TextView
+    private lateinit var rtdTxt: TextView
+    private lateinit var sizeTxt: TextView
 
 
     companion object {
@@ -34,9 +34,9 @@ class ReadFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_read, container, false)
-        setupUI(view)
-        return view
+        v = inflater.inflate(R.layout.fragment_read, container, false)
+        setupUI()
+        return v
     }
 
     override fun onResume() {
@@ -57,14 +57,14 @@ class ReadFragment : BaseFragment() {
         }
     }
 
-    fun setupUI(view: View) {
-        contentTxt = view.txtContent
-        typeTxt = view.txtTypeValue
-        tagTxt = view.txtTagValue
-        techTxt = view.txtTechValue
-        tnfTxt = view.txtTnfValue
-        rtdTxt = view.txtRtdValue
-        sizeTxt = view.txtSizeValue
+    fun setupUI() {
+        contentTxt = v.txtContent
+        typeTxt = v.txtTypeValue
+        tagTxt = v.txtTagValue
+        techTxt = v.txtTechValue
+        tnfTxt = v.txtTnfValue
+        rtdTxt = v.txtRtdValue
+        sizeTxt = v.txtSizeValue
     }
 
 }

@@ -15,7 +15,12 @@ import org.jetbrains.anko.imageResource
 
 class TagsFragment : BaseFragment() {
 
-    lateinit var v: View
+    private lateinit var v: View
+
+    companion object {
+        fun newInstance() = instanceOf<TagsFragment>()
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -31,9 +36,4 @@ class TagsFragment : BaseFragment() {
             views[index].img_type.imageResource = element.drawable
         }
     }
-
-    companion object {
-        fun newInstance() = instanceOf<TagsFragment>()
-    }
-
 }

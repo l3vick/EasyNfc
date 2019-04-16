@@ -12,15 +12,18 @@ import instanceOf
 
 class MyTagsFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view =  inflater.inflate(R.layout.fragment_my_tags, container, false)
-
-        return view
-    }
-
+    lateinit var v: View
 
     companion object {
         fun newInstance() = instanceOf<MyTagsFragment>()
     }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        v =  inflater.inflate(R.layout.fragment_my_tags, container, false)
+
+        return v
+    }
+
+
 }

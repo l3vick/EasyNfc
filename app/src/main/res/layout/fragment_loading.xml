@@ -21,18 +21,32 @@
         android:layout_marginBottom="8dp"
         android:gravity="center"
         android:text="@string/loading_title"
-        app:layout_constraintBottom_toTopOf="@+id/ivLoading"
+        app:layout_constraintBottom_toTopOf="@+id/ivPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
-        android:id="@+id/ivLoading"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:id="@+id/ivTag"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:contentDescription="@string/loading_iv_desc"
-        android:src="@drawable/ic_loading2"
+        android:src="@drawable/ic_loading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/ivPhone"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/loading_iv_desc"
+        android:src="@drawable/ic_mobile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
