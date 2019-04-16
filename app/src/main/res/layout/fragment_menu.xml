@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:text="@string/write_title"
             app:layout_constraintBottom_toTopOf="@+id/txtWriteSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/writeIcon"
+            app:layout_constraintRight_toLeftOf="@+id/writeChevron"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -35,10 +36,12 @@
             android:layout_height="wrap_content"
             android:text="@string/write_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/writeIcon"
+            app:layout_constraintRight_toLeftOf="@+id/writeChevron"
             app:layout_constraintTop_toBottomOf="@id/txtWriteTitle" />
 
         <ImageView
+            android:id="@+id/writeChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="center"
@@ -46,6 +49,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/writeIcon"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtWriteTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/txtWriteSubtitle"
+            android:src="@drawable/ic_write"/>
 
         <RelativeLayout
             style="@style/separator"
@@ -87,12 +101,26 @@
             app:layout_constraintTop_toBottomOf="@id/txtReadTitle" />
 
         <ImageView
+            android:id="@+id/readChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <ImageView
+            android:id="@+id/readIcon"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintLeft_toRightOf="@+id/txtReadSubtitle"
+            app:layout_constraintRight_toLeftOf="@+id/readChevron"
+            app:layout_constraintTop_toTopOf="@+id/txtReadTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/txtReadSubtitle"
+            android:src="@drawable/ic_read"/>
 
         <RelativeLayout
             style="@style/separator"

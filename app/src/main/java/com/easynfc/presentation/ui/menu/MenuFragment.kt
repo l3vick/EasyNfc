@@ -1,13 +1,16 @@
 package com.easynfc.presentation.ui.menu
 
+import android.graphics.Shader
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.easynfc.MainActivity
 import com.easynfc.R
 import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
+import com.easynfc.presentation.component.drawable.TileDrawable
 import com.easynfc.presentation.ui.category.CategoryFragment
 import com.easynfc.presentation.ui.menu.mytags.MyTagsFragment
 import com.easynfc.presentation.ui.read.ReadFragment
@@ -36,6 +39,15 @@ class MenuFragment : BaseFragment() {
         v.btnRead.onClick {
             (activity as MainActivity).getNavigator().startReadActivity()
         }
+
+        val d = ContextCompat.getDrawable(context!!, R.drawable.ic_my_tags2)
+
+        v.btnMyTags.background = TileDrawable(d!!, Shader.TileMode.REPEAT)
+
+       // v.btnMyTags.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR or
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
 
         v.btnMyTags.onClick {
             (activity as BaseActivity).display{ MyTagsFragment.newInstance()}
