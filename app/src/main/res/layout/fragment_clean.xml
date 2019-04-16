@@ -5,39 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgorund_gradient"
-    tools:context=".presentation.ui.category.ContactFragment">
+    tools:context=".presentation.ui.category.CleanFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnEmail"
+        android:id="@+id/btnFormat"
         style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnPhone"
+        app:layout_constraintBottom_toTopOf="@+id/btnLock"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside">
 
         <TextView
-            android:id="@+id/emailTitle"
+            android:id="@+id/formatTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_email_title"
-            app:layout_constraintBottom_toTopOf="@+id/emailSubtitle"
+            android:text="@string/category_format_title"
+            app:layout_constraintBottom_toTopOf="@+id/formatSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/emailSubtitle"
+            android:id="@+id/formatSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_email_subtitle"
+            android:text="@string/category_format_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/emailTitle" />
+            app:layout_constraintTop_toBottomOf="@id/formatTitle" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -57,82 +57,35 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnPhone"
-        style="@style/menu_box"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnSms"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEmail">
-
-        <TextView
-            android:id="@+id/phoneTitle"
-            style="@style/menu_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/category_phone_title"
-            app:layout_constraintBottom_toTopOf="@+id/phoneSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <TextView
-            android:id="@+id/phoneSubtitle"
-            style="@style/menu_txt_small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/category_phone_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/phoneTitle" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_chevron_right_30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <RelativeLayout
-            style="@style/separator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/separator_height"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnSms"
+        android:id="@+id/btnLock"
         style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPhone">
+        app:layout_constraintTop_toBottomOf="@+id/btnFormat">
 
         <TextView
-            android:id="@+id/smsTitle"
+            android:id="@+id/lockTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_sms_title"
-            app:layout_constraintBottom_toTopOf="@+id/smsSubtitle"
+            android:text="@string/category_lock_title"
+            app:layout_constraintBottom_toTopOf="@+id/lockSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/smsSubtitle"
+            android:id="@+id/lockSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_sms_subtitle"
+            android:text="@string/category_lock_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/smsTitle"  />
+            app:layout_constraintTop_toBottomOf="@id/lockTitle" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -149,7 +102,5 @@
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

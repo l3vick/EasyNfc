@@ -5,6 +5,9 @@ import android.os.Bundle
 import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.ui.category.CategoryFragment
+import com.easynfc.presentation.ui.category.CleanFragment
+import com.easynfc.presentation.ui.category.ContactFragment
+import com.easynfc.presentation.ui.category.UtilsFragment
 import com.easynfc.presentation.ui.menu.MenuFragment
 import com.easynfc.presentation.ui.menu.mytags.MyTagsFragment
 import org.jetbrains.anko.startActivity
@@ -29,6 +32,7 @@ class MainActivity : BaseActivity() {
         var fragment = getFragment<BaseFragment>()
         when (fragment ){
             is CategoryFragment, is MyTagsFragment -> display { MenuFragment.newInstance() }
+            is CleanFragment, is ContactFragment, is UtilsFragment -> display { CategoryFragment.newInstance() }
         }
     }
 

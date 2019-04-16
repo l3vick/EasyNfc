@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.easynfc.R
+import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_category.view.*
@@ -25,19 +26,19 @@ class CategoryFragment : BaseFragment() {
         v = inflater.inflate(R.layout.fragment_category, container, false)
 
         v.btnText.onClick {
-
+            //(activity as BaseActivity).display{ CategoryFragment.newInstance()}
         }
 
         v.btnContact.onClick {
-
+            (activity as BaseActivity).display{ ContactFragment.newInstance()}
         }
 
         v.btnUtils.onClick {
-
+            (activity as BaseActivity).display{ UtilsFragment.newInstance()}
         }
 
         v.btnClean.onClick {
-
+            (activity as BaseActivity).display{ CleanFragment.newInstance()}
         }
 
         return v

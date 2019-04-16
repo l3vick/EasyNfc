@@ -28,14 +28,13 @@
     <string name="tnf">Tnf</string>
     <string name="rtd">Rtd</string>
     <string name="size">Size</string>
-
     <string name="txt_content_placeholder">Tag content…</string>
     <string name="txt_value_placeholder">Value…</string>
-
 
     <!--Loading-->
     <string name="loading_iv_desc">Loading image</string>
     <string name="loading_title">Please, tap a tag to read…</string>
+    <string name="btn_save">Save</string>
 
     <!--Category-->
     <string name="category_txt_title">Text</string>
@@ -46,9 +45,25 @@
     <string name="category_utils_subtitle">url, wifi, location, launcher…</string>
     <string name="category_tag_title">Clean</string>
     <string name="category_tag_subtitle">format, lock…</string>
-    <string name="btn_save">Save</string>
+    <string name="category_email_title">Email</string>
+    <string name="category_email_subtitle">Send preset emails trough a tag</string>
+    <string name="category_phone_title">Phone</string>
+    <string name="category_phone_subtitle">Make phone calls with a tag</string>
+    <string name="category_sms_title">Sms</string>
+    <string name="category_sms_subtitle">Send preset sms trough a tag</string>
+    <string name="category_format_title">Format</string>
+    <string name="category_format_subtitle">Empty your tag </string>
+    <string name="category_lock_title">Lock</string>
+    <string name="category_lock_subtitle">Lock your tag. This action is irreversible</string>
+    <string name="category_url_title">Url</string>
+    <string name="category_url_subtitle">Send preset url and open navigator</string>
+    <string name="category_wifi_title">Wifi</string>
+    <string name="category_wifi_subtitle">Connect to a wi-fi trough a tag</string>
+    <string name="category_location_title">Location</string>
+    <string name="category_location_subtitle">Send a coordinate and open in maps</string>
+    <string name="category_launcher_title">Launcher</string>
+    <string name="category_launcher_subtitle">Open an app trough a tag</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

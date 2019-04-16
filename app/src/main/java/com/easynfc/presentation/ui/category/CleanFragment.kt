@@ -9,18 +9,18 @@ import com.easynfc.R
 import com.easynfc.presentation.base.BaseFragment
 import instanceOf
 
-
-class ContactFragment : BaseFragment() {
+class CleanFragment : BaseFragment() {
 
     private lateinit var v : View
 
     companion object {
-        fun newInstance() = instanceOf<ContactFragment>()
+        fun newInstance() = instanceOf<CleanFragment>()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        v = inflater.inflate(R.layout.fragment_contact, container, false)
+        // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_clean, container, false)
         setupUI()
         return v
     }

@@ -8,36 +8,36 @@
     tools:context=".presentation.ui.category.CategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnText"
+        android:id="@+id/btnUrl"
         style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnContact"
+        app:layout_constraintBottom_toTopOf="@+id/btnWifi"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside">
 
         <TextView
-            android:id="@+id/txtTitle"
+            android:id="@+id/urlTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_txt_title"
-            app:layout_constraintBottom_toTopOf="@+id/txtSubtitle"
+            android:text="@string/category_url_title"
+            app:layout_constraintBottom_toTopOf="@+id/urlSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/txtSubtitle"
+            android:id="@+id/urlSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_txt_subtitle"
+            android:text="@string/category_url_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+            app:layout_constraintTop_toBottomOf="@id/urlTitle" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -57,35 +57,35 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnContact"
+        android:id="@+id/btnWifi"
         style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnUtils"
+        app:layout_constraintBottom_toTopOf="@+id/btnLocation"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnText">
+        app:layout_constraintTop_toBottomOf="@+id/btnUrl">
 
         <TextView
-            android:id="@+id/contactTitle"
+            android:id="@+id/wifiTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_comm_title"
-            app:layout_constraintBottom_toTopOf="@+id/contactSubtitle"
+            android:text="@string/category_wifi_title"
+            app:layout_constraintBottom_toTopOf="@+id/wifiSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/contactSubtitle"
+            android:id="@+id/wifiSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_comm_subtitle"
+            android:text="@string/category_wifi_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/contactTitle" />
+            app:layout_constraintTop_toBottomOf="@id/wifiTitle" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -104,35 +104,35 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnUtils"
+        android:id="@+id/btnLocation"
         style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnClean"
+        app:layout_constraintBottom_toTopOf="@+id/btnLauncher"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnContact">
+        app:layout_constraintTop_toBottomOf="@+id/btnWifi">
 
         <TextView
-            android:id="@+id/utilTitle"
+            android:id="@+id/locationTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_utils_title"
-            app:layout_constraintBottom_toTopOf="@+id/utilSubtitle"
+            android:text="@string/category_location_title"
+            app:layout_constraintBottom_toTopOf="@+id/locationSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/utilSubtitle"
+            android:id="@+id/locationSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_utils_subtitle"
+            android:text="@string/category_location_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/utilTitle"  />
+            app:layout_constraintTop_toBottomOf="@id/locationTitle"  />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -152,35 +152,35 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/btnClean"
+        android:id="@+id/btnLauncher"
         style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnUtils">
+        app:layout_constraintTop_toBottomOf="@+id/btnLocation">
 
         <TextView
-            android:id="@+id/cleanTitle"
+            android:id="@+id/launcherTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_tag_title"
-            app:layout_constraintBottom_toTopOf="@+id/cleanSubtitle"
+            android:text="@string/category_launcher_title"
+            app:layout_constraintBottom_toTopOf="@+id/launcherSubtitle"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/cleanSubtitle"
+            android:id="@+id/launcherSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_tag_subtitle"
+            android:text="@string/category_launcher_subtitle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cleanTitle"  />
+            app:layout_constraintTop_toBottomOf="@id/launcherTitle"  />
 
         <ImageView
             android:layout_width="wrap_content"
