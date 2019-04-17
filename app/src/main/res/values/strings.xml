@@ -5,9 +5,9 @@
     <string name="read_title">Read/</string>
     <string name="mytags_title">My Tags/</string>
     <string name="write_title">Write/</string>
-    <string name="write_subtitle">write &amp; save your favorites tags</string>
+    <string name="write_subtitle">write &amp; save</string>
     <string name="read_subtitle">read tag content</string>
-    <string name="mytags_subtitle">write, emulate &amp; update your tags</string>
+    <string name="mytags_subtitle">emulate &amp; update</string>
 
     <!--Tags-->
     <string name="btn_text">Text</string>
@@ -63,7 +63,5 @@
     <string name="category_location_subtitle">Send a coordinate and open in maps</string>
     <string name="category_launcher_title">Launcher</string>
     <string name="category_launcher_subtitle">Open an app trough a tag</string>
-
-
 
 </resources>

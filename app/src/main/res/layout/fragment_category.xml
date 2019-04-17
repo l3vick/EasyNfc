@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgorund_gradient"
+    android:background="@drawable/background_gradient"
     tools:context=".presentation.ui.category.CategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,27 +19,27 @@
         app:layout_constraintVertical_chainStyle="spread_inside">
 
         <TextView
-            android:id="@+id/txtTitle"
+            android:id="@+id/textTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_txt_title"
-            app:layout_constraintBottom_toTopOf="@+id/txtSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/textIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/txtSubtitle"
+            android:id="@+id/textSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_txt_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTitle" />
+            app:layout_constraintLeft_toRightOf="@+id/textIcon"
+            app:layout_constraintTop_toBottomOf="@id/textTitle" />
 
         <ImageView
+            android:id="@+id/textChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="center"
@@ -47,6 +47,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/textIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/textChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -72,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_comm_title"
-            app:layout_constraintBottom_toTopOf="@+id/contactSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/contactIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -83,17 +93,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_comm_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/contactIcon"
             app:layout_constraintTop_toBottomOf="@id/contactTitle" />
 
         <ImageView
+            android:id="@+id/contactChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/contactIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/contactChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/contactChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -119,8 +140,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_utils_title"
-            app:layout_constraintBottom_toTopOf="@+id/utilSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/utilIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -130,17 +151,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_utils_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/utilTitle"  />
+            app:layout_constraintLeft_toRightOf="@+id/utilIcon"
+            app:layout_constraintTop_toBottomOf="@id/utilTitle" />
 
         <ImageView
+            android:id="@+id/utilChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/utilIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/utilChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/utilChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -167,8 +199,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_tag_title"
-            app:layout_constraintBottom_toTopOf="@+id/cleanSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/cleanIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -178,11 +210,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_tag_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cleanTitle"  />
+            app:layout_constraintLeft_toRightOf="@+id/cleanIcon"
+            app:layout_constraintTop_toBottomOf="@id/cleanTitle" />
 
         <ImageView
+            android:id="@+id/cleanChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
@@ -190,11 +222,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            style="@style/separator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/separator_height"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageView
+            android:id="@+id/cleanIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/cleanChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cleanChevron" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

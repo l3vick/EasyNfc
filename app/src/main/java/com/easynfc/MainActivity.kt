@@ -2,6 +2,7 @@ package com.easynfc
 
 import android.content.Context
 import android.os.Bundle
+import com.easynfc.presentation.AppNavigator
 import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.ui.category.CategoryFragment
@@ -35,7 +36,5 @@ class MainActivity : BaseActivity() {
             is CleanFragment, is ContactFragment, is UtilsFragment -> display { CategoryFragment.newInstance() }
         }
     }
-
-
 
 }

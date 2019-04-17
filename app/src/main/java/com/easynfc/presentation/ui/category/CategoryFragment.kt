@@ -24,6 +24,11 @@ class CategoryFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
 
         v = inflater.inflate(R.layout.fragment_category, container, false)
+        setupUI()
+        return v
+    }
+
+    fun setupUI(){
 
         v.btnText.onClick {
             //(activity as BaseActivity).display{ CategoryFragment.newInstance()}
@@ -41,7 +46,6 @@ class CategoryFragment : BaseFragment() {
             (activity as BaseActivity).display{ CleanFragment.newInstance()}
         }
 
-        return v
     }
 
 

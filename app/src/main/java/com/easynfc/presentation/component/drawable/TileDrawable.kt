@@ -12,6 +12,18 @@ import android.graphics.drawable.Drawable
 
 class TileDrawable(drawable: Drawable, tileMode: Shader.TileMode) : Drawable() {
 
+    /*
+
+    Class to make drawable svg-repeat
+
+    //Call in activity/fragment
+
+    val myTagsBackground = ContextCompat.getDrawable(context!!, R.drawable.ic_my_tags)
+
+    v.btnWrite.background = TileDrawable(writeBackground!!, Shader.TileMode.REPEAT)
+
+    */
+
     private val paint: Paint
 
     init {

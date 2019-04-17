@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgorund_gradient"
+    android:background="@drawable/background_gradient"
     tools:context=".presentation.ui.category.CategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_url_title"
-            app:layout_constraintBottom_toTopOf="@+id/urlSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/smsIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -35,11 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_url_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/smsIcon"
             app:layout_constraintTop_toBottomOf="@id/urlTitle" />
 
         <ImageView
+            android:id="@+id/urlChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="center"
@@ -47,6 +47,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/smsIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/urlChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/urlChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -72,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_wifi_title"
-            app:layout_constraintBottom_toTopOf="@+id/wifiSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/wifiIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -83,17 +93,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_wifi_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/wifiIcon"
             app:layout_constraintTop_toBottomOf="@id/wifiTitle" />
 
         <ImageView
+            android:id="@+id/wifiChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/wifiIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/wifiChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/wifiChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -119,8 +139,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_location_title"
-            app:layout_constraintBottom_toTopOf="@+id/locationSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/locationIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -130,17 +150,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_location_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/locationTitle"  />
+            app:layout_constraintLeft_toRightOf="@+id/locationIcon"
+            app:layout_constraintTop_toBottomOf="@id/locationTitle" />
 
         <ImageView
+            android:id="@+id/locationChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/locationIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/locationChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/locationChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -167,8 +197,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_launcher_title"
-            app:layout_constraintBottom_toTopOf="@+id/launcherSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/launcherIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -178,11 +208,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_launcher_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/launcherTitle"  />
+            app:layout_constraintLeft_toRightOf="@+id/launcherIcon"
+            app:layout_constraintTop_toBottomOf="@id/launcherTitle" />
 
         <ImageView
+            android:id="@+id/launcherChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
@@ -190,11 +220,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            style="@style/separator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/separator_height"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageView
+            android:id="@+id/launcherIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/launcherChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/launcherChevron" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

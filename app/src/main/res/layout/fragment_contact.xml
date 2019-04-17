@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgorund_gradient"
+    android:background="@drawable/background_gradient"
     tools:context=".presentation.ui.category.ContactFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_email_title"
-            app:layout_constraintBottom_toTopOf="@+id/emailSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/emailIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -35,11 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_email_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/emailIcon"
             app:layout_constraintTop_toBottomOf="@id/emailTitle" />
 
         <ImageView
+            android:id="@+id/emailChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="center"
@@ -47,6 +47,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/emailIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/emailChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/emailChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -72,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_phone_title"
-            app:layout_constraintBottom_toTopOf="@+id/phoneSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/phoneIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -83,17 +93,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_phone_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/phoneIcon"
             app:layout_constraintTop_toBottomOf="@id/phoneTitle" />
 
         <ImageView
+            android:id="@+id/phoneChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/phoneIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/phoneChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/phoneChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -119,8 +139,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_sms_title"
-            app:layout_constraintBottom_toTopOf="@+id/smsSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/smsIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -130,11 +150,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_sms_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/smsTitle"  />
+            app:layout_constraintLeft_toRightOf="@+id/smsIcon"
+            app:layout_constraintTop_toBottomOf="@id/smsTitle" />
 
         <ImageView
+            android:id="@+id/smsChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
@@ -142,14 +162,17 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            style="@style/separator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/separator_height"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageView
+            android:id="@+id/smsIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/smsChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/smsChevron" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

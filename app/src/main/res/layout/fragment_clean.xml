@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgorund_gradient"
+    android:background="@drawable/background_gradient"
     tools:context=".presentation.ui.category.CleanFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_format_title"
-            app:layout_constraintBottom_toTopOf="@+id/formatSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/formatIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -35,11 +35,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_format_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/formatIcon"
             app:layout_constraintTop_toBottomOf="@id/formatTitle" />
 
         <ImageView
+            android:id="@+id/formatChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:scaleType="center"
@@ -47,6 +47,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/formatIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/formatChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/formatChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -72,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_lock_title"
-            app:layout_constraintBottom_toTopOf="@+id/lockSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/lockIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -83,11 +93,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_lock_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/lockIcon"
             app:layout_constraintTop_toBottomOf="@id/lockTitle" />
 
         <ImageView
+            android:id="@+id/lockChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
@@ -95,11 +105,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            style="@style/separator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/separator_height"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageView
+            android:id="@+id/lockIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/lockChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lockChevron" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

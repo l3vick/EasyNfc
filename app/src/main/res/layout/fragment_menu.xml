@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgorund_gradient"
+    android:background="@drawable/background_gradient"
     tools:context=".presentation.ui.menu.MenuFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,9 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/write_title"
-            app:layout_constraintBottom_toTopOf="@+id/txtWriteSubtitle"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/writeIcon"
-            app:layout_constraintRight_toLeftOf="@+id/writeChevron"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -35,9 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/write_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/writeIcon"
-            app:layout_constraintRight_toLeftOf="@+id/writeChevron"
             app:layout_constraintTop_toBottomOf="@id/txtWriteTitle" />
 
         <ImageView
@@ -50,16 +47,16 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <ImageView
             android:id="@+id/writeIcon"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:scaleType="fitCenter"
+            android:src="@drawable/ic_write"
+            app:layout_constraintBottom_toBottomOf="@id/writeChevron"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtWriteTitle"
-            app:layout_constraintBottom_toBottomOf="@+id/txtWriteSubtitle"
-            android:src="@drawable/ic_write"/>
+            app:layout_constraintTop_toTopOf="@+id/writeChevron" />
+
 
         <RelativeLayout
             style="@style/separator"
@@ -84,9 +81,10 @@
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_padding"
             android:text="@string/read_title"
-            app:layout_constraintBottom_toTopOf="@+id/txtReadSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/readIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
@@ -95,9 +93,9 @@
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/menu_txt_padding"
             android:text="@string/read_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/readIcon"
             app:layout_constraintTop_toBottomOf="@id/txtReadTitle" />
 
         <ImageView
@@ -109,18 +107,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-
         <ImageView
             android:id="@+id/readIcon"
-            android:layout_width="50dp"
-            android:layout_height="0dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:scaleType="fitCenter"
-            app:layout_constraintLeft_toRightOf="@+id/txtReadSubtitle"
-            app:layout_constraintRight_toLeftOf="@+id/readChevron"
-            app:layout_constraintTop_toTopOf="@+id/txtReadTitle"
-            app:layout_constraintBottom_toBottomOf="@+id/txtReadSubtitle"
-            android:src="@drawable/ic_read"/>
+            android:src="@drawable/ic_read"
+            app:layout_constraintBottom_toBottomOf="@id/readChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/readChevron" />
 
         <RelativeLayout
             style="@style/separator"
@@ -141,27 +136,29 @@
         app:layout_constraintTop_toBottomOf="@+id/btnRead">
 
         <TextView
-            android:id="@+id/txtTitle"
+            android:id="@+id/textTitle"
             style="@style/menu_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_padding"
             android:text="@string/mytags_title"
-            app:layout_constraintBottom_toTopOf="@+id/txtSubtitle"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/myTagsIcon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
-            android:id="@+id/txtSubtitle"
+            android:id="@+id/textSubtitle"
             style="@style/menu_txt_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/menu_txt_padding"
             android:text="@string/mytags_subtitle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtTitle"  />
+            app:layout_constraintLeft_toRightOf="@+id/myTagsIcon"
+            app:layout_constraintTop_toBottomOf="@id/textTitle" />
 
         <ImageView
+            android:id="@+id/myTagsChevron"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_chevron_right_30dp"
@@ -169,11 +166,15 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            style="@style/separator"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/separator_height"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        <ImageView
+            android:id="@+id/myTagsIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_my_tags"
+            app:layout_constraintBottom_toBottomOf="@id/myTagsChevron"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/myTagsChevron" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

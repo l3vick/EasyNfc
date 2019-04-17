@@ -22,8 +22,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".presentation.ui.read.ReadActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".presentation.ui.menu.MenuActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,6 +42,9 @@
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
+        <activity
+            android:name=".presentation.ui.read.ReadActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
