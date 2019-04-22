@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.transaction
+import androidx.viewpager.widget.ViewPager
 import com.easynfc.R
 import com.easynfc.navigation.NavigationExecutor
 import com.easynfc.presentation.AppNavigator
@@ -39,6 +40,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     protected inline fun <reified T : BaseFragment> getFragment(): T? =
             supportFragmentManager.findFragmentById(R.id.container) as? T
+
+    protected inline fun <reified T : BaseFragment> getFragment(viewPager: ViewPager): T? =
+        supportFragmentManager.getFragments().get(viewPager.getCurrentItem()) as? T
 
     fun getNavigator (): AppNavigator {
         return AppNavigator(executor)

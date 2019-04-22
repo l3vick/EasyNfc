@@ -28,7 +28,6 @@ class MenuPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(man
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-
         return mFragmentTitleList.get(position)
     }
 

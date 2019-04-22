@@ -9,6 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btnEmail"
+        android:clickable="false"
         style="@style/menu_box"
         android:layout_width="match_parent"
         android:layout_height="0dp"

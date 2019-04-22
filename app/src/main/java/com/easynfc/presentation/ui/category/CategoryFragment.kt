@@ -38,6 +38,7 @@ class CategoryFragment : BaseFragment() {
         }
 
         v.btnContact.onClick {
+            (activity as MainActivity).showToolbar()
             (activity as MainActivity).replaceFragmentViewPager(ContactFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
         }
 

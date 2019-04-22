@@ -24,7 +24,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.Launcher">
+            android:theme="@style/AppTheme.Launcher"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,12 +42,6 @@
                 android:name="android.nfc.action.TECH_DISCOVERED"
                 android:resource="@xml/nfc_tech_filter" />
         </activity>
-        <activity
-            android:name=".presentation.ui.menu.MenuActivity"
-            android:theme="@style/AppTheme"/>
-        <activity
-            android:name=".presentation.ui.read.ReadActivity"
-            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

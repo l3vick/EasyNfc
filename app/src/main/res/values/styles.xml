@@ -124,6 +124,11 @@
         <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
+    <style name="toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:visibility">gone</item>
+    </style>
 
 
 </resources>

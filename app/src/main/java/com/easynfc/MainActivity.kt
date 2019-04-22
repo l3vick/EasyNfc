@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.easynfc.presentation.base.BaseActivity
@@ -18,6 +20,8 @@ import com.easynfc.utils.NfcManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import com.easynfc.presentation.base.BaseFragment
+import com.easynfc.presentation.ui.category.ContactFragment
 import kotlinx.android.synthetic.main.custom_tab.view.*
 
 
@@ -52,12 +56,29 @@ class MainActivity : BaseActivity() {
         super.onNewIntent(intent)
         val tagData = nfcManager.proccessIntent(intent!!)
         if (tagData != null) {
+            showToolbar()
             replaceFragmentViewPager(ReadFragment.newInstance(tagData), MenuPagerAdapter.SECOND_TAB_POSITION)
         }
     }
 
-    private fun setupUI(){
+    override fun onBackPressed() {
+
+        val i = 1
+
+        when (getFragment<BaseFragment>(mPager)){
+            is ContactFragment ->  replaceFragmentViewPager(CategoryFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
+        }
+
+        super.onBackPressed()
+    }
+
+
+    private fun setupUI() {
         nfcManager = NfcManager(this)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.title = getString(R.string.empty)
 
         mPager = pager as ViewPager
 
@@ -93,16 +114,27 @@ class MainActivity : BaseActivity() {
         })
     }
 
-    private fun setupTabLayout(){
+    fun hideToolbar() {
+        toolbar.visibility = View.GONE
+    }
+
+    fun showToolbar() {
+        toolbar.visibility = View.VISIBLE
+    }
+
+    private fun setupTabLayout() {
         val writeTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
         val readTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
         val myTagsTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
-        writeTab.txtTab.text = getString(R.string.first_tab_title) //tab label txt
-        writeTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_write)
-        tabLayout.getTabAt(MenuPagerAdapter.FIRST_TAB_POSITION)!!.customView = writeTab
-        readTab.txtTab.text = getString(R.string.second_tab_title) //tab label txt
+
+        readTab.txtTab.text = getString(R.string.first_tab_title) //tab label txt
         readTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_read)
-        tabLayout.getTabAt(MenuPagerAdapter.SECOND_TAB_POSITION)!!.customView = readTab
+        tabLayout.getTabAt(MenuPagerAdapter.FIRST_TAB_POSITION)!!.customView = readTab
+
+        writeTab.txtTab.text = getString(R.string.second_tab_title) //tab label txt
+        writeTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_write)
+        tabLayout.getTabAt(MenuPagerAdapter.SECOND_TAB_POSITION)!!.customView = writeTab
+
         myTagsTab.txtTab.text = getString(R.string.third_tab_title) //tab label txt
         myTagsTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_my_tags)
         tabLayout.getTabAt(MenuPagerAdapter.THIRD_TAB_POSITION)!!.customView = myTagsTab
