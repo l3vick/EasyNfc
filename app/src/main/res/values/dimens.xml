@@ -3,8 +3,6 @@
     <dimen name="app_padding">16dp</dimen>
     <dimen name="app_double_padding">32dp</dimen>
 
-    <dimen name="menu_txt_padding">19dp</dimen>
-
     <dimen name="elevation">4dp</dimen>
 
     <dimen name="separator_height">1dp</dimen>
@@ -14,11 +12,12 @@
     <dimen name="item_tags_margin_border">5dp</dimen>
     <dimen name="item_tags_img_size">36dp</dimen>
 
+    <dimen name="txt_menu_padding">19dp</dimen>
     <dimen name="txt_content_size">40sp</dimen>
     <dimen name="txt_title_size">18sp</dimen>
     <dimen name="txt_value_size">20sp</dimen>
+    <dimen name="txt_tab_size">14sp</dimen>
 
     <dimen name="btn_footer_size">20sp</dimen>
-
 
 </resources>

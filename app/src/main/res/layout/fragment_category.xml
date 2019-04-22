@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@android:color/transparent"
     tools:context=".presentation.ui.category.CategoryFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +53,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_write"
+            android:src="@drawable/ic_text"
             app:layout_constraintBottom_toBottomOf="@id/textChevron"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/textChevron" />
@@ -111,7 +111,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_write"
+            android:src="@drawable/ic_contacts"
             app:layout_constraintBottom_toBottomOf="@id/contactChevron"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/contactChevron" />
@@ -169,7 +169,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_write"
+            android:src="@drawable/ic_utils"
             app:layout_constraintBottom_toBottomOf="@id/utilChevron"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/utilChevron" />
@@ -227,7 +227,7 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_write"
+            android:src="@drawable/ic_clean"
             app:layout_constraintBottom_toBottomOf="@id/cleanChevron"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cleanChevron" />

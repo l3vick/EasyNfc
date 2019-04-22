@@ -7,7 +7,6 @@ import android.nfc.tech.NdefFormatable
 import android.nfc.tech.Ndef
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import com.easynfc.model.TagData
 import android.nfc.NdefRecord
 import android.nfc.NdefMessage
 import android.nfc.Tag
@@ -49,7 +48,7 @@ class NfcManager {
     }
 
 
-    fun proccessIntent(intent: Intent): TagData? {
+    fun proccessIntent(intent: Intent): com.easynfc.model.Tag? {
         val tag = getTagFromIntent(intent)
         val ndefMessage = getNdefMessageFromIntent(intent)
         if (ndefMessage != null) {
@@ -57,7 +56,7 @@ class NfcManager {
             if (ndefRecord != null) {
                 val message = String(ndefRecord!!.getPayload())
                 val type = getType(ndefRecord)
-                return TagData(type, message, tag.getTechList(), tnfToString(ndefRecord!!.getTnf()), rtdToString(ndefRecord!!.getType()), Integer.toString(ndefRecord!!.getPayload().size))
+                return com.easynfc.model.Tag(type, message, tag.getTechList(), tnfToString(ndefRecord!!.getTnf()), rtdToString(ndefRecord!!.getType()), Integer.toString(ndefRecord!!.getPayload().size))
             }
         }
         return null

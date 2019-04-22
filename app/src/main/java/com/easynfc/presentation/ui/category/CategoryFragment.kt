@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.easynfc.MainActivity
 import com.easynfc.R
 import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
+import com.easynfc.presentation.component.adapter.MenuPagerAdapter
+import com.easynfc.presentation.ui.loading.LoadingFragment
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_category.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -35,15 +38,15 @@ class CategoryFragment : BaseFragment() {
         }
 
         v.btnContact.onClick {
-            (activity as BaseActivity).display{ ContactFragment.newInstance()}
+            (activity as MainActivity).replaceFragmentViewPager(ContactFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
         }
 
         v.btnUtils.onClick {
-            (activity as BaseActivity).display{ UtilsFragment.newInstance()}
+            (activity as MainActivity).replaceFragmentViewPager(UtilsFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
         }
 
         v.btnClean.onClick {
-            (activity as BaseActivity).display{ CleanFragment.newInstance()}
+            (activity as MainActivity).replaceFragmentViewPager(CleanFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
         }
 
     }

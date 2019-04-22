@@ -8,7 +8,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.easynfc.R
 import com.easynfc.presentation.base.BaseFragment
-import com.easynfc.presentation.ui.read.ReadActivity
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_loading.view.*
 import com.easynfc.presentation.component.animation.LTRViewAnimation
@@ -19,6 +18,7 @@ import org.jetbrains.anko.image
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Handler
+import com.easynfc.MainActivity
 
 
 class LoadingFragment : BaseFragment() {
@@ -39,13 +39,13 @@ class LoadingFragment : BaseFragment() {
 
     override fun onPause() {
         super.onPause()
-        //(activity as ReadActivity).nfcManager?.disableForegroundDispatch()
+        (activity as MainActivity).nfcManager?.disableForegroundDispatch()
     }
 
 
     override fun onResume() {
         super.onResume()
-       // (activity as ReadActivity).nfcManager?.enableForegroundDispatch()
+        (activity as MainActivity).nfcManager?.enableForegroundDispatch()
     }
 
     fun setupUI(){

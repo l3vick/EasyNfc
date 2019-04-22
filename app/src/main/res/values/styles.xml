@@ -7,7 +7,7 @@
         <item name="colorAccent">@color/gray_material_50</item>
     </style>
 
-    <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
+    <!-- Launcher theme -->
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/menu_background</item>
     </style>
@@ -15,6 +15,19 @@
     <style name="menu_box">
         <item name="android:paddingEnd">@dimen/app_padding</item>
         <item name="android:paddingStart">@dimen/app_padding</item>
+    </style>
+
+    <!-- TabLayout -->
+    <style name="tab_layout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/text_tab_layout</item>
+    </style>
+
+    <style name="text_tab_layout" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="textAllCaps">false</item>
     </style>
 
     <!-- Menu Buttons Style -->
@@ -32,14 +45,14 @@
     <style name="menu_txt_small" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/gray_material_50</item>
         <item name="android:textAllCaps">false</item>
-        <item name="android:layout_marginStart">@dimen/menu_txt_padding</item>
+        <item name="android:layout_marginStart">@dimen/txt_menu_padding</item>
         <item name="android:textSize">14sp</item>
         <item name="android:lineSpacingExtra">1dp</item>
         <item name="android:letterSpacing">0.08</item>
         <item name="android:fontFamily">@font/montserrat_medium</item>
     </style>
 
-    <!-- Tags  Style -->
+    <!-- TextViews -->
     <style name="tag_txt" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/amber_material_500</item>
         <item name="android:textSize">@dimen/item_tags_txt_size</item>
@@ -55,6 +68,7 @@
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:autoSizeMaxTextSize">100sp</item>
         <item name="android:autoSizeMinTextSize">12sp</item>
+        <item name="android:gravity">center</item>
         <item name="android:autoSizeStepGranularity">2sp</item>
     </style>
 
@@ -88,10 +102,19 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <style name="txt_tab" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">@color/gray_material_50</item>
+        <item name="android:textSize">@dimen/txt_tab_size</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <!-- Separator -->
     <style name="separator">
         <item name="android:background">@color/gray_material_50</item>
     </style>
 
+    <!-- Button -->
     <style name="btn_footer">
         <item name="android:textAllCaps">false</item>
         <item name="android:layout_marginStart">@dimen/app_padding</item>
@@ -100,6 +123,7 @@
         <item name="android:textSize">@dimen/txt_value_size</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
+
 
 
 </resources>

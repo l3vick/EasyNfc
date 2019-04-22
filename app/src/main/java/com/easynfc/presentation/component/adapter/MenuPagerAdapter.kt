@@ -3,10 +3,17 @@ package com.easynfc.presentation.component.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager.widget.PagerAdapter
 
 class MenuPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(manager) {
     private val mFragmentList = arrayListOf<Fragment>()
     private val mFragmentTitleList = arrayListOf<String>()
+
+    companion object {
+        val FIRST_TAB_POSITION = 0
+        val SECOND_TAB_POSITION = 1
+        val THIRD_TAB_POSITION = 2
+    }
 
     override fun getItem(position: Int): Fragment {
         return mFragmentList.get(position)
@@ -16,13 +23,13 @@ class MenuPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(man
         return mFragmentList.size
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return mFragmentTitleList.get(position)
+    override fun getItemPosition(`object`: Any): Int {
+        return PagerAdapter.POSITION_NONE
     }
 
-    fun addFrag(fragment: Fragment) {
-        mFragmentList.add(fragment)
-        mFragmentTitleList.add("")
+    override fun getPageTitle(position: Int): CharSequence? {
+
+        return mFragmentTitleList.get(position)
     }
 
     fun addFrag(fragment: Fragment, title: String) {
@@ -30,8 +37,7 @@ class MenuPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(man
         mFragmentTitleList.add(title)
     }
 
-    fun replaceFragment(position: Int, fragment: Fragment, title: String) {
+    fun replaceFragment(position: Int, fragment: Fragment) {
         mFragmentList.set(position, fragment)
-        mFragmentTitleList.set(position, title)
     }
 }
