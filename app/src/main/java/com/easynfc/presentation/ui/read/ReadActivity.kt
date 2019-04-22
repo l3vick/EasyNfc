@@ -18,7 +18,6 @@ import org.jetbrains.anko.startActivity
 
 class ReadActivity : BaseActivity() {
 
-    lateinit var nfcManager: NfcManager
 
     override val contentLayoutResId: Int = R.layout.activity_read
 
@@ -31,7 +30,7 @@ class ReadActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        nfcManager = NfcManager(this)
+        //nfcManager = NfcManager(this)
         toolbar.title = ""
         toolbar.backgroundColor =  ContextCompat.getColor(this, android.R.color.transparent)
         setSupportActionBar(toolbar)

@@ -29,4 +29,9 @@ class MenuPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(man
         mFragmentList.add(fragment)
         mFragmentTitleList.add(title)
     }
+
+    fun replaceFragment(position: Int, fragment: Fragment, title: String) {
+        mFragmentList.set(position, fragment)
+        mFragmentTitleList.set(position, title)
+    }
 }

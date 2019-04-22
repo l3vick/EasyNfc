@@ -39,13 +39,13 @@ class LoadingFragment : BaseFragment() {
 
     override fun onPause() {
         super.onPause()
-        (activity as ReadActivity).nfcManager?.disableForegroundDispatch()
+        //(activity as ReadActivity).nfcManager?.disableForegroundDispatch()
     }
 
 
     override fun onResume() {
         super.onResume()
-        (activity as ReadActivity).nfcManager?.enableForegroundDispatch()
+       // (activity as ReadActivity).nfcManager?.enableForegroundDispatch()
     }
 
     fun setupUI(){
@@ -115,11 +115,13 @@ class LoadingFragment : BaseFragment() {
         }
 
         override fun onAnimationEnd(p0: Animation?) {
-            v.ivTag.image = ContextCompat.getDrawable(context!!, R.drawable.ic_code)
-            val fadeIn = AlphaAnimation(0f, 1f)
-            fadeIn.duration = 500
-            fadeIn.setAnimationListener(fadeInAnimationListener)
-            v.ivTag.startAnimation(fadeIn)
+            if (context != null) {
+                v.ivTag.image = ContextCompat.getDrawable(context!!, R.drawable.ic_code)
+                val fadeIn = AlphaAnimation(0f, 1f)
+                fadeIn.duration = 500
+                fadeIn.setAnimationListener(fadeInAnimationListener)
+                v.ivTag.startAnimation(fadeIn)
+            }
         }
     }
 
@@ -134,8 +136,10 @@ class LoadingFragment : BaseFragment() {
 
         override fun onAnimationEnd(p0: Animation?) {
             Handler().postDelayed({
-                v.ivTag.image = ContextCompat.getDrawable(context!!, R.drawable.ic_loading)
-                startAnimations()
+                if (context != null) {
+                    v.ivTag.image = ContextCompat.getDrawable(context!!, R.drawable.ic_loading)
+                    startAnimations()
+                }
             }, 1000)
         }
     }

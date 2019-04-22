@@ -41,7 +41,7 @@ class MenuFragment : BaseFragment() {
         }
 
         v.btnRead.onClick {
-            (activity as MainActivity).getNavigator().startReadActivity()
+           // (activity as MainActivity).getNavigator().startReadActivity()
         }
 
         v.btnMyTags.onClick {

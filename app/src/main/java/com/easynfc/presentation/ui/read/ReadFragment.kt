@@ -10,6 +10,7 @@ import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.model.TagData
 import com.easynfc.presentation.ui.loading.LoadingFragment
+import com.easynfc.presentation.ui.menu.MenuActivity
 import com.vipera.onepay.util.AppConstants
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_read.view.*
@@ -41,7 +42,7 @@ class ReadFragment : BaseFragment() {
 
     override fun onResume() {
         val tagData = arguments?.get(AppConstants.TAG_DATA_ID)
-        if (tagData != null) showTagData(tagData as TagData) else (activity as BaseActivity).display { LoadingFragment.newInstance() }
+        if (tagData != null) showTagData(tagData as TagData) else (activity as MenuActivity).replaceFragmentViewPager(LoadingFragment.newInstance(),"",1)
         super.onResume()
     }
 
