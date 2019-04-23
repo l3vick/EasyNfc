@@ -20,4 +20,7 @@
 
     <dimen name="btn_footer_size">20sp</dimen>
 
+    <dimen name="input_max_size">60sp</dimen>
+    <dimen name="input_min_size">12sp</dimen>
+
 </resources>

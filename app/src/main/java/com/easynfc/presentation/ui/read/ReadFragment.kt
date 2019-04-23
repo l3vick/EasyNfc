@@ -42,7 +42,7 @@ class ReadFragment : BaseFragment() {
 
     override fun onResume() {
         val tagData = arguments?.get(AppConstants.TAG_DATA_ID)
-        if (tagData != null) showTagData(tagData as Tag) else (activity as MainActivity).replaceFragmentViewPager(LoadingFragment.newInstance(), MenuPagerAdapter.SECOND_TAB_POSITION)
+        if (tagData != null) showTagData(tagData as Tag) else (activity as MainActivity).replaceFragmentViewPager(LoadingFragment.newInstance(), AppConstants.SECOND_TAB_POSITION)
         super.onResume()
     }
 
@@ -66,6 +66,7 @@ class ReadFragment : BaseFragment() {
         tnfTxt = v.txtTnfValue
         rtdTxt = v.txtRtdValue
         sizeTxt = v.txtSizeValue
+
     }
 
 }

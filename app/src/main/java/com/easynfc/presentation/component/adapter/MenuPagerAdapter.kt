@@ -9,12 +9,6 @@ class MenuPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(man
     private val mFragmentList = arrayListOf<Fragment>()
     private val mFragmentTitleList = arrayListOf<String>()
 
-    companion object {
-        val FIRST_TAB_POSITION = 0
-        val SECOND_TAB_POSITION = 1
-        val THIRD_TAB_POSITION = 2
-    }
-
     override fun getItem(position: Int): Fragment {
         return mFragmentList.get(position)
     }

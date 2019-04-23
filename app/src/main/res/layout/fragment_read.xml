@@ -198,10 +198,10 @@
 
     <Button
         android:id="@+id/btnSave"
-        style="@style/btn_footer"
+        style="@style/btn_footer_light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_footer"
+        android:background="@drawable/btn_footer_light"
         android:text="@string/btn_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

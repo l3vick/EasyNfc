@@ -32,7 +32,7 @@
     <!--Loading-->
     <string name="loading_iv_desc">Loading image</string>
     <string name="loading_title">Please, tap a tag to read…</string>
-    <string name="btn_save">Save</string>
+    <string name="btn_save">Save into my tags</string>
 
     <!--Category-->
     <string name="category_txt_title">Text</string>
@@ -68,6 +68,7 @@
 
     <!--Write-->
     <string name="btn_record">Record</string>
+    <string name="et_writer_hint">Please enter some data…</string>
 
 
 </resources>

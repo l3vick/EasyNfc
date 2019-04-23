@@ -30,7 +30,7 @@
     <color name="subu_start_80t">#CC0EB7DE</color>
     <color name="subu_end_80t">#CC25EE8A</color>
 
-    <color name="btn_footer_pressed">#18CBD2</color>
+    <color name="btn_footer_pressed_light">#18CBD2</color>
 
 
 </resources>

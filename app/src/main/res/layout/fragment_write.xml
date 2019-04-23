@@ -7,9 +7,19 @@
     android:background="@android:color/transparent"
     tools:context=".presentation.ui.write.WriteFragment">
 
+    <com.easynfc.presentation.component.custom.AutoFitEditText
+        android:id="@+id/etContent"
+        style="@style/et_writer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/footer"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <include layout="@layout/footer_writer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:id="@+id/footer"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.adapter.MenuPagerAdapter
 import com.easynfc.presentation.ui.read.ReadFragment
 import com.easynfc.presentation.ui.write.WriteFragment
+import com.vipera.onepay.util.AppConstants
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_category.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -35,22 +36,22 @@ class CategoryFragment : BaseFragment() {
 
         v.btnText.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
-            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
         }
 
         v.btnContact.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
-            (activity as MainActivity).replaceFragmentViewPager(ContactFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(ContactFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
         }
 
         v.btnUtils.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
-            (activity as MainActivity).replaceFragmentViewPager(UtilsFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(UtilsFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
         }
 
         v.btnClean.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
-            (activity as MainActivity).replaceFragmentViewPager(CleanFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(CleanFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
         }
 
     }
