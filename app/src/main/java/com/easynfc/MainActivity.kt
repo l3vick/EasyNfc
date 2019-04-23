@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.easynfc.presentation.base.BaseFragment
+import com.easynfc.presentation.component.custom.CustomViewPager
 import com.easynfc.presentation.ui.category.CleanFragment
 import com.easynfc.presentation.ui.category.ContactFragment
 import com.easynfc.presentation.ui.category.UtilsFragment
@@ -34,7 +35,7 @@ class MainActivity : BaseActivity() {
     override val contentLayoutResId = R.layout.activity_main
 
     lateinit var nfcManager: NfcManager
-    private lateinit var mPager: ViewPager
+    private lateinit var mPager: CustomViewPager
     private val adapter = MenuPagerAdapter(supportFragmentManager)
 
 
@@ -98,7 +99,9 @@ class MainActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.title = getString(R.string.empty)
 
-        mPager = pager as ViewPager
+        mPager = pager
+
+        mPager.swipeEnabled = false
 
         adapter.addFrag(CategoryFragment(), getString(R.string.first_tab_title))
         adapter.addFrag(LoadingFragment(), getString(R.string.second_tab_title))
@@ -156,15 +159,15 @@ class MainActivity : BaseActivity() {
         val readTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
         val myTagsTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
 
-        writeTab.txtTab.text = getString(R.string.first_tab_title) //tab label txt
+        writeTab.txtTab.text = getString(R.string.first_tab_title)
         writeTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_write)
         tabLayout.getTabAt(MenuPagerAdapter.FIRST_TAB_POSITION)!!.customView = writeTab
 
-        readTab.txtTab.text = getString(R.string.second_tab_title) //tab label txt
+        readTab.txtTab.text = getString(R.string.second_tab_title)
         readTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_read)
         tabLayout.getTabAt(MenuPagerAdapter.SECOND_TAB_POSITION)!!.customView = readTab
 
-        myTagsTab.txtTab.text = getString(R.string.third_tab_title) //tab label txt
+        myTagsTab.txtTab.text = getString(R.string.third_tab_title)
         myTagsTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_my_tags)
         tabLayout.getTabAt(MenuPagerAdapter.THIRD_TAB_POSITION)!!.customView = myTagsTab
     }

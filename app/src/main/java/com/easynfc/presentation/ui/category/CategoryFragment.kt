@@ -9,6 +9,8 @@ import com.easynfc.MainActivity
 import com.easynfc.R
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.adapter.MenuPagerAdapter
+import com.easynfc.presentation.ui.read.ReadFragment
+import com.easynfc.presentation.ui.write.WriteFragment
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_category.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
@@ -32,7 +34,8 @@ class CategoryFragment : BaseFragment() {
     fun setupUI(){
 
         v.btnText.onClick {
-            //(activity as BaseActivity).display{ CategoryFragment.newInstance()}
+            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
         }
 
         v.btnContact.onClick {
