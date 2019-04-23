@@ -8,6 +8,8 @@ import androidx.viewpager.widget.ViewPager
 import com.easynfc.R
 import com.easynfc.navigation.NavigationExecutor
 import com.easynfc.presentation.AppNavigator
+import com.easynfc.presentation.component.adapter.MenuPagerAdapter
+import org.jetbrains.anko.support.v4.viewPager
 
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -41,8 +43,9 @@ abstract class BaseActivity : AppCompatActivity() {
     protected inline fun <reified T : BaseFragment> getFragment(): T? =
             supportFragmentManager.findFragmentById(R.id.container) as? T
 
-    protected inline fun <reified T : BaseFragment> getFragment(viewPager: ViewPager): T? =
-        supportFragmentManager.getFragments().get(viewPager.getCurrentItem()) as? T
+    protected inline fun <reified T : BaseFragment> getFragment(adapter: MenuPagerAdapter, viewPager: ViewPager): T? =
+            adapter.getItem(viewPager.currentItem) as? T
+
 
     fun getNavigator (): AppNavigator {
         return AppNavigator(executor)

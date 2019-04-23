@@ -131,5 +131,10 @@
         <item name="android:visibility">gone</item>
     </style>
 
+    <style name="toolbar_theme"  parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 
 </resources>
