@@ -20,6 +20,7 @@
     <!-- TabLayout -->
     <style name="tab_layout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/text_tab_layout</item>
+        <item name="android:background">@color/opaque</item>
     </style>
 
     <style name="text_tab_layout" parent="TextAppearance.Design.Tab">
@@ -125,7 +126,7 @@
     </style>
 
     <style name="toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">@color/opaque</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="android:visibility">gone</item>
     </style>

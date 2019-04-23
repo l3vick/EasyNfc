@@ -4,10 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.easynfc.presentation.base.BaseActivity
@@ -61,15 +61,19 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun onBackPressed() {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
-        val i = 1
-
-        when (getFragment<BaseFragment>(mPager)){
-            is ContactFragment ->  replaceFragmentViewPager(CategoryFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
+        when (item!!.itemId) {
+            android.R.id.home -> navigateFragmentBack()
         }
+        return super.onOptionsItemSelected(item)
+    }
 
-        super.onBackPressed()
+    fun navigateFragmentBack() {
+        when (getFragment<BaseFragment>(mPager)) {
+            is ContactFragment -> replaceFragmentViewPager(CategoryFragment.newInstance(), MenuPagerAdapter.FIRST_TAB_POSITION)
+        }
+        hideToolbar()
     }
 
 
