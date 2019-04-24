@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion 28
@@ -43,6 +45,9 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.core:core-ktx:1.0.1'
     implementation 'androidx.fragment:fragment-ktx:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha04'
+
 
     //Material Design
     implementation 'com.google.android.material:material:1.0.0'
@@ -56,6 +61,13 @@ dependencies {
 
     //ViewModel Livedata
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+
+    //Kapt Viewmodel Room
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    kapt "android.arch.lifecycle:compiler:$lifecycle_version"
+
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
 
     //ViewPager2
     //implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha03'
