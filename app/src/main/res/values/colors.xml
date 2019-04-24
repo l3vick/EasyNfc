@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="opaque">#33ffffff</color>
+    <color name="opaque_20">#33ffffff</color>
+    <color name="opaque_40">#66ffffff</color>
 
     <color name="gray_material_50">#fafafa</color>
     <color name="gray_material_100">#f5f5f5</color>
@@ -25,6 +26,7 @@
 
     <color name="subu_start">#0EB7DE</color>
     <color name="subu_end">#25EE8A</color>
+    <color name="subu_dark">#498A6A</color>
     <color name="subu_middle">#20e3b2</color>
     <color name="subu_end_light">#1EDCA6</color>
     <color name="subu_start_80t">#CC0EB7DE</color>

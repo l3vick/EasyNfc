@@ -20,7 +20,7 @@
     <!-- TabLayout -->
     <style name="tab_layout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/text_tab_layout</item>
-        <item name="android:background">@color/opaque</item>
+        <item name="android:background">@color/opaque_20</item>
     </style>
 
     <style name="text_tab_layout" parent="TextAppearance.Design.Tab">
@@ -145,13 +145,13 @@
         <item name="android:paddingStart">@dimen/app_padding</item>
         <item name="android:paddingEnd">@dimen/app_padding</item>
         <item name="android:hint">@string/et_writer_hint</item>
-        <item name="android:textColorHint">@color/gray_material_200</item>
+        <item name="android:textColorHint">@color/opaque_40</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 
     <!-- Toolbar -->
     <style name="toolbar" parent="Widget.AppCompat.Toolbar">
-        <item name="android:background">@color/opaque</item>
+        <item name="android:background">@color/opaque_20</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="android:visibility">gone</item>
     </style>

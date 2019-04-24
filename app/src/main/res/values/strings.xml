@@ -68,7 +68,8 @@
 
     <!--Write-->
     <string name="btn_record">Record</string>
-    <string name="et_writer_hint">Please enter some data…</string>
+    <string name="et_writer_hint">Click to write</string>
+    <string name="txt_content_placeholder_writing">Writing…</string>
 
 
 </resources>

@@ -21,6 +21,7 @@ class MyTagsFragment : BaseFragment() {
 
     lateinit var v: View
     private lateinit var noteViewModel: TagsViewModel
+
     private val adapter = TagsAdapter()
 
     companion object {
