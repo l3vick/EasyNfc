@@ -49,12 +49,10 @@ class WriteFragment : BaseFragment() {
     private fun setupUI(){
         textContent = v.etContent
         tagsViewModel = ViewModelProviders.of(this).get(TagsViewModel::class.java)
+    }
 
-        textContent.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                textContent.hint = getString(R.string.txt_content_placeholder_writing)
-                return false
-            }
-        })
+    fun resetHint() {
+        textContent.hint = getString(R.string.et_writer_hint)
+        textContent.isCursorVisible = false
     }
 }

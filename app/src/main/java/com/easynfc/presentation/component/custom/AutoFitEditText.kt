@@ -11,7 +11,13 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.KeyEvent
+import android.view.MotionEvent
+import android.view.View
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.ContextCompat
+import com.easynfc.App
+import com.easynfc.R
 
 /**
  * Created by varsovski on 29-Oct-15.
@@ -95,11 +101,28 @@ class AutoFitEditText constructor(
         _initialized = true
     }
 
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        this.hint = App.resources.getString(R.string.et_writer_hint_wr)
+        this.isCursorVisible = true
+        return super.onTouchEvent(event)
+    }
+
+    override fun onKeyPreIme(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event!!.action == 1) {
+            super.onKeyPreIme(keyCode, event)
+            if (this.text!!.isEmpty()) this.hint = App.resources.getString(R.string.et_writer_hint) ; this.isCursorVisible = false
+            return false
+        }
+        return super.onKeyPreIme(keyCode, event)
+    }
+
+
     override fun setTypeface(tf: Typeface?) {
         if (_textPaint == null) {
             _textPaint = TextPaint(paint)
         }
-
+        
         _textPaint?.typeface = tf
         super.setTypeface(tf)
     }

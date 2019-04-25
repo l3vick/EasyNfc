@@ -20,7 +20,6 @@
         android:paddingBottom="@dimen/app_padding"
         android:paddingStart="@dimen/app_padding"
         android:paddingEnd="@dimen/app_padding"
-        android:text="@string/txt_content_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="percent"
         app:layout_constraintHeight_percent="0.4"

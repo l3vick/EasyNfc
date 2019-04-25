@@ -55,12 +55,6 @@ class MainActivity : BaseActivity() {
     }
 
 
-    fun replaceFragmentViewPager(fragment: Fragment, position: Int) {
-        adapter.replaceFragment(position, fragment)
-        adapter.notifyDataSetChanged()
-        setupTabLayout()
-    }
-
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         val tagData = nfcManager.proccessIntent(intent!!)
@@ -77,11 +71,34 @@ class MainActivity : BaseActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val I = 0
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (currentFocus != null) {
+            val fragment = getFragment<BaseFragment>(adapter, mPager)
+            if (fragment is WriteFragment) {
+                fragment.resetHint()
+            }
+            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
+        }
+        return true
+    }
+
     fun navigateFragmentBack() {
         when (getFragment<BaseFragment>(adapter, mPager)) {
             is ContactFragment, is UtilsFragment, is CleanFragment, is WriteFragment -> navigateToCategory()
             is ReadFragment -> navigateToLoading()
         }
+    }
+
+    fun replaceFragmentViewPager(fragment: Fragment, position: Int) {
+        adapter.replaceFragment(position, fragment)
+        adapter.notifyDataSetChanged()
+        setupTabLayout()
     }
 
     private fun navigateToCategory() {
@@ -156,14 +173,6 @@ class MainActivity : BaseActivity() {
             getString(R.string.toolbar_title_read) -> imageView.background = ContextCompat.getDrawable(this, R.drawable.ic_read)
             getString(R.string.toolbar_title_write) -> imageView.background = ContextCompat.getDrawable(this, R.drawable.ic_write)
         }
-    }
-
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        if (currentFocus != null) {
-            imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
-        }
-        return true
     }
 
     private fun setupTabLayout() {
