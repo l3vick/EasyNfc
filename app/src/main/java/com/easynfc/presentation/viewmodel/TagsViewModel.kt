@@ -23,4 +23,8 @@ class TagsViewModel(application: Application) : AndroidViewModel(application) {
     fun getAll(): LiveData<List<Text>> {
         return listText
     }
+
+    fun deleteAll() {
+        repository.deleteAll()
+    }
 }

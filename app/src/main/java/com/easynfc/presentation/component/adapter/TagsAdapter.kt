@@ -34,8 +34,8 @@ class TagsAdapter: RecyclerView.Adapter<TagsAdapter.NoteHolder>() {
     }
 
     inner class NoteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textViewTitle: TextView = itemView.findViewById(R.id.text_view_title)
-        var textViewDescription: TextView = itemView.findViewById(R.id.text_view_description)
+        var textViewTitle: TextView = itemView.findViewById(R.id.txtAlias)
+        var textViewDescription: TextView = itemView.findViewById(R.id.txtDate)
 
     }
 }

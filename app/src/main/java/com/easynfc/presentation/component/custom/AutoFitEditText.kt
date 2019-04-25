@@ -122,7 +122,7 @@ class AutoFitEditText constructor(
         if (_textPaint == null) {
             _textPaint = TextPaint(paint)
         }
-        
+
         _textPaint?.typeface = tf
         super.setTypeface(tf)
     }

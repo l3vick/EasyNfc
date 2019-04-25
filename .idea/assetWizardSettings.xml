@@ -35,7 +35,6 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="paddingPercent" value="10" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -46,8 +45,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/ic_utils.png" />
-                                      <entry key="outputName" value="ic_utils" />
+                                      <entry key="imageAsset" value="$USER_HOME$/Downloads/ic_text_tr.png" />
+                                      <entry key="outputName" value="ic_text_tr" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="fafafa" />
                                     </map>

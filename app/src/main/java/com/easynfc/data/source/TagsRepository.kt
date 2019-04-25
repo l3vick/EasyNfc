@@ -33,6 +33,10 @@ class TagsRepository(application: Application){
         return textList
     }
 
+    fun deleteAll() {
+        val deleteAllTextAsyncTask = DeleteAllTextAsyncTask(tagsDao).execute()
+    }
+
 
     private class InsertTextAsyncTask(tagsDao: TagsDao): AsyncTask<Text, Unit, Unit>(){
 
@@ -47,6 +51,12 @@ class TagsRepository(application: Application){
 
         override fun doInBackground(vararg params: Int?) {
             tagsDao.delete(params[0]!!)
+        }
+    }
+
+    private class DeleteAllTextAsyncTask(val tagsDao: TagsDao): AsyncTask<Unit, Unit, Unit>(){
+        override fun doInBackground(vararg params: Unit?) {
+            tagsDao.deleteAll()
         }
     }
 

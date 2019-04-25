@@ -41,6 +41,7 @@ class WriteFragment : BaseFragment() {
         v = inflater.inflate(R.layout.fragment_write, container, false)
         setupUI()
         v.btnSave.onClick {
+            //tagsViewModel.deleteAll()
             tagsViewModel.insert(Text(textContent.text.toString(), 12312312312312L))
         }
         return v

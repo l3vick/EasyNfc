@@ -21,6 +21,9 @@ interface TagsDao {
     @Query("DELETE FROM Text WHERE id=:id")
     fun delete(id: Int)
 
+    @Query("DELETE FROM Text")
+    fun deleteAll()
+
     @Query("SELECT * FROM Text WHERE id=:id")
     fun get(id: Int): Text
 
