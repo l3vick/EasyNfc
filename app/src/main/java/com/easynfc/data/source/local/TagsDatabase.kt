@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.easynfc.data.model.Text
 
-@Database(entities = [Text::class], version = 1, exportSchema = true)
+@Database(entities = [Text::class], version = 3, exportSchema = true)
 abstract class TagsDatabase : RoomDatabase() {
 
     abstract fun tagsDao(): TagsDao
@@ -44,9 +44,9 @@ abstract class TagsDatabase : RoomDatabase() {
         private val noteDao = db?.tagsDao()
 
         override fun doInBackground(vararg p0: Unit?) {
-            noteDao?.insert(Text("Title 1", 123123123123123123L))
-            noteDao?.insert(Text("Title 2", 123123123123123123L))
-            noteDao?.insert(Text("Title 3", 123123123123123123L))
+            noteDao?.insert(Text("Title 1", "22-01-2019"))
+            noteDao?.insert(Text("Title 2", "23-01-2019"))
+            noteDao?.insert(Text("Title 3", "24-01-2019"))
         }
     }
 

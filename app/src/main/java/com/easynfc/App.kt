@@ -11,7 +11,7 @@ class App : Application() {
     }
 
     companion object {
-        protected lateinit var instance: App
+        lateinit var instance: App
 
         val resources: Resources
             get() = instance.resources

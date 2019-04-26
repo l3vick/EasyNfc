@@ -1,12 +1,19 @@
 package com.easynfc.presentation.component.adapter
 
+import android.graphics.drawable.Drawable
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.easynfc.App
 import com.easynfc.R
+import com.easynfc.data.model.TagType
 import com.easynfc.data.model.Text
+import com.vipera.onepay.util.AppConstants
 
 class TagsAdapter: RecyclerView.Adapter<TagsAdapter.NoteHolder>() {
 
@@ -20,8 +27,9 @@ class TagsAdapter: RecyclerView.Adapter<TagsAdapter.NoteHolder>() {
 
     override fun onBindViewHolder(holder: NoteHolder, position: Int) {
         val currentNote = textList[position]
-        holder.textViewTitle.text = currentNote.content
-        holder.textViewDescription.text = currentNote.timestamp.toString()
+        holder.tvAlias.text = currentNote.content
+        holder.tvDate.text = currentNote.date
+        holder.ivType.background = getDrawable(currentNote.type)
     }
 
     override fun getItemCount(): Int {
@@ -33,9 +41,16 @@ class TagsAdapter: RecyclerView.Adapter<TagsAdapter.NoteHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class NoteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var textViewTitle: TextView = itemView.findViewById(R.id.txtAlias)
-        var textViewDescription: TextView = itemView.findViewById(R.id.txtDate)
+    fun getDrawable(type : String): Drawable? {
+        when (type){
+            AppConstants.TYPE_TEXT -> return ContextCompat.getDrawable(App.instance, R.drawable.ic_write)
+        }
+        return null
+    }
 
+    inner class NoteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var tvAlias: TextView = itemView.findViewById(R.id.txtAlias)
+        var tvDate: TextView = itemView.findViewById(R.id.txtDate)
+        var ivType: ImageView = itemView.findViewById(R.id.ivType)
     }
 }

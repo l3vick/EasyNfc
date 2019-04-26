@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.easynfc.MainActivity
 import com.easynfc.R
+import com.easynfc.data.model.TagType
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.adapter.MenuPagerAdapter
 import com.easynfc.presentation.ui.read.ReadFragment
@@ -36,7 +37,7 @@ class CategoryFragment : BaseFragment() {
 
         v.btnText.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
-            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_TEXT), AppConstants.FIRST_TAB_POSITION)
         }
 
         v.btnContact.onClick {

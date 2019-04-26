@@ -33,4 +33,5 @@ class MenuPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(man
     fun replaceFragment(position: Int, fragment: Fragment) {
         mFragmentList.set(position, fragment)
     }
+
 }

@@ -6,6 +6,10 @@ import android.os.Build
 import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.WindowManager
+import java.text.DateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class AppUtils {
 
@@ -58,6 +62,13 @@ class AppUtils {
 
             val dialog: AlertDialog = builder.create()
             dialog.show()
+        }
+
+        fun getCurDate(): String {
+            val current = LocalDateTime.now()
+            val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            val formatted = current.format(formatter)
+            return formatted
         }
 
 
