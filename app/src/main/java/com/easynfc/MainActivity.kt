@@ -73,7 +73,6 @@ class MainActivity : BaseActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        val I = 0
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -90,8 +89,9 @@ class MainActivity : BaseActivity() {
 
     fun navigateFragmentBack() {
         when (getFragment<BaseFragment>(adapter, mPager)) {
-            is ContactFragment, is UtilsFragment, is CleanFragment, is WriteFragment -> navigateToCategory()
+            is ContactFragment, is UtilsFragment, is CleanFragment -> navigateToCategory()
             is ReadFragment -> navigateToLoading()
+            is WriteFragment -> navBackFromWriter()
         }
     }
 
@@ -112,6 +112,36 @@ class MainActivity : BaseActivity() {
         replaceFragmentViewPager(LoadingFragment.newInstance(), AppConstants.SECOND_TAB_POSITION)
     }
 
+    private fun navigateToContacts(){
+        showToolbar(getString(R.string.toolbar_title_contact))
+        replaceFragmentViewPager(ContactFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+    }
+
+    private fun navigateToUtils(){
+        showToolbar(getString(R.string.toolbar_title_utils))
+        replaceFragmentViewPager(UtilsFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+    }
+
+    private fun navigateToClean(){
+        showToolbar(getString(R.string.toolbar_title_clean))
+        replaceFragmentViewPager(CleanFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+    }
+
+    private fun navBackFromWriter(){
+        when (WriteFragment.type){
+            AppConstants.TYPE_TEXT -> navigateToCategory()
+            AppConstants.TYPE_EMAIL -> navigateToContacts()
+            AppConstants.TYPE_PHONE -> navigateToContacts()
+            AppConstants.TYPE_SMS -> navigateToContacts()
+            AppConstants.TYPE_URL -> navigateToUtils()
+            AppConstants.TYPE_WIFI -> navigateToUtils()
+            AppConstants.TYPE_LOCATION -> navigateToUtils()
+            AppConstants.TYPE_LAUNCHER -> navigateToUtils()
+            AppConstants.TYPE_FORMAT -> navigateToClean()
+            AppConstants.TYPE_LOCK -> navigateToClean()
+        }
+    }
+
 
     private fun setupUI() {
         nfcManager = NfcManager(this)
@@ -128,7 +158,7 @@ class MainActivity : BaseActivity() {
         adapter.addFrag(LoadingFragment(), getString(R.string.second_tab_title))
         adapter.addFrag(MyTagsFragment(), getString(R.string.third_tab_title))
 
-        mPager.setAdapter(adapter)
+        mPager.adapter = adapter
 
         tabLayout.setupWithViewPager(mPager)
 

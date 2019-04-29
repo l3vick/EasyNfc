@@ -33,29 +33,28 @@ class CategoryFragment : BaseFragment() {
         return v
     }
 
-    fun setupUI(){
+    private fun setupUI(){
 
         v.btnText.onClick {
-            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
+            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_text))
             (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_TEXT), AppConstants.FIRST_TAB_POSITION)
         }
 
         v.btnContact.onClick {
-            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
+            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_contact))
             (activity as MainActivity).replaceFragmentViewPager(ContactFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
         }
 
         v.btnUtils.onClick {
-            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
+            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_utils))
             (activity as MainActivity).replaceFragmentViewPager(UtilsFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
         }
 
         v.btnClean.onClick {
-            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
+            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_clean))
             (activity as MainActivity).replaceFragmentViewPager(CleanFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
         }
 
     }
-
 
 }

@@ -13,6 +13,7 @@ import com.vipera.onepay.util.AppConstants
 import instanceOf
 import kotlinx.android.synthetic.main.fragment_contact.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.support.v4.toast
 
 
 class ContactFragment : BaseFragment() {
@@ -27,15 +28,21 @@ class ContactFragment : BaseFragment() {
                               savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_contact, container, false)
         setupUI()
-        v.btnEmail.onClick {
-            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_write))
-            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_EMAIL), AppConstants.FIRST_TAB_POSITION)
-        }
         return v
     }
 
-    fun setupUI(){
-
+    private fun setupUI(){
+        v.btnEmail.onClick {
+            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_email))
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_EMAIL), AppConstants.FIRST_TAB_POSITION)
+        }
+        v.btnPhone.onClick {
+            (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_phone))
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_PHONE), AppConstants.FIRST_TAB_POSITION)
+        }
+        v.btnSms.onClick {
+            notImplemented()
+        }
     }
 
 }

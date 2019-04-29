@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import com.easynfc.R
+import com.easynfc.data.model.Email
 import com.easynfc.data.model.Text
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.custom.AutoFitEditText
@@ -22,12 +23,12 @@ class WriteFragment : BaseFragment() {
 
     private lateinit var v: View
     private lateinit var textContent: AutoFitEditText
-    private lateinit var type: String
 
     private lateinit var tagsViewModel: TagsViewModel
 
     companion object {
         fun newInstance(type: String) = instanceOf<WriteFragment>(Pair(AppConstants.TAG_TYPE, type))
+        lateinit var type: String
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +49,8 @@ class WriteFragment : BaseFragment() {
 
     private fun insertTag(){
         when (type){
-            AppConstants.TYPE_TEXT -> tagsViewModel.insert(Text(textContent.text.toString(), AppUtils.getCurDate()))
+            AppConstants.TYPE_TEXT -> tagsViewModel.insertText(Text(textContent.text.toString(), AppUtils.getCurDate()))
+            AppConstants.TYPE_EMAIL -> tagsViewModel.insertEmail(Email(textContent.text.toString(), AppUtils.getCurDate()))
         }
     }
 

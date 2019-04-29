@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.easynfc.R
+import com.easynfc.data.model.Email
 import com.easynfc.data.model.Text
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.adapter.TagsAdapter
@@ -43,8 +44,8 @@ class MyTagsFragment : BaseFragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
         noteViewModel = ViewModelProviders.of(this).get(TagsViewModel::class.java)
-        noteViewModel.getAll().observe(this,
-                Observer<List<Text>> { t -> adapter.setTags(t!!) })
+        noteViewModel.getAllEmail().observe(this,
+                Observer<List<Email>> { t -> adapter.setTags(t!!) })
     }
 
 }

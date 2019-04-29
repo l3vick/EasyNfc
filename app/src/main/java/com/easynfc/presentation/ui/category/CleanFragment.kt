@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import com.easynfc.R
 import com.easynfc.presentation.base.BaseFragment
 import instanceOf
+import kotlinx.android.synthetic.main.fragment_clean.view.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class CleanFragment : BaseFragment() {
 
@@ -25,7 +27,12 @@ class CleanFragment : BaseFragment() {
     }
 
     fun setupUI(){
-
+        v.btnFormat.onClick {
+            notImplemented()
+        }
+        v.btnLock.onClick {
+            notImplemented()
+        }
     }
 
 }

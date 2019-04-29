@@ -64,6 +64,14 @@
     <!--Toolbar-->
     <string name="toolbar_title_write">Write</string>
     <string name="toolbar_title_read">Read</string>
+    <string name="toolbar_title_text">Text</string>
+    <string name="toolbar_title_contact">Contact</string>
+    <string name="toolbar_title_utils">Utils</string>
+    <string name="toolbar_title_clean">Clean</string>
+    <string name="toolbar_title_email">Email</string>
+    <string name="toolbar_title_phone">Phone</string>
+    <string name="toolbar_title_url">Url</string>
+    <string name="toolbar_title_launcher">Launcher</string>
 
     <!--Write-->
     <string name="btn_record">Record</string>

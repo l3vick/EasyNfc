@@ -160,9 +160,11 @@
     </style>
 
     <style name="toolbar_theme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="android:fontFamily">@font/montserrat_medium</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:lineSpacingExtra">0dp</item>
+        <item name="android:letterSpacing">0.08</item>
         <item name="android:textSize">12sp</item>
     </style>
-
 
 </resources>

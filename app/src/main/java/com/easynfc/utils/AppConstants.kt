@@ -18,5 +18,7 @@ class AppConstants {
         const val TYPE_EMAIL = "TYPE_EMAIL"
         const val TYPE_PHONE = "TYPE_PHONE"
         const val TYPE_SMS = "TYPE_SMS"
+        const val TYPE_FORMAT = "TYPE_FORMAT"
+        const val TYPE_LOCK = "TYPE_LOCK"
     }
 }

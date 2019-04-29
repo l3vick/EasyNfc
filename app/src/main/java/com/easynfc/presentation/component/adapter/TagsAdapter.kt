@@ -1,7 +1,6 @@
 package com.easynfc.presentation.component.adapter
 
 import android.graphics.drawable.Drawable
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,44 +10,44 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.easynfc.App
 import com.easynfc.R
-import com.easynfc.data.model.TagType
-import com.easynfc.data.model.Text
+import com.easynfc.data.model.BaseTag
 import com.vipera.onepay.util.AppConstants
 
-class TagsAdapter: RecyclerView.Adapter<TagsAdapter.NoteHolder>() {
+class TagsAdapter: RecyclerView.Adapter<TagsAdapter.TagHolder>() {
 
-    private var textList: List<Text> = ArrayList()
+    private var baseList: List<BaseTag> = ArrayList()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagHolder {
         val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.tag_item, parent, false)
-        return NoteHolder(itemView)
+        return TagHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: NoteHolder, position: Int) {
-        val currentNote = textList[position]
-        holder.tvAlias.text = currentNote.content
-        holder.tvDate.text = currentNote.date
-        holder.ivType.background = getDrawable(currentNote.type)
+    override fun onBindViewHolder(holder: TagHolder, position: Int) {
+        val tag = baseList[position]
+        holder.tvAlias.text = tag.content
+        holder.tvDate.text = tag.date
+        holder.ivType.background = tag.type?.let { getDrawable(it) }
     }
 
     override fun getItemCount(): Int {
-        return textList.size
+        return baseList.size
     }
 
-    fun setTags(textList: List<Text>) {
-        this.textList = textList
+    fun setTags(list: List<BaseTag>) {
+        this.baseList = list
         notifyDataSetChanged()
     }
 
-    fun getDrawable(type : String): Drawable? {
+    private fun getDrawable(type : String): Drawable? {
         when (type){
             AppConstants.TYPE_TEXT -> return ContextCompat.getDrawable(App.instance, R.drawable.ic_write)
+            AppConstants.TYPE_EMAIL -> return ContextCompat.getDrawable(App.instance, R.drawable.ic_text)
         }
         return null
     }
 
-    inner class NoteHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class TagHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvAlias: TextView = itemView.findViewById(R.id.txtAlias)
         var tvDate: TextView = itemView.findViewById(R.id.txtDate)
         var ivType: ImageView = itemView.findViewById(R.id.ivType)
