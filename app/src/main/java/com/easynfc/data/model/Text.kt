@@ -7,5 +7,5 @@ import com.vipera.onepay.util.AppConstants
 @Entity(tableName = "text")
 data class Text(override var content: String, override var date: String, override var type: String = AppConstants.TYPE_TEXT) : BaseTag() {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    override var id: Int = 0
 }

@@ -15,7 +15,7 @@ import com.vipera.onepay.util.AppConstants
 
 class TagsAdapter: RecyclerView.Adapter<TagsAdapter.TagHolder>() {
 
-    private var baseList: List<BaseTag> = ArrayList()
+    private var baseList: MutableList<BaseTag> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -35,7 +35,11 @@ class TagsAdapter: RecyclerView.Adapter<TagsAdapter.TagHolder>() {
     }
 
     fun setTags(list: List<BaseTag>) {
-        this.baseList = list
+        if (this.baseList.isEmpty()){
+            this.baseList = list as MutableList<BaseTag>
+        }else{
+            this.baseList.addAll(list)
+        }
         notifyDataSetChanged()
     }
 

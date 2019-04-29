@@ -3,6 +3,7 @@ package com.easynfc.data.source
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import com.easynfc.data.model.BaseTag
 import com.easynfc.data.model.Email
 import com.easynfc.data.model.Text
 import com.easynfc.data.source.local.TagsDao
@@ -23,7 +24,7 @@ class TagsRepository(application: Application){
         emailList= tagsDao.getEmailList()
     }
 
-
+    //-------TEXT--------
     fun insertText(text: Text) {
         val insertTextAsyncTask = InsertTextAsyncTask(tagsDao).execute(text)
     }
@@ -40,7 +41,7 @@ class TagsRepository(application: Application){
         val deleteAllTextAsyncTask = DeleteAllTextAsyncTask(tagsDao).execute()
     }
 
-
+    //-------EMAIL--------
     fun insertEmail(email: Email) {
         val insertEmailAsyncTask = InsertEmailAsyncTask(tagsDao).execute(email)
     }

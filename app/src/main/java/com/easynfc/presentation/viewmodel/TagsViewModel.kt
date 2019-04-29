@@ -3,6 +3,7 @@ package com.easynfc.presentation.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.easynfc.data.model.BaseTag
 import com.easynfc.data.model.Email
 import com.easynfc.data.model.Text
 import com.easynfc.data.source.TagsRepository

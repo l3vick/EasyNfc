@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.easynfc.data.model.BaseTag
 import com.easynfc.data.model.Email
 import com.easynfc.data.model.Text
 
