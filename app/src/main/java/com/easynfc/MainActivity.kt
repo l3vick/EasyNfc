@@ -87,7 +87,7 @@ class MainActivity : BaseActivity() {
         return true
     }
 
-    fun navigateFragmentBack() {
+    private fun navigateFragmentBack() {
         when (getFragment<BaseFragment>(adapter, mPager)) {
             is ContactFragment, is UtilsFragment, is CleanFragment -> navigateToCategory()
             is ReadFragment -> navigateToLoading()
@@ -147,7 +147,6 @@ class MainActivity : BaseActivity() {
         nfcManager = NfcManager(this)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.title = getString(R.string.empty)
 
         mPager = pager
@@ -200,12 +199,16 @@ class MainActivity : BaseActivity() {
     fun showToolbar(title: String) {
         toolbar.title = title
         toolbar.visibility = View.VISIBLE
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        toolbar.menu.clear()
         //updateToolbarImage(title)
     }
 
     fun showToolbarWithMenu(title: String) {
         toolbar.title = title
         toolbar.visibility = View.VISIBLE
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        toolbar.inflateMenu(R.menu.menu)
     }
 
     private fun updateToolbarImage(title: String) {

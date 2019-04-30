@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/logoutMenu"
+        android:actionLayout="@id/toolbar"
+        android:orderInCategory="100"
+        android:title="item 1"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sortMenu"
+        android:orderInCategory="100"
+        android:title="item 2"
+        app:showAsAction="never" />
+</menu>
