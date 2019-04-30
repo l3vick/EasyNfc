@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.vipera.onepay.util.AppConstants
 
 @Entity(tableName = "url")
-data class Url(var content: String, var date: String, var type: String = AppConstants.TYPE_URL) {
+data class Url(override var content: String, override var date: Long, override var type: String = AppConstants.TYPE_URL) : BaseTag() {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    override var id: Int = 0
 }

@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import com.easynfc.R
-import com.easynfc.data.model.Email
-import com.easynfc.data.model.Text
+import com.easynfc.data.model.*
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.custom.AutoFitEditText
 import com.easynfc.presentation.viewmodel.TagsViewModel
@@ -34,11 +33,15 @@ class WriteFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_write, container, false)
+        return v
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupUI()
         v.btnSave.onClick {
             insertTag()
         }
-        return v
     }
 
     private fun setupUI(){
@@ -49,8 +52,11 @@ class WriteFragment : BaseFragment() {
 
     private fun insertTag(){
         when (type){
-            AppConstants.TYPE_TEXT -> tagsViewModel.insertText(Text(textContent.text.toString(), AppUtils.getCurDate()))
-            AppConstants.TYPE_EMAIL -> tagsViewModel.insertEmail(Email(textContent.text.toString(), AppUtils.getCurDate()))
+            AppConstants.TYPE_TEXT -> tagsViewModel.insertText(Text(textContent.text.toString(), AppUtils.getTimestamp()))
+            AppConstants.TYPE_EMAIL -> tagsViewModel.insertEmail(Email(textContent.text.toString(), AppUtils.getTimestamp()))
+            AppConstants.TYPE_URL-> tagsViewModel.insertUrl(Url(textContent.text.toString(), AppUtils.getTimestamp()))
+            AppConstants.TYPE_PHONE -> tagsViewModel.insertPhone(Phone(textContent.text.toString(), AppUtils.getTimestamp()))
+            AppConstants.TYPE_LAUNCHER-> tagsViewModel.insertLauncher(Launcher(textContent.text.toString(), AppUtils.getTimestamp()))
         }
     }
 

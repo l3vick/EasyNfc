@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.easynfc.MainActivity
 import com.easynfc.R
-import com.easynfc.data.model.TagType
 import com.easynfc.presentation.base.BaseFragment
-import com.easynfc.presentation.component.adapter.MenuPagerAdapter
-import com.easynfc.presentation.ui.read.ReadFragment
 import com.easynfc.presentation.ui.write.WriteFragment
 import com.vipera.onepay.util.AppConstants
 import instanceOf

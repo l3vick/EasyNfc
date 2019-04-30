@@ -177,11 +177,17 @@ class MainActivity : BaseActivity() {
 
             override fun onPageSelected(position: Int) {
                 if (toolbar.isVisible) hideToolbar()
+
+                if (position != AppConstants.FIRST_TAB_POSITION) {
+                    replaceFragmentViewPager(CategoryFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+                }
+
                 if (position != AppConstants.SECOND_TAB_POSITION) {
                     replaceFragmentViewPager(LoadingFragment.newInstance(), AppConstants.SECOND_TAB_POSITION)
                 }
-                if (position != AppConstants.FIRST_TAB_POSITION) {
-                    replaceFragmentViewPager(CategoryFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+
+                if (position == AppConstants.THIRD_TAB_POSITION) {
+                    showToolbarWithMenu(getString(R.string.toolbar_title_mytags))
                 }
             }
         })
@@ -195,6 +201,11 @@ class MainActivity : BaseActivity() {
         toolbar.title = title
         toolbar.visibility = View.VISIBLE
         //updateToolbarImage(title)
+    }
+
+    fun showToolbarWithMenu(title: String) {
+        toolbar.title = title
+        toolbar.visibility = View.VISIBLE
     }
 
     private fun updateToolbarImage(title: String) {

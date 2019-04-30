@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.vipera.onepay.util.AppConstants
 
-@Entity(tableName = "text")
-data class Phone(var content: String, var date: String, var type: String = AppConstants.TYPE_TEXT) {
+@Entity(tableName = "phone")
+data class Phone(override var content: String, override var date: Long, override var type: String = AppConstants.TYPE_PHONE): BaseTag() {
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+    override var id: Int = 0
 }

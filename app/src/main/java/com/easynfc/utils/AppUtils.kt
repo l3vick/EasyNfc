@@ -6,10 +6,8 @@ import android.os.Build
 import androidx.appcompat.app.AlertDialog
 import android.view.View
 import android.view.WindowManager
-import java.text.DateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
 
 class AppUtils {
 
@@ -64,13 +62,18 @@ class AppUtils {
             dialog.show()
         }
 
-        fun getCurDate(): String {
-            val current = LocalDateTime.now()
-            val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-            val formatted = current.format(formatter)
-            return formatted
+        fun getTimestamp(): Long{
+            return System.currentTimeMillis()
         }
 
+
+        fun toDate(timestamp: Long): String{
+            val stamp = Timestamp(timestamp)
+
+            val sdf = SimpleDateFormat("dd-MM-yyyy")
+
+            return sdf.format(stamp)
+        }
 
     }
 

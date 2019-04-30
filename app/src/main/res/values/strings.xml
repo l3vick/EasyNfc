@@ -65,6 +65,7 @@
     <string name="toolbar_title_write">Write</string>
     <string name="toolbar_title_read">Read</string>
     <string name="toolbar_title_text">Text</string>
+    <string name="toolbar_title_mytags">My Tags</string>
     <string name="toolbar_title_contact">Contact</string>
     <string name="toolbar_title_utils">Utils</string>
     <string name="toolbar_title_clean">Clean</string>

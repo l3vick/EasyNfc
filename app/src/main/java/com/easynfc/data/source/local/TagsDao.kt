@@ -5,9 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.easynfc.data.model.BaseTag
-import com.easynfc.data.model.Email
-import com.easynfc.data.model.Text
+import com.easynfc.data.model.*
 
 
 @Dao
@@ -52,6 +50,63 @@ interface TagsDao {
     fun getEmailList(): LiveData<List<Email>>
 
 
+    //URL
+    @Insert
+    fun insertUrl(url: Url)
+
+    @Update
+    fun updateUrl(url: Url)
+
+    @Query("DELETE FROM Url WHERE id=:id")
+    fun deleteUrl(id: Int)
+
+    @Query("DELETE FROM Url")
+    fun deleteAllUrl()
+
+    @Query("SELECT * FROM Url WHERE id=:id")
+    fun getUrlByID(id: Int): Text
+
+    @Query("SELECT * FROM Url")
+    fun getUrlList(): LiveData<List<Url>>
+
+    //PHONE
+    @Insert
+    fun insertPhone(phone: Phone)
+
+    @Update
+    fun updatePhone(phone: Phone)
+
+    @Query("DELETE FROM Phone WHERE id=:id")
+    fun deletePhone(id: Int)
+
+    @Query("DELETE FROM Phone")
+    fun deleteAllPhone()
+
+    @Query("SELECT * FROM Phone WHERE id=:id")
+    fun getPhoneByID(id: Int): Text
+
+    @Query("SELECT * FROM Phone")
+    fun getPhoneList(): LiveData<List<Phone>>
+
+
+    //LAUNCHER
+    @Insert
+    fun insertLauncher(url: Launcher)
+
+    @Update
+    fun updateUrl(url: Launcher)
+
+    @Query("DELETE FROM Url WHERE id=:id")
+    fun deleteLauncher(id: Int)
+
+    @Query("DELETE FROM Launcher")
+    fun deleteAllLauncher()
+
+    @Query("SELECT * FROM Launcher WHERE id=:id")
+    fun getLauncherByID(id: Int): Text
+
+    @Query("SELECT * FROM Launcher")
+    fun getLauncherList(): LiveData<List<Launcher>>
 
 
 

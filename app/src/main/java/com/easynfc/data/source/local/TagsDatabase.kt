@@ -6,10 +6,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.easynfc.data.model.Email
-import com.easynfc.data.model.Text
+import com.easynfc.data.model.*
 
-@Database(entities = [Text::class, Email::class], version = 4, exportSchema = true)
+@Database(entities = [Text::class, Email::class, Url::class, Phone::class, Launcher::class], version = 8, exportSchema = true)
 abstract class TagsDatabase : RoomDatabase() {
 
     abstract fun tagsDao(): TagsDao
@@ -45,9 +44,9 @@ abstract class TagsDatabase : RoomDatabase() {
         private val noteDao = db?.tagsDao()
 
         override fun doInBackground(vararg p0: Unit?) {
-            noteDao?.insertText(Text("Title 1", "22-01-2019"))
-            noteDao?.insertText(Text("Title 2", "23-01-2019"))
-            noteDao?.insertText(Text("Title 3", "24-01-2019"))
+            noteDao?.insertText(Text("Title 1", 1343892452L))
+            noteDao?.insertText(Text("Title 2", 1343892452L))
+            noteDao?.insertText(Text("Title 3", 1343892452L))
         }
     }
 
