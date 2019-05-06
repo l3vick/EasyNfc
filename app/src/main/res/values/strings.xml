@@ -43,21 +43,21 @@
     <string name="category_tag_title">Clean</string>
     <string name="category_tag_subtitle">format, lock…</string>
     <string name="category_email_title">Email</string>
-    <string name="category_email_subtitle">Send preset emails</string>
+    <string name="category_email_subtitle">Save &amp; send emails</string>
     <string name="category_phone_title">Phone</string>
     <string name="category_phone_subtitle">Make phone calls</string>
     <string name="category_sms_title">Sms</string>
-    <string name="category_sms_subtitle">Send preset sms</string>
+    <string name="category_sms_subtitle">Send predefined sms</string>
     <string name="category_format_title">Format</string>
     <string name="category_format_subtitle">Empty your tag </string>
     <string name="category_lock_title">Lock</string>
-    <string name="category_lock_subtitle">Lock your tag. This action is irreversible</string>
+    <string name="category_lock_subtitle">This action is irreversible</string>
     <string name="category_url_title">Url</string>
-    <string name="category_url_subtitle">Send url action and open in navigator</string>
+    <string name="category_url_subtitle">Visit a website</string>
     <string name="category_wifi_title">Wifi</string>
     <string name="category_wifi_subtitle">Connect to a wi-fi</string>
     <string name="category_location_title">Location</string>
-    <string name="category_location_subtitle">Send a coordinate and open in maps</string>
+    <string name="category_location_subtitle">Map location launcher</string>
     <string name="category_launcher_title">Launcher</string>
     <string name="category_launcher_subtitle">Open an app</string>
 
@@ -78,6 +78,7 @@
     <string name="btn_record">Record</string>
     <string name="et_writer_hint">Click to write</string>
     <string name="et_writer_hint_wr">Writing…</string>
-
+    <string name="menu_item_order">Order by</string>
+    <string name="menu_item_remove">Delete All</string>
 
 </resources>

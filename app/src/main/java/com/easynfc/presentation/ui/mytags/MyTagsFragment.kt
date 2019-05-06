@@ -9,12 +9,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.easynfc.MainActivity
 import com.easynfc.R
 import com.easynfc.data.model.*
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.adapter.TagsAdapter
 import com.easynfc.presentation.viewmodel.TagsViewModel
 import instanceOf
+import org.jetbrains.anko.appcompat.v7.coroutines.onMenuItemClick
+import org.jetbrains.anko.support.v4.toast
 
 
 class MyTagsFragment : BaseFragment() {
@@ -44,6 +47,15 @@ class MyTagsFragment : BaseFragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
         tagsViewModel = ViewModelProviders.of(this).get(TagsViewModel::class.java)
+
+        getTags()
+
+        (activity as MainActivity).mToolbar.onMenuItemClick {
+            when (it!!.itemId){
+                R.id.btnDeleteAll -> toast("sort")
+                R.id.btnOrderBy -> tagsViewModel.deleteAll()
+            }
+        }
     }
 
     private fun getTags(){
@@ -65,7 +77,7 @@ class MyTagsFragment : BaseFragment() {
     }
 
     override fun onResume() {
-        getTags()
+        adapter.setTags(tagsViewModel.getData())
         super.onResume()
     }
 }

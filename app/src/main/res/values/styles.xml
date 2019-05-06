@@ -9,7 +9,7 @@
 
     <!-- Launcher theme -->
     <style name="AppTheme.Launcher">
-        <item name="android:windowBackground">@drawable/menu_background</item>
+        <item name="android:windowBackground">@drawable/window_background</item>
     </style>
 
     <style name="menu_box">
@@ -161,10 +161,16 @@
 
     <style name="toolbar_theme" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/gray_material_50</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:lineSpacingExtra">0dp</item>
         <item name="android:letterSpacing">0.06</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="popup_theme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/subu_start</item>
+        <item name="android:itemBackground">@color/gray_material_50</item>
     </style>
 
 </resources>

@@ -1,14 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/logoutMenu"
+        android:id="@+id/btnOrderBy"
         android:actionLayout="@id/toolbar"
         android:orderInCategory="100"
-        android:title="item 1"
+        android:title="@string/menu_item_order"
         app:showAsAction="never" />
     <item
-        android:id="@+id/sortMenu"
+        android:id="@+id/btnDeleteAll"
         android:orderInCategory="100"
-        android:title="item 2"
+        android:title="@string/menu_item_remove"
         app:showAsAction="never" />
 </menu>

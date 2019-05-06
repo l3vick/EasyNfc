@@ -32,6 +32,7 @@ import com.vipera.onepay.util.AppConstants
 import kotlinx.android.synthetic.main.custom_tab.view.*
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.Toolbar
 
 
 class MainActivity : BaseActivity() {
@@ -39,6 +40,7 @@ class MainActivity : BaseActivity() {
     override val contentLayoutResId = R.layout.activity_main
 
     lateinit var nfcManager: NfcManager
+    lateinit var mToolbar: Toolbar
     private lateinit var mPager: CustomViewPager
     private val adapter = MenuPagerAdapter(supportFragmentManager)
 
@@ -146,8 +148,11 @@ class MainActivity : BaseActivity() {
     private fun setupUI() {
         nfcManager = NfcManager(this)
 
-        setSupportActionBar(toolbar)
-        toolbar.title = getString(R.string.empty)
+        mToolbar = toolbar
+
+        setSupportActionBar(mToolbar)
+
+        mToolbar.title = getString(R.string.empty)
 
         mPager = pager
 
@@ -193,22 +198,23 @@ class MainActivity : BaseActivity() {
     }
 
     private fun hideToolbar() {
-        toolbar.visibility = View.GONE
+        mToolbar.visibility = View.GONE
+        mToolbar.menu.clear()
     }
 
     fun showToolbar(title: String) {
-        toolbar.title = title
-        toolbar.visibility = View.VISIBLE
+        mToolbar.title = title
+        mToolbar.visibility = View.VISIBLE
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        toolbar.menu.clear()
+        mToolbar.menu.clear()
         //updateToolbarImage(title)
     }
 
     fun showToolbarWithMenu(title: String) {
-        toolbar.title = title
-        toolbar.visibility = View.VISIBLE
+        mToolbar.title = title
+        mToolbar.visibility = View.VISIBLE
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        toolbar.inflateMenu(R.menu.menu)
+        mToolbar.inflateMenu(R.menu.menu)
     }
 
     private fun updateToolbarImage(title: String) {

@@ -21,6 +21,42 @@ class TagsViewModel(application: Application) : AndroidViewModel(application) {
     private var listLauncher: LiveData<List<Launcher>> = repository.getAllLauncher()
 
 
+    fun getData(): List<BaseTag>{
+        var allData= mutableListOf<BaseTag>()
+
+        if (listText.value != null){
+            listText.value!!.forEach {
+                allData.add(it)
+            }
+        }
+
+        if (listUrl.value != null){
+            listUrl.value!!.forEach {
+                allData.add(it)
+            }
+        }
+
+        if (listEmail.value != null){
+            listEmail.value!!.forEach {
+                allData.add(it)
+            }
+        }
+
+        if (listPhone.value != null){
+            listPhone.value!!.forEach {
+                allData.add(it)
+            }
+        }
+
+        if (listLauncher.value != null){
+            listLauncher.value!!.forEach {
+                allData.add(it)
+            }
+        }
+
+       return allData
+    }
+
     //-------TEXT--------
     fun insertText(text: Text) {
         repository.insertText(text)
@@ -106,5 +142,13 @@ class TagsViewModel(application: Application) : AndroidViewModel(application) {
 
     fun deleteAllLauncher() {
 
+    }
+
+    fun deleteAll() {
+        repository.deleteAllText()
+        repository.deleteAllUrl()
+        repository.deleteAllEmail()
+        repository.deleteAllLauncher()
+        repository.deleteAllPhone()
     }
 }
