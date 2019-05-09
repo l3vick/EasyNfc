@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.easynfc.MainActivity
 import com.easynfc.R
 import com.easynfc.data.model.*
+import com.easynfc.data.source.TagsRepository
 import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.adapter.TagsAdapter
+import com.easynfc.presentation.component.custom.CustomLifeCycleOwner
 import com.easynfc.presentation.viewmodel.TagsViewModel
+import com.easynfc.presentation.viewmodel.TagsViewModelFactory
 import instanceOf
 import org.jetbrains.anko.appcompat.v7.coroutines.onMenuItemClick
 import org.jetbrains.anko.support.v4.toast
@@ -25,6 +28,7 @@ class MyTagsFragment : BaseFragment() {
     lateinit var v: View
     private lateinit var tagsViewModel: TagsViewModel
     private val adapter = TagsAdapter()
+    private val customLifeCycleOwner = CustomLifeCycleOwner()
 
     companion object {
         fun newInstance() = instanceOf<MyTagsFragment>()
@@ -46,7 +50,8 @@ class MyTagsFragment : BaseFragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
-        tagsViewModel = ViewModelProviders.of(this).get(TagsViewModel::class.java)
+
+        tagsViewModel = ViewModelProviders.of(this, TagsViewModelFactory(TagsRepository(context!!))).get(TagsViewModel::class.java)
 
         getTags()
 
@@ -59,16 +64,31 @@ class MyTagsFragment : BaseFragment() {
     }
 
     private fun getTags(){
-        tagsViewModel.getAllText().observe(this,
-                Observer<List<Text>> { t -> adapter.setTags(t!!) })
-        tagsViewModel.getAllEmail().observe(this,
-                Observer<List<Email>> { t -> adapter.setTags(t!!) })
-        tagsViewModel.getAllUrl().observe(this,
-                Observer<List<Url>> { t -> adapter.setTags(t!!) })
-        tagsViewModel.getAllPhone().observe(this,
-                Observer<List<Phone>> { t -> adapter.setTags(t!!) })
-        tagsViewModel.getAllLauncher().observe(this,
-                Observer<List<Launcher>> { t -> adapter.setTags(t!!) })
+
+        tagsViewModel.getAllText().observe(customLifeCycleOwner,
+                Observer<List<Text>> {
+                    t -> adapter.setTags(t!!)
+                })
+        tagsViewModel.getAllEmail().observe(customLifeCycleOwner,
+                Observer<List<Email>> {
+                    t -> adapter.setTags(t!!)
+                    tagsViewModel.getAllEmail().removeObservers(customLifeCycleOwner)
+                })
+        tagsViewModel.getAllUrl().observe(customLifeCycleOwner,
+                Observer<List<Url>> {
+                    t -> adapter.setTags(t!!)
+                    tagsViewModel.getAllUrl().removeObservers(customLifeCycleOwner)
+                })
+        tagsViewModel.getAllPhone().observe(customLifeCycleOwner,
+                Observer<List<Phone>> {
+                    t -> adapter.setTags(t!!)
+                    tagsViewModel.getAllPhone().removeObservers(customLifeCycleOwner)
+                })
+        tagsViewModel.getAllLauncher().observe(customLifeCycleOwner,
+                Observer<List<Launcher>> {
+                    t -> adapter.setTags(t!!)
+                    tagsViewModel.getAllLauncher().removeObservers(customLifeCycleOwner)
+                })
     }
 
     override fun onPause() {

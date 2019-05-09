@@ -1,13 +1,15 @@
 package com.easynfc.data.source
 
 import android.app.Application
+import android.content.Context
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.easynfc.data.model.*
 import com.easynfc.data.source.local.TagsDao
 import com.easynfc.data.source.local.TagsDatabase
 
-class TagsRepository(application: Application) {
+class TagsRepository(context: Context) {
 
     private var tagsDao: TagsDao
 
@@ -19,7 +21,7 @@ class TagsRepository(application: Application) {
 
 
     init {
-        val database: TagsDatabase = TagsDatabase.getInstance(application.applicationContext)!!
+        val database: TagsDatabase = TagsDatabase.getInstance(context)!!
         tagsDao = database.tagsDao()
         textList = tagsDao.getTextList()
         emailList = tagsDao.getEmailList()

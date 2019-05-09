@@ -4,13 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.easynfc.presentation.base.BaseActivity
 import com.easynfc.presentation.component.adapter.MenuPagerAdapter
@@ -21,18 +19,15 @@ import com.easynfc.presentation.ui.read.ReadFragment
 import com.easynfc.utils.NfcManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
-import com.easynfc.presentation.base.BaseFragment
 import com.easynfc.presentation.component.custom.CustomViewPager
 import com.easynfc.presentation.ui.category.CleanFragment
 import com.easynfc.presentation.ui.category.ContactFragment
 import com.easynfc.presentation.ui.category.UtilsFragment
 import com.easynfc.presentation.ui.write.WriteFragment
 import com.vipera.onepay.util.AppConstants
-import kotlinx.android.synthetic.main.custom_tab.view.*
-import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : BaseActivity() {
@@ -41,9 +36,12 @@ class MainActivity : BaseActivity() {
 
     lateinit var nfcManager: NfcManager
     lateinit var mToolbar: Toolbar
-    private lateinit var mPager: CustomViewPager
-    private val adapter = MenuPagerAdapter(supportFragmentManager)
 
+    private val categoryFragment = CategoryFragment.newInstance()
+    private val readFragment = ReadFragment.newInstance()
+    private val myTagsFragment = MyTagsFragment.newInstance()
+
+    private lateinit var active: Fragment
 
     companion object {
         fun start(context: Context) {
@@ -80,27 +78,27 @@ class MainActivity : BaseActivity() {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         if (currentFocus != null) {
-            val fragment = getFragment<BaseFragment>(adapter, mPager)
+           /* val fragment = getFragment<BaseFragment>(adapter, mPager)
             if (fragment is WriteFragment) {
                 fragment.resetHint()
-            }
+            }*/
             imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
         }
         return true
     }
 
     private fun navigateFragmentBack() {
-        when (getFragment<BaseFragment>(adapter, mPager)) {
+      /*  when (getFragment<BaseFragment>(adapter, mPager)) {
             is ContactFragment, is UtilsFragment, is CleanFragment -> navigateToCategory()
             is ReadFragment -> navigateToLoading()
             is WriteFragment -> navBackFromWriter()
-        }
+        }*/
     }
 
     fun replaceFragmentViewPager(fragment: Fragment, position: Int) {
-        adapter.replaceFragment(position, fragment)
+       /* adapter.replaceFragment(position, fragment)
         adapter.notifyDataSetChanged()
-        setupTabLayout()
+        setupTabLayout()*/
     }
 
     private fun navigateToCategory() {
@@ -154,7 +152,7 @@ class MainActivity : BaseActivity() {
 
         mToolbar.title = getString(R.string.empty)
 
-        mPager = pager
+        /*mPager = pager
 
         mPager.swipeEnabled = false
 
@@ -194,8 +192,42 @@ class MainActivity : BaseActivity() {
                     showToolbarWithMenu(getString(R.string.toolbar_title_mytags))
                 }
             }
-        })
+        })*/
+
+
+        //SETUP BNV
+        supportFragmentManager.beginTransaction().add(R.id.container, myTagsFragment, "3").hide(myTagsFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, readFragment, "2").hide(readFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, categoryFragment, "1").commit()
+
+        active = categoryFragment
+        bottomNavigator.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
     }
+
+    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.navigation_home -> {
+                supportFragmentManager.beginTransaction().hide(active).show(categoryFragment).commit()
+                active = categoryFragment
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_dashboard -> {
+                supportFragmentManager.beginTransaction().hide(active).show(readFragment).commit()
+                active = readFragment
+                return@OnNavigationItemSelectedListener true
+            }
+
+            R.id.navigation_notifications -> {
+                supportFragmentManager.beginTransaction().hide(active).show(myTagsFragment).commit()
+                active = myTagsFragment
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+    }
+
 
     private fun hideToolbar() {
         mToolbar.visibility = View.GONE
@@ -226,7 +258,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun setupTabLayout() {
-        val writeTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
+        /*val writeTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
         val readTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
         val myTagsTab = LayoutInflater.from(this).inflate(R.layout.custom_tab, null) as ConstraintLayout
 
@@ -240,7 +272,7 @@ class MainActivity : BaseActivity() {
 
         myTagsTab.txtTab.text = getString(R.string.third_tab_title)
         myTagsTab.imgTab.background = ContextCompat.getDrawable(this, R.drawable.ic_my_tags)
-        tabLayout.getTabAt(AppConstants.THIRD_TAB_POSITION)!!.customView = myTagsTab
+        tabLayout.getTabAt(AppConstants.THIRD_TAB_POSITION)!!.customView = myTagsTab*/
     }
 
 }

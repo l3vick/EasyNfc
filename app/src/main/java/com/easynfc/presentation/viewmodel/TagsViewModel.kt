@@ -1,28 +1,29 @@
 package com.easynfc.presentation.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.easynfc.data.model.*
 import com.easynfc.data.source.TagsRepository
+import io.reactivex.disposables.CompositeDisposable
 
-class TagsViewModel(application: Application) : AndroidViewModel(application) {
+class TagsViewModel(var repository: TagsRepository): ViewModel() {
 
-    private var repository: TagsRepository = TagsRepository(application)
+    private var disposable = CompositeDisposable()
 
-    private var listText: LiveData<List<Text>> = repository.getAllText()
+    private val listText: LiveData<List<Text>> = repository.getAllText()
 
-    private var listUrl: LiveData<List<Url>> = repository.getAllUrl()
+    private val listUrl: LiveData<List<Url>> = repository.getAllUrl()
 
-    private var listEmail: LiveData<List<Email>> = repository.getAllEmail()
+    private val listEmail: LiveData<List<Email>> = repository.getAllEmail()
 
-    private var listPhone: LiveData<List<Phone>> = repository.getAllPhone()
+    private val listPhone: LiveData<List<Phone>> = repository.getAllPhone()
 
-    private var listLauncher: LiveData<List<Launcher>> = repository.getAllLauncher()
+    private val listLauncher: LiveData<List<Launcher>> = repository.getAllLauncher()
 
+    fun  getData(): List<BaseTag>{
 
-    fun getData(): List<BaseTag>{
-        var allData= mutableListOf<BaseTag>()
+        val allData= mutableListOf<BaseTag>()
 
         if (listText.value != null){
             listText.value!!.forEach {
@@ -69,6 +70,18 @@ class TagsViewModel(application: Application) : AndroidViewModel(application) {
     fun getAllText(): LiveData<List<Text>> {
         return listText
     }
+
+
+    fun getAllText2(): LiveData<List<Text>> {
+        disposable.add(repository.getAllText2()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ data -> onSetAccountSuccess(data) }
+                        , { error -> onSetAccountError(error) }))
+        return listText
+    }
+
+
 
     fun deleteAllText() {
         repository.deleteAllText()
@@ -150,5 +163,12 @@ class TagsViewModel(application: Application) : AndroidViewModel(application) {
         repository.deleteAllEmail()
         repository.deleteAllLauncher()
         repository.deleteAllPhone()
+    }
+}
+
+
+class TagsViewModelFactory(private val repository: TagsRepository) : ViewModelProvider.NewInstanceFactory() {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return TagsViewModel(repository) as T
     }
 }
