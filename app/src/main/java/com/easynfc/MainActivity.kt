@@ -11,7 +11,6 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.easynfc.presentation.base.BaseActivity
-import com.easynfc.presentation.component.adapter.MenuPagerAdapter
 import com.easynfc.presentation.ui.category.CategoryFragment
 import com.easynfc.presentation.ui.loading.LoadingFragment
 import com.easynfc.presentation.ui.menu.mytags.MyTagsFragment
@@ -19,7 +18,6 @@ import com.easynfc.presentation.ui.read.ReadFragment
 import com.easynfc.utils.NfcManager
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
-import com.easynfc.presentation.component.custom.CustomViewPager
 import com.easynfc.presentation.ui.category.CleanFragment
 import com.easynfc.presentation.ui.category.ContactFragment
 import com.easynfc.presentation.ui.category.UtilsFragment
@@ -28,6 +26,7 @@ import com.vipera.onepay.util.AppConstants
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.jetbrains.anko.toast
 
 
 class MainActivity : BaseActivity() {
@@ -40,6 +39,7 @@ class MainActivity : BaseActivity() {
     private val categoryFragment = CategoryFragment.newInstance()
     private val readFragment = ReadFragment.newInstance()
     private val myTagsFragment = MyTagsFragment.newInstance()
+    private val loadingFragment = LoadingFragment.newInstance()
 
     private lateinit var active: Fragment
 
@@ -60,7 +60,8 @@ class MainActivity : BaseActivity() {
         val tagData = nfcManager.proccessIntent(intent!!)
         if (tagData != null) {
             showToolbar(getString(R.string.toolbar_title_read))
-            replaceFragmentViewPager(ReadFragment.newInstance(tagData), AppConstants.SECOND_TAB_POSITION)
+            toast("navigating to onNewIntent")
+            replaceFragmentViewPager(ReadFragment.newInstance(tagData))
         }
     }
 
@@ -95,36 +96,43 @@ class MainActivity : BaseActivity() {
         }*/
     }
 
-    fun replaceFragmentViewPager(fragment: Fragment, position: Int) {
+    fun replaceFragmentViewPager(fragment: Fragment) {
+        //toast("replacing fragment:" + fragment.javaClass.canonicalName)
+        /*supportFragmentManager.beginTransaction().hide(active).show(fragment).commit()
+        active = fragment*/
        /* adapter.replaceFragment(position, fragment)
         adapter.notifyDataSetChanged()
         setupTabLayout()*/
+
+        supportFragmentManager.beginTransaction().hide(active).show(fragment).commit()
+        active = fragment
+
     }
 
     private fun navigateToCategory() {
         hideToolbar()
-        replaceFragmentViewPager(CategoryFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+        replaceFragmentViewPager(CategoryFragment.newInstance())
     }
 
 
     private fun navigateToLoading() {
         hideToolbar()
-        replaceFragmentViewPager(LoadingFragment.newInstance(), AppConstants.SECOND_TAB_POSITION)
+        replaceFragmentViewPager(LoadingFragment.newInstance())
     }
 
     private fun navigateToContacts(){
         showToolbar(getString(R.string.toolbar_title_contact))
-        replaceFragmentViewPager(ContactFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+        replaceFragmentViewPager(ContactFragment.newInstance())
     }
 
     private fun navigateToUtils(){
         showToolbar(getString(R.string.toolbar_title_utils))
-        replaceFragmentViewPager(UtilsFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+        replaceFragmentViewPager(UtilsFragment.newInstance())
     }
 
     private fun navigateToClean(){
         showToolbar(getString(R.string.toolbar_title_clean))
-        replaceFragmentViewPager(CleanFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
+        replaceFragmentViewPager(CleanFragment.newInstance())
     }
 
     private fun navBackFromWriter(){
@@ -152,74 +160,31 @@ class MainActivity : BaseActivity() {
 
         mToolbar.title = getString(R.string.empty)
 
-        /*mPager = pager
-
-        mPager.swipeEnabled = false
-
-        adapter.addFrag(CategoryFragment(), getString(R.string.first_tab_title))
-        adapter.addFrag(LoadingFragment(), getString(R.string.second_tab_title))
-        adapter.addFrag(MyTagsFragment(), getString(R.string.third_tab_title))
-
-        mPager.adapter = adapter
-
-        tabLayout.setupWithViewPager(mPager)
-
-        tabLayout.setTabTextColors(ContextCompat.getColor(this, R.color.gray_material_50), ContextCompat.getColor(this, R.color.subu_end))
-
-        setupTabLayout()
-
-        mPager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                if (toolbar.isVisible) hideToolbar()
-
-                if (position != AppConstants.FIRST_TAB_POSITION) {
-                    replaceFragmentViewPager(CategoryFragment.newInstance(), AppConstants.FIRST_TAB_POSITION)
-                }
-
-                if (position != AppConstants.SECOND_TAB_POSITION) {
-                    replaceFragmentViewPager(LoadingFragment.newInstance(), AppConstants.SECOND_TAB_POSITION)
-                }
-
-                if (position == AppConstants.THIRD_TAB_POSITION) {
-                    showToolbarWithMenu(getString(R.string.toolbar_title_mytags))
-                }
-            }
-        })*/
-
-
-        //SETUP BNV
-        supportFragmentManager.beginTransaction().add(R.id.container, myTagsFragment, "3").hide(myTagsFragment).commit()
-        supportFragmentManager.beginTransaction().add(R.id.container, readFragment, "2").hide(readFragment).commit()
-        supportFragmentManager.beginTransaction().add(R.id.container, categoryFragment, "1").commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, myTagsFragment, MyTagsFragment.TAG).hide(myTagsFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, loadingFragment, LoadingFragment.TAG).hide(loadingFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, categoryFragment, CategoryFragment.TAG).commit()
 
         active = categoryFragment
+
         bottomNavigator.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
+            R.id.item_write -> {
                 supportFragmentManager.beginTransaction().hide(active).show(categoryFragment).commit()
                 active = categoryFragment
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_dashboard -> {
-                supportFragmentManager.beginTransaction().hide(active).show(readFragment).commit()
-                active = readFragment
+            R.id.item_read -> {
+                supportFragmentManager.beginTransaction().hide(active).show(loadingFragment).commit()
+                active = loadingFragment
                 return@OnNavigationItemSelectedListener true
             }
 
-            R.id.navigation_notifications -> {
+            R.id.item_my_tags -> {
                 supportFragmentManager.beginTransaction().hide(active).show(myTagsFragment).commit()
                 active = myTagsFragment
                 return@OnNavigationItemSelectedListener true

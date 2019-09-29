@@ -5,11 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.easynfc.data.model.*
 import com.easynfc.data.source.TagsRepository
-import io.reactivex.disposables.CompositeDisposable
 
 class TagsViewModel(var repository: TagsRepository): ViewModel() {
-
-    private var disposable = CompositeDisposable()
 
     private val listText: LiveData<List<Text>> = repository.getAllText()
 
@@ -20,43 +17,6 @@ class TagsViewModel(var repository: TagsRepository): ViewModel() {
     private val listPhone: LiveData<List<Phone>> = repository.getAllPhone()
 
     private val listLauncher: LiveData<List<Launcher>> = repository.getAllLauncher()
-
-    fun  getData(): List<BaseTag>{
-
-        val allData= mutableListOf<BaseTag>()
-
-        if (listText.value != null){
-            listText.value!!.forEach {
-                allData.add(it)
-            }
-        }
-
-        if (listUrl.value != null){
-            listUrl.value!!.forEach {
-                allData.add(it)
-            }
-        }
-
-        if (listEmail.value != null){
-            listEmail.value!!.forEach {
-                allData.add(it)
-            }
-        }
-
-        if (listPhone.value != null){
-            listPhone.value!!.forEach {
-                allData.add(it)
-            }
-        }
-
-        if (listLauncher.value != null){
-            listLauncher.value!!.forEach {
-                allData.add(it)
-            }
-        }
-
-       return allData
-    }
 
     //-------TEXT--------
     fun insertText(text: Text) {
@@ -70,17 +30,6 @@ class TagsViewModel(var repository: TagsRepository): ViewModel() {
     fun getAllText(): LiveData<List<Text>> {
         return listText
     }
-
-
-    fun getAllText2(): LiveData<List<Text>> {
-        disposable.add(repository.getAllText2()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ data -> onSetAccountSuccess(data) }
-                        , { error -> onSetAccountError(error) }))
-        return listText
-    }
-
 
 
     fun deleteAllText() {

@@ -29,6 +29,9 @@ class ReadFragment : BaseFragment() {
 
 
     companion object {
+
+        val TAG: String = this.javaClass.canonicalName
+
         fun newInstance() = instanceOf<ReadFragment>()
         fun newInstance(tag: Tag) = instanceOf<ReadFragment>(Pair(AppConstants.TAG_DATA_ID, tag))
     }
@@ -42,7 +45,7 @@ class ReadFragment : BaseFragment() {
 
     override fun onResume() {
         val tagData = arguments?.get(AppConstants.TAG_DATA_ID)
-        if (tagData != null) showTagData(tagData as Tag) else (activity as MainActivity).replaceFragmentViewPager(LoadingFragment.newInstance(), AppConstants.SECOND_TAB_POSITION)
+        if (tagData != null) showTagData(tagData as Tag) else (activity as MainActivity).replaceFragmentViewPager(LoadingFragment.newInstance())
         super.onResume()
     }
 

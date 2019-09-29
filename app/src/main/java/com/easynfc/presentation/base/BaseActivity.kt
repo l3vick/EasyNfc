@@ -2,6 +2,7 @@ package com.easynfc.presentation.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commitNow
 import androidx.fragment.app.transaction
 import androidx.viewpager.widget.ViewPager
 import com.easynfc.R
@@ -25,11 +26,11 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     protected fun replaceContainer(fragment: androidx.fragment.app.Fragment) {
-        supportFragmentManager.transaction { replace(R.id.container, fragment) }
+        supportFragmentManager.commitNow { replace(R.id.container, fragment) }
     }
 
     protected fun addToContainer(fragment: androidx.fragment.app.Fragment) {
-        supportFragmentManager.transaction { add(R.id.container, fragment) }
+        supportFragmentManager.commitNow { add(R.id.container, fragment) }
     }
 
     inline fun <reified T : BaseFragment> display(createFragment: () -> T) =

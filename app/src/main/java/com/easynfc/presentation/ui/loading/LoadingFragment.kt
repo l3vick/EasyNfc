@@ -26,6 +26,9 @@ class LoadingFragment : BaseFragment() {
     lateinit var v: View
 
     companion object {
+
+        val TAG: String = this.javaClass.canonicalName
+
         fun newInstance() = instanceOf<LoadingFragment>()
     }
 
@@ -48,11 +51,11 @@ class LoadingFragment : BaseFragment() {
         (activity as MainActivity).nfcManager?.enableForegroundDispatch()
     }
 
-    fun setupUI(){
+    fun setupUI() {
         startAnimations()
     }
 
-    fun startAnimations(){
+    fun startAnimations() {
         v.ivTag.startAnimation(RTLViewAnimation(initialAnimationListener))
         v.ivPhone.startAnimation(LTRViewAnimation())
     }
@@ -143,7 +146,6 @@ class LoadingFragment : BaseFragment() {
             }, 1000)
         }
     }
-
 
 
 }

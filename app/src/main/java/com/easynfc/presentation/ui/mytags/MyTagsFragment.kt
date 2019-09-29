@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,15 +29,18 @@ class MyTagsFragment : BaseFragment() {
     lateinit var v: View
     private lateinit var tagsViewModel: TagsViewModel
     private val adapter = TagsAdapter()
-    private val customLifeCycleOwner = CustomLifeCycleOwner()
+    //private val customLifeCycleOwner = CustomLifeCycleOwner()
 
     companion object {
+
+        val TAG: String = this.javaClass.canonicalName
+
         fun newInstance() = instanceOf<MyTagsFragment>()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        v =  inflater.inflate(R.layout.fragment_my_tags, container, false)
+        v = inflater.inflate(R.layout.fragment_my_tags, container, false)
         return v
     }
 
@@ -45,7 +49,7 @@ class MyTagsFragment : BaseFragment() {
         setupUI()
     }
 
-    private fun setupUI(){
+    private fun setupUI() {
         val recyclerView = v.findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.setHasFixedSize(true)
@@ -56,48 +60,40 @@ class MyTagsFragment : BaseFragment() {
         getTags()
 
         (activity as MainActivity).mToolbar.onMenuItemClick {
-            when (it!!.itemId){
+            when (it!!.itemId) {
                 R.id.btnDeleteAll -> toast("sort")
                 R.id.btnOrderBy -> tagsViewModel.deleteAll()
             }
         }
     }
 
-    private fun getTags(){
+    private fun getTags() {
 
-        tagsViewModel.getAllText().observe(customLifeCycleOwner,
-                Observer<List<Text>> {
-                    t -> adapter.setTags(t!!)
-                })
-        tagsViewModel.getAllEmail().observe(customLifeCycleOwner,
-                Observer<List<Email>> {
-                    t -> adapter.setTags(t!!)
-                    tagsViewModel.getAllEmail().removeObservers(customLifeCycleOwner)
-                })
-        tagsViewModel.getAllUrl().observe(customLifeCycleOwner,
-                Observer<List<Url>> {
-                    t -> adapter.setTags(t!!)
-                    tagsViewModel.getAllUrl().removeObservers(customLifeCycleOwner)
-                })
-        tagsViewModel.getAllPhone().observe(customLifeCycleOwner,
-                Observer<List<Phone>> {
-                    t -> adapter.setTags(t!!)
-                    tagsViewModel.getAllPhone().removeObservers(customLifeCycleOwner)
-                })
-        tagsViewModel.getAllLauncher().observe(customLifeCycleOwner,
-                Observer<List<Launcher>> {
-                    t -> adapter.setTags(t!!)
-                    tagsViewModel.getAllLauncher().removeObservers(customLifeCycleOwner)
-                })
-    }
+        tagsViewModel.getAllText().observe(viewLifecycleOwner,
+                Observer<List<Text>> { t ->
+                    adapter.setTags(t!!)
+                    tagsViewModel.getAllText().removeObservers(viewLifecycleOwner)
 
-    override fun onPause() {
-        adapter.clear()
-        super.onPause()
-    }
-
-    override fun onResume() {
-        adapter.setTags(tagsViewModel.getData())
-        super.onResume()
+                })
+        tagsViewModel.getAllEmail().observe(viewLifecycleOwner,
+                Observer<List<Email>> { t ->
+                    adapter.setTags(t!!)
+                    tagsViewModel.getAllEmail().removeObservers(viewLifecycleOwner)
+                })
+        tagsViewModel.getAllUrl().observe(viewLifecycleOwner,
+                Observer<List<Url>> { t ->
+                    adapter.setTags(t!!)
+                    tagsViewModel.getAllUrl().removeObservers(viewLifecycleOwner)
+                })
+        tagsViewModel.getAllPhone().observe(viewLifecycleOwner,
+                Observer<List<Phone>> { t ->
+                    adapter.setTags(t!!)
+                    tagsViewModel.getAllPhone().removeObservers(viewLifecycleOwner)
+                })
+        tagsViewModel.getAllLauncher().observe(viewLifecycleOwner,
+                Observer<List<Launcher>> { t ->
+                    adapter.setTags(t!!)
+                    tagsViewModel.getAllLauncher().removeObservers(viewLifecycleOwner)
+                })
     }
 }

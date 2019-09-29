@@ -34,11 +34,11 @@ class ContactFragment : BaseFragment() {
     private fun setupUI(){
         v.btnEmail.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_email))
-            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_EMAIL), AppConstants.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_EMAIL))
         }
         v.btnPhone.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_phone))
-            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_PHONE), AppConstants.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_PHONE))
         }
         v.btnSms.onClick {
             notImplemented()

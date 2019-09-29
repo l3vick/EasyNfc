@@ -34,7 +34,7 @@ class UtilsFragment : BaseFragment() {
 
         v.btnUrl.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_url))
-            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_URL), AppConstants.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_URL))
         }
         v.btnWifi.onClick {
             notImplemented()
@@ -44,7 +44,7 @@ class UtilsFragment : BaseFragment() {
         }
         v.btnLauncher.onClick {
             (activity as MainActivity).showToolbar(getString(R.string.toolbar_title_launcher))
-            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_LAUNCHER), AppConstants.FIRST_TAB_POSITION)
+            (activity as MainActivity).replaceFragmentViewPager(WriteFragment.newInstance(AppConstants.TYPE_LAUNCHER))
         }
     }
 
